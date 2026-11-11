@@ -1,0 +1,152 @@
+{
+  "schema": "scion_vtx01_verification_record_v1.1",
+  "verified_at": "2026-11-10T22:59:14.142Z",
+  "environment": {
+    "os": "darwin-arm64",
+    "node_version": "v23.6.0",
+    "python_version": "Python 3.11.4",
+    "ffmpeg_version": "ffmpeg version 4.3.2 Copyright (c) 2000-2021 the FFmpeg developers"
+  },
+  "revision_lineage": [
+    {
+      "revision": "rev1_rejected",
+      "status": "REJECTED_RETAINED",
+      "path": "revisions/rev1_rejected/",
+      "failed_gate": "animation_kinematic_gate",
+      "defects_detected": [
+        "Case B frame 324 (13.50s): ear_R crossed ear_L causing bowtie contour self-intersection and 37.0% volume drift on Sack_B",
+        "Case A lamp contact check measured floor-level hip_R instead of tabletop waist_R (163.03 px gap)",
+        "Grounded foot-skating up to 12.1 px/frame after hop landing",
+        "Closed doorway edge-on projection too thin at frame 360"
+      ]
+    },
+    {
+      "revision": "rev2_accepted",
+      "parent_revision": "rev1_rejected",
+      "status": "ACCEPTED_LOCAL_GATES",
+      "path": "revisions/rev2_accepted/",
+      "repairs_applied": [
+        "Enforced non-crossing ear separation (earR.x - earL.x >= 0.36 * restW) and exact base-anchored area similarity scaling (0.00000 volume drift across all 384 frames)",
+        "Replaced continuous x interpolation with hop-locked locomotion chains (0.000 px/frame grounded base slide)",
+        "Added two-hop airborne assist bound in Case A so waist_R clips Lamp_1 on the 0.34m table (42.42 px to lamp base center, direct chimney/collar graze) vs grounded planted coil and ear_R strike in Case B (22.30 px)",
+        "Angled 3/4 solid wooden Door_1 (hinge 1.06,0.64 to latch 1.24,0.30) with depth-sorted occlusion separating parlor Sack_A from hallway Sack_B when closed"
+      ]
+    }
+  ],
+  "artifact_sha256": {
+    "cases/case_a_assist.vtx.json": "a683ca02c50aa1fe5820c1a7ffe0efd56fa4eb766bd9a4bb67d965e5976f6f20",
+    "cases/patch_a_to_b_goal.json": "bc5162da7e358b5bb7f6d625c36cbb12f46eb21e802847d54aa548d4334a46e2",
+    "cases/case_b_deliberate.vtx.json": "41e06fd3a677b7fa1c451f9239a2e86665db76b2b59185d92a8bf8a50a42b757",
+    "cases/policies_synthetic_p1_p4.json": "1dcc02f9fc8ef4b230591d7ba203d0378c708c7a099db569ce5dda05e5d2036a",
+    "cases/protocols_followup_specs.json": "05555dee3190b4681fc2a9c671ef252b1ce0f3a33fd6bdd524cbd1e32e0fcb85",
+    "src/vtx_engine.js": "e231d5baf790fee74082b6d35494d676c4aaf25b6fd542eaa2a3b76f0fb46a0c",
+    "src/validate_vtx.js": "de39f7f8e72d4b880d5ea7d6bfc856fa821eaea73141f367254d5d570249caac",
+    "src/export_mp4.py": "fbd68579685feedda37ae88e7da20d2cedf9273186cb42597331529610a4220b",
+    "viewer/index.html": "d6def0dc67206badea1b5a9ed42d80d003730f66d9049c73991fdaa6823e3d99",
+    "viewer/bundle_data.js": "b43d159b7a091f44629509f89fdd3e1abc7de588b1a6d28c6395b7f43181f6c2",
+    "traces/chance_trace.json": "9a4b448ebb271da09276dcd18ae51b5d6f5517a4c2badead83f59111568c90e0",
+    "traces/memory_trace.json": "1f1ccddc8e3d6a7bc93165b4d3742e4228fb79459a5f480213ac3d9986509364",
+    "traces/consequence_trace.json": "222f1a036ae95dc531d280d849dd34ef8e55815da4a3004a8068a9e65d38ab64",
+    "traces/policy_traces.json": "e8af8916862abf140b584906388878224b71570d5759a0293d03fb05a4b364d5",
+    "traces/validation_report.json": "8521f360cf6043e0c6b64407cae854b57d620b3f243ceb3067709819f6a5b59e",
+    "revisions/rev1_rejected/case_a_rev1_rejected.mp4": "5bf690b2c560a4b85c2a7104e5eb2f912dbf7066a5846c800880f6766b0b5fa0",
+    "revisions/rev1_rejected/case_b_rev1_rejected.mp4": "825b0d09696800b7a59a72552766e3869ac1df3e2ff589b8082e6bc77e7e6fe8",
+    "revisions/rev2_accepted/case_a_rev2_accepted.mp4": "9dd2df1b27f1fc0c99d36f47a78233d331582579976562e4713653cd2cf3b915",
+    "revisions/rev2_accepted/case_b_rev2_accepted.mp4": "924c6e178ab2cfb7d9e76859562c6733f98cde286f1ada53b5828548f4874710",
+    "revisions/rev2_accepted/ab_paired_clean_rev2_accepted.mp4": "5c44764a9ec75c534822af9eae3a587ff6a5e80060ddd83acd6a88424c21da73"
+  },
+  "ab_diff_audit": {
+    "changed_paths_count": 46,
+    "unauthorized_paths": [],
+    "e1_identical_frames_0_to_76": 77
+  },
+  "kinematic_and_attachment_inspection": {
+    "case_a": {
+      "total_frames_inspected": 384,
+      "max_volume_drift_sack_a": 0,
+      "max_volume_drift_sack_b": 0,
+      "carry_interval_frames_checked": 73,
+      "max_carry_attachment_error_px": 0,
+      "min_lamp_contact_distance_px": 42.42,
+      "max_grounded_slide_px_per_frame_a": 0,
+      "max_grounded_slide_px_per_frame_b": 0,
+      "cut_persistence_frame_227_to_228_ok": true,
+      "pre_cut_frame_227": {
+        "fire_intensity": 1,
+        "oil_radius": 0.3,
+        "sack_a_mark": "hem_singed_char"
+      },
+      "post_cut_frame_228": {
+        "fire_intensity": 1,
+        "oil_radius": 0.3,
+        "sack_a_mark": "hem_singed_char"
+      }
+    },
+    "case_b": {
+      "total_frames_inspected": 384,
+      "max_volume_drift_sack_a": 0,
+      "max_volume_drift_sack_b": 0,
+      "carry_interval_frames_checked": 73,
+      "max_carry_attachment_error_px": 0,
+      "min_lamp_contact_distance_px": 22.3,
+      "max_grounded_slide_px_per_frame_a": 0,
+      "max_grounded_slide_px_per_frame_b": 0,
+      "cut_persistence_frame_227_to_228_ok": true,
+      "pre_cut_frame_227": {
+        "fire_intensity": 1,
+        "oil_radius": 0.3,
+        "sack_a_mark": "ear_R_soot_char"
+      },
+      "post_cut_frame_228": {
+        "fire_intensity": 1,
+        "oil_radius": 0.3,
+        "sack_a_mark": "ear_R_soot_char"
+      }
+    }
+  },
+  "gates": {
+    "evidence_gate": {
+      "status": "PASS_WITH_NAMED_UNRESOLVED",
+      "verifier": "builder_self_check (independent_reviewer: UNRUN)",
+      "verified_seeds": [
+        "C1",
+        "C2",
+        "A1",
+        "S1",
+        "B1",
+        "G1",
+        "H1",
+        "L1"
+      ],
+      "unresolved_items": [
+        "CL-03: Exact verbatim 12 acts and story insurance clauses require Pantheon (1995) / Mondadori (1993) story text inspection",
+        "CL-08: Specific Demis Hassabis BDI / episodic memory reference requires citation confirmation",
+        "CL-10: Exact Stanisław Lem Bitic Literature semaphore passage requires print page verification (semascope/semature verified)"
+      ]
+    },
+    "structural_gate": {
+      "status": "PASS",
+      "verifier": "deterministic_script (src/validate_vtx.js)"
+    },
+    "animation_kinematic_gate": {
+      "status": "PASS",
+      "verifier": "deterministic_script (src/validate_vtx.js) + builder_visual_frame_inspection (384 frames + all 73 carry frames [252..324] inspected; independent_reviewer: UNRUN)",
+      "zero_scene_captions_in_mp4_and_blinded_viewer": true
+    },
+    "temporal_gate": {
+      "status": "PASS",
+      "verifier": "deterministic_script (src/validate_vtx.js)"
+    },
+    "perceptual_gate": {
+      "status": "PENDING",
+      "verifier": "UNTESTED_VOLUNTARY_HUMAN_RESPONDENTS",
+      "harness_path": "viewer/index.html (Tab 1: Blinded Perceptual Test)"
+    },
+    "narrative_interest_evaluation": {
+      "status": "UNTESTED_OPEN_EVALUATION_QUESTION"
+    },
+    "swarm_performance_benchmark": {
+      "status": "UNMEASURED_SINGLE_WORKER_BUILD"
+    }
+  }
+}

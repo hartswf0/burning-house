@@ -1,0 +1,1702 @@
+<!DOCTYPE html>
+<html lang="en" data-plate="paper">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>burning-house</title>
+  <meta name="description" content="Flour sacks, editable video-text takes, journals, zettels, and complete archive after Italo Calvino's The Burning of the Abominable House." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --paper: #fcf7f1;
+      --paper-card: #f7f0e6;
+      --ochre: #d78411;
+      --ink: #141210;
+      --muted: #6e6459;
+      --rule: rgba(20, 18, 16, 0.14);
+      --rule-strong: rgba(20, 18, 16, 0.32);
+      --btn-bg: #12100e;
+      --btn-fg: #fbf6ec;
+      --serif: 'Newsreader', 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
+      --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; background: var(--paper); color: var(--ink); }
+    body {
+      margin: 0;
+      font-family: var(--serif);
+      background: var(--paper);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── HERO STAGE (100dvh, matching both Paper & Ochre plates) ── */
+    .hero {
+      position: relative;
+      min-height: 100dvh;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      transition: background-color 0.28s ease;
+    }
+
+    .hero-bar {
+      position: relative;
+      z-index: 4;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      padding: clamp(22px, 4.2vw, 46px) clamp(22px, 5vw, 64px);
+    }
+
+    .brand {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: clamp(30px, 3.8vw, 52px);
+      line-height: 1;
+      letter-spacing: -0.028em;
+      color: #13110e;
+      text-decoration: none;
+    }
+
+    .hero-nav {
+      display: flex;
+      align-items: baseline;
+      gap: clamp(16px, 2.4vw, 28px);
+    }
+
+    .plate-switch {
+      appearance: none;
+      background: none;
+      border: 0;
+      padding: 0;
+      font-family: var(--serif);
+      font-size: clamp(15px, 1.3vw, 19px);
+      color: rgba(19, 17, 14, 0.62);
+      cursor: pointer;
+      letter-spacing: -0.01em;
+    }
+    .plate-switch:hover { color: #13110e; }
+
+    .archive-link {
+      font-family: var(--serif);
+      font-size: clamp(18px, 1.65vw, 25px);
+      font-weight: 400;
+      color: #13110e;
+      text-decoration: underline;
+      text-underline-offset: 5px;
+      text-decoration-thickness: 1.5px;
+      letter-spacing: -0.01em;
+    }
+
+    /* Plate I: Paper */
+    html[data-plate="paper"] .hero {
+      background: var(--paper);
+    }
+    .paper-stage {
+      position: relative;
+      z-index: 2;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0 clamp(18px, 5vw, 64px) clamp(42px, 7vh, 76px);
+      gap: clamp(22px, 4vh, 38px);
+    }
+    .paper-art {
+      width: min(760px, 88vw);
+      max-height: 54dvh;
+      object-fit: contain;
+      mix-blend-mode: multiply;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    /* Plate II: Ochre */
+    .ochre-bg {
+      display: none;
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: right bottom;
+      z-index: 1;
+      user-select: none;
+      pointer-events: none;
+    }
+    html[data-plate="ochre"] .hero {
+      background: var(--ochre);
+    }
+    html[data-plate="ochre"] .ochre-bg {
+      display: block;
+    }
+    html[data-plate="ochre"] .paper-art {
+      display: none;
+    }
+    html[data-plate="ochre"] .paper-stage {
+      align-items: flex-start;
+      justify-content: flex-end;
+      padding: 0 clamp(22px, 5vw, 64px) clamp(28px, 5.2vh, 52px);
+    }
+
+    /* Solid ink CTA button matching both mockups */
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--btn-bg);
+      color: var(--btn-fg);
+      font-family: var(--serif);
+      font-size: clamp(18px, 1.55vw, 23px);
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      padding: 13px 34px 14px;
+      border: 1px solid var(--btn-bg);
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 0.14s ease, background-color 0.14s ease;
+    }
+    .cta-btn:hover {
+      background: #27221d;
+    }
+    .cta-btn.ghost {
+      background: transparent;
+      color: var(--ink);
+      border-color: var(--rule-strong);
+      font-size: 16px;
+      padding: 9px 18px 10px;
+    }
+    .cta-btn.ghost:hover {
+      background: rgba(20, 18, 16, 0.05);
+    }
+
+    /* ── EDITORIAL SECTIONS BELOW FOLD ── */
+    .wrap {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: clamp(48px, 7vw, 88px) clamp(20px, 5vw, 64px);
+      border-top: 1px solid var(--rule);
+    }
+
+    .sec-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px 24px;
+      margin-bottom: 28px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--rule-strong);
+    }
+
+    .sec-head h2 {
+      margin: 0;
+      font-size: clamp(26px, 2.6vw, 36px);
+      font-weight: 500;
+      letter-spacing: -0.02em;
+    }
+
+    .sec-note {
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+      max-width: 64ch;
+    }
+
+    /* ── COMPARE TAKES STAGE ── */
+    .takes-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px 16px;
+      margin-bottom: 18px;
+    }
+    .takes-controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+    }
+    .pill {
+      appearance: none;
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid var(--rule-strong);
+      padding: 7px 14px 8px;
+      font-family: var(--serif);
+      font-size: 15px;
+      cursor: pointer;
+    }
+    .pill.active, .pill:hover {
+      background: var(--ink);
+      color: var(--paper);
+      border-color: var(--ink);
+    }
+
+    .takes-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+    @media (max-width: 820px) {
+      .takes-grid { grid-template-columns: 1fr; }
+    }
+    .take-figure {
+      margin: 0;
+      background: var(--paper-card);
+      border: 1px solid var(--rule);
+      padding: 14px;
+    }
+    .take-figure video {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #12100e;
+      display: block;
+    }
+    .take-cap {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      margin-top: 10px;
+      font-size: 15.5px;
+    }
+    .take-cap span.mono {
+      font-family: var(--mono);
+      font-size: 11.5px;
+      color: var(--muted);
+    }
+
+    /* ── VISUAL PLATES GALLERY ── */
+    .plates-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
+      gap: 22px 20px;
+      margin-bottom: 56px;
+    }
+    .plate-card {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+      border: 1px solid var(--rule);
+      background: var(--paper-card);
+      transition: border-color 0.16s ease, transform 0.16s ease;
+    }
+    .plate-card:hover {
+      border-color: var(--ink);
+      transform: translateY(-1px);
+    }
+    .plate-thumb {
+      aspect-ratio: 16 / 10;
+      width: 100%;
+      overflow: hidden;
+      background: #efe7da;
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .plate-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .plate-meta {
+      padding: 12px 14px 14px;
+    }
+    .plate-group {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .plate-title {
+      font-size: 17px;
+      font-weight: 500;
+      line-height: 1.28;
+      margin: 0 0 5px;
+    }
+    .plate-path {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      word-break: break-all;
+    }
+
+    /* ── COMPLETE REPOSITORY FILE INDEX ── */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    .cat-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .search-input {
+      font-family: var(--serif);
+      font-size: 16px;
+      background: var(--paper-card);
+      color: var(--ink);
+      border: 1px solid var(--rule-strong);
+      padding: 7px 12px;
+      min-width: 240px;
+    }
+    .manifest-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 15.5px;
+    }
+    .manifest-table th {
+      text-align: left;
+      font-weight: 500;
+      font-size: 13px;
+      color: var(--muted);
+      padding: 9px 10px;
+      border-bottom: 1px solid var(--rule-strong);
+    }
+    .manifest-table td {
+      padding: 11px 10px;
+      border-bottom: 1px solid var(--rule);
+      vertical-align: top;
+    }
+    .manifest-table tr:hover td {
+      background: rgba(215, 132, 17, 0.06);
+    }
+    .file-link {
+      font-family: var(--mono);
+      font-size: 12.5px;
+      color: var(--ink);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      word-break: break-all;
+    }
+    .file-desc {
+      color: #2f2a24;
+      line-height: 1.42;
+    }
+    .file-cat, .file-size {
+      font-family: var(--mono);
+      font-size: 11.5px;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .read-btn {
+      appearance: none;
+      background: none;
+      border: 1px solid var(--rule-strong);
+      font-family: var(--mono);
+      font-size: 11px;
+      padding: 3px 8px;
+      color: var(--ink);
+      cursor: pointer;
+      margin-right: 6px;
+    }
+    .read-btn:hover {
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    @media (max-width: 760px) {
+      .manifest-table thead { display: none; }
+      .manifest-table, .manifest-table tbody, .manifest-table tr, .manifest-table td {
+        display: block;
+        width: 100%;
+      }
+      .manifest-table tr {
+        padding: 10px 0;
+        border-bottom: 1px solid var(--rule-strong);
+      }
+      .manifest-table td {
+        border: 0;
+        padding: 3px 0;
+      }
+    }
+
+    /* ── INLINE READER DRAWER ── */
+    .drawer-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(18, 16, 14, 0.48);
+      z-index: 40;
+      align-items: stretch;
+      justify-content: flex-end;
+    }
+    .drawer-backdrop.open { display: flex; }
+    .drawer {
+      width: min(880px, 96vw);
+      background: var(--paper);
+      color: var(--ink);
+      border-left: 1px solid var(--rule-strong);
+      display: flex;
+      flex-direction: column;
+      height: 100dvh;
+    }
+    .drawer-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 16px 22px;
+      border-bottom: 1px solid var(--rule-strong);
+      background: var(--paper-card);
+    }
+    .drawer-title {
+      font-family: var(--mono);
+      font-size: 13px;
+      word-break: break-all;
+    }
+    .drawer-body {
+      flex: 1;
+      overflow: auto;
+      padding: 24px 26px 48px;
+    }
+    .drawer-body pre {
+      margin: 0;
+      white-space: pre-wrap;
+      word-break: break-word;
+      font-family: var(--mono);
+      font-size: 12.5px;
+      line-height: 1.58;
+      color: var(--ink);
+    }
+
+    footer {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 28px clamp(20px, 5vw, 64px) 56px;
+      border-top: 1px solid var(--rule);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+    footer a { color: var(--ink); text-underline-offset: 3px; }
+  </style>
+</head>
+<body>
+
+  <!-- HERO STAGE -->
+  <section class="hero" aria-label="burning-house cover plate">
+    <img class="ochre-bg" src="./assets/hero-ochre-room.jpg" alt="Ochre room with tied canvas flour sack, fallen glass oil lamp, and long floor shadow" />
+
+    <header class="hero-bar">
+      <a class="brand" href="#top" id="top">burning-house</a>
+      <nav class="hero-nav" aria-label="Primary">
+        <button class="plate-switch" id="plateBtn" type="button" onclick="togglePlate()" title="Switch between Paper and Ochre cover plates">Ochre plate</button>
+        <a class="archive-link" href="#archive">Archive</a>
+      </nav>
+    </header>
+
+    <div class="paper-stage">
+      <img class="paper-art" src="./assets/hero-paper-sacks.jpg" alt="Two tied canvas flour sacks on rag paper beside a tipped brass-and-glass oil lamp" />
+      <a class="cta-btn" href="#compare">Compare takes</a>
+    </div>
+  </section>
+
+  <!-- COMPARE TAKES -->
+  <section class="wrap" id="compare" aria-labelledby="compare-heading">
+    <div class="sec-head">
+      <div>
+        <h2 id="compare-heading">Compare takes</h2>
+        <p class="sec-note">Two faceless flour sacks, one oil lamp, seventy-seven identical opening frames, and one patched line of intent—reaching to steady a neighbour versus striking the lamp.</p>
+      </div>
+      <div class="takes-controls">
+        <a class="cta-btn ghost" href="./vtx01_build/viewer/index.html?mode=blind_test">Blind ballot (no labels)</a>
+        <a class="cta-btn ghost" href="./vtx01_build/viewer/index.html">Open VTX-0.1 workbench</a>
+      </div>
+    </div>
+
+    <div class="takes-bar">
+      <div class="takes-controls" role="group" aria-label="Revision selector">
+        <button class="pill active" id="btnRev2" type="button" onclick="setTakeRev('rev2')">Accepted takes (Rev 2)</button>
+        <button class="pill" id="btnRev1" type="button" onclick="setTakeRev('rev1')">Rejected takes (Rev 1 · bow-tie failure)</button>
+      </div>
+      <div class="takes-controls">
+        <button class="pill" type="button" onclick="syncPlay(true)">Play both</button>
+        <button class="pill" type="button" onclick="syncPlay(false)">Pause</button>
+        <button class="pill" type="button" onclick="syncRestart()">Frame 0</button>
+      </div>
+    </div>
+
+    <div class="takes-grid">
+      <figure class="take-figure">
+        <video id="vidA" controls playsinline preload="metadata" poster="./vtx01_build/revisions/rev2_accepted/inspection_sheet_case_a_rev2_accepted.png">
+          <source id="srcA" src="./vtx01_build/revisions/rev2_accepted/case_a_rev2_accepted.mp4" type="video/mp4" />
+        </video>
+        <figcaption class="take-cap">
+          <span id="capA">Take A · Steady reach, accidental brush, door propped from inside</span>
+          <span class="mono" id="metaA">384f · 0.00 vol drift</span>
+        </figcaption>
+      </figure>
+
+      <figure class="take-figure">
+        <video id="vidB" controls playsinline preload="metadata" poster="./vtx01_build/revisions/rev2_accepted/inspection_sheet_case_b_rev2_accepted.png">
+          <source id="srcB" src="./vtx01_build/revisions/rev2_accepted/case_b_rev2_accepted.mp4" type="video/mp4" />
+        </video>
+        <figcaption class="take-cap">
+          <span id="capB">Take B · Single-line patch: deliberate strike, door wedged from hall</span>
+          <span class="mono" id="metaB">46 paths · 0.00px carry err</span>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ARCHIVE: VISUAL PLATES + EVERY FILE IN REPOSITORY -->
+  <section class="wrap" id="archive" aria-labelledby="archive-heading">
+    <div class="sec-head">
+      <div>
+        <h2 id="archive-heading">Archive</h2>
+        <p class="sec-note">Visual plates across every edition, proof sheet, and stagecraft still, followed by the complete file-by-file ledger of this repository (<span id="totalCount"></span> files).</p>
+      </div>
+      <div class="takes-controls">
+        <a class="cta-btn ghost" href="./Abominable_House_Journal_38/index.html">Journal (38 entries)</a>
+        <a class="cta-btn ghost" href="./slides/index.html">Slides</a>
+        <a class="cta-btn ghost" href="./Anticombinatory%20Forensic%20Report%20%281%29.pdf">Working paper (PDF)</a>
+      </div>
+    </div>
+
+    <!-- Visual Plates Grid -->
+    <div class="plates-grid" id="platesGrid"></div>
+
+    <!-- Complete File Manifest -->
+    <div class="sec-head" style="margin-top: 12px;">
+      <h2 style="font-size: clamp(21px, 2vw, 28px);">All repository files</h2>
+      <p class="sec-note">Every HTML view, MP4 take, PNG/JPG plate, PDF paper, Markdown note/zettel, JSON trace, script, and zip archive.</p>
+    </div>
+
+    <div class="filter-bar">
+      <div class="cat-tabs" id="catTabs"></div>
+      <input class="search-input" id="fileSearch" type="search" placeholder="Filter by path or note…" oninput="renderManifest()" aria-label="Filter repository files" />
+    </div>
+
+    <table class="manifest-table">
+      <thead>
+        <tr>
+          <th style="width:32%">Path</th>
+          <th style="width:43%">Contents</th>
+          <th style="width:14%">Group</th>
+          <th style="width:11%">Size</th>
+        </tr>
+      </thead>
+      <tbody id="manifestBody"></tbody>
+    </table>
+  </section>
+
+  <footer>
+    <div><strong>burning-house</strong> · Minimum Viable Video-Text, Flour Sacks &amp; Actuarial Anticombinatorics after Italo Calvino (1973)</div>
+    <div><a href="https://github.com/hartswf0/burning-house">github.com/hartswf0/burning-house</a></div>
+  </footer>
+
+  <!-- INLINE ARCHIVAL TEXT READER -->
+  <div class="drawer-backdrop" id="drawerBackdrop" onclick="if(event.target===this)closeDrawer()">
+    <div class="drawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
+      <div class="drawer-head">
+        <span class="drawer-title" id="drawerTitle"></span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <a class="read-btn" id="drawerRawLink" href="#" target="_blank" rel="noopener">Open raw</a>
+          <button class="read-btn" type="button" onclick="closeDrawer()">Close</button>
+        </div>
+      </div>
+      <div class="drawer-body">
+        <pre id="drawerPre">Loading…</pre>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const PLATES = [
+  {
+    "title": "Plate I · Paper — Two Sacks & Fallen Lamp",
+    "meta": "Hero illustration · assets/hero-paper-sacks.jpg",
+    "img": "./assets/hero-paper-sacks.jpg",
+    "href": "./assets/hero-paper-sacks.jpg",
+    "group": "Plates & Editions"
+  },
+  {
+    "title": "Plate II · Ochre — Lamp Room & Diagonal Shadow",
+    "meta": "Hero gouache · assets/hero-ochre-room.jpg",
+    "img": "./assets/hero-ochre-room.jpg",
+    "href": "./assets/hero-ochre-room.jpg",
+    "group": "Plates & Editions"
+  },
+  {
+    "title": "VTX-0.1 Workbench & Blinded Witness Gate",
+    "meta": "Interactive HTML · vtx01_build/viewer/index.html",
+    "img": "./vtx01_build/revisions/rev2_accepted/ab_focus_comparison_rev2_accepted.png",
+    "href": "./vtx01_build/viewer/index.html",
+    "group": "Plates & Editions"
+  },
+  {
+    "title": "Journal Toward a Paper (38 Entries)",
+    "meta": "Ruled notebook HTML · Abominable_House_Journal_38/index.html",
+    "img": "./Abominable_House_Journal_38/journal-img/25-rev2-pair.jpg",
+    "href": "./Abominable_House_Journal_38/index.html",
+    "group": "Plates & Editions"
+  },
+  {
+    "title": "Abominable House · Presentation Slides",
+    "meta": "Slide deck HTML · slides/index.html",
+    "img": "./slides/journal-img/02-22.5.jpg",
+    "href": "./slides/index.html",
+    "group": "Plates & Editions"
+  },
+  {
+    "title": "Anticombinatory Forensic Report (Working Paper)",
+    "meta": "11-page PDF · Anticombinatory Forensic Report (1).pdf",
+    "img": "./assets/thumbs/thumb-forensic-report.jpg",
+    "href": "./Anticombinatory%20Forensic%20Report%20%281%29.pdf",
+    "group": "Plates & Editions"
+  },
+  {
+    "title": "Berkman (2017) · Double Genèse de Calvino",
+    "meta": "Genesis 45 PDF · genesis-2993.pdf",
+    "img": "./assets/thumbs/thumb-genesis-2993.jpg",
+    "href": "./genesis-2993.pdf",
+    "group": "Plates & Editions"
+  },
+  {
+    "title": "DH2025 Concrete Papers Packet",
+    "meta": "39.9 MB extracted PDF · DH2025_Concrete_Papers_Packet.pdf",
+    "img": "./assets/thumbs/thumb-dh2025-packet.jpg",
+    "href": "./DH2025_Concrete_Papers_Packet.pdf",
+    "group": "Plates & Editions"
+  },
+  {
+    "title": "Accepted A/B Focus Sheet (Rev 2)",
+    "meta": "PNG sheet · vtx01_build/revisions/rev2_accepted/",
+    "img": "./vtx01_build/revisions/rev2_accepted/ab_focus_comparison_rev2_accepted.png",
+    "href": "./vtx01_build/revisions/rev2_accepted/ab_focus_comparison_rev2_accepted.png",
+    "group": "Renders & Proof Sheets"
+  },
+  {
+    "title": "73-Frame Wedge Carry Lock · Take A",
+    "meta": "0.00 px drift · carry_73frames_case_a_rev2_accepted.png",
+    "img": "./vtx01_build/revisions/rev2_accepted/carry_73frames_case_a_rev2_accepted.png",
+    "href": "./vtx01_build/revisions/rev2_accepted/carry_73frames_case_a_rev2_accepted.png",
+    "group": "Renders & Proof Sheets"
+  },
+  {
+    "title": "73-Frame Wedge Carry Lock · Take B",
+    "meta": "0.00 px drift · carry_73frames_case_b_rev2_accepted.png",
+    "img": "./vtx01_build/revisions/rev2_accepted/carry_73frames_case_b_rev2_accepted.png",
+    "href": "./vtx01_build/revisions/rev2_accepted/carry_73frames_case_b_rev2_accepted.png",
+    "group": "Renders & Proof Sheets"
+  },
+  {
+    "title": "16-Frame Timeline Sheet · Accepted Take A",
+    "meta": "Contact sheet · inspection_sheet_case_a_rev2_accepted.png",
+    "img": "./vtx01_build/revisions/rev2_accepted/inspection_sheet_case_a_rev2_accepted.png",
+    "href": "./vtx01_build/revisions/rev2_accepted/inspection_sheet_case_a_rev2_accepted.png",
+    "group": "Renders & Proof Sheets"
+  },
+  {
+    "title": "16-Frame Timeline Sheet · Accepted Take B",
+    "meta": "Contact sheet · inspection_sheet_case_b_rev2_accepted.png",
+    "img": "./vtx01_build/revisions/rev2_accepted/inspection_sheet_case_b_rev2_accepted.png",
+    "href": "./vtx01_build/revisions/rev2_accepted/inspection_sheet_case_b_rev2_accepted.png",
+    "group": "Renders & Proof Sheets"
+  },
+  {
+    "title": "Rejected Rev 1 · Lamp Miss & Bow-Tie Failure",
+    "meta": "Kept ashes · ab_focus_comparison_rev1_rejected.png",
+    "img": "./vtx01_build/revisions/rev1_rejected/ab_focus_comparison_rev1_rejected.png",
+    "href": "./vtx01_build/revisions/rev1_rejected/ab_focus_comparison_rev1_rejected.png",
+    "group": "Renders & Proof Sheets"
+  },
+  {
+    "title": "16-Frame Timeline Sheet · Rejected Take A",
+    "meta": "163 px miss · inspection_sheet_case_a_rev1_rejected.png",
+    "img": "./vtx01_build/revisions/rev1_rejected/inspection_sheet_case_a_rev1_rejected.png",
+    "href": "./vtx01_build/revisions/rev1_rejected/inspection_sheet_case_a_rev1_rejected.png",
+    "group": "Renders & Proof Sheets"
+  },
+  {
+    "title": "16-Frame Timeline Sheet · Rejected Take B",
+    "meta": "37% area loss · inspection_sheet_case_b_rev1_rejected.png",
+    "img": "./vtx01_build/revisions/rev1_rejected/inspection_sheet_case_b_rev1_rejected.png",
+    "href": "./vtx01_build/revisions/rev1_rejected/inspection_sheet_case_b_rev1_rejected.png",
+    "group": "Renders & Proof Sheets"
+  },
+  {
+    "title": "PAE-03 · SCION 07 Foldès Sack & Flour Tower",
+    "meta": "4.1 s still · journal-img/07-4.1.jpg",
+    "img": "./Abominable_House_Journal_38/journal-img/07-4.1.jpg",
+    "href": "./Abominable_House_Journal_38/journal-img/07-4.1.jpg",
+    "group": "Journal & Stagecraft Stills"
+  },
+  {
+    "title": "PAE-03 · SCION 02 Reiniger Silhouette & Penny",
+    "meta": "22.5 s still · journal-img/02-22.5.jpg",
+    "img": "./Abominable_House_Journal_38/journal-img/02-22.5.jpg",
+    "href": "./Abominable_House_Journal_38/journal-img/02-22.5.jpg",
+    "group": "Journal & Stagecraft Stills"
+  },
+  {
+    "title": "PAE-04 · Deed VIII Curtain Matte (What Is Withheld)",
+    "meta": "Stagecraft still · journal-img/08.jpg",
+    "img": "./Abominable_House_Journal_38/journal-img/08.jpg",
+    "href": "./Abominable_House_Journal_38/journal-img/08.jpg",
+    "group": "Journal & Stagecraft Stills"
+  },
+  {
+    "title": "PAE-04 · Deed VII Rope Consequence Mark",
+    "meta": "Persistent trace · journal-img/conseq-07-tying.jpg",
+    "img": "./Abominable_House_Journal_38/journal-img/conseq-07-tying.jpg",
+    "href": "./Abominable_House_Journal_38/journal-img/conseq-07-tying.jpg",
+    "group": "Journal & Stagecraft Stills"
+  },
+  {
+    "title": "Typographic Reference Sheet · Paper",
+    "meta": "Desktop & mobile layout · assets/plate-paper-reference.jpg",
+    "img": "./assets/plate-paper-reference.jpg",
+    "href": "./assets/plate-paper-reference.jpg",
+    "group": "Journal & Stagecraft Stills"
+  },
+  {
+    "title": "Typographic Reference Sheet · Ochre",
+    "meta": "Desktop & mobile layout · assets/plate-ochre-reference.jpg",
+    "img": "./assets/plate-ochre-reference.jpg",
+    "href": "./assets/plate-ochre-reference.jpg",
+    "group": "Journal & Stagecraft Stills"
+  }
+];
+    const MANIFEST = [
+  {
+    "path": "Abominable_House_Journal_38/index.html",
+    "url": "./Abominable_House_Journal_38/index.html",
+    "size_bytes": 71918,
+    "size": "71.9 KB",
+    "ext": "HTML",
+    "cat": "Interactive",
+    "desc": "Journal Toward a Paper (38 entries, third pass): ruled notebook edition joining DH2025, VTX-0.1, Lab 7, and zettle.md.",
+    "inline": false
+  },
+  {
+    "path": "index.html",
+    "url": "./index.html",
+    "size_bytes": 59019,
+    "size": "59.0 KB",
+    "ext": "HTML",
+    "cat": "Interactive",
+    "desc": "Root visual landing page (Paper & Ochre flour-sack plates), synchronized A/B take comparison, and complete repository archive.",
+    "inline": false
+  },
+  {
+    "path": "journal-20/index.html",
+    "url": "./journal-20/index.html",
+    "size_bytes": 37103,
+    "size": "37.1 KB",
+    "ext": "HTML",
+    "cat": "Interactive",
+    "desc": "Journal Toward a Paper (20 entries, second pass): original ruled notebook edition unpacked for direct browser reading.",
+    "inline": false
+  },
+  {
+    "path": "slides/index.html",
+    "url": "./slides/index.html",
+    "size_bytes": 36711,
+    "size": "36.7 KB",
+    "ext": "HTML",
+    "cat": "Interactive",
+    "desc": "Abominable House presentation slide deck unpacked for direct browser viewing.",
+    "inline": false
+  },
+  {
+    "path": "vtx01_build/viewer/index.html",
+    "url": "./vtx01_build/viewer/index.html",
+    "size_bytes": 20059,
+    "size": "20.1 KB",
+    "ext": "HTML",
+    "cat": "Interactive",
+    "desc": "Interactive VTX-0.1 workbench: Tab 1 Blinded Perceptual Gate (no labels), Tab 2 A/B Over-the-Shoulder Inspector, Tab 3 JSON Remix.",
+    "inline": false
+  },
+  {
+    "path": "Abominable_House_Journal_38/journal-img/02-22.5.jpg",
+    "url": "./Abominable_House_Journal_38/journal-img/02-22.5.jpg",
+    "size_bytes": 47298,
+    "size": "47.3 KB",
+    "ext": "JPG",
+    "cat": "Films & Plates",
+    "desc": "PAE-03 Flour Tower still (SCION 02 Reiniger silhouette film at 22.5 s): mid-air sack with penny in orange lamp room.",
+    "inline": false
+  },
+  {
+    "path": "Abominable_House_Journal_38/journal-img/07-4.1.jpg",
+    "url": "./Abominable_House_Journal_38/journal-img/07-4.1.jpg",
+    "size_bytes": 15750,
+    "size": "15.8 KB",
+    "ext": "JPG",
+    "cat": "Films & Plates",
+    "desc": "PAE-03 Flour Tower still (SCION 07 Foldès film at 4.1 s): line-drawn sack, flour block, and red-outlined knife.",
+    "inline": false
+  },
+  {
+    "path": "Abominable_House_Journal_38/journal-img/08.jpg",
+    "url": "./Abominable_House_Journal_38/journal-img/08.jpg",
+    "size_bytes": 47507,
+    "size": "47.5 KB",
+    "ext": "JPG",
+    "cat": "Films & Plates",
+    "desc": "PAE-04 Deed VIII (Assault): theatrical curtain matte withholding interior geometry behind threshold slits.",
+    "inline": false
+  },
+  {
+    "path": "Abominable_House_Journal_38/journal-img/24-rev1-bowtie.jpg",
+    "url": "./Abominable_House_Journal_38/journal-img/24-rev1-bowtie.jpg",
+    "size_bytes": 65741,
+    "size": "65.7 KB",
+    "ext": "JPG",
+    "cat": "Films & Plates",
+    "desc": "VTX-0.1 Rev 1 rejected diagnostic crop (f=118 & f=324): 163 px lamp miss in Case A and bow-tie ear-crossing in Case B.",
+    "inline": false
+  },
+  {
+    "path": "Abominable_House_Journal_38/journal-img/25-rev2-pair.jpg",
+    "url": "./Abominable_House_Journal_38/journal-img/25-rev2-pair.jpg",
+    "size_bytes": 106196,
+    "size": "106.2 KB",
+    "ext": "JPG",
+    "cat": "Films & Plates",
+    "desc": "VTX-0.1 Rev 2 accepted paired crop (f=118 & f=324): accidental waist brush & propped door vs. deliberate strike & hall wedge.",
+    "inline": false
+  },
+  {
+    "path": "Abominable_House_Journal_38/journal-img/conseq-07-tying.jpg",
+    "url": "./Abominable_House_Journal_38/journal-img/conseq-07-tying.jpg",
+    "size_bytes": 59460,
+    "size": "59.5 KB",
+    "ext": "JPG",
+    "cat": "Films & Plates",
+    "desc": "PAE-04 Deed VII consequence plate: rope mark persisting on victim sack across subsequent rooms.",
+    "inline": false
+  },
+  {
+    "path": "assets/hero-ochre-room.jpg",
+    "url": "./assets/hero-ochre-room.jpg",
+    "size_bytes": 132987,
+    "size": "133.0 KB",
+    "ext": "JPG",
+    "cat": "Films & Plates",
+    "desc": "Clean amber-ochre gouache plate: tied flour sack, fallen oil lamp, and long diagonal floor shadow.",
+    "inline": false
+  },
+  {
+    "path": "assets/hero-paper-sacks.jpg",
+    "url": "./assets/hero-paper-sacks.jpg",
+    "size_bytes": 36696,
+    "size": "36.7 KB",
+    "ext": "JPG",
+    "cat": "Films & Plates",
+    "desc": "Clean rag-paper illustration plate: two tied canvas flour sacks beside a fallen brass-and-glass oil lamp.",
+    "inline": false
+  },
+  {
+    "path": "assets/plate-ochre-reference.jpg",
+    "url": "./assets/plate-ochre-reference.jpg",
+    "size_bytes": 186393,
+    "size": "186.4 KB",
+    "ext": "JPG",
+    "cat": "Films & Plates",
+    "desc": "Desktop and mobile typographic reference sheet for the Ochre edition.",
+    "inline": false
+  },
+  {
+    "path": "assets/plate-paper-reference.jpg",
+    "url": "./assets/plate-paper-reference.jpg",
+    "size_bytes": 63511,
+    "size": "63.5 KB",
+    "ext": "JPG",
+    "cat": "Films & Plates",
+    "desc": "Desktop and mobile typographic reference sheet for the Paper edition.",
+    "inline": false
+  },
+  {
+    "path": "assets/thumbs/thumb-dh2025-packet.jpg",
+    "url": "./assets/thumbs/thumb-dh2025-packet.jpg",
+    "size_bytes": 55049,
+    "size": "55.0 KB",
+    "ext": "JPG",
+    "cat": "Films & Plates",
+    "desc": "First-page preview plate rendered from DH2025_Concrete_Papers_Packet.pdf.",
+    "inline": false
+  },
+  {
+    "path": "assets/thumbs/thumb-forensic-report.jpg",
+    "url": "./assets/thumbs/thumb-forensic-report.jpg",
+    "size_bytes": 214088,
+    "size": "214.1 KB",
+    "ext": "JPG",
+    "cat": "Films & Plates",
+    "desc": "First-page preview plate rendered from Anticombinatory Forensic Report (1).pdf.",
+    "inline": false
+  },
+  {
+    "path": "assets/thumbs/thumb-genesis-2993.jpg",
+    "url": "./assets/thumbs/thumb-genesis-2993.jpg",
+    "size_bytes": 60607,
+    "size": "60.6 KB",
+    "ext": "JPG",
+    "cat": "Films & Plates",
+    "desc": "Cover preview plate rendered from Berkman (2017), Genesis 45 (genesis-2993.pdf).",
+    "inline": false
+  },
+  {
+    "path": "journal-20/journal-img/02-22.5.jpg",
+    "url": "./journal-20/journal-img/02-22.5.jpg",
+    "size_bytes": 47298,
+    "size": "47.3 KB",
+    "ext": "JPG",
+    "cat": "Films & Plates",
+    "desc": "20-entry journal copy of SCION 02 Reiniger still at 22.5 s.",
+    "inline": false
+  },
+  {
+    "path": "journal-20/journal-img/07-4.1.jpg",
+    "url": "./journal-20/journal-img/07-4.1.jpg",
+    "size_bytes": 15750,
+    "size": "15.8 KB",
+    "ext": "JPG",
+    "cat": "Films & Plates",
+    "desc": "20-entry journal copy of SCION 07 Foldès still at 4.1 s.",
+    "inline": false
+  },
+  {
+    "path": "journal-20/journal-img/08.jpg",
+    "url": "./journal-20/journal-img/08.jpg",
+    "size_bytes": 47507,
+    "size": "47.5 KB",
+    "ext": "JPG",
+    "cat": "Films & Plates",
+    "desc": "20-entry journal copy of PAE-04 Deed VIII curtain still.",
+    "inline": false
+  },
+  {
+    "path": "journal-20/journal-img/conseq-07-tying.jpg",
+    "url": "./journal-20/journal-img/conseq-07-tying.jpg",
+    "size_bytes": 59460,
+    "size": "59.5 KB",
+    "ext": "JPG",
+    "cat": "Films & Plates",
+    "desc": "20-entry journal copy of PAE-04 Deed VII rope consequence still.",
+    "inline": false
+  },
+  {
+    "path": "slides/journal-img/02-22.5.jpg",
+    "url": "./slides/journal-img/02-22.5.jpg",
+    "size_bytes": 47298,
+    "size": "47.3 KB",
+    "ext": "JPG",
+    "cat": "Films & Plates",
+    "desc": "Slide deck copy of SCION 02 Reiniger still at 22.5 s.",
+    "inline": false
+  },
+  {
+    "path": "slides/journal-img/07-4.1.jpg",
+    "url": "./slides/journal-img/07-4.1.jpg",
+    "size_bytes": 15750,
+    "size": "15.8 KB",
+    "ext": "JPG",
+    "cat": "Films & Plates",
+    "desc": "Slide deck copy of SCION 07 Foldès still at 4.1 s.",
+    "inline": false
+  },
+  {
+    "path": "vtx01_build/revisions/rev1_rejected/ab_focus_comparison_rev1_rejected.png",
+    "url": "./vtx01_build/revisions/rev1_rejected/ab_focus_comparison_rev1_rejected.png",
+    "size_bytes": 985392,
+    "size": "985.4 KB",
+    "ext": "PNG",
+    "cat": "Films & Plates",
+    "desc": "Rejected Rev 1 A/B comparison sheet exposing the lamp miss and bow-tie self-intersection.",
+    "inline": false
+  },
+  {
+    "path": "vtx01_build/revisions/rev1_rejected/case_a_rev1_rejected.mp4",
+    "url": "./vtx01_build/revisions/rev1_rejected/case_a_rev1_rejected.mp4",
+    "size_bytes": 1167250,
+    "size": "1.2 MB",
+    "ext": "MP4",
+    "cat": "Films & Plates",
+    "desc": "Rejected Rev 1 Take A MP4 preserved for audit: leaping sack misses lamp by 163 px.",
+    "inline": false
+  },
+  {
+    "path": "vtx01_build/revisions/rev1_rejected/case_b_rev1_rejected.mp4",
+    "url": "./vtx01_build/revisions/rev1_rejected/case_b_rev1_rejected.mp4",
+    "size_bytes": 1145205,
+    "size": "1.1 MB",
+    "ext": "MP4",
+    "cat": "Films & Plates",
+    "desc": "Rejected Rev 1 Take B MP4 preserved for audit: fleeing sack corners cross spine into a bow-tie ribbon at f=324.",
+    "inline": false
+  },
+  {
+    "path": "vtx01_build/revisions/rev1_rejected/inspection_sheet_case_a_rev1_rejected.png",
+    "url": "./vtx01_build/revisions/rev1_rejected/inspection_sheet_case_a_rev1_rejected.png",
+    "size_bytes": 477830,
+    "size": "477.8 KB",
+    "ext": "PNG",
+    "cat": "Films & Plates",
+    "desc": "16-frame contact sheet of rejected Rev 1 Take A.",
+    "inline": false
+  },
+  {
+    "path": "vtx01_build/revisions/rev1_rejected/inspection_sheet_case_b_rev1_rejected.png",
+    "url": "./vtx01_build/revisions/rev1_rejected/inspection_sheet_case_b_rev1_rejected.png",
+    "size_bytes": 476271,
+    "size": "476.3 KB",
+    "ext": "PNG",
+    "cat": "Films & Plates",
+    "desc": "16-frame contact sheet of rejected Rev 1 Take B.",
+    "inline": false
+  },
+  {
+    "path": "vtx01_build/revisions/rev2_accepted/ab_focus_comparison_rev2_accepted.png",
+    "url": "./vtx01_build/revisions/rev2_accepted/ab_focus_comparison_rev2_accepted.png",
+    "size_bytes": 995698,
+    "size": "995.7 KB",
+    "ext": "PNG",
+    "cat": "Films & Plates",
+    "desc": "High-resolution A/B focus comparison sheet at key frames (f=48, 92, 118, 136, 227, 228, 288, 324, 355).",
+    "inline": false
+  },
+  {
+    "path": "vtx01_build/revisions/rev2_accepted/ab_paired_clean_rev2_accepted.mp4",
+    "url": "./vtx01_build/revisions/rev2_accepted/ab_paired_clean_rev2_accepted.mp4",
+    "size_bytes": 1406548,
+    "size": "1.4 MB",
+    "ext": "MP4",
+    "cat": "Films & Plates",
+    "desc": "Side-by-side clean MP4 pairing Take A and Take B across all 384 frames with zero spoiler captions.",
+    "inline": false
+  },
+  {
+    "path": "vtx01_build/revisions/rev2_accepted/carry_73frames_case_a_rev2_accepted.png",
+    "url": "./vtx01_build/revisions/rev2_accepted/carry_73frames_case_a_rev2_accepted.png",
+    "size_bytes": 1308557,
+    "size": "1.3 MB",
+    "ext": "PNG",
+    "cat": "Films & Plates",
+    "desc": "73-frame carried-object continuity proof sheet for Take A (wooden wedge attachment error = 0.00 px).",
+    "inline": false
+  },
+  {
+    "path": "vtx01_build/revisions/rev2_accepted/carry_73frames_case_b_rev2_accepted.png",
+    "url": "./vtx01_build/revisions/rev2_accepted/carry_73frames_case_b_rev2_accepted.png",
+    "size_bytes": 1363501,
+    "size": "1.4 MB",
+    "ext": "PNG",
+    "cat": "Films & Plates",
+    "desc": "73-frame carried-object continuity proof sheet for Take B (wooden wedge attachment error = 0.00 px).",
+    "inline": false
+  },
+  {
+    "path": "vtx01_build/revisions/rev2_accepted/case_a_rev2_accepted.mp4",
+    "url": "./vtx01_build/revisions/rev2_accepted/case_a_rev2_accepted.mp4",
+    "size_bytes": 1126912,
+    "size": "1.1 MB",
+    "ext": "MP4",
+    "cat": "Films & Plates",
+    "desc": "Accepted Take A MP4 (16.0 s, 384 frames, 24 fps): Sack A reaches to steady Sack B, brushes lamp, props door from inside.",
+    "inline": false
+  },
+  {
+    "path": "vtx01_build/revisions/rev2_accepted/case_b_rev2_accepted.mp4",
+    "url": "./vtx01_build/revisions/rev2_accepted/case_b_rev2_accepted.mp4",
+    "size_bytes": 1112741,
+    "size": "1.1 MB",
+    "ext": "MP4",
+    "cat": "Films & Plates",
+    "desc": "Accepted Take B MP4 (16.0 s, 384 frames, 24 fps): single-line goal patch—Sack A strikes lamp; Sack B wedges door from hall.",
+    "inline": false
+  },
+  {
+    "path": "vtx01_build/revisions/rev2_accepted/inspection_sheet_case_a_rev2_accepted.png",
+    "url": "./vtx01_build/revisions/rev2_accepted/inspection_sheet_case_a_rev2_accepted.png",
+    "size_bytes": 471491,
+    "size": "471.5 KB",
+    "ext": "PNG",
+    "cat": "Films & Plates",
+    "desc": "16-frame contact sheet across full 16 s timeline of accepted Take A.",
+    "inline": false
+  },
+  {
+    "path": "vtx01_build/revisions/rev2_accepted/inspection_sheet_case_b_rev2_accepted.png",
+    "url": "./vtx01_build/revisions/rev2_accepted/inspection_sheet_case_b_rev2_accepted.png",
+    "size_bytes": 469049,
+    "size": "469.0 KB",
+    "ext": "PNG",
+    "cat": "Films & Plates",
+    "desc": "16-frame contact sheet across full 16 s timeline of accepted Take B.",
+    "inline": false
+  },
+  {
+    "path": "Abominable_House_Framing_Notes.md",
+    "url": "./Abominable_House_Framing_Notes.md",
+    "size_bytes": 28691,
+    "size": "28.7 KB",
+    "ext": "MD",
+    "cat": "Papers & Notes",
+    "desc": "Framing notes linking Oulipian anticombinatorics, Disney flour-sack tests, Scion version control, BDI/Park memory, and Lem's bitistics.",
+    "inline": true
+  },
+  {
+    "path": "abominable_house_mvvt_research_notes.md",
+    "url": "./abominable_house_mvvt_research_notes.md",
+    "size_bytes": 26663,
+    "size": "26.7 KB",
+    "ext": "MD",
+    "cat": "Papers & Notes",
+    "desc": "Early working notes toward a Minimum Viable Video-Text format.",
+    "inline": true
+  },
+  {
+    "path": "Abominable_House_Submission_Draft.md",
+    "url": "./Abominable_House_Submission_Draft.md",
+    "size_bytes": 34036,
+    "size": "34.0 KB",
+    "ext": "MD",
+    "cat": "Papers & Notes",
+    "desc": "Full Digital Humanities conference submission draft on Calvino's 1973 house, flour-sack flattening, and actuarial anticombinatorics.",
+    "inline": true
+  },
+  {
+    "path": "Anticombinatory Forensic Report (1).pdf",
+    "url": "./Anticombinatory%20Forensic%20Report%20%281%29.pdf",
+    "size_bytes": 266384,
+    "size": "266.4 KB",
+    "ext": "PDF",
+    "cat": "Papers & Notes",
+    "desc": "11-page typeset working paper: MVVT / VTX-0.1, 27:25 Pierazzo prime lock, 14,000 carry slip, −4.6 pp Šeļa confound, and 11/16 CP-SAT proof.",
+    "inline": false
+  },
+  {
+    "path": "Flour_Sack_Video_Text_Research_Notes.docx",
+    "url": "./Flour_Sack_Video_Text_Research_Notes.docx",
+    "size_bytes": 45720,
+    "size": "45.7 KB",
+    "ext": "DOCX",
+    "cat": "Papers & Notes",
+    "desc": "Word manuscript packet of the Flour Sack Video-Text research notes.",
+    "inline": false
+  },
+  {
+    "path": "Logline_Journal_Entries_and_Existing_Assets.md",
+    "url": "./Logline_Journal_Entries_and_Existing_Assets.md",
+    "size_bytes": 40264,
+    "size": "40.3 KB",
+    "ext": "MD",
+    "cat": "Papers & Notes",
+    "desc": "Project loglines across five registers, Journal Entries 21–38, and audit of existing Lab 7, PAE-03/04, and zettle.md assets.",
+    "inline": true
+  },
+  {
+    "path": "p1.md",
+    "url": "./p1.md",
+    "size_bytes": 23474,
+    "size": "23.5 KB",
+    "ext": "MD",
+    "cat": "Papers & Notes",
+    "desc": "SCION v1.1 XML system instruction for Minimum Viable Video-Text research (NOTES vs. BUILD epistemic boundaries).",
+    "inline": true
+  },
+  {
+    "path": "pae04_abominable_house_scion_run.md",
+    "url": "./pae04_abominable_house_scion_run.md",
+    "size_bytes": 42364,
+    "size": "42.4 KB",
+    "ext": "MD",
+    "cat": "Papers & Notes",
+    "desc": "Recorded SCION run log containing exact BigInt checks on 12^12 and the 8,874,296,672,256 carry-slip factorization.",
+    "inline": true
+  },
+  {
+    "path": "README.md",
+    "url": "./README.md",
+    "size_bytes": 17373,
+    "size": "17.4 KB",
+    "ext": "MD",
+    "cat": "Papers & Notes",
+    "desc": "Repository overview, visual plates, quick links, and complete hyperlinked directory manifest.",
+    "inline": true
+  },
+  {
+    "path": "scion_mvvt_abominable_house_instruction.md",
+    "url": "./scion_mvvt_abominable_house_instruction.md",
+    "size_bytes": 28754,
+    "size": "28.8 KB",
+    "ext": "MD",
+    "cat": "Papers & Notes",
+    "desc": "Companion SCION research instruction and prompt specification for the Abominable House suite.",
+    "inline": true
+  },
+  {
+    "path": "VTX01_MVVT_Research_Memo_and_Spec.md",
+    "url": "./VTX01_MVVT_Research_Memo_and_Spec.md",
+    "size_bytes": 39962,
+    "size": "40.0 KB",
+    "ext": "MD",
+    "cat": "Papers & Notes",
+    "desc": "Approved SCION v1.1 working research memo and concrete VTX-0.1 experiment specification (chance, memory, consequence).",
+    "inline": true
+  },
+  {
+    "path": "DH2025_Concrete_Papers_and_Works_Cited.md",
+    "url": "./DH2025_Concrete_Papers_and_Works_Cited.md",
+    "size_bytes": 283828,
+    "size": "283.8 KB",
+    "ext": "MD",
+    "cat": "Zettels & Sources",
+    "desc": "Curated concrete papers, exact page locators, and Works Cited forged from the DH2025 Lisbon Book of Abstracts.",
+    "inline": true
+  },
+  {
+    "path": "DH2025_Concrete_Papers_Packet.pdf",
+    "url": "./DH2025_Concrete_Papers_Packet.pdf",
+    "size_bytes": 39929755,
+    "size": "39.9 MB",
+    "ext": "PDF",
+    "cat": "Zettels & Sources",
+    "desc": "39.9 MB extracted PDF packet of the core DH2025 papers cited across the Abominable House research.",
+    "inline": false
+  },
+  {
+    "path": "genesis-2993.pdf",
+    "url": "./genesis-2993.pdf",
+    "size_bytes": 705199,
+    "size": "705.2 KB",
+    "ext": "PDF",
+    "cat": "Zettels & Sources",
+    "desc": "Natalie Berkman (2017), Genesis 45: archival vs. invented Oulipo-Greimasian genesis of Calvino's Si par une nuit d'hiver un voyageur.",
+    "inline": false
+  },
+  {
+    "path": "xzet.md",
+    "url": "./xzet.md",
+    "size_bytes": 48509,
+    "size": "48.5 KB",
+    "ext": "MD",
+    "cat": "Zettels & Sources",
+    "desc": "Clean 509-line five-card slice (ZTL-CALVINO-BLOW-M01..M05): magic objects, Barthes reality effect, Origin of the Birds, Dantès vs. Faria, Bartleby.",
+    "inline": true
+  },
+  {
+    "path": "zettle.md",
+    "url": "./zettle.md",
+    "size_bytes": 637123,
+    "size": "637.1 KB",
+    "ext": "MD",
+    "cat": "Zettels & Sources",
+    "desc": "6,717-line Zettelkasten (68 blocks, 26 distinct cards: M01–M05, G01–G05, R01–R07, 2017-01..09) on Calvino, Jonathan Blow, Oulipo, and AI.",
+    "inline": true
+  },
+  {
+    "path": ".gitignore",
+    "url": "./.gitignore",
+    "size_bytes": 275,
+    "size": "275 B",
+    "ext": ".GITIGNORE",
+    "cat": "Cases, Traces & Code",
+    "desc": "Excludes macOS .DS_Store and the 507 MB BoA_DH2025.pdf raw proceedings blob (cited via Zenodo DOI 10.5281/zenodo.19494802).",
+    "inline": false
+  },
+  {
+    "path": ".nojekyll",
+    "url": "./.nojekyll",
+    "size_bytes": 0,
+    "size": "0 B",
+    "ext": ".NOJEKYLL",
+    "cat": "Cases, Traces & Code",
+    "desc": "GitHub Pages directive serving all folders, filenames with spaces/parentheses, and JSON/JS assets verbatim.",
+    "inline": false
+  },
+  {
+    "path": "vtx01_build/cases/case_a_assist.vtx.json",
+    "url": "./vtx01_build/cases/case_a_assist.vtx.json",
+    "size_bytes": 12295,
+    "size": "12.3 KB",
+    "ext": "JSON",
+    "cat": "Cases, Traces & Code",
+    "desc": "Baseline VTX-0.1 scene file: goal 'assist_steadying' with fixed exogenous jolt (18 N) and shared camera.",
+    "inline": true
+  },
+  {
+    "path": "vtx01_build/cases/case_b_deliberate.vtx.json",
+    "url": "./vtx01_build/cases/case_b_deliberate.vtx.json",
+    "size_bytes": 13610,
+    "size": "13.6 KB",
+    "ext": "JSON",
+    "cat": "Cases, Traces & Code",
+    "desc": "Counterfactual VTX-0.1 scene file derived from Case A via single-root goal change.",
+    "inline": true
+  },
+  {
+    "path": "vtx01_build/cases/patch_a_to_b_goal.json",
+    "url": "./vtx01_build/cases/patch_a_to_b_goal.json",
+    "size_bytes": 5710,
+    "size": "5.7 KB",
+    "ext": "JSON",
+    "cat": "Cases, Traces & Code",
+    "desc": "Explicit JSON patch flipping E2_root_action.goal and 46 permitted downstream consequences.",
+    "inline": true
+  },
+  {
+    "path": "vtx01_build/cases/policies_synthetic_p1_p4.json",
+    "url": "./vtx01_build/cases/policies_synthetic_p1_p4.json",
+    "size_bytes": 2090,
+    "size": "2.1 KB",
+    "ext": "JSON",
+    "cat": "Cases, Traces & Code",
+    "desc": "Four synthetic insurance test clauses (P1 fire, P2 accidental tip, P3 deliberate strike, P4 two-channel corroboration).",
+    "inline": true
+  },
+  {
+    "path": "vtx01_build/cases/protocols_followup_specs.json",
+    "url": "./vtx01_build/cases/protocols_followup_specs.json",
+    "size_bytes": 2566,
+    "size": "2.6 KB",
+    "ext": "JSON",
+    "cat": "Cases, Traces & Code",
+    "desc": "Follow-up experimental protocols for isolated chance-jolt and focalized-memory comparisons.",
+    "inline": true
+  },
+  {
+    "path": "vtx01_build/README.md",
+    "url": "./vtx01_build/README.md",
+    "size_bytes": 6247,
+    "size": "6.2 KB",
+    "ext": "MD",
+    "cat": "Cases, Traces & Code",
+    "desc": "Build, validation, viewer, and MP4 export documentation for VTX-0.1.",
+    "inline": true
+  },
+  {
+    "path": "vtx01_build/revisions/rev1_rejected/validation_report_rev1_failed.json",
+    "url": "./vtx01_build/revisions/rev1_rejected/validation_report_rev1_failed.json",
+    "size_bytes": 2582,
+    "size": "2.6 KB",
+    "ext": "JSON",
+    "cat": "Cases, Traces & Code",
+    "desc": "Validator failure output rejecting Rev 1 on lamp contact distance (163 px) and 37% area loss.",
+    "inline": true
+  },
+  {
+    "path": "vtx01_build/revisions/rev2_accepted/verification_record.json",
+    "url": "./vtx01_build/revisions/rev2_accepted/verification_record.json",
+    "size_bytes": 7158,
+    "size": "7.2 KB",
+    "ext": "JSON",
+    "cat": "Cases, Traces & Code",
+    "desc": "Machine-verified Rev 2 acceptance certificate (0 volume drift, 0 foot-slide, 77 identical prefix frames, 46 authorized diff paths).",
+    "inline": true
+  },
+  {
+    "path": "vtx01_build/src/build_viewer_bundle.js",
+    "url": "./vtx01_build/src/build_viewer_bundle.js",
+    "size_bytes": 880,
+    "size": "880 B",
+    "ext": "JS",
+    "cat": "Cases, Traces & Code",
+    "desc": "Packs VTX JSON cases and policies into viewer/bundle_data.js.",
+    "inline": true
+  },
+  {
+    "path": "vtx01_build/src/export_mp4.py",
+    "url": "./vtx01_build/src/export_mp4.py",
+    "size_bytes": 14443,
+    "size": "14.4 KB",
+    "ext": "PY",
+    "cat": "Cases, Traces & Code",
+    "desc": "Renders deterministic 24 fps MP4 takes and PNG contact/carry proof sheets via Pillow + ffmpeg.",
+    "inline": true
+  },
+  {
+    "path": "vtx01_build/src/validate_vtx.js",
+    "url": "./vtx01_build/src/validate_vtx.js",
+    "size_bytes": 10731,
+    "size": "10.7 KB",
+    "ext": "JS",
+    "cat": "Cases, Traces & Code",
+    "desc": "Automated invariant gate checking volume hold, foot contact, carry lock, cut continuity, and patch whitelist.",
+    "inline": true
+  },
+  {
+    "path": "vtx01_build/src/vtx_engine.js",
+    "url": "./vtx01_build/src/vtx_engine.js",
+    "size_bytes": 48957,
+    "size": "49.0 KB",
+    "ext": "JS",
+    "cat": "Cases, Traces & Code",
+    "desc": "Deterministic 2D flour-sack kinematics, area-preserving deformation, depth-sorted doorway occlusion, and policy engine.",
+    "inline": true
+  },
+  {
+    "path": "vtx01_build/traces/chance_trace.json",
+    "url": "./vtx01_build/traces/chance_trace.json",
+    "size_bytes": 957,
+    "size": "957 B",
+    "ext": "JSON",
+    "cat": "Cases, Traces & Code",
+    "desc": "Recorded exogenous disturbance trace held invariant across Case A and Case B.",
+    "inline": true
+  },
+  {
+    "path": "vtx01_build/traces/consequence_trace.json",
+    "url": "./vtx01_build/traces/consequence_trace.json",
+    "size_bytes": 7688,
+    "size": "7.7 KB",
+    "ext": "JSON",
+    "cat": "Cases, Traces & Code",
+    "desc": "Frame-indexed physical and spatial consequence persistence trace across the shot cut (f=227 -> f=228).",
+    "inline": true
+  },
+  {
+    "path": "vtx01_build/traces/memory_trace.json",
+    "url": "./vtx01_build/traces/memory_trace.json",
+    "size_bytes": 6784,
+    "size": "6.8 KB",
+    "ext": "JSON",
+    "cat": "Cases, Traces & Code",
+    "desc": "Three-level memory trace separating world marks, Sack A/B recollections, and build logs.",
+    "inline": true
+  },
+  {
+    "path": "vtx01_build/traces/policy_traces.json",
+    "url": "./vtx01_build/traces/policy_traces.json",
+    "size_bytes": 3816,
+    "size": "3.8 KB",
+    "ext": "JSON",
+    "cat": "Cases, Traces & Code",
+    "desc": "Dual-column policy verdicts comparing omniscient World State against Camera Evidence (UNKNOWN without witness ballot).",
+    "inline": true
+  },
+  {
+    "path": "vtx01_build/traces/validation_report.json",
+    "url": "./vtx01_build/traces/validation_report.json",
+    "size_bytes": 2569,
+    "size": "2.6 KB",
+    "ext": "JSON",
+    "cat": "Cases, Traces & Code",
+    "desc": "Accepted Rev 2 geometric, causal, and diff-whitelist validation report.",
+    "inline": true
+  },
+  {
+    "path": "vtx01_build/traces/validation_report_rev1_failed.json",
+    "url": "./vtx01_build/traces/validation_report_rev1_failed.json",
+    "size_bytes": 2582,
+    "size": "2.6 KB",
+    "ext": "JSON",
+    "cat": "Cases, Traces & Code",
+    "desc": "Archived copy of Rev 1 failed validation report in traces/.",
+    "inline": true
+  },
+  {
+    "path": "vtx01_build/viewer/bundle_data.js",
+    "url": "./vtx01_build/viewer/bundle_data.js",
+    "size_bytes": 27012,
+    "size": "27.0 KB",
+    "ext": "JS",
+    "cat": "Cases, Traces & Code",
+    "desc": "Pre-bundled Case A, single-root JSON patch, and synthetic P1–P4 policy clauses for zero-server local & GitHub Pages playback.",
+    "inline": true
+  },
+  {
+    "path": "Abominable House Journal.zip",
+    "url": "./Abominable%20House%20Journal.zip",
+    "size_bytes": 207728,
+    "size": "207.7 KB",
+    "ext": "ZIP",
+    "cat": "Bundles",
+    "desc": "Original 20-entry ruled notebook zip archive.",
+    "inline": false
+  },
+  {
+    "path": "Abominable House Slides.zip",
+    "url": "./Abominable%20House%20Slides.zip",
+    "size_bytes": 100119,
+    "size": "100.1 KB",
+    "ext": "ZIP",
+    "cat": "Bundles",
+    "desc": "Original presentation slide deck zip archive.",
+    "inline": false
+  },
+  {
+    "path": "Abominable_House_Journal_38.zip",
+    "url": "./Abominable_House_Journal_38.zip",
+    "size_bytes": 322470,
+    "size": "322.5 KB",
+    "ext": "ZIP",
+    "cat": "Bundles",
+    "desc": "Portable zip archive of the 38-entry ruled notebook HTML and all six embedded exhibit images.",
+    "inline": false
+  }
+];
+    const EXTERNAL_SOURCES = [
+      {
+        path: "BoA_DH2025.pdf (Zenodo source)",
+        url: "https://doi.org/10.5281/zenodo.19494802",
+        size: "507.4 MB",
+        ext: "DOI",
+        cat: "Zettels & Sources",
+        desc: "Full DH2025 Lisbon Book of Abstracts source volume (exceeds GitHub 100 MB blob cap; 39.9 MB extracted 19-paper packet is hosted directly above).",
+        inline: false
+      }
+    ];
+
+    // Plate switcher (Paper <-> Ochre, supports ?plate=ochre)
+    function setPlate(mode) {
+      const p = mode === 'ochre' ? 'ochre' : 'paper';
+      document.documentElement.setAttribute('data-plate', p);
+      document.getElementById('plateBtn').textContent = p === 'paper' ? 'Ochre plate' : 'Paper plate';
+      try { localStorage.setItem('bh_plate', p); } catch (e) {}
+    }
+    function togglePlate() {
+      const cur = document.documentElement.getAttribute('data-plate');
+      setPlate(cur === 'paper' ? 'ochre' : 'paper');
+    }
+    (function initPlate() {
+      const q = new URLSearchParams(location.search).get('plate');
+      if (q === 'ochre' || q === 'paper') { setPlate(q); return; }
+      try {
+        const saved = localStorage.getItem('bh_plate');
+        if (saved === 'ochre' || saved === 'paper') setPlate(saved);
+      } catch (e) {}
+    })();
+
+    // Synchronized takes player
+    const vidA = document.getElementById('vidA');
+    const vidB = document.getElementById('vidB');
+    function syncPlay(play) {
+      if (play) {
+        const t = Math.min(vidA.currentTime || 0, vidB.currentTime || 0);
+        vidA.currentTime = t; vidB.currentTime = t;
+        vidA.play(); vidB.play();
+      } else {
+        vidA.pause(); vidB.pause();
+      }
+    }
+    function syncRestart() {
+      vidA.pause(); vidB.pause();
+      vidA.currentTime = 0; vidB.currentTime = 0;
+    }
+    function setTakeRev(rev) {
+      const isRev2 = rev === 'rev2';
+      document.getElementById('btnRev2').classList.toggle('active', isRev2);
+      document.getElementById('btnRev1').classList.toggle('active', !isRev2);
+      if (isRev2) {
+        vidA.poster = './vtx01_build/revisions/rev2_accepted/inspection_sheet_case_a_rev2_accepted.png';
+        vidB.poster = './vtx01_build/revisions/rev2_accepted/inspection_sheet_case_b_rev2_accepted.png';
+        document.getElementById('srcA').src = './vtx01_build/revisions/rev2_accepted/case_a_rev2_accepted.mp4';
+        document.getElementById('srcB').src = './vtx01_build/revisions/rev2_accepted/case_b_rev2_accepted.mp4';
+        document.getElementById('capA').textContent = 'Take A · Steady reach, accidental brush, door propped from inside';
+        document.getElementById('capB').textContent = 'Take B · Single-line patch: deliberate strike, door wedged from hall';
+        document.getElementById('metaA').textContent = '384f · 0.00 vol drift';
+        document.getElementById('metaB').textContent = '46 paths · 0.00px carry err';
+      } else {
+        vidA.poster = './vtx01_build/revisions/rev1_rejected/inspection_sheet_case_a_rev1_rejected.png';
+        vidB.poster = './vtx01_build/revisions/rev1_rejected/inspection_sheet_case_b_rev1_rejected.png';
+        document.getElementById('srcA').src = './vtx01_build/revisions/rev1_rejected/case_a_rev1_rejected.mp4';
+        document.getElementById('srcB').src = './vtx01_build/revisions/rev1_rejected/case_b_rev1_rejected.mp4';
+        document.getElementById('capA').textContent = 'Rejected Take A (Rev 1) · Leaping sack misses lamp by 163 px';
+        document.getElementById('capB').textContent = 'Rejected Take B (Rev 1) · Ear corners cross spine into bow-tie at f=324';
+        document.getElementById('metaA').textContent = 'FAIL · 163px lamp gap';
+        document.getElementById('metaB').textContent = 'FAIL · 37% area loss';
+      }
+      vidA.load(); vidB.load();
+    }
+
+    // Render visual plates
+    document.getElementById('platesGrid').innerHTML = PLATES.map(p => `
+      <a class="plate-card" href="${p.href}">
+        <div class="plate-thumb"><img src="${p.img}" alt="${p.title}" loading="lazy" /></div>
+        <div class="plate-meta">
+          <div class="plate-group">${p.group}</div>
+          <div class="plate-title">${p.title}</div>
+          <div class="plate-path">${p.meta}</div>
+        </div>
+      </a>
+    `).join('');
+
+    // Render complete file manifest
+    const ALL_ROWS = MANIFEST.concat(EXTERNAL_SOURCES);
+    document.getElementById('totalCount').textContent = MANIFEST.length;
+    const CATS = ['All', 'Interactive', 'Films & Plates', 'Papers & Notes', 'Zettels & Sources', 'Cases, Traces & Code', 'Bundles'];
+    let activeCat = 'All';
+
+    function setCat(c) {
+      activeCat = c;
+      renderTabs();
+      renderManifest();
+    }
+
+    function renderTabs() {
+      document.getElementById('catTabs').innerHTML = CATS.map(c => {
+        const n = c === 'All' ? ALL_ROWS.length : ALL_ROWS.filter(r => r.cat === c).length;
+        return `<button type="button" class="pill ${activeCat === c ? 'active' : ''}" onclick="setCat('${c.replace(/'/g, "\\'")}')">${c} (${n})</button>`;
+      }).join('');
+    }
+
+    function renderManifest() {
+      const q = (document.getElementById('fileSearch').value || '').trim().toLowerCase();
+      const rows = ALL_ROWS.filter(r => {
+        if (activeCat !== 'All' && r.cat !== activeCat) return false;
+        if (!q) return true;
+        return r.path.toLowerCase().includes(q) || r.desc.toLowerCase().includes(q) || r.cat.toLowerCase().includes(q);
+      });
+      document.getElementById('manifestBody').innerHTML = rows.map(r => {
+        const readBtn = r.inline
+          ? `<button type="button" class="read-btn" onclick="openDrawer('${r.url}', '${r.path.replace(/'/g, "\\'")}')">Read</button>`
+          : '';
+        return `<tr>
+          <td>${readBtn}<a class="file-link" href="${r.url}">${r.path}</a></td>
+          <td class="file-desc">${r.desc}</td>
+          <td class="file-cat">${r.cat}</td>
+          <td class="file-size">${r.size}</td>
+        </tr>`;
+      }).join('');
+    }
+
+    async function openDrawer(url, path) {
+      document.getElementById('drawerTitle').textContent = path;
+      document.getElementById('drawerRawLink').href = url;
+      document.getElementById('drawerPre').textContent = 'Loading ' + path + '…';
+      document.getElementById('drawerBackdrop').classList.add('open');
+      try {
+        const res = await fetch(url);
+        const txt = await res.text();
+        document.getElementById('drawerPre').textContent = txt;
+      } catch (err) {
+        document.getElementById('drawerPre').textContent = 'Open directly via "Open raw" above (' + err.message + ').';
+      }
+    }
+    function closeDrawer() {
+      document.getElementById('drawerBackdrop').classList.remove('open');
+    }
+    window.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(); });
+
+    renderTabs();
+    renderManifest();
+  </script>
+</body>
+</html>

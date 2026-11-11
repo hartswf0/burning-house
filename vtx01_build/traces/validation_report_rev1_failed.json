@@ -1,0 +1,81 @@
+{
+  "verified_at": "2026-11-10T22:42:42.760Z",
+  "node_version": "v23.6.0",
+  "hashes": {
+    "case_a_sha256": "75a6d7a3d203bd95b55965e0721875ad5e9342237dde483e0473947a784dd841",
+    "patch_sha256": "5c7585f2e092593cfe4876a2d89caad75c1843559c9e91ff2e9a98170cc64faf",
+    "case_b_sha256": "338237f952ab278b5b57a8e3d27e291b541bc9d7567a42e1df3df9deb32e08e2",
+    "policies_sha256": "e954ee53486d17a5bb655c8ca8d2872ea5fbe55f4a9b03d1bf4f148780ef60db"
+  },
+  "ab_diff_audit": {
+    "changed_paths_count": 46,
+    "unauthorized_paths": [],
+    "e1_identical_frames_0_to_76": 77
+  },
+  "kinematic_and_attachment_inspection": {
+    "case_a": {
+      "total_frames_inspected": 384,
+      "max_volume_drift_sack_a": 0.16449,
+      "max_volume_drift_sack_b": 0.10991,
+      "carry_interval_frames_checked": 73,
+      "max_carry_attachment_error_px": 0,
+      "min_lamp_contact_distance_px": 163,
+      "max_grounded_slide_px_per_frame_a": 12.126,
+      "max_grounded_slide_px_per_frame_b": 6.298,
+      "cut_persistence_frame_227_to_228_ok": true,
+      "pre_cut_frame_227": {
+        "fire_intensity": 1,
+        "oil_radius": 0.3,
+        "sack_a_mark": "hem_singed_char"
+      },
+      "post_cut_frame_228": {
+        "fire_intensity": 1,
+        "oil_radius": 0.3,
+        "sack_a_mark": "hem_singed_char"
+      }
+    },
+    "case_b": {
+      "total_frames_inspected": 384,
+      "max_volume_drift_sack_a": 0.05401,
+      "max_volume_drift_sack_b": 0.37023,
+      "carry_interval_frames_checked": 73,
+      "max_carry_attachment_error_px": 0,
+      "min_lamp_contact_distance_px": 25.91,
+      "max_grounded_slide_px_per_frame_a": 3.901,
+      "max_grounded_slide_px_per_frame_b": 6.298,
+      "cut_persistence_frame_227_to_228_ok": true,
+      "pre_cut_frame_227": {
+        "fire_intensity": 1,
+        "oil_radius": 0.3,
+        "sack_a_mark": "ear_R_soot_char"
+      },
+      "post_cut_frame_228": {
+        "fire_intensity": 1,
+        "oil_radius": 0.3,
+        "sack_a_mark": "ear_R_soot_char"
+      }
+    }
+  },
+  "gates": {
+    "evidence_gate": {
+      "status": "PASS_WITH_NAMED_UNRESOLVED",
+      "verifier": "builder_self_check"
+    },
+    "structural_gate": {
+      "status": "PASS",
+      "verifier": "validate_vtx.js"
+    },
+    "animation_kinematic_gate": {
+      "status": "FAIL",
+      "verifier": "validate_vtx.js"
+    },
+    "temporal_gate": {
+      "status": "PASS",
+      "verifier": "validate_vtx.js"
+    },
+    "perceptual_gate": {
+      "status": "PENDING",
+      "note": "Blinded zero-caption test harness ready; voluntary human respondents UNTESTED."
+    }
+  }
+}

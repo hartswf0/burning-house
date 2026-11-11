@@ -1,0 +1,48 @@
+{
+  "followup_protocols_version": "0.1-proposed",
+  "note": "Orthogonal follow-on experiments specified per SCION v1.1 <mission_and_inputs> and <quality_contract>. Never vary Goal, Chance, and Memory simultaneously.",
+  "protocol_2_chance_comparison": {
+    "held_fixed": {
+      "E2_root_action.goal": "assist_steadying",
+      "initial_character_memory": "identical_to_case_a"
+    },
+    "single_varied_disturbance": {
+      "id": "Jolt_1",
+      "event_key": "parlor_01:E1_settling_jolt:Jolt_1",
+      "branch_high_jolt": { "impulse_N": 18.0, "expected_outcome": "Sack_B staggers close to table; Sack_A steadying lunge grazes Lamp_1 -> Fire_1 ignites" },
+      "branch_mild_tremor": { "impulse_N": 4.0, "expected_outcome": "Sack_B wobbles mildly away from table; Sack_A steadying reach maintains 0.28m clearance from Lamp_1 -> Lamp_1 stays upright & lit; E3_oil_ignition blocked" }
+    }
+  },
+  "protocol_3_memory_comparison": {
+    "held_fixed": {
+      "observed_E1_E2_scene": "ambiguous_smoke_occluded_brush (identical rendered Shot 1 frames 0..227)",
+      "configured_chance_inputs": "Jolt_1 = 18.0 N '+x'"
+    },
+    "single_varied_retained_recollection_in_Sack_B": {
+      "branch_relevant_threat_memory": {
+        "mem_id": "mem_B_prior_oil",
+        "proposition": "saw_Sack_A_soak_rags_under_table_yesterday",
+        "retention_rule": "persist_full_case",
+        "predeclared_later_decision": "E4_doorway_response: disambiguates ambiguous brush as threat -> exits and wedges Door_1 shut"
+      },
+      "branch_baseline_no_threat_memory": {
+        "mem_id": "mem_B_init_1",
+        "proposition": "co_present_in_parlor_with(Sack_A, Lamp_1)",
+        "retention_rule": "persist_full_case",
+        "predeclared_later_decision": "E4_doorway_response: treats ambiguous brush charitably -> props Door_1 open for Sack_A"
+      },
+      "branch_irrelevant_memory_control": {
+        "mem_id": "mem_B_control_wallpaper",
+        "proposition": "parlor_wainscot_was_painted_last_autumn",
+        "retention_rule": "persist_full_case",
+        "predeclared_later_decision": "MUST_MATCH_BASELINE (zero causal role in E4_doorway_response; any divergence fails Temporal Gate)"
+      }
+    }
+  },
+  "protocol_4_embodiment_transfer": {
+    "target_performer": "Flower (articulated stem, leaf pair, and blossom head)",
+    "held_fixed": "Exact VTX-0.1 Case A and Case B event contracts, timing intervals, and camera schedule",
+    "research_question": "Which intention cues survive transfer from volume-conserving canvas sack to stem-and-petal morphology?"
+  }
+}
+

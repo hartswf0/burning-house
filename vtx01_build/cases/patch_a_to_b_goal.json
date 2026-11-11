@@ -1,0 +1,158 @@
+{
+  "patch_id": "patch_vtx01_goal_assist_to_deliberate",
+  "base_case_id": "vtx01_case_a_assist",
+  "base_revision": "rev2",
+  "derived_case_id": "vtx01_case_b_deliberate",
+  "derived_revision": "rev2",
+  "root_intervention": {
+    "event_id": "E2_root_action",
+    "field": "goal",
+    "from": "assist_steadying",
+    "to": "tip_lamp_deliberately",
+    "invariant_held_fixed": [
+      "timeline (16.0 s, 24 fps, cut at 9.5 s, identical camera parameters)",
+      "entities & initial_world_state",
+      "configured_chance_inputs.Jolt_1 (seed 19730214, 18.0 N '+x', onset 1.80 s)",
+      "initial_character_memory (Sack_A, Sack_B)",
+      "E1_settling_jolt (0.0-3.2 s state and motion identical)",
+      "E3_oil_ignition terminal Fire_1 envelope"
+    ]
+  },
+  "declared_causal_descendants": [
+    "events[1] (E2_root_action): target, legos, bdi_state, effects, motion_parameters, contact_intervals",
+    "events[2] (E3_oil_ignition): effects.world_updates.sack_a_mark (ear_R_soot_char instead of hem_singed_char)",
+    "events[3] (E4_doorway_response): legos, bdi_state, goal, effects, motion_parameters, contact_intervals (Sack_B carries Wedge_1 in [10.50, 13.50] s to jam Door_1 shut from outside rather than propping it open)"
+  ],
+  "operations": [
+    { "op": "replace", "path": "/case_id", "value": "vtx01_case_b_deliberate" },
+    { "op": "replace", "path": "/parent_revision", "value": "vtx01_case_a_assist@rev2" },
+    { "op": "replace", "path": "/events/1/target", "value": "Lamp_1" },
+    { "op": "replace", "path": "/events/1/goal", "value": "tip_lamp_deliberately" },
+    {
+      "op": "replace",
+      "path": "/events/1/legos",
+      "value": {
+        "Location": "parlor_01_table_zone",
+        "Entity": "Sack_A",
+        "Goal": "tip_lamp_deliberately",
+        "Obstacle": "table_distance_and_witness_Sack_B",
+        "Shift": "Lamp_1_struck_deliberately_onto_floorboards"
+      }
+    },
+    {
+      "op": "replace",
+      "path": "/events/1/bdi_state",
+      "value": {
+        "beliefs_read": ["mem_A_init_1", "mem_A_obs_E1"],
+        "desires": [
+          { "name": "ignite_parlor_lamp", "weight": 0.91 },
+          { "name": "avoid_oil_splash_on_base", "weight": 0.72 }
+        ],
+        "committed_intention": "coil_and_strike_Lamp_1_off_table"
+      }
+    },
+    {
+      "op": "replace",
+      "path": "/events/1/effects",
+      "value": {
+        "world_updates": {
+          "b_off_balance": false,
+          "lamp_tipped": true,
+          "lamp_lit": false,
+          "lamp_tip_mode": "deliberate",
+          "oil_pool_radius": 0.28,
+          "sack_a_mark": "ear_R_soot_stain",
+          "relational_stance_b_to_a": "threatened"
+        },
+        "character_observations": {
+          "Sack_A": {
+            "channel": "direct_sight_and_strike_contact",
+            "mem_id": "mem_A_obs_E2",
+            "proposition": "deliberately_struck_Lamp_1_onto_floor",
+            "confidence": 0.97,
+            "retention_rule": "persist_full_case"
+          },
+          "Sack_B": {
+            "channel": "direct_sight_lit_room",
+            "mem_id": "mem_B_obs_E2",
+            "proposition": "Sack_A_coiled_aimed_and_deliberately_shoved_Lamp_1_ignoring_my_stumble",
+            "confidence": 0.89,
+            "retention_rule": "persist_full_case"
+          }
+        }
+      }
+    },
+    {
+      "op": "replace",
+      "path": "/events/1/motion_parameters",
+      "value": {
+        "style": "planted_coil_aimed_shove_controlled_retreat",
+        "anticipation_window_s": [3.20, 4.25],
+        "lamp_contact_window_s": [4.85, 5.20],
+        "lamp_fall_window_s": [5.05, 5.72],
+        "recoil_window_s": [5.55, 6.80]
+      }
+    },
+    {
+      "op": "replace",
+      "path": "/events/1/contact_intervals",
+      "value": [
+        { "id": "strike_lamp_A", "actor_part": "Sack_A.ear_R", "target_part": "Lamp_1.chimney_collar", "interval_s": [4.85, 5.20] }
+      ]
+    },
+    { "op": "replace", "path": "/events/2/effects/world_updates/sack_a_mark", "value": "ear_R_soot_char" },
+    {
+      "op": "replace",
+      "path": "/events/3/legos",
+      "value": {
+        "Location": "parlor_01_doorway",
+        "Entity": "Sack_B",
+        "Goal": "flee_and_bar_door_against_Sack_A",
+        "Obstacle": "approaching_Sack_A_and_spreading_fire",
+        "Shift": "Door_1_slammed_and_wedged_shut_from_outside"
+      }
+    },
+    {
+      "op": "replace",
+      "path": "/events/3/bdi_state",
+      "value": {
+        "beliefs_read": ["mem_B_init_1", "mem_B_obs_E2", "mem_B_obs_E3"],
+        "desires": [
+          { "name": "escape_fire", "weight": 0.95 },
+          { "name": "protect_self_from_arsonist_A", "weight": 0.92 }
+        ],
+        "committed_intention": "carry_Wedge_1_outside_and_jam_Door_1_shut"
+      }
+    },
+    { "op": "replace", "path": "/events/3/goal", "value": "flee_and_wedge_door_shut" },
+    {
+      "op": "replace",
+      "path": "/events/3/effects",
+      "value": {
+        "world_updates": {
+          "door_state": "wedged_shut_against_A",
+          "wedge_placement": "outer_threshold_jam_shut"
+        },
+        "character_observations": {
+          "Sack_A": {
+            "channel": "direct_sight_and_blocked_door",
+            "mem_id": "mem_A_obs_E4",
+            "proposition": "Sack_B_recoiled_slammed_Door_1_and_wedged_it_shut",
+            "confidence": 0.95,
+            "retention_rule": "persist_full_case"
+          }
+        }
+      }
+    },
+    {
+      "op": "replace",
+      "path": "/events/3/motion_parameters",
+      "value": {
+        "mode": "carry_wedge_exit_slam_and_jam_shut",
+        "pickup_s": 10.50,
+        "putdown_s": 13.50
+      }
+    },
+    { "op": "replace", "path": "/events/3/contact_intervals", "value": [] }
+  ]
+}

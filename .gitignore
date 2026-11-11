@@ -1,0 +1,7 @@
+# macOS metadata
+.DS_Store
+
+# Full 507 MB DH2025 proceedings (exceeds GitHub 100 MB single-file limit;
+# official Zenodo DOI 10.5281/zenodo.19494802; 39.9 MB extracted 19-paper packet
+# DH2025_Concrete_Papers_Packet.pdf is tracked directly in this repository)
+BoA_DH2025.pdf

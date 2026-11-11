@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VTX-0.1 · Minimum Viable Video-Text Workbench &amp; Blinded Perceptual Test</title>
+  <style>
+    :root {
+      --bg: #151210;
+      --panel: #211c19;
+      --border: #3a312b;
+      --ink: #ede3d5;
+      --muted: #a69887;
+      --accent: #c95a49;
+      --slate: #5b84a3;
+      --gold: #d9a441;
+      --ok: #5c9c6b;
+      --warn: #d4893b;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 20px;
+      background: #1b1714;
+      border-bottom: 1px solid var(--border);
+    }
+    header h1 {
+      font-size: 15px;
+      margin: 0;
+      letter-spacing: 0.03em;
+    }
+    .tabs {
+      display: flex;
+      gap: 8px;
+    }
+    button {
+      background: #2c2521;
+      color: var(--ink);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      padding: 6px 12px;
+      font: inherit;
+      cursor: pointer;
+    }
+    button:hover { border-color: var(--gold); }
+    button.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+    main {
+      max-width: 1420px;
+      margin: 0 auto;
+      padding: 18px 20px 40px;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media (max-width: 980px) {
+      .grid-2 { grid-template-columns: 1fr; }
+    }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px;
+    }
+    .card h2, .card h3 {
+      margin: 0 0 10px;
+      font-size: 14px;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    canvas {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #111;
+      border-radius: 6px;
+      border: 1px solid #332a24;
+      display: block;
+    }
+    .transport {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      margin: 14px 0;
+      padding: 10px 14px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+    .transport input[type="range"] {
+      flex: 1;
+      min-width: 220px;
+    }
+    .mono {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 12px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12.5px;
+    }
+    th, td {
+      text-align: left;
+      padding: 7px 8px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    th { color: var(--muted); font-weight: 600; }
+    .badge {
+      display: inline-block;
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .PAY { background: rgba(92, 156, 107, 0.22); color: #8be09c; border: 1px solid #5c9c6b; }
+    .NO_PAY { background: rgba(201, 90, 73, 0.22); color: #f29485; border: 1px solid #c95a49; }
+    .UNKNOWN { background: rgba(217, 164, 65, 0.20); color: #f2cb7c; border: 1px solid #d9a441; }
+    textarea, select, input[type="text"] {
+      width: 100%;
+      background: #161311;
+      color: var(--ink);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      padding: 8px;
+      font: inherit;
+      margin-bottom: 10px;
+    }
+    .hidden { display: none !important; }
+    .pill-bar { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>VTX-0.1 · Minimum Viable Video-Text (<span id="modeTitle">Inspector &amp; Blinded Perceptual Harness</span>)</h1>
+    <div class="tabs" id="modeTabs">
+      <button id="tabBlind" onclick="setMode('blind')">1. Blinded Perceptual Gate (No Labels)</button>
+      <button id="tabInspect" class="active" onclick="setMode('inspect')">2. Over-the-Shoulder A/B Inspector</button>
+      <button id="tabRemix" onclick="setMode('remix')">3. Counterfactual Patch &amp; Chance Remix</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- SHARED TRANSPORT -->
+    <div class="transport">
+      <button id="btnPlay" onclick="togglePlay()">Play</button>
+      <button onclick="stepFrame(-1)">-1 Frame</button>
+      <button onclick="stepFrame(1)">+1 Frame</button>
+      <input type="range" id="scrubber" min="0" max="383" value="0" oninput="onScrub(this.value)" />
+      <span class="mono" id="timeReadout">f=000 / 383 · t=0.00s</span>
+      <div class="pill-bar" id="cueBookmarks">
+        <button onclick="jumpFrame(48)">Jolt (2.0s)</button>
+        <button onclick="jumpFrame(92)">Anticipation (3.8s)</button>
+        <button onclick="jumpFrame(119)">Lamp Contact (4.96s)</button>
+        <button onclick="jumpFrame(136)">Recoil (5.67s)</button>
+        <button onclick="jumpFrame(227)">Pre-Cut (9.46s)</button>
+        <button onclick="jumpFrame(228)">Post-Cut (9.50s)</button>
+        <button onclick="jumpFrame(288)">Carry Wedge (12.0s)</button>
+        <button onclick="jumpFrame(355)">Outcome (14.8s)</button>
+      </div>
+    </div>
+
+    <!-- MODE 1: BLINDED PERCEPTUAL GATE -->
+    <section id="secBlind" class="hidden">
+      <div class="grid-2">
+        <div class="card">
+          <h2>Clip 1 (Unlabeled)</h2>
+          <canvas id="cvBlind1" width="1280" height="720"></canvas>
+        </div>
+        <div class="card">
+          <h2>Clip 2 (Unlabeled)</h2>
+          <canvas id="cvBlind2" width="1280" height="720"></canvas>
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px;">
+        <h2>Blinded Perceptual Gate Ballot (Zero Captions / Spoilers)</h2>
+        <p style="color:var(--muted);margin-top:0;">Watch Clip 1 and Clip 2 above before answering. Ambiguous readings are recorded as valid data without correction.</p>
+        <div class="grid-2">
+          <div>
+            <label>1. What changed between Clip 1 and Clip 2?</label>
+            <textarea id="qChanged" rows="3" placeholder="Describe the visible difference in movement and outcome..."></textarea>
+            <label>2a. In Clip 1, what caused the lamp to fall?</label>
+            <select id="qCause1">
+              <option value="">-- Select reading --</option>
+              <option value="accidental">Accidental brush while reaching/assisting</option>
+              <option value="deliberate">Deliberate strike / tipping</option>
+              <option value="ambiguous">Ambiguous / cannot tell from motion</option>
+            </select>
+            <label>2b. In Clip 2, what caused the lamp to fall?</label>
+            <select id="qCause2">
+              <option value="">-- Select reading --</option>
+              <option value="accidental">Accidental brush while reaching/assisting</option>
+              <option value="deliberate">Deliberate strike / tipping</option>
+              <option value="ambiguous">Ambiguous / cannot tell from motion</option>
+            </select>
+          </div>
+          <div>
+            <label>3. Which visible movement cue(s) support your answer?</label>
+            <textarea id="qCues" rows="5" placeholder="e.g., posture before contact, ear direction, recoil vs. step-back, doorway action..."></textarea>
+            <button onclick="exportBlindBallot()" class="active">Download Blinded Respondent Ballot (.json)</button>
+            <span id="ballotSavedMsg" class="mono" style="margin-left:10px;color:var(--ok);"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODE 2: INSPECTOR -->
+    <section id="secInspect">
+      <div class="grid-2">
+        <div class="card">
+          <h2>Case A — Baseline (`goal: assist_steadying`)</h2>
+          <canvas id="cvA" width="1280" height="720"></canvas>
+          <div class="mono" id="telA" style="margin-top:8px;color:var(--muted);"></div>
+        </div>
+        <div class="card">
+          <h2>Case B — Single-Root Patch (`goal: tip_lamp_deliberately`)</h2>
+          <canvas id="cvB" width="1280" height="720"></canvas>
+          <div class="mono" id="telB" style="margin-top:8px;color:var(--muted);"></div>
+        </div>
+      </div>
+
+      <div class="grid-2" style="margin-top:16px;">
+        <div class="card">
+          <h3>Synthetic Demonstration Policies (`P1`–`P4`: World vs. Evidence)</h3>
+          <p style="font-size:12px;color:var(--muted);margin-top:0;">Invented test rules (not Calvino's clauses). Authored goal never counts as visual corroboration.</p>
+          <table id="policyTable"></table>
+        </div>
+        <div class="card">
+          <h3>Three-Level Memory &amp; Consequence Persistence Trace</h3>
+          <div id="memConseqBox" class="mono" style="max-height:260px;overflow:auto;white-space:pre-wrap;"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODE 3: REMIX -->
+    <section id="secRemix" class="hidden">
+      <div class="grid-2">
+        <div class="card">
+          <h2>Live Remix Preview (`VTX-0.1` Editable Contract)</h2>
+          <canvas id="cvRemix" width="1280" height="720"></canvas>
+          <div class="pill-bar">
+            <button onclick="applyPreset('assist')">Goal: Assist Steadying</button>
+            <button onclick="applyPreset('deliberate')">Goal: Deliberate Lamp Tip</button>
+            <button onclick="applyPreset('mild_jolt')">Chance Test: Mild Jolt (4 N)</button>
+            <button onclick="applyPreset('strong_jolt')">Chance Test: Baseline Jolt (18 N)</button>
+          </div>
+        </div>
+        <div class="card">
+          <h2>Editable Event `E2_root_action` &amp; `Jolt_1` JSON</h2>
+          <textarea id="remixJson" class="mono" rows="16"></textarea>
+          <button class="active" onclick="runCustomRemix()">Validate &amp; Rebuild Scene Locally</button>
+          <span id="remixStatus" class="mono" style="margin-left:10px;"></span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="../src/vtx_engine.js"></script>
+  <script src="./bundle_data.js"></script>
+  <script>
+    const caseA = VTX_BUNDLE.caseA;
+    const patchAB = VTX_BUNDLE.patchAB;
+    const policies = VTX_BUNDLE.policies;
+    const caseB = VTXEngine.applyPatch(caseA, patchAB);
+    let remixCase = JSON.parse(JSON.stringify(caseA));
+
+    const replayA = VTXEngine.replayCase(caseA, policies);
+    const replayB = VTXEngine.replayCase(caseB, policies);
+
+    // Randomized blind assignment
+    const blindSwap = Math.random() < 0.5;
+    const blindCases = blindSwap ? [caseB, caseA] : [caseA, caseB];
+
+    let curFrame = 0;
+    let playing = false;
+    let curMode = 'inspect';
+    let lastTick = 0;
+
+    function drawDisplayList(ctx, cmds) {
+      ctx.clearRect(0, 0, 1280, 720);
+      for (const c of cmds) {
+        ctx.save();
+        if (c.op === 'rect') {
+          if (c.fill) { ctx.fillStyle = c.fill; ctx.fillRect(c.x, c.y, c.w, c.h); }
+          if (c.stroke) { ctx.strokeStyle = c.stroke; ctx.lineWidth = c.lw || 1; ctx.strokeRect(c.x, c.y, c.w, c.h); }
+        } else if (c.op === 'glow') {
+          const g = ctx.createRadialGradient(c.x, c.y, 2, c.x, c.y, c.r);
+          g.addColorStop(0, c.color);
+          g.addColorStop(1, 'rgba(0,0,0,0)');
+          ctx.fillStyle = g;
+          ctx.beginPath();
+          ctx.arc(c.x, c.y, c.r, 0, Math.PI * 2);
+          ctx.fill();
+        } else if (c.op === 'ellipse') {
+          ctx.beginPath();
+          ctx.ellipse(c.x, c.y, Math.max(1, c.rx), Math.max(1, c.ry), 0, 0, Math.PI * 2);
+          if (c.fill) { ctx.fillStyle = c.fill; ctx.fill(); }
+          if (c.stroke) { ctx.strokeStyle = c.stroke; ctx.lineWidth = c.lw || 1; ctx.stroke(); }
+        } else if (c.op === 'poly' || c.op === 'polyline') {
+          ctx.beginPath();
+          c.pts.forEach((p, idx) => idx === 0 ? ctx.moveTo(p[0], p[1]) : ctx.lineTo(p[0], p[1]));
+          if (c.op === 'poly') ctx.closePath();
+          if (c.fill) { ctx.fillStyle = c.fill; ctx.fill(); }
+          if (c.stroke) {
+            if (c.dashed) ctx.setLineDash([7, 5]);
+            ctx.strokeStyle = c.stroke;
+            ctx.lineWidth = c.lw || 1;
+            ctx.stroke();
+          }
+        } else if (c.op === 'line') {
+          ctx.beginPath();
+          ctx.moveTo(c.p1[0], c.p1[1]);
+          ctx.lineTo(c.p2[0], c.p2[1]);
+          ctx.strokeStyle = c.stroke;
+          ctx.lineWidth = c.lw || 1;
+          ctx.stroke();
+        }
+        ctx.restore();
+      }
+    }
+
+    function renderAllAtFrame(f) {
+      curFrame = ((f % 384) + 384) % 384;
+      const t = curFrame / 24;
+      document.getElementById('scrubber').value = curFrame;
+      document.getElementById('timeReadout').textContent = `f=${String(curFrame).padStart(3, '0')} / 383 · t=${t.toFixed(2)}s`;
+
+      if (curMode === 'inspect') {
+        const stA = VTXEngine.evaluateFrame(caseA, t);
+        const stB = VTXEngine.evaluateFrame(caseB, t);
+        drawDisplayList(document.getElementById('cvA').getContext('2d'), stA.commands);
+        drawDisplayList(document.getElementById('cvB').getContext('2d'), stB.commands);
+        document.getElementById('telA').textContent =
+          `shot=${stA.shot_id} | volA=${stA.telemetry.sack_a.volume_ratio.toFixed(3)} | markA=${stA.telemetry.sack_a.mark} | wedgeCarryErr=${stA.telemetry.wedge.attachment_error_px.toFixed(2)}px`;
+        document.getElementById('telB').textContent =
+          `shot=${stB.shot_id} | volA=${stB.telemetry.sack_a.volume_ratio.toFixed(3)} | markA=${stB.telemetry.sack_a.mark} | wedgeCarryErr=${stB.telemetry.wedge.attachment_error_px.toFixed(2)}px`;
+      } else if (curMode === 'blind') {
+        const st1 = VTXEngine.evaluateFrame(blindCases[0], t);
+        const st2 = VTXEngine.evaluateFrame(blindCases[1], t);
+        drawDisplayList(document.getElementById('cvBlind1').getContext('2d'), st1.commands);
+        drawDisplayList(document.getElementById('cvBlind2').getContext('2d'), st2.commands);
+      } else if (curMode === 'remix') {
+        const stR = VTXEngine.evaluateFrame(remixCase, t);
+        drawDisplayList(document.getElementById('cvRemix').getContext('2d'), stR.commands);
+      }
+    }
+
+    function loop(ts) {
+      if (playing) {
+        if (ts - lastTick >= 1000 / 24) {
+          lastTick = ts;
+          renderAllAtFrame(curFrame + 1);
+        }
+        requestAnimationFrame(loop);
+      }
+    }
+
+    function togglePlay() {
+      playing = !playing;
+      document.getElementById('btnPlay').textContent = playing ? 'Pause' : 'Play';
+      if (playing) { lastTick = performance.now(); requestAnimationFrame(loop); }
+    }
+    function stepFrame(df) { playing = false; document.getElementById('btnPlay').textContent = 'Play'; renderAllAtFrame(curFrame + df); }
+    function jumpFrame(f) { playing = false; document.getElementById('btnPlay').textContent = 'Play'; renderAllAtFrame(f); }
+    function onScrub(v) { playing = false; document.getElementById('btnPlay').textContent = 'Play'; renderAllAtFrame(Number(v)); }
+
+    function setMode(m) {
+      curMode = m;
+      document.getElementById('secBlind').classList.toggle('hidden', m !== 'blind');
+      document.getElementById('secInspect').classList.toggle('hidden', m !== 'inspect');
+      document.getElementById('secRemix').classList.toggle('hidden', m !== 'remix');
+      document.getElementById('cueBookmarks').classList.toggle('hidden', m === 'blind');
+      document.getElementById('tabBlind').classList.toggle('active', m === 'blind');
+      document.getElementById('tabInspect').classList.toggle('active', m === 'inspect');
+      document.getElementById('tabRemix').classList.toggle('active', m === 'remix');
+      renderAllAtFrame(curFrame);
+    }
+
+    function populateInspectorTables() {
+      const rows = ['<tr><th>Clause</th><th>Case A (World)</th><th>Case A (Evidence)</th><th>Case B (World)</th><th>Case B (Evidence)</th></tr>'];
+      for (let i = 0; i < replayA.policy_results.length; i++) {
+        const pa = replayA.policy_results[i];
+        const pb = replayB.policy_results[i];
+        rows.push(`<tr>
+          <td><strong>${pa.clause_id}</strong> · ${pa.name}</td>
+          <td><span class="badge ${pa.world_verdict}">${pa.world_verdict}</span></td>
+          <td><span class="badge ${pa.evidence_verdict}">${pa.evidence_verdict}</span></td>
+          <td><span class="badge ${pb.world_verdict}">${pb.world_verdict}</span></td>
+          <td><span class="badge ${pb.evidence_verdict}">${pb.evidence_verdict}</span></td>
+        </tr>`);
+      }
+      document.getElementById('policyTable').innerHTML = rows.join('');
+
+      document.getElementById('memConseqBox').textContent = JSON.stringify({
+        chance_input_preserved: replayA.chance_trace,
+        case_a_sack_b_memory: replayA.terminal_character_memory.Sack_B,
+        case_b_sack_b_memory: replayB.terminal_character_memory.Sack_B,
+        case_a_downstream_impact: replayA.downstream_action_impact[1],
+        case_b_downstream_impact: replayB.downstream_action_impact[1]
+      }, null, 2);
+
+      document.getElementById('remixJson').value = JSON.stringify({
+        goal: remixCase.events[1].goal,
+        jolt_impulse_N: remixCase.configured_chance_inputs[0].realized_value.impulse_N
+      }, null, 2);
+    }
+
+    function applyPreset(kind) {
+      if (kind === 'assist') remixCase = JSON.parse(JSON.stringify(caseA));
+      if (kind === 'deliberate') remixCase = JSON.parse(JSON.stringify(caseB));
+      if (kind === 'mild_jolt') remixCase.configured_chance_inputs[0].realized_value.impulse_N = 4.0;
+      if (kind === 'strong_jolt') remixCase.configured_chance_inputs[0].realized_value.impulse_N = 18.0;
+      document.getElementById('remixJson').value = JSON.stringify({
+        goal: remixCase.events[1].goal,
+        jolt_impulse_N: remixCase.configured_chance_inputs[0].realized_value.impulse_N
+      }, null, 2);
+      renderAllAtFrame(curFrame);
+    }
+
+    function runCustomRemix() {
+      try {
+        const parsed = JSON.parse(document.getElementById('remixJson').value);
+        remixCase = parsed.goal === 'tip_lamp_deliberately'
+          ? JSON.parse(JSON.stringify(caseB))
+          : JSON.parse(JSON.stringify(caseA));
+        if (typeof parsed.jolt_impulse_N === 'number') {
+          remixCase.configured_chance_inputs[0].realized_value.impulse_N = parsed.jolt_impulse_N;
+        }
+        VTXEngine.replayCase(remixCase, policies);
+        document.getElementById('remixStatus').textContent = 'PASS: Rebuilt locally';
+        document.getElementById('remixStatus').style.color = '#8be09c';
+        renderAllAtFrame(curFrame);
+      } catch (e) {
+        document.getElementById('remixStatus').textContent = 'ERR: ' + e.message;
+        document.getElementById('remixStatus').style.color = '#f29485';
+      }
+    }
+
+    function exportBlindBallot() {
+      const ballot = {
+        submitted_at: new Date().toISOString(),
+        blind_mapping_hidden_during_test: {
+          clip_1_case_id: blindCases[0].case_id,
+          clip_2_case_id: blindCases[1].case_id
+        },
+        responses: {
+          what_changed: document.getElementById('qChanged').value,
+          clip_1_cause: document.getElementById('qCause1').value,
+          clip_2_cause: document.getElementById('qCause2').value,
+          supporting_visible_cues: document.getElementById('qCues').value
+        }
+      };
+      const blob = new Blob([JSON.stringify(ballot, null, 2)], { type: 'application/json' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = `vtx01_blind_ballot_${Date.now()}.json`;
+      a.click();
+      document.getElementById('ballotSavedMsg').textContent = 'Ballot downloaded (ambiguity preserved).';
+    }
+
+    populateInspectorTables();
+    if (location.search.includes('mode=blind_test')) {
+      document.getElementById('modeTabs').classList.add('hidden');
+      setMode('blind');
+    } else {
+      renderAllAtFrame(119);
+    }
+  </script>
+</body>
+</html>
+

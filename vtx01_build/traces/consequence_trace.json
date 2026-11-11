@@ -1,0 +1,298 @@
+{
+  "case_a_consequences": [
+    {
+      "from_event": "E1_settling_jolt",
+      "at_s": 3.2,
+      "field": "b_off_balance",
+      "new_value": true,
+      "persists_across_cut": true
+    },
+    {
+      "from_event": "E2_root_action",
+      "at_s": 6.8,
+      "field": "b_off_balance",
+      "prev_value": true,
+      "new_value": false,
+      "persists_across_cut": true
+    },
+    {
+      "from_event": "E2_root_action",
+      "at_s": 6.8,
+      "field": "lamp_tipped",
+      "prev_value": false,
+      "new_value": true,
+      "persists_across_cut": true
+    },
+    {
+      "from_event": "E2_root_action",
+      "at_s": 6.8,
+      "field": "lamp_lit",
+      "prev_value": true,
+      "new_value": false,
+      "persists_across_cut": true
+    },
+    {
+      "from_event": "E2_root_action",
+      "at_s": 6.8,
+      "field": "lamp_tip_mode",
+      "prev_value": "none",
+      "new_value": "accidental",
+      "persists_across_cut": true
+    },
+    {
+      "from_event": "E2_root_action",
+      "at_s": 6.8,
+      "field": "oil_pool_radius",
+      "prev_value": 0,
+      "new_value": 0.28,
+      "persists_across_cut": true
+    },
+    {
+      "from_event": "E2_root_action",
+      "at_s": 6.8,
+      "field": "sack_a_mark",
+      "prev_value": "none",
+      "new_value": "hem_oil_stain",
+      "persists_across_cut": true
+    },
+    {
+      "from_event": "E2_root_action",
+      "at_s": 6.8,
+      "field": "relational_stance_b_to_a",
+      "prev_value": "neutral_co_tenant",
+      "new_value": "cooperative",
+      "persists_across_cut": true
+    },
+    {
+      "from_event": "E3_oil_ignition",
+      "at_s": 9.5,
+      "field": "fire_confirmed",
+      "prev_value": false,
+      "new_value": true,
+      "persists_across_cut": true
+    },
+    {
+      "from_event": "E3_oil_ignition",
+      "at_s": 9.5,
+      "field": "fire_intensity",
+      "prev_value": 0,
+      "new_value": 1,
+      "persists_across_cut": true
+    },
+    {
+      "from_event": "E3_oil_ignition",
+      "at_s": 9.5,
+      "field": "sack_a_mark",
+      "prev_value": "hem_oil_stain",
+      "new_value": "hem_singed_char",
+      "persists_across_cut": true
+    },
+    {
+      "from_event": "E4_doorway_response",
+      "at_s": 16,
+      "field": "door_state",
+      "prev_value": "ajar",
+      "new_value": "wedged_open_cooperative",
+      "persists_across_cut": false
+    },
+    {
+      "from_event": "E4_doorway_response",
+      "at_s": 16,
+      "field": "wedge_placement",
+      "prev_value": "on_ledge",
+      "new_value": "inner_hinge_prop_open",
+      "persists_across_cut": false
+    }
+  ],
+  "case_a_downstream_impact": [
+    {
+      "consequence": "world.lamp_tipped = true & world.oil_pool_radius = 0.28",
+      "source_event": "E2_root_action",
+      "enables": [
+        "E3_oil_ignition (spilled oil catches live wick)"
+      ],
+      "blocks": [
+        "continued_lit_parlor_lamp"
+      ],
+      "unchanged": [
+        "camera_cut_schedule_at_9.5s",
+        "Jolt_1_history"
+      ]
+    },
+    {
+      "consequence": "Sack_B.memory.mem_B_obs_E2 = accidental_while_assisting & stance = cooperative",
+      "source_event": "E2_root_action",
+      "enables": [
+        "E4: Sack_B props Door_1 open with Wedge_1 and reaches back to pull Sack_A out"
+      ],
+      "blocks": [
+        "hostile_door_barring_against_Sack_A"
+      ],
+      "unchanged": [
+        "Wedge_1 pickup time (10.50 s) and carry interval [10.50, 13.50] s",
+        "Fire_1 growth curve"
+      ]
+    },
+    {
+      "consequence": "world.sack_a_mark = hem_singed_char",
+      "source_event": "E2_root_action -> E3_oil_ignition",
+      "enables": [
+        "persistent visual forensic trace on Sack_A across the 9.5 s camera cut"
+      ],
+      "blocks": [
+        "clean_unmarked_actor_reset_after_cut"
+      ],
+      "unchanged": [
+        "Sack_A rest volume invariant"
+      ]
+    }
+  ],
+  "case_b_consequences": [
+    {
+      "from_event": "E1_settling_jolt",
+      "at_s": 3.2,
+      "field": "b_off_balance",
+      "new_value": true,
+      "persists_across_cut": true
+    },
+    {
+      "from_event": "E2_root_action",
+      "at_s": 6.8,
+      "field": "b_off_balance",
+      "prev_value": true,
+      "new_value": false,
+      "persists_across_cut": true
+    },
+    {
+      "from_event": "E2_root_action",
+      "at_s": 6.8,
+      "field": "lamp_tipped",
+      "prev_value": false,
+      "new_value": true,
+      "persists_across_cut": true
+    },
+    {
+      "from_event": "E2_root_action",
+      "at_s": 6.8,
+      "field": "lamp_lit",
+      "prev_value": true,
+      "new_value": false,
+      "persists_across_cut": true
+    },
+    {
+      "from_event": "E2_root_action",
+      "at_s": 6.8,
+      "field": "lamp_tip_mode",
+      "prev_value": "none",
+      "new_value": "deliberate",
+      "persists_across_cut": true
+    },
+    {
+      "from_event": "E2_root_action",
+      "at_s": 6.8,
+      "field": "oil_pool_radius",
+      "prev_value": 0,
+      "new_value": 0.28,
+      "persists_across_cut": true
+    },
+    {
+      "from_event": "E2_root_action",
+      "at_s": 6.8,
+      "field": "sack_a_mark",
+      "prev_value": "none",
+      "new_value": "ear_R_soot_stain",
+      "persists_across_cut": true
+    },
+    {
+      "from_event": "E2_root_action",
+      "at_s": 6.8,
+      "field": "relational_stance_b_to_a",
+      "prev_value": "neutral_co_tenant",
+      "new_value": "threatened",
+      "persists_across_cut": true
+    },
+    {
+      "from_event": "E3_oil_ignition",
+      "at_s": 9.5,
+      "field": "fire_confirmed",
+      "prev_value": false,
+      "new_value": true,
+      "persists_across_cut": true
+    },
+    {
+      "from_event": "E3_oil_ignition",
+      "at_s": 9.5,
+      "field": "fire_intensity",
+      "prev_value": 0,
+      "new_value": 1,
+      "persists_across_cut": true
+    },
+    {
+      "from_event": "E3_oil_ignition",
+      "at_s": 9.5,
+      "field": "sack_a_mark",
+      "prev_value": "ear_R_soot_stain",
+      "new_value": "ear_R_soot_char",
+      "persists_across_cut": true
+    },
+    {
+      "from_event": "E4_doorway_response",
+      "at_s": 16,
+      "field": "door_state",
+      "prev_value": "ajar",
+      "new_value": "wedged_shut_against_A",
+      "persists_across_cut": false
+    },
+    {
+      "from_event": "E4_doorway_response",
+      "at_s": 16,
+      "field": "wedge_placement",
+      "prev_value": "on_ledge",
+      "new_value": "outer_threshold_jam_shut",
+      "persists_across_cut": false
+    }
+  ],
+  "case_b_downstream_impact": [
+    {
+      "consequence": "world.lamp_tipped = true & world.oil_pool_radius = 0.28",
+      "source_event": "E2_root_action",
+      "enables": [
+        "E3_oil_ignition (spilled oil catches live wick)"
+      ],
+      "blocks": [
+        "continued_lit_parlor_lamp"
+      ],
+      "unchanged": [
+        "camera_cut_schedule_at_9.5s",
+        "Jolt_1_history"
+      ]
+    },
+    {
+      "consequence": "Sack_B.memory.mem_B_obs_E2 = deliberate_strike_by_A & stance = threatened",
+      "source_event": "E2_root_action",
+      "enables": [
+        "E4: Sack_B exits Door_1, slams leaf shut, and jams Wedge_1 on outer threshold"
+      ],
+      "blocks": [
+        "cooperative_joint_exit_for_Sack_A"
+      ],
+      "unchanged": [
+        "Wedge_1 pickup time (10.50 s) and carry interval [10.50, 13.50] s",
+        "Fire_1 growth curve"
+      ]
+    },
+    {
+      "consequence": "world.sack_a_mark = ear_R_soot_char",
+      "source_event": "E2_root_action -> E3_oil_ignition",
+      "enables": [
+        "persistent visual forensic trace on Sack_A across the 9.5 s camera cut"
+      ],
+      "blocks": [
+        "clean_unmarked_actor_reset_after_cut"
+      ],
+      "unchanged": [
+        "Sack_A rest volume invariant"
+      ]
+    }
+  ]
+}

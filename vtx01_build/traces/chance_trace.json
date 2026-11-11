@@ -1,0 +1,36 @@
+{
+  "preserved_across_ab": true,
+  "e1_identical_frames_0_to_76": 77,
+  "case_a_chance": {
+    "Jolt_1": {
+      "id": "Jolt_1",
+      "event_key": "parlor_01:E1_settling_jolt:Jolt_1",
+      "seed": 19730214,
+      "distribution": "deterministic_keyed_impulse(mean_N=18.0, sigma_N=0.0, dir='+x')",
+      "realized_value": {
+        "impulse_N": 18,
+        "direction": "+x",
+        "onset_s": 1.8,
+        "peak_s": 2.05,
+        "settle_s": 3.2
+      },
+      "deterministic_key_hash_u01": 0.438434
+    }
+  },
+  "case_b_chance": {
+    "Jolt_1": {
+      "id": "Jolt_1",
+      "event_key": "parlor_01:E1_settling_jolt:Jolt_1",
+      "seed": 19730214,
+      "distribution": "deterministic_keyed_impulse(mean_N=18.0, sigma_N=0.0, dir='+x')",
+      "realized_value": {
+        "impulse_N": 18,
+        "direction": "+x",
+        "onset_s": 1.8,
+        "peak_s": 2.05,
+        "settle_s": 3.2
+      },
+      "deterministic_key_hash_u01": 0.438434
+    }
+  }
+}

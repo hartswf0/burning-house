@@ -1,0 +1,124 @@
+{
+  "disclaimer": "Explicitly invented synthetic test rules per SCION v1.1 <delivery_and_stop>; NOT Calvino's original story policies.",
+  "evidence_rule": "Authored intention/goal in world state NEVER counts as visual corroboration. Missing required evidence yields UNKNOWN; falsified predicate yields NO_PAY.",
+  "case_a_policies": [
+    {
+      "clause_id": "P1",
+      "name": "Confirmed Fire Coverage",
+      "version": "0.1.0",
+      "predicate": "confirmed(Fire_1 == true)",
+      "world_verdict": "PAY",
+      "evidence_verdict": "PAY",
+      "world_facts_used": {
+        "fire_confirmed": true
+      },
+      "evidence_facts_used": {
+        "fire_visible_in_camera": true
+      }
+    },
+    {
+      "clause_id": "P2",
+      "name": "Accidental Lamp-Tipping Indemnity",
+      "version": "0.1.0",
+      "predicate": "confirmed(lamp_tip_cause == 'accidental')",
+      "world_verdict": "PAY",
+      "evidence_verdict": "UNKNOWN",
+      "world_facts_used": {
+        "lamp_tipped": true,
+        "lamp_tip_mode": "accidental"
+      },
+      "evidence_facts_used": {
+        "viewer_blinded_verdict": "UNKNOWN_UNTESTED_HUMAN_VIEWERS"
+      }
+    },
+    {
+      "clause_id": "P3",
+      "name": "Deliberate Lamp-Tipping Liability Rider",
+      "version": "0.1.0",
+      "predicate": "confirmed(lamp_tip_cause == 'deliberate')",
+      "world_verdict": "NO_PAY",
+      "evidence_verdict": "UNKNOWN",
+      "world_facts_used": {
+        "lamp_tipped": true,
+        "lamp_tip_mode": "accidental"
+      },
+      "evidence_facts_used": {
+        "viewer_blinded_verdict": "UNKNOWN_UNTESTED_HUMAN_VIEWERS"
+      }
+    },
+    {
+      "clause_id": "P4",
+      "name": "Independently Corroborated Cause Rider",
+      "version": "0.1.0",
+      "predicate": "confirmed_by_independent_channels(lamp_tip_cause, min_channels=2)",
+      "world_verdict": "NO_PAY",
+      "evidence_verdict": "UNKNOWN",
+      "world_facts_used": {
+        "independent_cause_channels": 1
+      },
+      "evidence_facts_used": {
+        "independent_corroborated_channels": 1
+      }
+    }
+  ],
+  "case_b_policies": [
+    {
+      "clause_id": "P1",
+      "name": "Confirmed Fire Coverage",
+      "version": "0.1.0",
+      "predicate": "confirmed(Fire_1 == true)",
+      "world_verdict": "PAY",
+      "evidence_verdict": "PAY",
+      "world_facts_used": {
+        "fire_confirmed": true
+      },
+      "evidence_facts_used": {
+        "fire_visible_in_camera": true
+      }
+    },
+    {
+      "clause_id": "P2",
+      "name": "Accidental Lamp-Tipping Indemnity",
+      "version": "0.1.0",
+      "predicate": "confirmed(lamp_tip_cause == 'accidental')",
+      "world_verdict": "NO_PAY",
+      "evidence_verdict": "UNKNOWN",
+      "world_facts_used": {
+        "lamp_tipped": true,
+        "lamp_tip_mode": "deliberate"
+      },
+      "evidence_facts_used": {
+        "viewer_blinded_verdict": "UNKNOWN_UNTESTED_HUMAN_VIEWERS"
+      }
+    },
+    {
+      "clause_id": "P3",
+      "name": "Deliberate Lamp-Tipping Liability Rider",
+      "version": "0.1.0",
+      "predicate": "confirmed(lamp_tip_cause == 'deliberate')",
+      "world_verdict": "PAY",
+      "evidence_verdict": "UNKNOWN",
+      "world_facts_used": {
+        "lamp_tipped": true,
+        "lamp_tip_mode": "deliberate"
+      },
+      "evidence_facts_used": {
+        "viewer_blinded_verdict": "UNKNOWN_UNTESTED_HUMAN_VIEWERS"
+      }
+    },
+    {
+      "clause_id": "P4",
+      "name": "Independently Corroborated Cause Rider",
+      "version": "0.1.0",
+      "predicate": "confirmed_by_independent_channels(lamp_tip_cause, min_channels=2)",
+      "world_verdict": "NO_PAY",
+      "evidence_verdict": "UNKNOWN",
+      "world_facts_used": {
+        "independent_cause_channels": 1
+      },
+      "evidence_facts_used": {
+        "independent_corroborated_channels": 1
+      }
+    }
+  ]
+}

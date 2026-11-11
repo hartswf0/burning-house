@@ -1,0 +1,225 @@
+{
+  "three_level_separation_enforced": true,
+  "case_a_memory_trace": [
+    {
+      "phase": "WRITE_OBSERVATION",
+      "actor": "Sack_A",
+      "mem_id": "mem_A_obs_E1",
+      "source_event": "E1_settling_jolt",
+      "at_s": 3.2,
+      "acquired_via": "direct_sight_lit_room",
+      "proposition": "Sack_B_staggering_near_table",
+      "confidence": 0.92,
+      "retention_rule": "persist_full_case"
+    },
+    {
+      "phase": "WRITE_OBSERVATION",
+      "actor": "Sack_B",
+      "mem_id": "mem_B_obs_E1",
+      "source_event": "E1_settling_jolt",
+      "at_s": 3.2,
+      "acquired_via": "proprioceptive_jolt",
+      "proposition": "floor_jolted_lost_footing",
+      "confidence": 0.96,
+      "retention_rule": "persist_full_case"
+    },
+    {
+      "phase": "RETRIEVE",
+      "at_event": "E2_root_action",
+      "actor": "Sack_A",
+      "mem_id": "mem_A_init_1",
+      "found": true,
+      "proposition": "co_present_in_parlor_with(Sack_B, Lamp_1)"
+    },
+    {
+      "phase": "RETRIEVE",
+      "at_event": "E2_root_action",
+      "actor": "Sack_A",
+      "mem_id": "mem_A_obs_E1",
+      "found": true,
+      "proposition": "Sack_B_staggering_near_table"
+    },
+    {
+      "phase": "WRITE_OBSERVATION",
+      "actor": "Sack_A",
+      "mem_id": "mem_A_obs_E2",
+      "source_event": "E2_root_action",
+      "at_s": 6.8,
+      "acquired_via": "tactile_and_direct_sight",
+      "proposition": "steadied_B_but_hip_clipped_Lamp_1_accidentally",
+      "confidence": 0.94,
+      "retention_rule": "persist_full_case"
+    },
+    {
+      "phase": "WRITE_OBSERVATION",
+      "actor": "Sack_B",
+      "mem_id": "mem_B_obs_E2",
+      "source_event": "E2_root_action",
+      "at_s": 6.8,
+      "acquired_via": "direct_sight_plus_tactile_support_in_lit_room",
+      "proposition": "Sack_A_reached_to_steady_me_and_inadvertently_brushed_Lamp_1",
+      "confidence": 0.86,
+      "retention_rule": "persist_full_case"
+    },
+    {
+      "phase": "WRITE_OBSERVATION",
+      "actor": "Sack_A",
+      "mem_id": "mem_A_obs_E3",
+      "source_event": "E3_oil_ignition",
+      "at_s": 9.5,
+      "acquired_via": "direct_sight_and_heat",
+      "proposition": "oil_pool_ignited_must_exit_door",
+      "confidence": 0.99,
+      "retention_rule": "persist_full_case"
+    },
+    {
+      "phase": "WRITE_OBSERVATION",
+      "actor": "Sack_B",
+      "mem_id": "mem_B_obs_E3",
+      "source_event": "E3_oil_ignition",
+      "at_s": 9.5,
+      "acquired_via": "direct_sight_and_heat",
+      "proposition": "oil_pool_ignited_near_door_route",
+      "confidence": 0.99,
+      "retention_rule": "persist_full_case"
+    },
+    {
+      "phase": "RETRIEVE",
+      "at_event": "E4_doorway_response",
+      "actor": "Sack_B",
+      "mem_id": "mem_B_obs_E2",
+      "found": true,
+      "proposition": "Sack_A_reached_to_steady_me_and_inadvertently_brushed_Lamp_1"
+    },
+    {
+      "phase": "RETRIEVE",
+      "at_event": "E4_doorway_response",
+      "actor": "Sack_B",
+      "mem_id": "mem_B_obs_E3",
+      "found": true,
+      "proposition": "oil_pool_ignited_near_door_route"
+    },
+    {
+      "phase": "WRITE_OBSERVATION",
+      "actor": "Sack_A",
+      "mem_id": "mem_A_obs_E4",
+      "source_event": "E4_doorway_response",
+      "at_s": 16,
+      "acquired_via": "direct_sight_doorway",
+      "proposition": "Sack_B_propped_door_open_and_reached_back_for_me",
+      "confidence": 0.95,
+      "retention_rule": "persist_full_case"
+    }
+  ],
+  "case_b_memory_trace": [
+    {
+      "phase": "WRITE_OBSERVATION",
+      "actor": "Sack_A",
+      "mem_id": "mem_A_obs_E1",
+      "source_event": "E1_settling_jolt",
+      "at_s": 3.2,
+      "acquired_via": "direct_sight_lit_room",
+      "proposition": "Sack_B_staggering_near_table",
+      "confidence": 0.92,
+      "retention_rule": "persist_full_case"
+    },
+    {
+      "phase": "WRITE_OBSERVATION",
+      "actor": "Sack_B",
+      "mem_id": "mem_B_obs_E1",
+      "source_event": "E1_settling_jolt",
+      "at_s": 3.2,
+      "acquired_via": "proprioceptive_jolt",
+      "proposition": "floor_jolted_lost_footing",
+      "confidence": 0.96,
+      "retention_rule": "persist_full_case"
+    },
+    {
+      "phase": "RETRIEVE",
+      "at_event": "E2_root_action",
+      "actor": "Sack_A",
+      "mem_id": "mem_A_init_1",
+      "found": true,
+      "proposition": "co_present_in_parlor_with(Sack_B, Lamp_1)"
+    },
+    {
+      "phase": "RETRIEVE",
+      "at_event": "E2_root_action",
+      "actor": "Sack_A",
+      "mem_id": "mem_A_obs_E1",
+      "found": true,
+      "proposition": "Sack_B_staggering_near_table"
+    },
+    {
+      "phase": "WRITE_OBSERVATION",
+      "actor": "Sack_A",
+      "mem_id": "mem_A_obs_E2",
+      "source_event": "E2_root_action",
+      "at_s": 6.8,
+      "acquired_via": "direct_sight_and_strike_contact",
+      "proposition": "deliberately_struck_Lamp_1_onto_floor",
+      "confidence": 0.97,
+      "retention_rule": "persist_full_case"
+    },
+    {
+      "phase": "WRITE_OBSERVATION",
+      "actor": "Sack_B",
+      "mem_id": "mem_B_obs_E2",
+      "source_event": "E2_root_action",
+      "at_s": 6.8,
+      "acquired_via": "direct_sight_lit_room",
+      "proposition": "Sack_A_coiled_aimed_and_deliberately_shoved_Lamp_1_ignoring_my_stumble",
+      "confidence": 0.89,
+      "retention_rule": "persist_full_case"
+    },
+    {
+      "phase": "WRITE_OBSERVATION",
+      "actor": "Sack_A",
+      "mem_id": "mem_A_obs_E3",
+      "source_event": "E3_oil_ignition",
+      "at_s": 9.5,
+      "acquired_via": "direct_sight_and_heat",
+      "proposition": "oil_pool_ignited_must_exit_door",
+      "confidence": 0.99,
+      "retention_rule": "persist_full_case"
+    },
+    {
+      "phase": "WRITE_OBSERVATION",
+      "actor": "Sack_B",
+      "mem_id": "mem_B_obs_E3",
+      "source_event": "E3_oil_ignition",
+      "at_s": 9.5,
+      "acquired_via": "direct_sight_and_heat",
+      "proposition": "oil_pool_ignited_near_door_route",
+      "confidence": 0.99,
+      "retention_rule": "persist_full_case"
+    },
+    {
+      "phase": "RETRIEVE",
+      "at_event": "E4_doorway_response",
+      "actor": "Sack_B",
+      "mem_id": "mem_B_obs_E2",
+      "found": true,
+      "proposition": "Sack_A_coiled_aimed_and_deliberately_shoved_Lamp_1_ignoring_my_stumble"
+    },
+    {
+      "phase": "RETRIEVE",
+      "at_event": "E4_doorway_response",
+      "actor": "Sack_B",
+      "mem_id": "mem_B_obs_E3",
+      "found": true,
+      "proposition": "oil_pool_ignited_near_door_route"
+    },
+    {
+      "phase": "WRITE_OBSERVATION",
+      "actor": "Sack_A",
+      "mem_id": "mem_A_obs_E4",
+      "source_event": "E4_doorway_response",
+      "at_s": 16,
+      "acquired_via": "direct_sight_and_blocked_door",
+      "proposition": "Sack_B_recoiled_slammed_Door_1_and_wedged_it_shut",
+      "confidence": 0.95,
+      "retention_rule": "persist_full_case"
+    }
+  ]
+}
