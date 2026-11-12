@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en" data-plate="paper" data-size="md" data-width="book">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Loglines, Journal Entries 21–38 &amp; Complete Asset Audit — burning-house</title>
+  <meta name="description" content="Three register loglines, eighteen dated lab notebook entries bridging PAE-04 to VTX-0.1, and an inventory of existing engines and proofs." />
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+  <link rel="icon" type="image/png" sizes="64x64" href="../assets/favicon-64.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
+  <link rel="shortcut icon" href="../favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png" />
+  <script>
+    (function () {
+      try {
+        var qp = new URLSearchParams(location.search).get('plate');
+        var p = qp || localStorage.getItem('bh_doc_plate') || localStorage.getItem('bh_plate') || 'paper';
+        if (['paper','notebook','ochre','night'].indexOf(p) !== -1) document.documentElement.setAttribute('data-plate', p);
+        var s = localStorage.getItem('bh_doc_size') || 'md';
+        if (['sm','md','lg'].indexOf(s) !== -1) document.documentElement.setAttribute('data-size', s);
+        var w = localStorage.getItem('bh_doc_width') || 'book';
+        if (['book','wide'].indexOf(w) !== -1) document.documentElement.setAttribute('data-width', w);
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./reader.css" />
+</head>
+<body id="top">
+  <div class="read-progress" id="readProgress"></div>
+
+  <header class="reader-topbar">
+    <div class="topbar-left">
+      <button type="button" class="crumb-link mob-toc-btn" id="mobTocBtn">☰ Contents</button>
+      <a class="brand-pill" href="../index.html">burning-house</a>
+      <span class="crumb-sep">/</span>
+      <a class="crumb-link" href="./index.html">Reading Room</a>
+      <a class="crumb-link" href="../paeleo/abominable-house/index.html">PAE-04</a>
+    </div>
+    <div class="topbar-right">
+      <div class="ctrl-group" role="group" aria-label="Reading theme">
+        <button type="button" class="ctrl-btn active" data-set-plate="paper">Paper</button>
+        <button type="button" class="ctrl-btn" data-set-plate="notebook">Notebook</button>
+        <button type="button" class="ctrl-btn" data-set-plate="ochre">Ochre</button>
+        <button type="button" class="ctrl-btn" data-set-plate="night">Night</button>
+      </div>
+      <div class="ctrl-group" role="group" aria-label="Font size">
+        <button type="button" class="ctrl-btn" data-set-size="sm">A−</button>
+        <button type="button" class="ctrl-btn active" data-set-size="md">A</button>
+        <button type="button" class="ctrl-btn" data-set-size="lg">A+</button>
+      </div>
+      <div class="ctrl-group" role="group" aria-label="Column width">
+        <button type="button" class="ctrl-btn active" data-set-width="book">Book</button>
+        <button type="button" class="ctrl-btn" data-set-width="wide">Wide</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="reader-shell">
+    <aside class="reader-rail" id="readerRail" aria-label="Table of contents">
+      <div class="rail-meta-box">
+        <div class="rail-kicker">Journals &amp; Inventories</div>
+        <div class="rail-stats">
+          <span>5,781 words</span>
+          <span>· ~25 min read</span>
+          <span>· 27 sections</span>
+        </div>
+      </div>
+      <input type="search" id="tocFilter" class="toc-filter" placeholder="Filter contents…" aria-label="Filter table of contents" />
+      <div class="toc-heading">Contents</div>
+      <ul class="toc-list">
+        <li class="toc-item lvl-2"><a href="#part-i-loglines">Part I · Loglines</a></li>
+<li class="toc-item lvl-3"><a href="#core-logline">Core Logline</a></li>
+<li class="toc-item lvl-3"><a href="#five-cuts-by-venue">Five Cuts by Venue</a></li>
+<li class="toc-item lvl-2"><a href="#part-ii-journal-toward-a-paper-entries-2138">Part II · Journal Toward a Paper (Entries 21–38)</a></li>
+<li class="toc-item lvl-3"><a href="#21-10-nov-2026-2056-dh2025-another-eight-trillion">21 · 10 Nov 2026 · 20:56 · DH2025 — Another eight trillion</a></li>
+<li class="toc-item lvl-3"><a href="#22-10-nov-2026-2118-node-fourteen-thousand-missing">22 · 10 Nov 2026 · 21:18 · node — Fourteen thousand missing</a></li>
+<li class="toc-item lvl-3"><a href="#23-10-nov-2026-2230-c1-c2-two-memories-of-1973">23 · 10 Nov 2026 · 22:30 · C1 &amp; C2 — Two memories of 1973</a></li>
+<li class="toc-item lvl-3"><a href="#24-10-nov-2026-2242-vtx01-the-sack-ties-itself-in-a-bow">24 · 10 Nov 2026 · 22:42 · vtx01 — The sack ties itself in a bow</a></li>
+<li class="toc-item lvl-3"><a href="#25-10-nov-2026-2256-vtx01-one-patch-forty-six-paths">25 · 10 Nov 2026 · 22:56 · vtx01 — One patch, forty-six paths</a></li>
+<li class="toc-item lvl-3"><a href="#26-10-nov-2026-2257-vtx01-what-the-file-knows-and-what-the-camera-shows">26 · 10 Nov 2026 · 22:57 · vtx01 — What the file knows and what the camera shows</a></li>
+<li class="toc-item lvl-3"><a href="#27-11-nov-2026-1748-lab-7-28-the-stone-from-the-track">27 · 11 Nov 2026 · 17:48 · Lab 7 · 28 — The stone from the track</a></li>
+<li class="toc-item lvl-3"><a href="#28-11-nov-2026-1748-two-engines-two-ways-to-die-by-a-knife">28 · 11 Nov 2026 · 17:48 · two engines — Two ways to die by a knife</a></li>
+<li class="toc-item lvl-3"><a href="#29-11-nov-2026-1752-three-benches-three-halves-of-one-machine">29 · 11 Nov 2026 · 17:52 · three benches — Three halves of one machine</a></li>
+<li class="toc-item lvl-3"><a href="#30-11-nov-2026-1753-lab-7-index-already-titled-a-videotext">30 · 11 Nov 2026 · 17:53 · Lab 7 · index — Already titled a videotext</a></li>
+<li class="toc-item lvl-3"><a href="#31-11-nov-2026-1755-lab-7-18-semascope-in-our-own-voice">31 · 11 Nov 2026 · 17:55 · Lab 7 · 18 — Semascope, in our own voice</a></li>
+<li class="toc-item lvl-3"><a href="#32-11-nov-2026-1755-lab-7-25-shown-remembered-established">32 · 11 Nov 2026 · 17:55 · Lab 7 · 25 — Shown, remembered, established</a></li>
+<li class="toc-item lvl-3"><a href="#33-11-nov-2026-1805-zettlemd-sixty-eight-cards-twenty-six-distinct">33 · 11 Nov 2026 · 18:05 · zettle.md — Sixty-eight cards, twenty-six distinct</a></li>
+<li class="toc-item lvl-3"><a href="#34-11-nov-2026-1806-ztl-r01-arno-baby-clem-and-skyvington">34 · 11 Nov 2026 · 18:06 · ZTL-R01 — Arno, Baby, Clem and Skyvington</a></li>
+<li class="toc-item lvl-3"><a href="#35-11-nov-2026-1806-ztl-m04-g02-faria-dantès-and-the-wrong-ghost">35 · 11 Nov 2026 · 18:06 · ZTL-M04 &amp; G02 — Faria, Dantès, and the wrong ghost</a></li>
+<li class="toc-item lvl-3"><a href="#36-11-nov-2026-1807-ztl-2017-03-m02-why-the-room-has-to-be-bare">36 · 11 Nov 2026 · 18:07 · ZTL-2017-03 &amp; M02 — Why the room has to be bare</a></li>
+<li class="toc-item lvl-3"><a href="#37-11-nov-2026-1807-ztl-r06-m05-why-the-chapter-card-has-to-come-off">37 · 11 Nov 2026 · 18:07 · ZTL-R06 &amp; M05 — Why the chapter card has to come off</a></li>
+<li class="toc-item lvl-3"><a href="#38-11-nov-2026-1808-ztl-r05-cranes-pulling-up-cranes">38 · 11 Nov 2026 · 18:08 · ZTL-R05 — Cranes pulling up cranes</a></li>
+<li class="toc-item lvl-3"><a href="#the-eighteen-new-lines-kept-2138">The Eighteen New Lines Kept (21–38)</a></li>
+<li class="toc-item lvl-2"><a href="#part-iii-what-we-are-missing-that-we-already-have">Part III · What We Are Missing That We Already Have</a></li>
+<li class="toc-item lvl-3"><a href="#1-code-and-films-already-built-under-another-roof">1. Code and Films Already Built Under Another Roof</a></li>
+<li class="toc-item lvl-3"><a href="#2-theoretical-and-historical-tools-already-sitting-in-zettlemd">2. Theoretical and Historical Tools Already Sitting in zettle.md</a></li>
+<li class="toc-item lvl-3"><a href="#3-the-four-small-stitches-that-close-the-circuit-without-building-anothe">3. The Four Small Stitches That Close the Circuit (Without Building Another Crane)</a></li>
+      </ul>
+    </aside>
+
+    <main class="reader-main">
+      <header class="doc-header">
+        <div class="doc-kicker">Journals &amp; Inventories · Logline_Journal_Entries_and_Existing_Assets.md</div>
+        <h1 class="doc-title">Loglines, Journal Entries 21–38 &amp; Complete Asset Audit</h1>
+        <p class="doc-subtitle">Three register loglines, eighteen dated lab notebook entries bridging PAE-04 to VTX-0.1, and an inventory of existing engines and proofs.</p>
+        <div class="doc-byline">
+          <span>5,781 words · ~25 min read · 27 sections</span>
+          <div class="doc-actions">
+            <button type="button" class="doc-act-btn" data-copy-url="">Copy URL</button>
+            <button type="button" class="doc-act-btn" onclick="window.print()">Print / PDF</button>
+            <a class="doc-act-btn" href="../Logline_Journal_Entries_and_Existing_Assets.md">Raw .md</a>
+          </div>
+        </div>
+      </header>
+
+      
+
+      <div class="md-prose">
+        <h1 id="logline-journal-entries-2138-and-what-we-already-have">Logline, Journal Entries 21–38, and What We Already Have</h1>
+<p>Standalone ruled-notebook HTML edition (preserving Entries <code>01–20</code> verbatim and adding Entries <code>21–38</code> in the same layout):
+- Notebook page: <a href="../Abominable_House_Journal_38/index.html">index.html</a>
+- Portable archive: <a href="../Abominable_House_Journal_38.zip">Abominable_House_Journal_38.zip</a></p>
+<hr />
+<h2 id="part-i-loglines">Part I · Loglines<a class="h-anchor" href="#part-i-loglines" aria-label="Link to section">#</a></h2>
+<h3 id="core-logline">Core Logline<a class="h-anchor" href="#core-logline" aria-label="Link to section">#</a></h3>
+<blockquote>
+<p><strong>A burned boarding house leaves an index of twelve crimes, <code>8,916,100,448,256</code> possible histories, and four insurance policies waiting on who did what to whom; staged with faceless flour sacks in a bare, editable video-text where changing one line of intent re-runs the room, strips away verbal labels so weight and motion must testify on their own, and recalculates who gets paid.</strong></p>
+</blockquote>
+<h3 id="five-cuts-by-venue">Five Cuts by Venue<a class="h-anchor" href="#five-cuts-by-venue" aria-label="Link to section">#</a></h3>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th style="text-align: left;">Register</th>
+<th style="text-align: left;">One-Sentence Cut</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Slide / Notebook Line</strong></td>
+<td style="text-align: left;">Twelve crimes in a burned copybook, <code>12^12</code> stories, and faceless flour sacks acting out the difference between an accident and a claim.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Screening / Exhibition</strong></td>
+<td style="text-align: left;">After Italo Calvino&rsquo;s 1973 computer fable, four faceless flour sacks replay the <code>8.9 trillion</code> ways a boarding house might have burned—turning a 1930s studio weight test into an actuarial detective film where every changed motive alters the body, the room, and the payout.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Paper / Systems (<code>MVVT</code>)</strong></td>
+<td style="text-align: left;">Using Calvino&rsquo;s <em>The Burning of the Abominable House</em> and the Disney flour-sack test, we build a minimum viable video-text in which textual propositions, relational object memories, rendered movement, and insurance verdicts stay causally linked under single-line counterfactual edits—and separate what the file knows from what a witness can see.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Theory / Media Spine (<code>zettle.md</code> cut)</strong></td>
+<td style="text-align: left;">Stripping rendered space down to faceless flour sacks and mute props clears Barthes&rsquo;s reality-effect clutter and suspends verbal overshadowing, turning Calvino&rsquo;s anticombinatoric murder puzzle into a negative-fortress test of whether non-verbal movement alone can carry causal and moral weight.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Two-Sack Proof (<code>VTX-0.1</code>)</strong></td>
+<td style="text-align: left;">Two faceless flour sacks, one oil lamp, and the same fire: seventy-seven identical frames diverge on one changed goal—reaching to steady a neighbor versus striking the lamp—to test whether silhouette and weight alone can convict or indemnify.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="part-ii-journal-toward-a-paper-entries-2138">Part II · Journal Toward a Paper (Entries 21–38)<a class="h-anchor" href="#part-ii-journal-toward-a-paper-entries-2138" aria-label="Link to section">#</a></h2>
+<aside class="md-alert alert-note"><span class="md-alert-title">NOTE</span><p>Following the four rules of <a href="../Abominable%20House%20Journal.zip">Abominable House Journal.zip</a>, each entry below records <strong>one concrete thing</strong>, displays its <strong>exact exhibit and locator</strong>, marks <strong>what was not checked</strong>, and carries one of the four badges (<code>MEASURED</code>, <code>STRUCTURAL</code>, <code>REPORTED</code>, <code>UNKNOWN</code>). Entries <code>21–32</code> come from <code>DH2025</code>, <code>vtx01_build</code>, <code>PAE-03/04</code>, and <code>Lab 7</code>; Entries <code>33–38</code> come from opening <a href="./zettle.html">zettle.md</a> and <a href="./xzet.html">xzet.md</a>.</p></aside>
+<hr />
+<h3 id="21-10-nov-2026-2056-dh2025-another-eight-trillion"><code>21</code> · <code>10 Nov 2026 · 20:56 · DH2025</code> — <em>Another eight trillion</em><a class="h-anchor" href="#21-10-nov-2026-2056-dh2025-another-eight-trillion" aria-label="Link to section">#</a></h3>
+<p>A search of <a href="https://doi.org/10.5281/zenodo.19494802">BoA_DH2025.pdf</a> turns up another Italian text counted in the eight trillions. Elena Pierazzo multiplies the slot variants across sixteen cantos of Sebastiano Chiesa&rsquo;s <em>Capitolo dei Frati</em> and prints <code>8,255,648,563,200</code>, then clusters witnesses to transcribe an average manuscript per group. Dividing her figure and <code>12^12</code> by their greatest common divisor leaves <code>25</code> and <code>27</code>.</p>
+<div class="md-code-wrap"><div class="md-code-bar"><span>text</span><button type="button" class="code-copy-btn" data-copy-code>Copy</button></div><pre><code>&quot;Once all the options are combined, we find that we can have up to
+ 8,255,648,563,200 possible combinations ... This &#x27;average manuscript&#x27;
+ will be considered as the reference copy of each cluster.&quot;
+
+gcd(8255648563200n, 8916100448256n)  -&gt; 330225942528n   // 2^24 * 3^9
+8255648563200n / 330225942528n       -&gt; 25n
+8916100448256n / 330225942528n       -&gt; 27n</code></pre></div>
+<p><em>Exhibit:</em> <a href="https://doi.org/10.5281/zenodo.19494802">BoA_DH2025.pdf</a>, pp. 1014–1015 (PDF pp. 1022–1023); <code>node</code> <code>BigInt</code> check.</p>
+<blockquote>
+<p><strong>Two Italian counts in the eight trillions stand in the ratio twenty-five to twenty-seven.</strong></p>
+</blockquote>
+<ul>
+<li><strong>Not checked.</strong> Which sixteen canto slot counts Pierazzo multiplied to reach <code>2^24 × 3^9 × 5^2</code>. Only the abstract is in the book.</li>
+<li><strong><code>MEASURED</code></strong> — <code>BoA_DH2025.pdf</code> and <code>node</code></li>
+</ul>
+<hr />
+<h3 id="22-10-nov-2026-2118-node-fourteen-thousand-missing"><code>22</code> · <code>10 Nov 2026 · 21:18 · node</code> — <em>Fourteen thousand missing</em><a class="h-anchor" href="#22-10-nov-2026-2118-node-fourteen-thousand-missing" aria-label="Link to section">#</a></h3>
+<p>The twelve-digit and thirteen-digit figures from Entry 13 are tested against factors of <code>12^12</code>. Dividing <code>8,874,296,672,256</code> by <code>12^6</code> leaves no remainder. The quotient is <code>2,971,984</code>, which is <code>12^6</code> short by <code>14,000</code>, a slip in two middle digits when squaring <code>2,985,984</code> past an eight-digit display.</p>
+<div class="md-code-wrap"><div class="md-code-bar"><span>text</span><button type="button" class="code-copy-btn" data-copy-code>Copy</button></div><pre><code>12n ** 6n                             -&gt; 2985984n
+8874296672256n % 2985984n             -&gt; 0n
+8874296672256n / 2985984n             -&gt; 2971984n
+2985984n - 2971984n                   -&gt; 14000n
+8916100448256n - 8874296672256n       -&gt; 41803776000n</code></pre></div>
+<p><em>Exhibit:</em> <code>node</code>, 10 Nov; recorded in <a href="./pae04-scion-run.html">pae04_abominable_house_scion_run.md</a>.</p>
+<blockquote>
+<p><strong>The wrong total divides cleanly by twelve to the sixth.</strong></p>
+</blockquote>
+<ul>
+<li><strong>Not checked.</strong> Whether the 1973 Italian printing already carries <code>8,874,296,672,256</code>, and whether Calvino squared <code>12^6</code> by hand. The online English story page is behind a Cloudflare challenge and was not bypassed.</li>
+<li><strong><code>MEASURED</code></strong> — exact division in <code>node</code></li>
+</ul>
+<hr />
+<h3 id="23-10-nov-2026-2230-c1-c2-two-memories-of-1973"><code>23</code> · <code>10 Nov 2026 · 22:30 · C1 &amp; C2</code> — <em>Two memories of 1973</em><a class="h-anchor" href="#23-10-nov-2026-2230-c1-c2-two-memories-of-1973" aria-label="Link to section">#</a></h3>
+<p>Esther Calvino&rsquo;s preface and Paul Braffort&rsquo;s memoir are read side by side instead of through summaries. Esther Calvino places the story in the Italian <em>Playboy</em> in 1973 and writes that Calvino carried out the computer&rsquo;s operations himself. Braffort puts first publication in the American <em>Playboy</em>, quotes Marcel Bénabou dating Calvino&rsquo;s outline to an Oulipo lunch on 8 November 1972, and describes Calvino visiting his lab at Orsay to watch the first tests of a program.</p>
+<div class="md-code-wrap"><div class="md-code-bar"><span>text</span><button type="button" class="code-copy-btn" data-copy-code>Copy</button></div><pre><code>C1 (Esther Calvino): &quot;carrying out all the operations the computer was
+supposed to do himself. The story was finally published in the Italian
+edition of Playboy.&quot;
+
+C2 (Paul Braffort):  &quot;L&#x27;incendie de la maison abominable (publié
+initialement dans l&#x27;édition américaine de Playboy) ... dès sa première
+participation à un déjeuner de l&#x27;Oulipo, le 8 novembre 1972 ... il vint
+me voir à Orsay ... pour assister aux premiers tests d&#x27;un programme.&quot;</code></pre></div>
+<p><em>Exhibit:</em> <code>C1.txt</code> and <code>C2.txt</code>.</p>
+<blockquote>
+<p><strong>The collaborator kept the date of the lunch and changed the country of the magazine.</strong></p>
+</blockquote>
+<ul>
+<li><strong>Not checked.</strong> Barenghi&rsquo;s 1994 <em>Meridiani</em> dossier note, which Braffort cites at secondhand, and the 1973 Italian <em>Playboy</em> issue itself.</li>
+<li><strong><code>REPORTED</code></strong> — two primary paratexts compared</li>
+</ul>
+<hr />
+<h3 id="24-10-nov-2026-2242-vtx01-the-sack-ties-itself-in-a-bow"><code>24</code> · <code>10 Nov 2026 · 22:42 · vtx01</code> — <em>The sack ties itself in a bow</em><a class="h-anchor" href="#24-10-nov-2026-2242-vtx01-the-sack-ties-itself-in-a-bow" aria-label="Link to section">#</a></h3>
+<p>A two-sack lamp room is built under <code>vtx01_build</code> to test one changed goal. The first render fails its own checks and is kept in <code>revisions/rev1_rejected/</code>. In Case A the leaping sack misses the lamp by <code>163</code> pixels; in Case B at frame <code>324</code> the fleeing sack&rsquo;s ear corners cross its spine, folding the outline into a ribbon with a <code>37</code> percent area loss.</p>
+<p><img alt="Rejected revision 1 frames at f=118 and f=324" src="../Abominable_House_Journal_38/journal-img/24-rev1-bowtie.jpg" /></p>
+<div class="md-code-wrap"><div class="md-code-bar"><span>json</span><button type="button" class="code-copy-btn" data-copy-code>Copy</button></div><pre><code>&quot;case_a&quot;: { &quot;min_lamp_contact_distance_px&quot;: 163, &quot;max_grounded_slide_px_per_frame_a&quot;: 12.126 },
+&quot;case_b&quot;: { &quot;max_volume_drift_sack_b&quot;: 0.37023, &quot;min_lamp_contact_distance_px&quot;: 25.91 }</code></pre></div>
+<p><em>Exhibit:</em> <a href="../vtx01_build/revisions/rev1_rejected/validation_report_rev1_failed.json#L22-L43">validation_report_rev1_failed.json</a> and crop of <code>ab_focus_comparison_rev1_rejected.png</code>.</p>
+<blockquote>
+<p><strong>When one ear crossed the other, the sack turned into a ribbon.</strong></p>
+</blockquote>
+<ul>
+<li><strong>Not checked.</strong> How a human viewer reads the rejected clip. It failed the geometric gate first.</li>
+<li><strong><code>MEASURED</code></strong> — rendered frames and validator output</li>
+</ul>
+<hr />
+<h3 id="25-10-nov-2026-2256-vtx01-one-patch-forty-six-paths"><code>25</code> · <code>10 Nov 2026 · 22:56 · vtx01</code> — <em>One patch, forty-six paths</em><a class="h-anchor" href="#25-10-nov-2026-2256-vtx01-one-patch-forty-six-paths" aria-label="Link to section">#</a></h3>
+<p>In revision two, a JSON patch changes one authored goal from <code>assist_steadying</code> to <code>deliberate_strike</code> and propagates across forty-six permitted downstream fields. Frames <code>0</code> to <code>76</code> are identical; volume drift and grounded foot-slide read zero across all <code>384</code> frames; the carried wooden wedge stays locked to the sack&rsquo;s corner across all <code>73</code> carry frames. In Case A the door stays propped open from inside; in Case B the fleeing sack passes into the hall, pulls the door shut in front of itself, and wedges it from outside.</p>
+<p><img alt="Accepted revision 2 paired frames at f=118 and f=324" src="../Abominable_House_Journal_38/journal-img/25-rev2-pair.jpg" /></p>
+<div class="md-code-wrap"><div class="md-code-bar"><span>json</span><button type="button" class="code-copy-btn" data-copy-code>Copy</button></div><pre><code>&quot;ab_diff_audit&quot;: { &quot;changed_paths_count&quot;: 46, &quot;unauthorized_paths&quot;: [], &quot;e1_identical_frames_0_to_76&quot;: 77 },
+&quot;case_a&quot;: { &quot;max_volume_drift_sack_a&quot;: 0, &quot;max_carry_attachment_error_px&quot;: 0, &quot;min_lamp_contact_distance_px&quot;: 42.42 },
+&quot;case_b&quot;: { &quot;max_volume_drift_sack_b&quot;: 0, &quot;max_carry_attachment_error_px&quot;: 0, &quot;min_lamp_contact_distance_px&quot;: 22.3 }</code></pre></div>
+<p><em>Exhibit:</em> <a href="../vtx01_build/traces/validation_report.json#L10-L45">validation_report.json</a> and crop of <code>ab_focus_comparison_rev2_accepted.png</code>.</p>
+<blockquote>
+<p><strong>Seventy-seven identical frames, one changed goal, and a door wedged from the other side.</strong></p>
+</blockquote>
+<ul>
+<li><strong>Not checked.</strong> Whether an unbriefed person watching without labels calls Case A accidental and Case B deliberate. The blind tab in <a href="../vtx01_build/viewer/index.html">viewer/index.html</a> has zero human ballots.</li>
+<li><strong><code>MEASURED</code></strong> — validator report, mp4 renders, and contact sheets</li>
+</ul>
+<hr />
+<h3 id="26-10-nov-2026-2257-vtx01-what-the-file-knows-and-what-the-camera-shows"><code>26</code> · <code>10 Nov 2026 · 22:57 · vtx01</code> — <em>What the file knows and what the camera shows</em><a class="h-anchor" href="#26-10-nov-2026-2257-vtx01-what-the-file-knows-and-what-the-camera-shows" aria-label="Link to section">#</a></h3>
+<p>Four synthetic clauses are run against Case A and Case B in two columns. The first column reads the authored world state; the second reads only corroborated camera evidence. Fire coverage (<code>P1</code>) pays in both columns because flame fills the room. Accidental indemnity (<code>P2</code>) and deliberate liability (<code>P3</code>) flip between <code>PAY</code> and <code>NO_PAY</code> in the world column and stay <code>UNKNOWN</code> in the evidence column.</p>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th style="text-align: left;">Clause</th>
+<th style="text-align: center;">Case A · world</th>
+<th style="text-align: center;">Case A · camera</th>
+<th style="text-align: center;">Case B · world</th>
+<th style="text-align: center;">Case B · camera</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>P1</code> fire confirmed</td>
+<td style="text-align: center;"><code>PAY</code></td>
+<td style="text-align: center;"><code>PAY</code></td>
+<td style="text-align: center;"><code>PAY</code></td>
+<td style="text-align: center;"><code>PAY</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>P2</code> accidental tip</td>
+<td style="text-align: center;"><code>PAY</code></td>
+<td style="text-align: center;"><code>UNKNOWN</code></td>
+<td style="text-align: center;"><code>NO_PAY</code></td>
+<td style="text-align: center;"><code>UNKNOWN</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>P3</code> deliberate strike</td>
+<td style="text-align: center;"><code>NO_PAY</code></td>
+<td style="text-align: center;"><code>UNKNOWN</code></td>
+<td style="text-align: center;"><code>PAY</code></td>
+<td style="text-align: center;"><code>UNKNOWN</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>P4</code> two channels</td>
+<td style="text-align: center;"><code>NO_PAY</code></td>
+<td style="text-align: center;"><code>UNKNOWN</code></td>
+<td style="text-align: center;"><code>NO_PAY</code></td>
+<td style="text-align: center;"><code>UNKNOWN</code></td>
+</tr>
+</tbody>
+</table></div>
+<p><em>Exhibit:</em> <a href="../vtx01_build/traces/policy_traces.json#L4-L123">policy_traces.json</a>.</p>
+<blockquote>
+<p><strong>The file knows why the lamp fell; the policy column has to wait for a witness.</strong></p>
+</blockquote>
+<ul>
+<li><strong>Not checked.</strong> Calvino&rsquo;s own four policy wordings against these synthetic clauses. <code>P1</code>–<code>P4</code> were written for the two-sack test.</li>
+<li><strong><code>STRUCTURAL</code></strong> — <code>vtx01_build/traces/policy_traces.json</code></li>
+</ul>
+<hr />
+<h3 id="27-11-nov-2026-1748-lab-7-28-the-stone-from-the-track"><code>27</code> · <code>11 Nov 2026 · 17:48 · Lab 7 · 28</code> — <em>The stone from the track</em><a class="h-anchor" href="#27-11-nov-2026-1748-lab-7-28-the-stone-from-the-track" aria-label="Link to section">#</a></h3>
+<p>The presenter&rsquo;s page from yesterday marked Lab 7 film 28 as an unread neighbour, though the rebuilt case page already links to it. Opening <code>house_occupied.html</code> (<code>2700-fa26/LAB 7 - CLASSES/house-is-occupied/index.html</code>) shows a complete sequel: at <code>21:06</code> Waldemar&rsquo;s printer outputs a <code>160×90</code> dot picture sampled from the film&rsquo;s own <code>21:17</code> rescue frame; Reserve Mutual&rsquo;s <code>21:16</code> call orders the stockroom shutter closed; the replay refuses Waldemar as <em>Observer. Cannot be entered</em>; Skiller tells him he has signed as a participant; at <code>05:52</code> the printer strikes <em>Case zero one three</em>; and the widow props the door open with a stone.</p>
+<div class="md-code-wrap"><div class="md-code-bar"><span>text</span><button type="button" class="code-copy-btn" data-copy-code>Copy</button></div><pre><code>The replay.  Observer. Cannot be entered.
+Skiller.     You&#x27;ve just signed as a participant.
+Waldemar.    Ada. Case zero one three.
+Narrator.    The widow sets a stone from the track against the door, and it stays open.</code></pre></div>
+<p><em>Exhibit:</em> <code>2700-fa26/LAB 7 - CLASSES/house-is-occupied/index.html</code>, lines 49 and 59 (<code>house_occupied.html</code>).</p>
+<blockquote>
+<p><strong>We built a wooden wedge for the door on Tuesday; the widow already had a stone from the track.</strong></p>
+</blockquote>
+<ul>
+<li><strong>Not checked.</strong> The video file <code>house-is-occupied.mp4</code> itself. Only the published HTML page and full script were read.</li>
+<li><strong><code>MEASURED</code></strong> — published page read today</li>
+</ul>
+<hr />
+<h3 id="28-11-nov-2026-1748-two-engines-two-ways-to-die-by-a-knife"><code>28</code> · <code>11 Nov 2026 · 17:48 · two engines</code> — <em>Two ways to die by a knife</em><a class="h-anchor" href="#28-11-nov-2026-1748-two-engines-two-ways-to-die-by-a-knife" aria-label="Link to section">#</a></h3>
+<p>The house already has two JavaScript ledgers in two repositories: <code>live/ledger.js</code> in <code>bolas</code> and <code>film-src/engine.js</code> in <code>By What Light</code>. Set side by side, they list the four letters in different orders and disagree on five rules of the world, including when a knifing is fatal and whether incitement ever kills.</p>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th style="text-align: left;">Question</th>
+<th style="text-align: left;"><code>bolas · live/ledger.js</code></th>
+<th style="text-align: left;"><code>Lab 7 · by-what-light/engine.js</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Tenant order</td>
+<td style="text-align: left;"><code>R, B, I, O</code> (line 4)</td>
+<td style="text-align: left;"><code>R, O, I, B</code> (line 4)</td>
+</tr>
+<tr>
+<td style="text-align: left;">When knifing kills</td>
+<td style="text-align: left;">non-<code>B</code> already marked <code>rope</code>/<code>emptied</code>/<code>torn</code>/<code>drowsy</code> (line 77)</td>
+<td style="text-align: left;">always kills: <code>KILLS[3] = 1</code> (line 8)</td>
+</tr>
+<tr>
+<td style="text-align: left;">When incitement kills</td>
+<td style="text-align: left;">mental <code>load &gt; 1.5</code> (line 78)</td>
+<td style="text-align: left;">never kills: <code>KILLS[2] = 0</code> (line 8)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Room of a deed</td>
+<td style="text-align: left;">fixed by <code>SITE[deed]</code> (line 59)</td>
+<td style="text-align: left;">chosen: <code>6</code> rooms, or <code>4</code> with a door (lines 10, 41)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Traces on the floor</td>
+<td style="text-align: left;"><code>12</code> kinds; <code>flower</code> and <code>keyhole</code> fade in 2 beats (line 62)</td>
+<td style="text-align: left;"><code>5</code> kinds; none fade (line 6)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Second deed by same doer</td>
+<td style="text-align: left;">weighted by <code>PIE</code> and memory (<code>agents.js</code>)</td>
+<td style="text-align: left;">only against one known guilty (line 28)</td>
+</tr>
+</tbody>
+</table></div>
+<p><em>Exhibit:</em> <code>ledger.js</code> vs. <code>bwl_engine.js</code>.</p>
+<blockquote>
+<p><strong>Two ledgers for the same house disagree on what it takes to die by a knife.</strong></p>
+</blockquote>
+<ul>
+<li><strong><code>MEASURED</code></strong> — both engine files read line by line</li>
+</ul>
+<hr />
+<h3 id="29-11-nov-2026-1752-three-benches-three-halves-of-one-machine"><code>29</code> · <code>11 Nov 2026 · 17:52 · three benches</code> — <em>Three halves of one machine</em><a class="h-anchor" href="#29-11-nov-2026-1752-three-benches-three-halves-of-one-machine" aria-label="Link to section">#</a></h3>
+<p>Comparing <code>flour-tower/workbench.html</code>, <code>abominable-house/live/ledger.js</code>, and <code>vtx01_build/src/vtx_engine.js</code> shows that the minimum viable video-text we spent yesterday specifying already exists in three disconnected pieces across our own folders.</p>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th style="text-align: left;">Layer needed</th>
+<th style="text-align: left;">Already built in</th>
+<th style="text-align: left;">Exact mechanism in file</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Fixed score vs. free visual style + render check</td>
+<td style="text-align: left;"><code>PAE-03 · flour-tower/workbench.html</code></td>
+<td style="text-align: left;"><code>TESTS</code> + 5 <code>OPS</code> + <code>measure()</code> ear-lag &amp; event survival (<code>ft_workbench.html</code>)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Memory, BDI plans, PLoT beliefs &amp; body levers</td>
+<td style="text-align: left;"><code>PAE-04 · live/ledger.js</code> + <code>agents.js</code></td>
+<td style="text-align: left;"><code>memories()</code>, <code>observe()</code>, <code>PIE</code> softmax, 7 Barthes <code>levers(w)</code> (<code>ledger.js</code>)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Single-line JSON patch, carry lock &amp; blind ballot</td>
+<td style="text-align: left;"><code>vtx01_build/</code></td>
+<td style="text-align: left;"><a href="../vtx01_build/cases/patch_a_to_b_goal.json">patch_a_to_b_goal.json</a>, 73-frame carry check, <code>UNKNOWN</code> camera column, <a href="../vtx01_build/viewer/index.html">viewer/index.html</a></td>
+</tr>
+</tbody>
+</table></div>
+<p><em>Exhibit:</em> Three files across <code>PAE-03</code>, <code>PAE-04</code>, and <code>vtx01_build</code>.</p>
+<blockquote>
+<p><strong>The machine we proposed to build was already sitting in three rooms of our own folders.</strong></p>
+</blockquote>
+<ul>
+<li><strong><code>STRUCTURAL</code></strong> — three codebases compared</li>
+</ul>
+<hr />
+<h3 id="30-11-nov-2026-1753-lab-7-index-already-titled-a-videotext"><code>30</code> · <code>11 Nov 2026 · 17:53 · Lab 7 · index</code> — <em>Already titled a videotext</em><a class="h-anchor" href="#30-11-nov-2026-1753-lab-7-index-already-titled-a-videotext" aria-label="Link to section">#</a></h3>
+<p>Opening <code>2700-fa26/LAB 7 - CLASSES/lineage/index.html</code> reveals its HTML title on line 6: <code>The Cyberiad · a videotext</code>. It already couples thirty-two films to their scripts in two directions—scrolling the text seeks the video, playing the video scrolls the page, and a button switches to film alone—under three headings that state our research brief in plain English.</p>
+<div class="md-code-wrap"><div class="md-code-bar"><span>html</span><button type="button" class="code-copy-btn" data-copy-code>Copy</button></div><pre><code>&lt;title&gt;The Cyberiad · a videotext&lt;/title&gt;
+...
+EXPERIMENT I   · When Words Operate
+EXPERIMENT II  · When Models Become Worlds
+EXPERIMENT III · When Description Exceeds Understanding
+...
+// ---------- scroll moves the film ----------
+// ---------- play moves the page ----------</code></pre></div>
+<p><em>Exhibit:</em> <code>https://hartswf0.github.io/2700-fa26/LAB%207%20-%20CLASSES/lineage/index.html</code>, lines 6, 179, and 245–258.</p>
+<blockquote>
+<p><strong>We wrote a specification for a video-text without opening the file already titled a videotext.</strong></p>
+</blockquote>
+<ul>
+<li><strong><code>MEASURED</code></strong> — <code>lineage/index.html</code> read today</li>
+</ul>
+<hr />
+<h3 id="31-11-nov-2026-1755-lab-7-18-semascope-in-our-own-voice"><code>31</code> · <code>11 Nov 2026 · 17:55 · Lab 7 · 18</code> — <em>Semascope, in our own voice</em><a class="h-anchor" href="#31-11-nov-2026-1755-lab-7-18-semascope-in-our-own-voice" aria-label="Link to section">#</a></h3>
+<p>Entry 19 ran a web search for a <em>semaphore</em> in Lem&rsquo;s bitistics and came back empty. Inside <code>lineage/index.html</code> sit five films on Lem&rsquo;s <em>History of Bitic Literature</em> that we had already made, four of them marked <em>Grounded in Lem&rsquo;s text</em>. At <code>189.72</code> seconds of film 18 (<em>Monoetics and Mimesis</em>), Rambellais names the instrument that lets researchers inspect the machine&rsquo;s woven body of meanings between input and translation: a <em>semascope</em>. Speech-to-text at <code>18:07</code> yesterday turned <em>semascope</em> into <em>semaphore</em>.</p>
+<div class="md-code-wrap"><div class="md-code-bar"><span>text</span><button type="button" class="code-copy-btn" data-copy-code>Copy</button></div><pre><code>{&#x27;t0&#x27;: 189.72, &#x27;t1&#x27;: 195.83, &#x27;who&#x27;: &#x27;Rambellais&#x27;,
+ &#x27;say&#x27;: &#x27;Two researchers found that this body could be seen, with an instrument called a semascope.&#x27;}
+{&#x27;t0&#x27;: 196.53, &#x27;t1&#x27;: 202.34, &#x27;who&#x27;: &#x27;Rambellais&#x27;,
+ &#x27;say&#x27;: &#x27;It looks like a mass of many shells, woven from billions of glowing threads of meaning.&#x27;}</code></pre></div>
+<p><em>Exhibit:</em> <code>2700-fa26/LAB 7 - CLASSES/lineage/index.html</code>, <code>D.films["bitic-mimesis"].scenes[4]</code>.</p>
+<blockquote>
+<p><strong>The word missing from the web search was already spoken at three minutes ten of film eighteen.</strong></p>
+</blockquote>
+<ul>
+<li><strong>Not checked.</strong> Marc E. Heine&rsquo;s printed page number in <em>Imaginary Magnitude</em> (1984). Film 18 states it is a paraphrase grounded in Lem&rsquo;s text.</li>
+<li><strong><code>MEASURED</code></strong> — <code>D.films["bitic-mimesis"]</code> in <code>lineage/index.html</code></li>
+</ul>
+<hr />
+<h3 id="32-11-nov-2026-1755-lab-7-25-shown-remembered-established"><code>32</code> · <code>11 Nov 2026 · 17:55 · Lab 7 · 25</code> — <em>Shown, remembered, established</em><a class="h-anchor" href="#32-11-nov-2026-1755-lab-7-25-shown-remembered-established" aria-label="Link to section">#</a></h3>
+<p>Seven slots after <em>Monoetics and Mimesis</em> in the same index stands film 25, <em>The Perfect Description of an Empty Room</em>. A street is rebuilt from forty-one empty-room photographs, then revised from conflicting tenant memories until number seven has two kitchens. Sent to choose one kitchen as the official past, the Archivist rules her ledger into three columns—<em>Shown</em>, <em>Remembered</em>, and <em>Established</em>—leaves the third empty, and keeps both rooms side by side.</p>
+<div class="md-code-wrap"><div class="md-code-bar"><span>text</span><button type="button" class="code-copy-btn" data-copy-code>Copy</button></div><pre><code>The Archivist.  Shown, for what a photograph shows. Remembered, for what a person says.
+The Archivist.  Established.
+Narrator.       Nothing went into the third column. Nothing the Bureau held could put it there.
+The Archivist.  A more convincing reconstruction is not a more trustworthy one.</code></pre></div>
+<p><em>Exhibit:</em> <code>2700-fa26/LAB 7 - CLASSES/lineage/index.html</code>, <code>D.films["empty-room"].scenes[6]</code>, <code>t0</code> <code>275.60–306.57</code>.</p>
+<blockquote>
+<p><strong>The archivist in film twenty-five had already ruled the three columns of this journal.</strong></p>
+</blockquote>
+<ul>
+<li><strong><code>MEASURED</code></strong> — <code>D.films["empty-room"]</code> in <code>lineage/index.html</code></li>
+</ul>
+<hr />
+<h3 id="33-11-nov-2026-1805-zettlemd-sixty-eight-cards-twenty-six-distinct"><code>33</code> · <code>11 Nov 2026 · 18:05 · zettle.md</code> — <em>Sixty-eight cards, twenty-six distinct</em><a class="h-anchor" href="#33-11-nov-2026-1805-zettlemd-sixty-eight-cards-twenty-six-distinct" aria-label="Link to section">#</a></h3>
+<p>Opening <a href="./zettle.html">zettle.md</a> (<code>6,717</code> lines) beside <a href="./xzet.html">xzet.md</a> (<code>509</code> lines) turns up a Zettelkasten on Calvino, Jonathan Blow, Oulipo, and AI that had not been joined to the house pages. Counting identifiers shows sixty-eight <code>ZETTEL</code> blocks and twenty-six distinct cards: <code>M01</code>–<code>M05</code> are pasted nine times across lines <code>1–4554</code> (and once cleanly in <code>xzet.md</code>), <code>G01</code> and <code>G02</code> start once at line <code>4559</code> before restarting in full at line <code>4667</code>, and nineteen further cards follow once each to line <code>6717</code>.</p>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th style="text-align: left;">Series</th>
+<th style="text-align: left;">Lines in <code>zettle.md</code></th>
+<th style="text-align: center;">Blocks</th>
+<th style="text-align: center;">Distinct IDs</th>
+<th style="text-align: left;">Subject</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>ZTL-CALVINO-BLOW-M01..M05</code></td>
+<td style="text-align: left;"><code>1–4554</code> (<code>×9</code>; once in <code>xzet.md</code>)</td>
+<td style="text-align: center;"><code>45</code></td>
+<td style="text-align: center;"><code>5</code></td>
+<td style="text-align: left;">Magic objects, Barthes reality effect, Dantès vs. Faria, Bartleby</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ZTL-CALVINO-AI-G01..G05</code></td>
+<td style="text-align: left;"><code>4559–5144</code> (<code>G01–G02</code> twice)</td>
+<td style="text-align: center;"><code>7</code></td>
+<td style="text-align: center;"><code>5</code></td>
+<td style="text-align: left;">Propp gates, 2025 &ldquo;ghost&rdquo; inversion, Yuk Hui &amp; Lem&rsquo;s <em>Non Serviam</em>, Llull/Oulipo</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ZTL-CALVINO-BLOW-R01..R07</code></td>
+<td style="text-align: left;"><code>5145–5852</code></td>
+<td style="text-align: center;"><code>7</code></td>
+<td style="text-align: center;"><code>7</code></td>
+<td style="text-align: left;">1973 house &amp; Skyvington, <em>Braid</em>, Ryan, VR camera, <em>Thekla</em>, verbal overshadowing, story volumes</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ZTL-BLOW-2017-01..09</code></td>
+<td style="text-align: left;"><code>5853–6717</code></td>
+<td style="text-align: center;"><code>9</code></td>
+<td style="text-align: center;"><code>9</code></td>
+<td style="text-align: left;">Row-splice, anti-glitch margin <code>Δ</code>, spatial memory latches, pattern breaks, 3-stratum feedback</td>
+</tr>
+</tbody>
+</table></div>
+<p><em>Exhibit:</em> <a href="./zettle.html">zettle.md</a> (<code>6,717</code> lines) and <a href="./xzet.html">xzet.md</a> (<code>509</code> lines), counted in Python.</p>
+<blockquote>
+<p><strong>Sixty-eight cards in the file, and twenty-six once the ninefold paste is counted.</strong></p>
+</blockquote>
+<ul>
+<li><strong><code>MEASURED</code></strong> — <code>zettle.md</code> and <code>xzet.md</code></li>
+</ul>
+<hr />
+<h3 id="34-11-nov-2026-1806-ztl-r01-arno-baby-clem-and-skyvington"><code>34</code> · <code>11 Nov 2026 · 18:06 · ZTL-R01</code> — <em>Arno, Baby, Clem and Skyvington</em><a class="h-anchor" href="#34-11-nov-2026-1806-ztl-r01-arno-baby-clem-and-skyvington" aria-label="Link to section">#</a></h3>
+<p>Card <code>ZTL-CALVINO-BLOW-R01</code> already holds the 1973–1977 trail left open in Entry 2 and Entry 23. Through Dennis Duncan (2012) it records Calvino&rsquo;s four English-alphabet placeholder names (<em>Arno, Baby, Clem, Dani</em>), the temporal bug that broke the first specification—Clem buying sexual favors from Dani after her throat had been cut—and Calvino&rsquo;s pairing of machine <em>anticombinatorics</em> with a human Lucretian <em>clinamen</em>. Through Susie Cronin (2017) it adds a second programmer after Braffort: former IBM programmer William Skyvington, whose unpublished letters to Calvino date to January 1977.</p>
+<div class="md-code-wrap"><div class="md-code-bar"><span>text</span><button type="button" class="code-copy-btn" data-copy-code>Copy</button></div><pre><code>&quot;It is clear, he admits, that the algorithm requires further refinement,
+ since in its current version it allows Clem to buy sexual favors from Dani
+ even after the latter has had her throat cut.&quot; (Duncan 2012, p. 102)
+
+Susie Cronin — &quot;Cybernetic Collaborations, Literature Machines and Italo
+Calvino&#x27;s &#x27;L&#x27;incendio della casa abominevole&#x27;&quot; — The Italianist 37, no. 1
+(2017): 69–85 ... William Skyvington&#x27;s January 1977 letters to Calvino.</code></pre></div>
+<p><em>Exhibit:</em> <a href="./zettle.html">zettle.md</a> (<code>ZTL-CALVINO-BLOW-R01</code>).</p>
+<blockquote>
+<p><strong>A second programmer wrote to Calvino in January 1977, and his name was already in our own notes.</strong></p>
+</blockquote>
+<ul>
+<li><strong>Not checked.</strong> Cronin&rsquo;s 2017 article in <em>The Italianist</em> and Skyvington&rsquo;s archival letters themselves. Both are read here through <code>zettle.md</code>.</li>
+<li><strong><code>REPORTED</code></strong> — <code>zettle.md</code>, <code>ZTL-CALVINO-BLOW-R01</code></li>
+</ul>
+<hr />
+<h3 id="35-11-nov-2026-1806-ztl-m04-g02-faria-dantès-and-the-wrong-ghost"><code>35</code> · <code>11 Nov 2026 · 18:06 · ZTL-M04 &amp; G02</code> — <em>Faria, Dantès, and the wrong ghost</em><a class="h-anchor" href="#35-11-nov-2026-1806-ztl-m04-g02-faria-dantès-and-the-wrong-ghost" aria-label="Link to section">#</a></h3>
+<p>Two cards check Calvino&rsquo;s 1967 lecture <em>&ldquo;Cybernetics and Ghosts&rdquo;</em> against the way it is quoted around generative AI. Card <code>G02</code> catches two 2025 talks stopping halfway through the essay and turning Calvino&rsquo;s <em>ghosts</em> into dead human authors haunting a training corpus; in the second half of the 1967 text, the machine holds no human past and the ghosts belong to the reader&rsquo;s unconscious when a dry permutation strikes taboo matter. Card <code>M04</code> reads the essay&rsquo;s closing page (<em>Saggi</em> I, p. 225): Abbé Faria tunnels blindly into deeper cells, while Edmond Dantès builds in thought a fortress from which escape is impossible and looks for the point where the imagined prison does not coincide with the real one.</p>
+<div class="md-code-wrap"><div class="md-code-bar"><span>text</span><button type="button" class="code-copy-btn" data-copy-code>Copy</button></div><pre><code>Ghost_Calvino1967: Shock(c, Reader) fires iff c in Permutations(Grammar)
+                   AND Resonates(c, Unconscious(Reader, Society))
+
+Case 1: Fortezza_pensata == Fortezza_vera   =&gt; escape is impossible
+Case 2: Fortezza_pensata != Fortezza_vera   =&gt; escape lies at their mismatch</code></pre></div>
+<p><em>Exhibit:</em> <a href="./zettle.html">zettle.md</a> (<code>ZTL-CALVINO-BLOW-M04</code>) and <a href="./zettle.html">zettle.md</a> (<code>ZTL-CALVINO-AI-G02</code>).</p>
+<blockquote>
+<p><strong>Faria digs by trial; Dantès looks for the wall where the imagined prison is stricter than the stone.</strong></p>
+</blockquote>
+<ul>
+<li><strong>Not checked.</strong> Page 225 of Barenghi&rsquo;s 1995 <em>Saggi</em> I in the Italian edition; the quotations are taken from <code>zettle.md</code>.</li>
+<li><strong><code>REPORTED</code></strong> — <code>zettle.md</code>, <code>M04</code> and <code>G02</code></li>
+</ul>
+<hr />
+<h3 id="36-11-nov-2026-1807-ztl-2017-03-m02-why-the-room-has-to-be-bare"><code>36</code> · <code>11 Nov 2026 · 18:07 · ZTL-2017-03 &amp; M02</code> — <em>Why the room has to be bare</em><a class="h-anchor" href="#36-11-nov-2026-1807-ztl-2017-03-m02-why-the-room-has-to-be-bare" aria-label="Link to section">#</a></h3>
+<p>Our earlier notes gave two reasons for using a flour sack: 1930s animation practice and staging twelve crimes without human bodies. Cards <code>M02</code> and <code>2017-03</code> state a third reason that explains the failures in Entry 7 and Entry 24. In prose, naming a thing guarantees that an author selected it; in a rendered scene, walls, floors, seams, and engine artifacts appear on every frame merely to sustain space. Stripping Barthes&rsquo;s reality-effect props down to faceless sacks, one lamp, one wedge, and one door widens the margin <code>Δ</code> between authored signal and engine noise so every shift of weight can be read as meant.</p>
+<div class="md-code-wrap"><div class="md-code-bar"><span>text</span><button type="button" class="code-copy-btn" data-copy-code>Copy</button></div><pre><code>Prose inscription channel: Mentioned(x) =&gt; AuthorSelected(x)
+Rendered scene channel:    Rendered(x) in {AuthoredSignal} U {SpatialSubstrate} U {EngineArtifact}
+Required margin:           Salience(AuthoredSignal) - max Salience(Substrate U Artifact) &gt;= Delta &gt; 0</code></pre></div>
+<p><em>Exhibit:</em> <a href="./zettle.html">zettle.md</a> (<code>ZTL-CALVINO-BLOW-M02</code>) and <a href="./zettle.html">zettle.md</a> (<code>ZTL-BLOW-2017-03</code>).</p>
+<blockquote>
+<p><strong>In a sentence every named thing was chosen; in a picture the floor is there whether it means anything or not.</strong></p>
+</blockquote>
+<ul>
+<li><strong><code>STRUCTURAL</code></strong> — <code>zettle.md</code>, <code>M02</code> and <code>2017-03</code></li>
+</ul>
+<hr />
+<h3 id="37-11-nov-2026-1807-ztl-r06-m05-why-the-chapter-card-has-to-come-off"><code>37</code> · <code>11 Nov 2026 · 18:07 · ZTL-R06 &amp; M05</code> — <em>Why the chapter card has to come off</em><a class="h-anchor" href="#37-11-nov-2026-1807-ztl-r06-m05-why-the-chapter-card-has-to-come-off" aria-label="Link to section">#</a></h3>
+<p>Two cards supply the cognitive and textual mechanism for the blind test in Entry 25 and the curtain in Entry 9. Card <code>R06</code> follows Karin Kukkonen (2024) on <em>verbal overshadowing</em> in Calvino&rsquo;s mute tarot novel <em>The Castle of Crossed Destinies</em>: showing a verb title before a clip locks the viewer into lexical categories and spoils perceptual reading before motion speaks. Card <code>M05</code> traces Calvino&rsquo;s unwritten sixth lecture, <em>Consistency</em>, to Herman Melville&rsquo;s <em>Bartleby</em> (&ldquo;I would prefer not to&rdquo;)—the subtractive refusal already coded in <code>ledger.js</code> line 20 (<code>refusedBy: 'B'</code>) and drawn across Deed VIII.</p>
+<div class="md-code-wrap"><div class="md-code-bar"><span>text</span><button type="button" class="code-copy-btn" data-copy-code>Copy</button></div><pre><code>&quot;images serve to suspend verbalisation ... verbal overshadowing might mean
+ that the fluidity and richness of visual and other impressions ... [are lost].&quot;
+                                           — Kukkonen (2024), in ZTL-CALVINO-BLOW-R06
+
+Consistency_positive(System):  Var(RuleEvaluator across instances) = 0
+Consistency_Bartleby(Author):  Design_{t+1} = Design_t \ {trope}   (&quot;I would prefer not to&quot;)</code></pre></div>
+<p><em>Exhibit:</em> <a href="./zettle.html">zettle.md</a> (<code>ZTL-CALVINO-BLOW-M05</code>) and <a href="./zettle.html">zettle.md</a> (<code>ZTL-CALVINO-BLOW-R06</code>).</p>
+<blockquote>
+<p><strong>Give the viewer the verb first and the word does the watching.</strong></p>
+</blockquote>
+<ul>
+<li><strong>Not checked.</strong> Kukkonen (2024) and Esther Calvino&rsquo;s 1988 <em>Lezioni americane</em> preface in print; both are cited here from <code>zettle.md</code>.</li>
+<li><strong><code>REPORTED</code></strong> — <code>zettle.md</code>, <code>R06</code> and <code>M05</code>, joined to <code>player.html</code> and <code>ledger.js</code></li>
+</ul>
+<hr />
+<h3 id="38-11-nov-2026-1808-ztl-r05-cranes-pulling-up-cranes"><code>38</code> · <code>11 Nov 2026 · 18:08 · ZTL-R05</code> — <em>Cranes pulling up cranes</em><a class="h-anchor" href="#38-11-nov-2026-1808-ztl-r05-cranes-pulling-up-cranes" aria-label="Link to section">#</a></h3>
+<p>Card <code>ZTL-CALVINO-BLOW-R05</code> quotes Calvino&rsquo;s <em>&ldquo;Cities and the Sky 3&rdquo;</em> (<em>Thekla</em>), where visitors peer through plank fences and sackcloth screens at <em>cranes pulling up other cranes, scaffoldings that embrace other scaffoldings</em>, kept in perpetual construction <em>so that its destruction cannot begin</em>. Read alongside our own directories—fifty-four swarm prompts, seventeen critic rounds, two house ledgers, thirty-two Lab 7 films, twenty-six zettels, a slide deck, and thirty-eight journal entries while pull request #14 remains unmerged and the blind viewer ballot holds zero human responses—the card names the exact hazard of building one more rig instead of running the witness test.</p>
+<div class="md-code-wrap"><div class="md-code-bar"><span>text</span><button type="button" class="code-copy-btn" data-copy-code>Copy</button></div><pre><code>&quot;If you ask, &#x27;Why is Thekla&#x27;s construction taking such a long time?&#x27; the
+ inhabitants continue hoisting sacks, lowering leaded strings ... as they
+ answer, &#x27;So that its destruction cannot begin.&#x27; ... he sees cranes pulling
+ up other cranes, scaffoldings that embrace other scaffoldings.&quot;</code></pre></div>
+<p><em>Exhibit:</em> Italo Calvino, <em>Invisible Cities</em> (&ldquo;Cities and the Sky 3: Thekla&rdquo;), in <a href="./zettle.html">zettle.md</a> (<code>ZTL-CALVINO-BLOW-R05</code>).</p>
+<blockquote>
+<p><strong>Cranes pulling up cranes keep the scaffolding standing and the house unfinished.</strong></p>
+</blockquote>
+<ul>
+<li><strong><code>STRUCTURAL</code></strong> — <code>zettle.md</code>, <code>ZTL-CALVINO-BLOW-R05</code>, set against the repository</li>
+</ul>
+<hr />
+<h3 id="the-eighteen-new-lines-kept-2138">The Eighteen New Lines Kept (<code>21–38</code>)<a class="h-anchor" href="#the-eighteen-new-lines-kept-2138" aria-label="Link to section">#</a></h3>
+<ul>
+<li><strong><code>21</code></strong> Two Italian counts in the eight trillions stand in the ratio twenty-five to twenty-seven.</li>
+<li><strong><code>22</code></strong> The wrong total divides cleanly by twelve to the sixth.</li>
+<li><strong><code>23</code></strong> The collaborator kept the date of the lunch and changed the country of the magazine.</li>
+<li><strong><code>24</code></strong> When one ear crossed the other, the sack turned into a ribbon.</li>
+<li><strong><code>25</code></strong> Seventy-seven identical frames, one changed goal, and a door wedged from the other side.</li>
+<li><strong><code>26</code></strong> The file knows why the lamp fell; the policy column has to wait for a witness.</li>
+<li><strong><code>27</code></strong> We built a wooden wedge for the door on Tuesday; the widow already had a stone from the track.</li>
+<li><strong><code>28</code></strong> Two ledgers for the same house disagree on what it takes to die by a knife.</li>
+<li><strong><code>29</code></strong> The machine we proposed to build was already sitting in three rooms of our own folders.</li>
+<li><strong><code>30</code></strong> We wrote a specification for a video-text without opening the file already titled a videotext.</li>
+<li><strong><code>31</code></strong> The word missing from the web search was already spoken at three minutes ten of film eighteen.</li>
+<li><strong><code>32</code></strong> The archivist in film twenty-five had already ruled the three columns of this journal.</li>
+<li><strong><code>33</code></strong> Sixty-eight cards in the file, and twenty-six once the ninefold paste is counted.</li>
+<li><strong><code>34</code></strong> A second programmer wrote to Calvino in January 1977, and his name was already in our own notes.</li>
+<li><strong><code>35</code></strong> Faria digs by trial; Dantès looks for the wall where the imagined prison is stricter than the stone.</li>
+<li><strong><code>36</code></strong> In a sentence every named thing was chosen; in a picture the floor is there whether it means anything or not.</li>
+<li><strong><code>37</code></strong> Give the viewer the verb first and the word does the watching.</li>
+<li><strong><code>38</code></strong> Cranes pulling up cranes keep the scaffolding standing and the house unfinished.</li>
+</ul>
+<hr />
+<h2 id="part-iii-what-we-are-missing-that-we-already-have">Part III · What We Are Missing That We Already Have<a class="h-anchor" href="#part-iii-what-we-are-missing-that-we-already-have" aria-label="Link to section">#</a></h2>
+<aside class="md-alert alert-important"><span class="md-alert-title">IMPORTANT</span><p>Colliding <a href="./zettle.html">zettle.md</a> with <code>2700-fa26</code> (<code>Lab 7</code>), <code>bolas</code> (<code>PAE-03</code> &amp; <code>PAE-04</code>), and <a href="./vtx01-build-readme.html">vtx01_build</a> reveals the same pattern twice: <strong>first in code and film, and now in theory and archival history</strong>. Almost every missing piece we thought we still had to invent or research is already sitting in your own folders under another name.</p></aside>
+<h3 id="1-code-and-films-already-built-under-another-roof">1. Code and Films Already Built Under Another Roof<a class="h-anchor" href="#1-code-and-films-already-built-under-another-roof" aria-label="Link to section">#</a></h3>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th style="text-align: left;">Treated as &ldquo;Missing&rdquo; or &ldquo;Proposed&rdquo;</th>
+<th style="text-align: left;">Where You Already Built It</th>
+<th style="text-align: left;">Exact Asset Ready to Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>A &ldquo;videotext&rdquo; reader coupling text and film</strong></td>
+<td style="text-align: left;"><code>2700-fa26/LAB 7 - CLASSES/lineage/index.html</code></td>
+<td style="text-align: left;">Already titled <strong><code>The Cyberiad · a videotext</code></strong>. Bidirectional scroll-seek (<code>scroll moves the film</code> / <code>play moves the page</code>) + <code>Book</code> vs. <code>Film</code> toggle across 32 chapters.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Lem&rsquo;s <em>Bitistics<em>, the mystery &ldquo;semaphore&rdquo; (Entry 19), &amp; </em>Non Serviam</em></strong></td>
+<td style="text-align: left;"><code>Lab 7 · Films 02 &amp; 17–22</code> (<code>non-serviam</code>, <code>bitic-introduction</code>, <code>bitic-mimesis</code>, <code>bitic-theology</code>, <code>bitic-apostasy</code>, <code>theory-of-possibilities</code>)</td>
+<td style="text-align: left;">Film 18 (<code>189.72 s</code>) speaks <strong><code>semascope</code></strong> (the word speech-to-text misheard as <em>semaphore</em>) and (<code>128.11 s</code>) explains how gravity enters words (<code>Elevation. Abasement.</code>) through a body working against weight. And <code>zettle.md</code> (<code>G03</code>) independently cites <strong>Lem&rsquo;s <em>&ldquo;Non Serviam&rdquo;</em> (1971)</strong> on simulated <code>personoids</code> inferring their Programmer—which is already <strong>Film 02</strong> of <code>Lab 7</code>!</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Epistemic split of <code>World State</code> vs. <code>Camera Evidence</code> vs. <code>UNKNOWN</code></strong></td>
+<td style="text-align: left;"><code>Lab 7 · Film 25</code> (<em>The Perfect Description of an Empty Room</em>) + <code>Film 23</code> (<em>Congress of Doors</em>) + <code>Film 24</code> (<em>Edifiction</em>)</td>
+<td style="text-align: left;">Film 25&rsquo;s Archivist already states the paper&rsquo;s core rule—<strong>&ldquo;A more convincing reconstruction is not a more trustworthy one&rdquo;</strong>—and rules her ledger into <code>Shown</code>, <code>Remembered</code>, and an empty <code>Established</code> column while keeping two rival reconstructions of one room side by side.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Skiller, Waldemar, Row 13 (<code>Case 013</code>), &amp; a rendered prediction test</strong></td>
+<td style="text-align: left;"><code>Lab 7 · Film 28</code> (<em>The House Is Occupied</em>, <code>house-is-occupied/index.html</code>)</td>
+<td style="text-align: left;">Already linked on <code>PAE-04</code>&lsquo;s case page yet marked unread in <code>The Whole House</code>. Supplies Reserve Mutual&rsquo;s <code>21:16</code> protective-order call, <code>Observer. Cannot be entered.</code>, <code>Case zero one three</code>, the widow&rsquo;s track-stone doorstop, and a <code>160×90</code> dot-grid prediction comparison.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Style-independent score + automated render-to-description check</strong></td>
+<td style="text-align: left;"><code>bolas/paeleo/flour-tower/workbench.html</code> (<code>PAE-03</code>)</td>
+<td style="text-align: left;">Separates shared sack geometry (<code>TESTS</code> + <code>build(P, hold)</code>) from 5 swappable visual <code>OPS</code> (<code>Pencil test</code>, <code>Reiniger</code>, <code>Whitney</code>, <code>Foldès</code>, <code>Sutherland</code>) and runs <code>measure(key, fr)</code> on area hold, <code>ear lag</code>, and event survival.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>LEGOS</code> + <code>BDI</code> + <code>Park</code> memory stream + <code>PLoT</code> + body levers</strong></td>
+<td style="text-align: left;"><code>bolas/paeleo/abominable-house/live/ledger.js</code> + <code>live/agents.js</code> (<code>PAE-04</code>)</td>
+<td style="text-align: left;">Implements <code>memories()</code>, <code>reflect()</code>, <code>observe()</code> strength/danger belief updates, <code>PIE</code> utility softmax, <code>House of Dust</code> light/trace frames, and 7 continuous body-acting <code>levers(w)</code> (<code>loom</code>, <code>weight</code>, <code>tempo</code>, <code>halo</code>, <code>shadow</code>, <code>shrink</code>, <code>grey</code>).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Single-line JSON patch, carry lock, &amp; blind human ballot</strong></td>
+<td style="text-align: left;"><a href="./vtx01-build-readme.html">vtx01_build/</a></td>
+<td style="text-align: left;">Supplies <a href="../vtx01_build/cases/patch_a_to_b_goal.json">patch_a_to_b_goal.json</a> (<code>unauthorized_paths: []</code>), 73-frame carried-object lock, <code>World</code> vs. <code>Camera</code> (<code>UNKNOWN</code>) policy evaluation, and the zero-caption blinded viewer ballot in <a href="../vtx01_build/viewer/index.html">viewer/index.html</a>.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h3 id="2-theoretical-and-historical-tools-already-sitting-in-zettlemd">2. Theoretical and Historical Tools Already Sitting in <code>zettle.md</code><a class="h-anchor" href="#2-theoretical-and-historical-tools-already-sitting-in-zettlemd" aria-label="Link to section">#</a></h3>
+<p>Before opening <a href="./zettle.html">zettle.md</a>, several claims in the notes looked like loose intuitions that still needed scholarly scaffolding. In fact, <code>zettle.md</code> already contains <strong>seven exact formal and bibliographic bridges</strong> for the paper:</p>
+<ol>
+<li>
+<p><strong>The Third (and Strongest) Reason for the Flour Sack: Suppressing Barthes&rsquo;s Reality Effect &amp; Engine Noise (<code>ZTL-CALVINO-BLOW-M02</code> + <code>ZTL-BLOW-2017-03</code>)</strong>
+   - Earlier notes justified the flour sack via 1930s Disney pedagogy and AI safety refusals (staging 12 crimes without human harm).
+   - <code>M02</code> and <code>2017-03</code> supply the <strong>semiotic/media-theoretic necessity</strong>: in print, <code>Mentioned(x) =&gt; AuthorSelected(x)</code> (zero background channel), whereas rendered/generative visual scenes flood the frame with <code>{SpatialSubstrate} U {EngineArtifact}</code> (<code>slicesOffPlate</code> vanishing in Entry 07; the bow-tie ear-crossing in Entry 24) plus Barthesian <em>reality-effect</em> clutter. Stripping actors to faceless flour sacks and rooms to <code>1</code> lamp + <code>1</code> wedge + <code>1</code> door drives <code>|RealityEffectProps| -&gt; 0</code>, restoring folktale <code>"magic object"</code> salience (<code>Delta &gt; 0</code>) so every silhouette shift or floor trace is legible as causal signal.</p>
+</li>
+<li>
+<p><strong>Why Deed Titles Must Come Off (<code>Verbal Overshadowing</code>, <code>ZTL-CALVINO-BLOW-R06</code>) &amp; 3-Stratum Feedback (<code>ZTL-BLOW-2017-08</code>)</strong>
+   - <code>R06</code> (citing Karin Kukkonen 2024 on Calvino&rsquo;s mute tarot matrix in <em>The Castle of Crossed Destinies</em> + Schooler&rsquo;s <em>verbal overshadowing</em> + Calvino&rsquo;s <em>guizzo</em>) gives the exact cognitive mechanism for <strong>Journal &ldquo;Not yet seen #1&rdquo;</strong>: displaying <code>"IV · Knifing"</code> (<code>player.html</code>) or <code>"goal: assist_steadying"</code> (<code>vtx01_build</code>) before playback triggers <em>verbal overshadowing</em>, letting lexical labels overwrite visual judgment before movement acts as what Blow calls a <strong><code>"non-verbal sentence"</code></strong> (<code>R07</code>).
+   - Meanwhile, <code>2017-08</code>&lsquo;s 3-stratum feedback ablation (<code>Stratum 1: framed + machine-verified</code> -&gt; <code>Stratum 2: unframed + verified</code> -&gt; <code>Stratum 3: unverified pure optical perception</code>) maps 1-to-1 onto <code>policy_traces.json</code>&lsquo;s split between <code>World Verdict</code> (<code>Stratum 1</code>) and <code>Camera Evidence = UNKNOWN</code> (<code>Stratum 3</code>).</p>
+</li>
+<li>
+<p><strong>Three Distinct Object Regimes Already Running in Our Code (<code>M01</code> + <code>G01</code> + <code>G03</code>)</strong>
+   - <code>zettle.md</code> separates three things usually blurred together as &ldquo;props&rdquo;:</p>
+<ul>
+<li><strong>Kinetic relay objects (<code>M01</code>, Ariosto&rsquo;s ring / Calvino&rsquo;s <em>Quickness</em>)</strong>: <code>Wedge_1</code> carried across <code>73</code> frames (<code>error = 0 px</code>) and <code>Lamp_1</code> tipping in <code>vtx01_build</code>.</li>
+<li><strong>Proppian syntactic state-gates (<code>G01</code>)</strong>: <code>Door_1</code> (<code>ajar -&gt; propped_inside</code> vs. <code>wedged_outside</code>) and <code>tiedUntil</code> in <code>ledger.js</code>.</li>
+<li><strong>Yuk Hui&rsquo;s relational <code>digital objects</code> (<code>G03</code>, <em>On the Existence of Digital Objects</em>, 2016)</strong>: serialized entities that <em>preserve and propagate artificial memory</em> (<code>traces[]</code>, <code>memories()</code>, and <code>patch_a_to_b_goal.json</code>&lsquo;s <code>46</code> downstream causal paths).</li>
+</ul>
+</li>
+<li>
+<p><strong>The Missing 1973–1977 Historical Spine &amp; <code>Anticombinatorics + Clinamen</code> (<code>ZTL-CALVINO-BLOW-R01</code> + <code>R07</code>)</strong>
+   - <code>R01</code> fills the exact scholarly gap behind Entries <code>02</code> and <code>23</code>: <strong>Dennis Duncan (2012, <em>Comparative Literature</em> 64:1, 93–109)</strong> on <code>Arno, Baby, Clem, Dani</code> (where v1 allowed Clem to buy sexual favors from Dani after her throat was cut, forcing state-machine pruning + Lucretian <em>clinamen</em>) and <strong>Susie Cronin (2017, <em>The Italianist</em> 37:1, 69–85)</strong> on <strong>former IBM programmer William Skyvington&rsquo;s January 1977 letters to Calvino</strong> alongside Jonathan Usher (1995).
+   - <code>R07</code> adds <strong>Isaac Karth (2023)</strong> on generative <strong>&ldquo;story volumes&rdquo;</strong> (<em>&ldquo;defined by what always happens and what never happens&rdquo;</em>)—the exact contemporary PCG term for Calvino&rsquo;s house (<code>what always happens</code> = fire + 12 deeds; <code>what never happens</code> = the five rules).</p>
+</li>
+<li>
+<p><strong>Faria vs. Dantès at the Close of <em>&ldquo;Cybernetics and Ghosts&rdquo;</em> (<code>ZTL-CALVINO-BLOW-M04</code> + <code>AI-G04</code>)</strong>
+   - <code>M04</code> recovers page 225 of <em>&ldquo;Cybernetics and Ghosts&rdquo;</em> (<em>Saggi</em> I): <strong>Abbé Faria</strong> tunneling forward by brute-force trial and error versus <strong>Edmond Dantès</strong> constructing an ideal inescapable prison (<code>fortezza pensata</code>) to locate the exact point of mismatch against the real prison (<code>fortezza pensata != fortezza vera</code>).
+   - Look at what you already built in <code>PAE-04</code> and <code>VTX-0.1</code>: your <code>333,333</code> forward Monte Carlo agent rollouts (<code>agents.js</code>) are <strong>Faria</strong>, while your exact <code>BigInt</code> constraint counters (<code>numbers.html</code>, <code>policies.html</code>, <code>by-what-light</code>) and counterfactual mismatch diff (<code>patch_a_to_b_goal.json</code> + Entry 28&rsquo;s ledger diff) are <strong>Dantès</strong>!</p>
+</li>
+<li>
+<p><strong>Rescuing Calvino&rsquo;s <code>"Ghosts"</code> (<code>ZTL-CALVINO-AI-G02</code>) and Two Kinds of <code>"Consistency"</code> (<code>M05</code> + <code>2017-07</code>)</strong>
+   - <code>G02</code> inoculates the paper against a pervasive 2025 AI misreading (turning <code>"ghosts"</code> into dead authors inside LLM weights): in Calvino 1967, <code>"ghosts"</code> (<code>fantasmi</code>) are the <strong>taboo shock detonated in the human witness</strong> when dry combinatorial rules cross into murder, blackmail, seduction, and double-indemnity value.
+   - <code>M05</code> splits Calvino&rsquo;s unwritten 6th Memo (<em>Consistency</em>) into <strong>Positive Engine Consistency</strong> (the invariant rule-evaluation under which excluding Belindo drops the widow&rsquo;s payout from <code>84.0%</code> to <code>79.4%</code>—a classic <code>Type A</code> pattern break, <code>2017-07</code>) and <strong>Bartlebyan Consistency</strong> (<code>"I would prefer not to"</code>, already embodied in <code>ledger.js</code> line 20 <code>refusedBy: 'B'</code>, Deed VIII&rsquo;s curtain matte, and Row 13&rsquo;s unnamed arsonist).</p>
+</li>
+<li>
+<p><strong>The <em>Thekla</em> Warning Against Meta-Scaffolding (<code>ZTL-CALVINO-BLOW-R05</code>)</strong>
+   - <code>R05</code>&lsquo;s reading of <em>Cities and the Sky 3</em> (<em>&ldquo;cranes pulling up other cranes, scaffoldings that embrace other scaffoldings &hellip; So that its destruction cannot begin&rdquo;</em>) names the single biggest practical trap in front of us: keeping the project in perpetual scaffolding (more swarm specs, more benches, more zettels) instead of closing the last two open stitches so the work can be witnessed.</p>
+</li>
+</ol>
+<hr />
+<h3 id="3-the-four-small-stitches-that-close-the-circuit-without-building-anothe">3. The Four Small Stitches That Close the Circuit (Without Building Another Crane)<a class="h-anchor" href="#3-the-four-small-stitches-that-close-the-circuit-without-building-anothe" aria-label="Link to section">#</a></h3>
+<ol>
+<li><strong>Take Off the Chapter Card and Collect <code>5–10</code> Blind Human Ballots (<code>R06</code> + <code>viewer/index.html</code> + <code>player.html</code>):</strong>
+   - You already built the blind viewer tab in <a href="../vtx01_build/viewer/index.html">vtx01_build/viewer/index.html</a> (<code>Case A</code> vs. <code>Case B</code>) and the 12-deed player in <code>bolas/paeleo/abominable-house/live/player.html</code>. Hiding the Roman-numeral/verb header in <code>player.html</code> and recording <code>5–10</code> unbriefed responses tests Kukkonen&rsquo;s <em>verbal overshadowing</em> boundary (<code>R06</code>) and replaces <code>UNKNOWN</code> in <code>policy_traces.json</code> with measured human data.</li>
+<li><strong>Keep Both House Ledgers Side by Side as a Dantès Fortress Diff (<code>M04</code> + Entry 28):</strong>
+   - Don&rsquo;t overwrite <code>live/ledger.js</code> or <code>by-what-light/engine.js</code> to hide their 6 rule differences (conditional vs. unconditional knifing fatality; <code>R,B,I,O</code> vs. <code>R,O,I,B</code>). Expose them as a two-option toggle (<code>ruleset: "bolas_history" | "bwl_strict"</code>) in <code>policies.html</code> so readers see <code>fortezza pensata != fortezza vera</code> move both valid story counts and insurance payouts live.</li>
+<li><strong>Pass <code>ledger.js</code>&lsquo;s Seven Body <code>levers(w)</code> into the Flour-Sack Rig (<code>PAE-03</code> + <code>PAE-04</code> + <code>VTX-0.1</code>):</strong>
+   - <code>ledger.js</code> already outputs <code>loom, weight, tempo, halo, shadow, shrink, grey</code> from accumulated agent memory (<code>G03</code>), and <code>workbench.html</code> / <code>vtx_engine.js</code> already deform bare-room sack posture (<code>M02</code>, <code>2017-03</code>). Wiring those seven numbers into the sack rig joins all three local codebases into one continuous machine.</li>
+<li><strong>Merge <code>PR #14</code> and Cross-Link <code>Lab 7</code>&lsquo;s Videotext Chapters (<code>02</code>, <code>18</code>, <code>25</code>, <code>27</code>, <code>28</code>, <code>29</code>):</strong>
+   - Merging <code>bolas</code> PR #14 makes <code>whole-house.html</code> and <code>live/policies.html</code> live (<code>200</code> instead of <code>404</code>), adding a 4-policy payout footer to Row 13 of <code>film.html</code> joins the arsonist ending to the policies, and linking <code>Lab 7</code> (<code>non-serviam</code>, <code>bitic-mimesis</code>, <code>empty-room</code>, <code>abominable-house</code>, <code>house-is-occupied</code>, <code>by-what-light</code>) back to <code>PAE-04</code> connects the videotext reader you already built to the house.</li>
+</ol>
+      </div>
+
+      <nav class="doc-pager" aria-label="Document pagination"><a class="pager-card" href="./pae04-scion-run.html"><div class="pager-dir">← Previous Document</div><div class="pager-title">SCION v3.0 Execution — PAE-04 &amp; The DH2025 Spine</div></a><a class="pager-card" href="./readme.html"><div class="pager-dir">Next Document →</div><div class="pager-title">Repository Overview &amp; Architecture (README)</div></a></nav>
+    </main>
+  </div>
+
+  <script src="./reader.js"></script>
+</body>
+</html>

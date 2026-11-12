@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en" data-plate="paper" data-size="md" data-width="book">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SCION v3.0 Execution — PAE-04 &amp; The DH2025 Spine — burning-house</title>
+  <meta name="description" content="Rigorous formal verification run across 12^12 stories, Calvino&#x27;s 14,000 carry slip, Pierazzo&#x27;s 27:25 prime ratio, and the 28-state DP quotient." />
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+  <link rel="icon" type="image/png" sizes="64x64" href="../assets/favicon-64.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
+  <link rel="shortcut icon" href="../favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png" />
+  <script>
+    (function () {
+      try {
+        var qp = new URLSearchParams(location.search).get('plate');
+        var p = qp || localStorage.getItem('bh_doc_plate') || localStorage.getItem('bh_plate') || 'paper';
+        if (['paper','notebook','ochre','night'].indexOf(p) !== -1) document.documentElement.setAttribute('data-plate', p);
+        var s = localStorage.getItem('bh_doc_size') || 'md';
+        if (['sm','md','lg'].indexOf(s) !== -1) document.documentElement.setAttribute('data-size', s);
+        var w = localStorage.getItem('bh_doc_width') || 'book';
+        if (['book','wide'].indexOf(w) !== -1) document.documentElement.setAttribute('data-width', w);
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./reader.css" />
+</head>
+<body id="top">
+  <div class="read-progress" id="readProgress"></div>
+
+  <header class="reader-topbar">
+    <div class="topbar-left">
+      <button type="button" class="crumb-link mob-toc-btn" id="mobTocBtn">☰ Contents</button>
+      <a class="brand-pill" href="../index.html">burning-house</a>
+      <span class="crumb-sep">/</span>
+      <a class="crumb-link" href="./index.html">Reading Room</a>
+      <a class="crumb-link" href="../paeleo/abominable-house/index.html">PAE-04</a>
+    </div>
+    <div class="topbar-right">
+      <div class="ctrl-group" role="group" aria-label="Reading theme">
+        <button type="button" class="ctrl-btn active" data-set-plate="paper">Paper</button>
+        <button type="button" class="ctrl-btn" data-set-plate="notebook">Notebook</button>
+        <button type="button" class="ctrl-btn" data-set-plate="ochre">Ochre</button>
+        <button type="button" class="ctrl-btn" data-set-plate="night">Night</button>
+      </div>
+      <div class="ctrl-group" role="group" aria-label="Font size">
+        <button type="button" class="ctrl-btn" data-set-size="sm">A−</button>
+        <button type="button" class="ctrl-btn active" data-set-size="md">A</button>
+        <button type="button" class="ctrl-btn" data-set-size="lg">A+</button>
+      </div>
+      <div class="ctrl-group" role="group" aria-label="Column width">
+        <button type="button" class="ctrl-btn active" data-set-width="book">Book</button>
+        <button type="button" class="ctrl-btn" data-set-width="wide">Wide</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="reader-shell">
+    <aside class="reader-rail" id="readerRail" aria-label="Table of contents">
+      <div class="rail-meta-box">
+        <div class="rail-kicker">Papers &amp; Specifications</div>
+        <div class="rail-stats">
+          <span>4,840 words</span>
+          <span>· ~21 min read</span>
+          <span>· 18 sections</span>
+        </div>
+      </div>
+      <input type="search" id="tocFilter" class="toc-filter" placeholder="Filter contents…" aria-label="Filter table of contents" />
+      <div class="toc-heading">Contents</div>
+      <ul class="toc-list">
+        <li class="toc-item lvl-2"><a href="#i-shattering-stepping-stone-collector-diagnostic">I. SHATTERING &amp; STEPPING-STONE COLLECTOR DIAGNOSTIC</a></li>
+<li class="toc-item lvl-3"><a href="#1-eternal-movement-vs-dual-stagnation">1. Eternal Movement vs. Dual Stagnation</a></li>
+<li class="toc-item lvl-3"><a href="#2-the-one-sentence-lie-shattering-blueprint">2. The One-Sentence Lie &amp; Shattering Blueprint</a></li>
+<li class="toc-item lvl-3"><a href="#3-collector-diagnostic-two-new-measured-forensic-stepping-stones">3. Collector Diagnostic &amp; Two New Measured Forensic Stepping Stones</a></li>
+<li class="toc-item lvl-2"><a href="#ii-polymorphic-living-lineage-genome-yaml">II. POLYMORPHIC LIVING LINEAGE GENOME (YAML)</a></li>
+<li class="toc-item lvl-2"><a href="#iii-naurian-theory-of-the-edition-spencer-brown-categorical-olog">III. NAURIAN THEORY-OF-THE-EDITION &amp; SPENCER-BROWN CATEGORICAL OLOG</a></li>
+<li class="toc-item lvl-3"><a href="#1-categorical-ontology-log-olog-of-the-7-moves-pae-04-modules">1. Categorical Ontology Log (Olog of the 7 Moves &amp; PAE-04 Modules)</a></li>
+<li class="toc-item lvl-3"><a href="#2-verified-commutative-diagrams">2. Verified Commutative Diagrams ((→) ∘ (→) = (→))</a></li>
+<li class="toc-item lvl-3"><a href="#3-naurian-assumption-ledger-change-tests-and-residual-human-theory">3. Naurian Assumption Ledger, Change Tests, and Residual Human Theory</a></li>
+<li class="toc-item lvl-2"><a href="#iv-maximum-fuel-operative-artifacts-ttl-2">IV. MAXIMUM-FUEL OPERATIVE ARTIFACTS (ttl = 2)</a></li>
+<li class="toc-item lvl-3"><a href="#artifact-iva-scholarly-research-echo-operative-argument-prompt-for-the-p">Artifact IV.A — Scholarly RESEARCH_ECHO (Operative Argument Prompt for the PAE-04 Paper)</a></li>
+<li class="toc-item lvl-3"><a href="#artifact-ivb-operative-kurosawa-cinepromptographic-final-prompt-c-3364-c">Artifact IV.B — Operative Kurosawa / Cinepromptographic FINAL_PROMPT_C (3,364 Characters, Verified [3000, 3500])</a></li>
+<li class="toc-item lvl-3"><a href="#artifact-ivc-executable-enc-citation-rule-disambiguation-kernel-pae04-en">Artifact IV.C — Executable ENC Citation &amp; Rule-Disambiguation Kernel (pae04-enc.mjs)</a></li>
+<li class="toc-item lvl-3"><a href="#artifact-ivd-upgraded-proceedingsdh2025boa-bibtex-anchor">Artifact IV.D — Upgraded @proceedings{dh2025boa} BibTeX Anchor</a></li>
+<li class="toc-item lvl-2"><a href="#v-divergent-philogyny-blind-critique-quine-reentry-the-travelers-stance">V. DIVERGENT PHILOGYNY, BLIND CRITIQUE &amp; QUINE REENTRY (THE TRAVELER&#x27;S STANCE)</a></li>
+<li class="toc-item lvl-3"><a href="#1-orthogonal-stepping-stone-branches-select-top-k-3">1. Orthogonal Stepping-Stone Branches (select_top_k = 3)</a></li>
+<li class="toc-item lvl-3"><a href="#2-the-emergent-scion-wedge-blind-validation-ledger">2. The Emergent Scion Wedge &amp; Blind Validation Ledger</a></li>
+<li class="toc-item lvl-3"><a href="#3-quine-reentry-seeds-ttl-1-refusing-final-arrival">3. Quine Reentry Seeds (ttl = 1 — Refusing Final Arrival)</a></li>
+      </ul>
+    </aside>
+
+    <main class="reader-main">
+      <header class="doc-header">
+        <div class="doc-kicker">Papers &amp; Specifications · pae04_abominable_house_scion_run.md</div>
+        <h1 class="doc-title">SCION v3.0 Execution — PAE-04 &amp; The DH2025 Spine</h1>
+        <p class="doc-subtitle">Rigorous formal verification run across 12^12 stories, Calvino&#x27;s 14,000 carry slip, Pierazzo&#x27;s 27:25 prime ratio, and the 28-state DP quotient.</p>
+        <div class="doc-byline">
+          <span>4,840 words · ~21 min read · 18 sections</span>
+          <div class="doc-actions">
+            <button type="button" class="doc-act-btn" data-copy-url="">Copy URL</button>
+            <button type="button" class="doc-act-btn" onclick="window.print()">Print / PDF</button>
+            <a class="doc-act-btn" href="../pae04_abominable_house_scion_run.md">Raw .md</a>
+          </div>
+        </div>
+      </header>
+
+      
+
+      <div class="md-prose">
+        <h1 id="scion-v30-execution-pae-04-the-burning-of-the-abominable-house-the-dh202">SCION v3.0 EXECUTION — PAE-04 · <em>THE BURNING OF THE ABOMINABLE HOUSE</em> &amp; THE DH2025 SPINE</h1>
+<p><em>Executed under <a href="https://www.google.com/search?q=./scion_agent_first_architect.md">SCION v3.0</a> (fortified with <a href="https://github.com/elder-plinius/CL4R1T4S/blob/main/ANTHROPIC/CLAUDE-CODE-FABLE-5.2.txt"><code>CLAUDE-CODE-FABLE-5.2.txt</code></a> and <a href="https://www.anthropic.com/claude-fable-and-mythos-5-2">Anthropic Claude Fable 5.2</a>) against the 15-paper spine from <a href="https://zenodo.org/records/19494802"><code>Digital Humanities 2025: Book of Abstracts</code> (Zenodo <code>10.5281/zenodo.19494802</code>)</a> and Italo Calvino &amp; Paul Braffort&rsquo;s Oulipian specification (<a href="https://en.wikipedia.org/wiki/The_Burning_of_the_Abominable_House"><em>The Burning of the Abominable House</em></a>; <a href="https://nickm.com/classes/resources/12-oulipo-p.pdf"><em>Oulipo</em> dossier</a>).</em></p>
+<div class="md-code-wrap"><div class="md-code-bar"><span>yaml</span><button type="button" class="code-copy-btn" data-copy-code>Copy</button></div><pre><code>scion_runtime_binding:
+  target: &quot;PAE-04 · The Whole House × 15 Concrete DH2025 Lisbon Papers&quot;
+  mode: &quot;deep_inversion&quot;
+  ttl: 2
+  beam_width: 3
+  select_top_k: 3
+  strictness: 0.92
+  effort_routing: &quot;xhigh (combinatorial forensics &amp; olog closure) + isolated branch sandboxes&quot;
+  skip_theory: false
+  verified_executions:
+    - &quot;Python BigInt factorization &amp; 1973 paratextual carry-slip proof (MEASURED)&quot;
+    - &quot;Node.js ENC URI hash &amp; 5-regime rule disambiguation kernel (MEASURED)&quot;
+    - &quot;3,364-character Kurosawa/Cinepromptographic FINAL_PROMPT_C bound check (MEASURED)&quot;</code></pre></div>
+<p>◻(DH2025_PAE04_DOSSIER)<br />
+→ [Shatters] → ◻(CENTROID_AND_RELATED_WORK_COW_PATHS)<br />
+→ [Excavates] → ◻(27_TO_25_PRIME_LOCK_AND_1973_CALCULATOR_CRUX)<br />
+→ [Encodes] → ◻(OULIPIAN_ALGORITHMIC_EDITION_GENOME)<br />
+→ [Formalizes] → ◻(16_ENTITY_COMMUTATIVE_OLOG)<br />
+→ [Compiles] → {◻(RESEARCH_ECHO), ◻(FINAL_PROMPT_C_3364), ◻(ENC_JS_KERNEL)}<br />
+→ [Forks_In_Isolation] → {◻(PHANTOM_41_8B_DECK), ◻(ADVERSARIAL_ACTUARIAL_GAME), ◻(SHUT_DOOR_ACOUSTIC_CUT)}  </p>
+<h2 id="i-shattering-stepping-stone-collector-diagnostic">I. SHATTERING &amp; STEPPING-STONE COLLECTOR DIAGNOSTIC<a class="h-anchor" href="#i-shattering-stepping-stone-collector-diagnostic" aria-label="Link to section">#</a></h2>
+<p>◻(COMBINATORIAL_FIRE_12_POW_12)<br />
+→ [Collides_With] → ◻(CENTROID_AVERAGING_AND_LLM_PRIORS)<br />
+→ [Breaks_Open_Via] → ◻(BELINDO_ENTANGLEMENT_AND_PARATEXT_SLIP)<br />
+→ [Reveals] → ◻(IRREDUCTIONIST_ANTICOMBINATORICS)  </p>
+<h3 id="1-eternal-movement-vs-dual-stagnation">1. Eternal Movement vs. Dual Stagnation<a class="h-anchor" href="#1-eternal-movement-vs-dual-stagnation" aria-label="Link to section">#</a></h3>
+<ul>
+<li><strong>Eternal Movement</strong>: Exponential combinatorial proliferation (<span class="md-math">12<sup>12</sup> = 8,916,100,448,256</span> raw histories exploding to <span class="md-math">5.46  ×  10<sup>36</sup></span> room-light-trace-witness configurations), physical witness destruction (fire consuming Waldemar&rsquo;s copybook down to its plastic-coated cover, four deeds sealed behind a shut door, unindexed Deed XIII arson), and non-local algebraic entanglement where touching one character&rsquo;s rule warps everyone else&rsquo;s survival and insurance marginals.</li>
+<li><strong>Stagnant Cow Path A (Field-Level DH Rituals)</strong>: Taming fluid <span class="md-math">8  ×  10<sup>12</sup></span> traditions by collapsing clusters into a synthetic <code>"average manuscript"</code> (<a href="https://zenodo.org/records/19494802">Pierazzo 2025: 1015</a>), asking entrenched frontier LLMs (<code>F1 0.41–0.76</code>) to operationalize focalization via prompt tweaks (<a href="https://zenodo.org/records/19494802">Pichler &amp; Pagel 2025: 1012</a>), generating diffusion comic panels that lose causal body continuity (<a href="https://zenodo.org/records/19494802">Onal et al. 2025: 120</a>), or trapping dynamic editions behind static HTML permalinks (<a href="https://zenodo.org/records/19494802">Enns, Michel, &amp; Kuczera 2025: 231</a>).</li>
+<li><strong>Stagnant Cow Path B (Paper-Level Consensus Framing)</strong>: Treating these 15 <a href="https://zenodo.org/records/19494802">DH2025</a> papers as a polite 7-move &ldquo;Related Work&rdquo; literature survey that validates <code>PAE-04</code> as a finished exhibit, rather than using their mathematical and material collisions to expose unclosed tensions inside <em>The Whole House</em>.</li>
+</ul>
+<h3 id="2-the-one-sentence-lie-shattering-blueprint">2. The One-Sentence Lie &amp; Shattering Blueprint<a class="h-anchor" href="#2-the-one-sentence-lie-shattering-blueprint" aria-label="Link to section">#</a></h3>
+<blockquote>
+<p><strong>The Lie</strong>: <strong>&ldquo;An unreadable <span class="md-math">8  ×  10<sup>12</sup></span> combinatorial abyss can be domesticated either by averaging its survivors into a representative centroid or by delegating its formal constraints to statistical prose.&rdquo;</strong></p>
+</blockquote>
+<div class="md-code-wrap"><div class="md-code-bar"><span>yaml</span><button type="button" class="code-copy-btn" data-copy-code>Copy</button></div><pre><code>shattering_blueprint:
+  catalyst: &quot;Pruning Belindo from knifing and being strangled (2,663,172,255,744 stories) silently slashes Widow Roessler&#x27;s uninvolved life-insurance payout (void only if Ogiva knifes or strangles her) from 84.0% to 79.4%, while forensic factorization exposes a 41,803,776,000-story scar inside Calvino&#x27;s printed numeral.&quot;
+  mirror_moment: &quot;At T ZERO (fabula slope = 0), with fire-brigade sirens approaching Waldemar&#x27;s laboratory door (Calvino 1973 [1993]), insurer Skiller enters the suspect pool (raising P(list planted) from 75.0% across 4 tenants to 80.0% across 5 actors) and collapses the boundary between external programmer and Deed XIII victim/arsonist.&quot;
+  mentor_force: &quot;Constraint entanglement (Šeļa, Haider, &amp; Plecháč 2025: 116), relational absence (Charlesworth &amp; Warwick 2025: 198), and 8-digit 1973 pocket-calculator overflow.&quot;
+  higher_principle: &quot;Irreductionist Anticombinatorics—lossless BigInt state quotienting (&lt;=28 and &lt;=85,008 DP states) paired with MAP-Elites Six Memos illumination (Mouret &amp; Clune 2015; Jacomy et al. 2025: 1287) that preserves irreducible narrative extremes without averaging away tail-risk liability or clinamen.&quot;</code></pre></div>
+<h3 id="3-collector-diagnostic-two-new-measured-forensic-stepping-stones">3. Collector Diagnostic &amp; Two New Measured Forensic Stepping Stones<a class="h-anchor" href="#3-collector-diagnostic-two-new-measured-forensic-stepping-stones" aria-label="Link to section">#</a></h3>
+<ul>
+<li><strong><code>The_Abandoned_Objective</code></strong>: Writing a defensive literature-review spine whose sole job is proving <code>PAE-04</code> &ldquo;meets DH2025 expectations&rdquo; across seven tidy headings.</li>
+<li><strong><code>The_Novelty_Bait</code> (Measured Mathematical Discoveries Excavated in Sandbox)</strong>:
+  1. <strong>The Exact <span class="md-math">27 : 25</span> (<code>1.08</code>) Pierazzo–Calvino Prime Lock (<code>MEASURED</code>)</strong>: Factorizing Pierazzo&rsquo;s <em>Il Capitolo dei Frati</em> variant count (<span class="md-math">8,255,648,563,200 = 2<sup>24</sup>  ·  3<sup>9</sup>  ·  5<sup>2</sup></span>, <a href="https://zenodo.org/records/19494802">Pierazzo 2025: 1014</a>) against Calvino&rsquo;s burned-house state space (<span class="md-math">12<sup>12</sup> = 8,916,100,448,256 = 2<sup>24</sup>  ·  3<sup>12</sup></span>) reveals they share the <strong>exact greatest common divisor <span class="md-math">2<sup>24</sup>  ·  3<sup>9</sup> = 330,225,942,528</span></strong> and stand in the exact rational ratio <strong><span class="md-math">27 : 25 = 1.080000</span></strong> with zero remainder. Move I is no longer an approximate order-of-magnitude metaphor (<span class="md-math">8  ×  10<sup>12</sup></span>); it is an exact prime-lattice isomorphism where <span class="md-math">3<sup>3</sup></span> ternary actor-pair degrees of freedom trade places with <span class="md-math">5<sup>2</sup></span> decimal stanza slots.
+  2. <strong>Forensic Solution to the 1973 <code>8,874,296,672,256</code> Textual Crux (<code>MEASURED</code>)</strong>: Why does the English print tradition print <code>8,874,296,672,256</code> (which <a href="https://en.wikipedia.org/wiki/The_Burning_of_the_Abominable_House">Wikipedia</a> further mutilates into <code>874.296.672.256</code>, dropping <span class="md-math">8  ×  10<sup>12</sup></span>) instead of <span class="md-math">12<sup>12</sup> = 8,916,100,448,256</span>? Dividing <code>8,874,296,672,256</code> by <span class="md-math">12<sup>6</sup> = 2,985,984</span> yields an <strong>exact integer quotient with zero remainder</strong>:</li>
+</ul>
+<div class="md-math-block">8,874,296,672,256 = 2,985,984  ×  2,971,984 = 12<sup>6</sup>  ×  (12<sup>6</sup> - 14,000)</div>
+<pre><code> Because 8-digit pocket calculators in 1972–1973 overflowed at <span class="md-math">10<sup>8</sup></span>, squaring <span class="md-math">12<sup>6</sup> = 2,985,984</span> required hand multiplication, where a single thousands-column carry slip (<span class="md-math">85  →  71</span>, losing <span class="md-math">14,000</span>) erased exactly <span class="md-math">41,803,776,000</span> stories. This hands Move IV ([Enns et al. 2025](https://zenodo.org/records/19494802); [Roeder 2025](https://zenodo.org/records/19494802)) a smoking-gun media-archaeological proof of 1973 hybrid human-calculator materiality.
+</code></pre>
+<ol start="3">
+<li><strong>Second-Order Actuarial Buffering Inside Move II (<code>MEASURED</code>)</strong>: At unconstrained baseline (<span class="md-math">12<sup>12</sup></span>), excluding <code>(Ogiva → Roessler)</code> across two lethal deeds (<code>Knifes</code>, <code>Strangles</code>) yields <span class="md-math">(11/12)<sup>2</sup> = 121/144 = 84.0278\%</span> (<code>84.0%</code>). Under naive local-only pair pruning (Belindo cannot knife <span class="md-math"> ⇒  9</span> pairs; nobody strangles Belindo <span class="md-math"> ⇒  9</span> pairs), non-void survival would fall to <span class="md-math">(8/9)<sup>2</sup> = 64/81 = 79.0123\%</span>. Yet the full 5-rule film sieve lands at <strong><code>79.4%</code></strong>—proving <strong>double entanglement</strong>: Belindo&rsquo;s local rules depress Roessler&rsquo;s payout by <span class="md-math">-4.6</span> percentage points, while the <span class="md-math"> ≤  28</span>-state death-and-tie ledger simultaneously buffers <span class="md-math">+0.39</span> points back through path-dependent mortality.
+- <strong><code>Deceptive_Potential</code> (<em>The Alien Face Eyes</em>)</strong>: Three apparent flaws inside <code>PAE-04</code>—Calvino&rsquo;s <code>41.8B</code>-story carry error, the unlinked repository gap between <code>Lab 7</code> (<code>2700-fa26</code>) and <code>CRASH LAB</code> (<code>bolas</code>), and the 4 unrendered shut-door deeds in <code>flour-sacks/</code>—are not bugs to apologize for; they are <strong>the exact structural proofs</strong> of Algorithmic Editioning, Sortes room-locality, and Kablitzian focalization.</li>
+</ol>
+<h2 id="ii-polymorphic-living-lineage-genome-yaml">II. POLYMORPHIC LIVING LINEAGE GENOME (<code>YAML</code>)<a class="h-anchor" href="#ii-polymorphic-living-lineage-genome-yaml" aria-label="Link to section">#</a></h2>
+<p>Encoded simultaneously across <code>LITERATURE</code>, <code>CODE_MATH</code>, and <code>EYE_LIGHT</code> axes (<a href="https://www.ub.edu/llulldb/docs/Calvino.pdf">Duncan 2012</a>; <a href="https://doi.org/10.48550/arXiv.1504.04909">Mouret &amp; Clune 2015</a>; <a href="https://doi.org/10.1016/j.cognition.2009.07.005">Baker, Saxe, &amp; Tenenbaum 2009</a>; <a href="https://doi.org/10.1145/3586183.3606763">Park et al. 2023</a>; <a href="https://zenodo.org/records/19494802"><code>DH2025</code> Lisbon</a>):</p>
+<div class="md-code-wrap"><div class="md-code-bar"><span>yaml</span><button type="button" class="code-copy-btn" data-copy-code>Copy</button></div><pre><code>title: Ashes, Sieves, Sacks, and Lamps
+seed: Oulipian anticombinatorics reborn as an exact BigInt DP edition, Kablitzian room-and-lamp state machine, procedural flour-sack stage, and irreductionist DH2025 counter-archive.
+
+ancestral_ecology:
+  key_sources:
+    - &quot;Italo Calvino — L&#x27;incendio della casa abominevole (1973) &amp; Ti con zero (1967)&quot;
+    - &quot;Paul Braffort — Prose and Anticombinatorics (1977 Pompidou A.R.T.A. / 1981 Atlas)&quot;
+    - &quot;Alison Knowles &amp; James Tenney — A House of Dust (1967 FORTRAN room-light-material-inhabitant generator)&quot;
+    - &quot;Solomon Marcus — Mathematische Poetik (1970/1973 binary spectator stage matrix)&quot;
+    - &quot;Boris Yarkho — Methodology for the Exact Study of Literature (1920s/2006 self-interest saturation)&quot;
+    - &quot;Andreas Kablitz — Erzählperspektive—Point of View—Focalisation (1988 histoire perception split)&quot;
+    - &quot;Ollie Johnston &amp; Frank Thomas — The Illusion of Life (1981 faceless flour-sack volume acting)&quot;
+    - &quot;Jean-Baptiste Mouret &amp; Jeff Clune — MAP-Elites (2015 quality-diversity illumination)&quot;
+    - &quot;Chris Baker, Rebecca Saxe, &amp; Joshua Tenenbaum — Action Understanding as Inverse Planning (2009)&quot;
+  inherited_lessons:
+    - &quot;Delegate exhaustive combinatorial sieving to discrete state machines so human/aesthetic selection concentrates on the Lucretian clinamen.&quot;
+    - &quot;Separate physical room-and-lamp perception inside the histoire from Bayesian irony in the watcher.&quot;
+    - &quot;Carry aggression, hesitation, and dead weight through faceless sack silhouette and timing rather than diffusion surface polish.&quot;
+    - &quot;Illuminate elite niches across quality-diversity axes rather than collapsing trillions of paths into a cluster centroid.&quot;
+
+origin_conditions:
+  first_questions:
+    - &quot;How do 12 burned verb labels across 4 dead tenants compress without averaging away tail-risk fraud or narrative surprise?&quot;
+    - &quot;Why does forbidding Belindo from knifing secretly slash Widow Roessler&#x27;s life-insurance payout?&quot;
+    - &quot;What can a tenant know when 4 deeds occur behind a shut door and lamps go dark?&quot;
+  first_representations: [&quot;12-column Hollerith punch card&quot;, &quot;4x3 non-reflexive directed multigraph&quot;, &quot;28-state bitmask/wait Markov trellis&quot;, &quot;85,008-state room-light-trace automaton&quot;, &quot;96-rig Canvas flour-sack stage&quot;]
+  first_invariants:
+    - &quot;No dead tenant initiates a subsequent deed; a tied-and-gagged tenant waits two deeds.&quot;
+    - &quot;Watch register (#a3321f brick-red / Big Shoulders Display) and Read register (IM Fell English / Tufte slopegraphs) bind to identical BigInt truth.&quot;
+  first_failed_approaches:
+    - &quot;1973 8-digit calculator + hand squaring of 12^6 = 2,985,984 (slipped to 2,985,984 * 2,971,984 = 8,874,296,672,256).&quot;
+    - &quot;Frontier LLM zero/few-shot + DSPy focalization prompts (stuck at F1 0.41-0.76 due to pretraining priors, Pichler &amp; Pagel 2025).&quot;
+    - &quot;Naive enumeration of 3.79e24 room-light histories without Markov state quotienting or MCTS.&quot;
+
+light_and_optics_taxonomy:
+  histoire_light: [&quot;lit parlor tungsten&quot;, &quot;corridor spill under shut door&quot;, &quot;unlit midnight room&quot;, &quot;residual physical trace in daylight&quot;]
+  editorial_registers:
+    watch_mode: &quot;Warm rag paper, #a3321f brick red, Big Shoulders Display + JetBrains Mono, Lotte Reiniger / Peter Foldès / Ivan Sutherland / John Whitney procedural silhouettes&quot;
+    read_mode: &quot;Cream paper, yellow highlighter mark, IM Fell English + Inter + IBM Plex Mono, Edward Tufte small multiples + sluice-gate flow bars&quot;
+  occlusion_rule: &quot;Four deeds behind the shut door emit zero visual geometry—only ledger state mutations and post-hoc floor traces.&quot;
+
+epochs:
+  - period: &quot;1967–1977 (Oulipo &amp; Mainframe Genesis)&quot;
+    locale: &quot;Paris / Turin / Centre Pompidou A.R.T.A.&quot;
+    primary_sources: [&quot;Knowles &amp; Tenney 1967&quot;, &quot;Marcus 1970&quot;, &quot;Calvino 1973&quot;, &quot;Braffort 1977&quot;]
+    methods: [&quot;FORTRAN permutation&quot;, &quot;80-column punch cards&quot;, &quot;anticombinatorial constraint sieving&quot;]
+    tensions: [&quot;Llullian exhaustive orthodoxy vs. Lucretian clinamen&quot;, &quot;8-digit hardware ceiling vs. 12^12 explosion&quot;]
+    influence_weight: 28
+  - period: &quot;1980–1995 (Narratology, Classical Acting &amp; BDI Formalism)&quot;
+    locale: &quot;Ithaca / Burbank / German Romance Philology / ICMAS&quot;
+    primary_sources: [&quot;Genette 1980&quot;, &quot;Johnston &amp; Thomas 1981&quot;, &quot;Kablitz 1988&quot;, &quot;Calvino 1988 Six Memos&quot;, &quot;Rao &amp; Georgeff 1995&quot;]
+    methods: [&quot;fabula/syuzhet velocity&quot;, &quot;flour-sack volume choreography&quot;, &quot;histoire-perception focalization&quot;, &quot;BDI practical reasoning&quot;]
+    tensions: [&quot;perception vs. information distribution&quot;, &quot;symbolic role-casting vs. practical self-interest&quot;]
+    influence_weight: 22
+  - period: &quot;2009–2024 (Inverse Planning, Quality-Diversity &amp; Generative Simulacra)&quot;
+    locale: &quot;MIT / Stanford / Coimbra / Cultural Analytics&quot;
+    primary_sources: [&quot;Baker et al. 2009&quot;, &quot;Mouret &amp; Clune 2015&quot;, &quot;Portela &amp; Rito Silva 2017&quot;, &quot;Cranmer et al. 2020&quot;, &quot;Krämer 2023&quot;, &quot;Chandra et al. 2023&quot;, &quot;Park et al. 2023&quot;]
+    methods: [&quot;Bayesian inverse-inverse planning&quot;, &quot;MAP-Elites&quot;, &quot;memory-stream agents&quot;, &quot;cultural technique of flattening&quot;]
+    tensions: [&quot;exact marginalization vs. MCTS sampling&quot;, &quot;single optimal solution vs. elite archive&quot;]
+    influence_weight: 24
+  - period: &quot;2025–2026 (Lisbon DH2025 Spine &amp; PAE-04 The Whole House)&quot;
+    locale: &quot;NOVA FCSH Lisbon / GitHub Pages (bolas &amp; 2700-fa26)&quot;
+    primary_sources: [&quot;Pierazzo 2025&quot;, &quot;Šeļa et al. 2025&quot;, &quot;Cugliana et al. 2025&quot;, &quot;Enns et al. 2025&quot;, &quot;Pichler &amp; Pagel 2025&quot;, &quot;Jacomy et al. 2025&quot;, &quot;Calado et al. 2025&quot;]
+    methods: [&quot;BigInt browser DP&quot;, &quot;333,333-run agent batches&quot;, &quot;ATAG/ENC graph citations&quot;, &quot;stereoscopic Watch/Read sluice interfaces&quot;]
+    tensions: [&quot;centroid philology vs. irreductionist optima&quot;, &quot;LLM vibe-coding vs. audited JS state machines&quot;]
+    influence_weight: 26
+
+migration_map:
+  - from: &quot;1973 IBM punch cards &amp; hand-squared 12^6 notes&quot;
+    to: &quot;Browser-native ES BigInt DP &amp; GitHub Pages (player.html, numbers.html, policies.html)&quot;
+    reason: &quot;Zero-install classroom didactics (Zweibel in Calado et al. 2025) + exact verification of 12^12 and 2.66e12&quot;
+    shift: &quot;Recovers lost 41.8B carry-slip stories and exposes real-time sluice-gate probability cascades&quot;
+  - from: &quot;Flat verb-pair matrices (doer, sufferer)&quot;
+    to: &quot;Four-axis Sortes rooms (by-what-light/index.html: room, light, trace, co-present witness)&quot;
+    reason: &quot;Operationalizing Cugliana et al. (2025) room-locality and Kablitz (1988) perception&quot;
+    shift: &quot;Expands space to 5.46e36 raw / 3.79e24 legal histories across &lt;=85,008 DP states; lifts 3rd-tenant awareness to 64%&quot;
+
+citation_axis:
+  core_citations: [&quot;Calvino 1973&quot;, &quot;Braffort 1977&quot;, &quot;Pierazzo 2025&quot;, &quot;Šeļa et al. 2025&quot;, &quot;Pichler &amp; Pagel 2025&quot;, &quot;Enns et al. 2025&quot;, &quot;Pianzola et al. 2025&quot;]
+  shadow_citations: [&quot;Yarkho 2006 [1920s] self-interest saturation&quot;, &quot;Marcus 1970 binary stage matrix&quot;, &quot;Knowles &amp; Tenney 1967 House of Dust&quot;, &quot;Frog 2021 metrical entanglement&quot;, &quot;Fowles 2010 anthropology of absence&quot;]
+  adversaries: [&quot;Centroid averaging of combinatorial plots&quot;, &quot;Prompt-only LLM focalization&quot;, &quot;Diffusion-pixel sequential incoherence&quot;, &quot;Static non-parameterized web permalinks&quot;]
+
+jukebox_timeline:
+  - { year: 1967, slot: &quot;A1&quot;, source: &quot;Knowles &amp; Tenney — A House of Dust&quot;, why: &quot;Four-slot room/light/material/inhabitant grammar wired directly into By What Light.&quot; }
+  - { year: 1973, slot: &quot;A4&quot;, source: &quot;Calvino — L&#x27;incendio della casa abominevole&quot;, why: &quot;Charred 12-verb index, 4 dead tenants, Skiller&#x27;s policies, and sirens at T ZERO.&quot; }
+  - { year: 1977, slot: &quot;B2&quot;, source: &quot;Braffort &amp; Calvino — Centre Pompidou A.R.T.A. demo&quot;, why: &quot;Anticombinatorial constraint sieve separating machinic filtering from authorial clinamen.&quot; }
+  - { year: 1981, slot: &quot;C1&quot;, source: &quot;Johnston &amp; Thomas — The Illusion of Life&quot;, why: &quot;Faceless flour sack proves posture and volume carry drama without facial rendering.&quot; }
+  - { year: 1988, slot: &quot;C5&quot;, source: &quot;Kablitz — Erzählperspektive / Focalisation&quot;, why: &quot;Splits room-bound histoire perception from narrator/watcher dramatic irony.&quot; }
+  - { year: 2025, slot: &quot;D3&quot;, source: &quot;Šeļa, Haider, &amp; Plecháč — Unnatural Language of Poetic Meters&quot;, why: &quot;Explains why Belindo&#x27;s local murder exclusions warp Widow Roessler&#x27;s global payout (84.0% -&gt; 79.4%).&quot; }
+  - { year: 2025, slot: &quot;E4&quot;, source: &quot;Pierazzo — 8 Thousand Billion Variants&quot;, why: &quot;Locks 8,255,648,563,200 to 12^12 in exact 25:27 ratio and foils centroid reduction.&quot; }
+
+tagline: &quot;#oulipo-anticombinatorics #bigint-philology #kablitz-lamp-logic #flour-sack-dramaturgy #constraint-entanglement #irreductionist-edition&quot;
+ttl: 2</code></pre></div>
+<h2 id="iii-naurian-theory-of-the-edition-spencer-brown-categorical-olog">III. NAURIAN THEORY-OF-THE-EDITION &amp; SPENCER-BROWN CATEGORICAL OLOG<a class="h-anchor" href="#iii-naurian-theory-of-the-edition-spencer-brown-categorical-olog" aria-label="Link to section">#</a></h2>
+<blockquote>
+<p><em>&ldquo;I will first construct the <code>&lt;theory-of-the-program&gt;</code>, then generate <code>&lt;program text&gt;</code> only after the theory is explicit.&rdquo;</em></p>
+</blockquote>
+<h3 id="1-categorical-ontology-log-olog-of-the-7-moves-pae-04-modules">1. Categorical Ontology Log (<code>Olog</code> of the 7 Moves &amp; PAE-04 Modules)<a class="h-anchor" href="#1-categorical-ontology-log-olog-of-the-7-moves-pae-04-modules" aria-label="Link to section">#</a></h3>
+<p>Every paper in the <a href="https://zenodo.org/records/19494802"><code>DH2025</code> Book of Abstracts</a> and every live module in <code>PAE-04</code> is formalized as a Spencer-Brown distinction <code>◻(entity)</code> linked by typed functional <code>[morphisms]</code>:</p>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th style="text-align: left;">Entity ID</th>
+<th style="text-align: left;">Marked Distinction <code>◻(Entity)</code></th>
+<th style="text-align: left;">Anchored Source / PAE-04 Surface</th>
+<th style="text-align: left;">Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>◻(E01)</code></td>
+<td style="text-align: left;"><code>Charred_BackCover_12_Pow_12</code> (<span class="md-math">8,916,100,448,256</span>)</td>
+<td style="text-align: left;"><a href="https://en.wikipedia.org/wiki/The_Burning_of_the_Abominable_House">Calvino 1973</a>; <a href="https://zenodo.org/records/19494802">Charlesworth &amp; Warwick 2025: 198</a> (<code>numbers.html</code>)</td>
+<td style="text-align: left;"><code>1.00</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>◻(E02)</code></td>
+<td style="text-align: left;"><code>Paratext_Crux_8_87T</code> (<span class="md-math">12<sup>6</sup>[12<sup>6</sup> - 14000]</span>) &amp; <code>874B</code></td>
+<td style="text-align: left;">Tim Parks 1993 print (<code>8,874,296,672,256</code>); <a href="https://en.wikipedia.org/wiki/The_Burning_of_the_Abominable_House">Wikipedia (<code>874.296.672.256</code>)</a>; <a href="https://zenodo.org/records/19494802">Roeder 2025: 1042</a></td>
+<td style="text-align: left;"><code>1.00</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>◻(E03)</code></td>
+<td style="text-align: left;"><code>Chiesa_Manuscript_Space_8_26T</code> (<span class="md-math">8,255,648,563,200</span>)</td>
+<td style="text-align: left;"><a href="https://zenodo.org/records/19494802">Pierazzo 2025: 1014–1015</a> (<span class="md-math">2<sup>24</sup> ·  3<sup>9</sup> ·  5<sup>2</sup></span>, exact <span class="md-math">25:27</span> lock to <code>◻(E01)</code>)</td>
+<td style="text-align: left;"><code>1.00</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>◻(E04)</code></td>
+<td style="text-align: left;"><code>Markov_Vitality_Automaton_28_States</code></td>
+<td style="text-align: left;"><a href="https://zenodo.org/records/19494802">Marcus 1973</a>; <a href="https://zenodo.org/records/19494802">Jokisch &amp; Rojas Castro 2025: 798</a> (<code>numbers.html</code> DP)</td>
+<td style="text-align: left;"><code>0.98</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>◻(E05)</code></td>
+<td style="text-align: left;"><code>Ledger_Legal_Histories_3_32T</code> (<span class="md-math">3,316,025,558,016</span>)</td>
+<td style="text-align: left;">Dead-never-act &amp; tied-wait-2-deeds sieve (<span class="md-math">37.19\%</span> of <code>◻(E01)</code>)</td>
+<td style="text-align: left;"><code>1.00</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>◻(E06)</code></td>
+<td style="text-align: left;"><code>Belindo_5Rule_Sieve_2_66T</code> (<span class="md-math">2,663,172,255,744</span>)</td>
+<td style="text-align: left;"><a href="https://nickm.com/classes/resources/12-oulipo-p.pdf">Braffort 1977</a>; Belindo knife/strangle exclusions (<code>policies.html</code>)</td>
+<td style="text-align: left;"><code>1.00</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>◻(E07)</code></td>
+<td style="text-align: left;"><code>Entangled_Widow_Payout_79_4</code> (<span class="md-math">84.0\%  →  79.4\%</span>)</td>
+<td style="text-align: left;"><a href="https://zenodo.org/records/19494802">Šeļa, Haider, &amp; Plecháč 2025: 116–118</a> (<code>policies.html</code> actuarial shift)</td>
+<td style="text-align: left;"><code>1.00</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>◻(E08)</code></td>
+<td style="text-align: left;"><code>Sortes_Room_Light_Raw_5_46e36</code></td>
+<td style="text-align: left;">Knowles &amp; Tenney 1967; <a href="https://zenodo.org/records/19494802">Cugliana et al. 2025: 209–210</a> (<code>by-what-light/</code>)</td>
+<td style="text-align: left;"><code>0.98</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>◻(E09)</code></td>
+<td style="text-align: left;"><code>Kablitz_Histoire_Perception_85008_DP</code> (<span class="md-math">3.79  ×  10<sup>24</sup></span>)</td>
+<td style="text-align: left;"><a href="https://zenodo.org/records/19494802">Kablitz 1988</a>; <a href="https://zenodo.org/records/19494802">Pichler &amp; Pagel 2025: 1011</a> (<span class="md-math">64\%</span> 3rd-tenant awareness)</td>
+<td style="text-align: left;"><code>0.97</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>◻(E10)</code></td>
+<td style="text-align: left;"><code>Bayesian_Watcher_ &amp; _E13_Attributions</code></td>
+<td style="text-align: left;"><a href="https://doi.org/10.1016/j.cognition.2009.07.005">Baker et al. 2009</a>; <a href="https://doi.org/10.1145/3588432.3591510">Chandra et al. 2023</a>; <a href="https://zenodo.org/records/19494802">Camps et al. 2025: 958</a>; <a href="https://zenodo.org/records/19494802">Pianzola et al. 2025: 202</a></td>
+<td style="text-align: left;"><code>0.96</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>◻(E11)</code></td>
+<td style="text-align: left;"><code>Signed_BDI_Yarkho_Agents_333k_MCTS</code></td>
+<td style="text-align: left;"><a href="https://doi.org/10.1145/3586183.3606763">Park et al. 2023</a>; <a href="https://zenodo.org/records/19494802">Giovannini 2025: 261</a> (<code>0.29 → 0.35 → 0.52</code> believability)</td>
+<td style="text-align: left;"><code>0.96</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>◻(E12)</code></td>
+<td style="text-align: left;"><code>Genettean_T_ZERO_Pause_1728_Openings</code></td>
+<td style="text-align: left;"><a href="https://zenodo.org/records/19494802">Yeager 2025: 558</a>; Calvino 1967 <em>Ti con zero</em> &amp; 1979 <em>Winter&rsquo;s Night</em> (<code>film.html</code>)</td>
+<td style="text-align: left;"><code>0.97</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>◻(E13)</code></td>
+<td style="text-align: left;"><code>Procedural_FlourSack_96_Rigs</code></td>
+<td style="text-align: left;"><a href="https://zenodo.org/records/19494802">Johnston &amp; Thomas 1981</a>; <a href="https://zenodo.org/records/19494802">Onal et al. 2025: 120</a>; <a href="https://zenodo.org/records/19494802">Broadwell et al. 2025: 173</a></td>
+<td style="text-align: left;"><code>0.97</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>◻(E14)</code></td>
+<td style="text-align: left;"><code>MAP_Elites_Six_Memos_Atlas</code></td>
+<td style="text-align: left;"><a href="https://doi.org/10.48550/arXiv.1504.04909">Mouret &amp; Clune 2015</a>; <a href="https://zenodo.org/records/19494802">Jacomy et al. 2025: 1287</a>; <a href="https://zenodo.org/records/19494802">Elli et al. 2021</a></td>
+<td style="text-align: left;"><code>0.96</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>◻(E15)</code></td>
+<td style="text-align: left;"><code>Git_ATAG_ENC_Parameterized_State</code></td>
+<td style="text-align: left;"><a href="https://zenodo.org/records/19494802">Enns, Michel, &amp; Kuczera 2025: 231–233</a>; <a href="https://ldod.uc.pt/">Portela &amp; Rito Silva 2017</a>; <a href="https://zenodo.org/records/19494802">Calado et al. 2025: 74</a></td>
+<td style="text-align: left;"><code>0.95</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>◻(E16)</code></td>
+<td style="text-align: left;"><code>Stereoscopic_Watch_Read_Sluice_UI</code></td>
+<td style="text-align: left;"><a href="https://zenodo.org/records/19494802">Casavola et al. 2025: 195</a>; <a href="https://zenodo.org/records/19494802">Richardson &amp; Butterworth 2025: 1034</a>; <a href="https://zenodo.org/records/19494802">Battisti &amp; Daquino 2025</a></td>
+<td style="text-align: left;"><code>0.97</code></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="2-verified-commutative-diagrams">2. Verified Commutative Diagrams (<code>(→) ∘ (→) = (→)</code>)<a class="h-anchor" href="#2-verified-commutative-diagrams" aria-label="Link to section">#</a></h3>
+<ol>
+<li><strong>Diagram C1 — Lossless Quotient vs. Centroid Collapse (Moves I, II, IV)</strong>:
+   - <em>Path A (Brute Sieve)</em>: <code>◻(E01)</code> <span class="md-math"><span class="math-xarrow"><span class="math-xarrow-lbl">[Filter_Dead_Tied]</span><span class="math-xarrow-line">───▶</span></span></span> <code>◻(E05)</code> <span class="md-math"><span class="math-xarrow"><span class="math-xarrow-lbl">[Filter_Belindo_5Rule]</span><span class="math-xarrow-line">───▶</span></span></span> <code>◻(E06)</code> <span class="md-math"><span class="math-xarrow"><span class="math-xarrow-lbl">[Project_Ogiva_Roessler]</span><span class="math-xarrow-line">───▶</span></span></span> <code>◻(E07: 79.4%)</code>.
+   - <em>Path B (DP Compression)</em>: <code>◻(E01)</code> <span class="md-math"><span class="math-xarrow"><span class="math-xarrow-lbl">[Quotient_To_28_States]</span><span class="math-xarrow-line">───▶</span></span></span> <code>◻(E04)</code> <span class="md-math"><span class="math-xarrow"><span class="math-xarrow-lbl">[BigInt_Transition_Product]</span><span class="math-xarrow-line">───▶</span></span></span> <code>◻(E06)</code> <span class="md-math"><span class="math-xarrow"><span class="math-xarrow-lbl">[Exact_Marginal]</span><span class="math-xarrow-line">───▶</span></span></span> <code>◻(E07: 79.4%)</code>.
+   - <em>Closure Verdict</em>: <strong>COMMUTES EXACTLY</strong> (<code>2,663,172,255,744 === 2,663,172,255,744</code> to the last digit). By contrast, Pierazzo&rsquo;s <code>[Cluster_To_Average_Witness]</code> (<code>◻(E03)</code> <span class="md-math"> → </span> <code>Centroid</code>) <strong>fails to commute</strong> with <code>Project_Actuarial_Liability</code>, proving why Oulipian mystery + insurance risk require exact state compression paired with MAP-Elites (<code>◻(E14)</code>) rather than centroid averaging.</li>
+<li><strong>Diagram C2 — Kablitzian Epistemic Factorization (Moves III, V, VI)</strong>:
+   - <em>Path A (Code Architecture)</em>: <code>◻(E08)</code> <span class="md-math"><span class="math-xarrow"><span class="math-xarrow-lbl">[Enforce_Lit_Room_CoPresence]</span><span class="math-xarrow-line">───▶</span></span></span> <code>◻(E09: Histoire_Perception)</code> <span class="md-math"><span class="math-xarrow"><span class="math-xarrow-lbl">[Invert_Against_Watcher_Prior]</span><span class="math-xarrow-line">───▶</span></span></span> <code>◻(E10: Irony_&amp;_Suspense)</code>.
+   - <em>Path B (Narratological Theory)</em>: <code>◻(E08)</code> <span class="md-math"><span class="math-xarrow"><span class="math-xarrow-lbl">[Cugliana_Sortes_Room_Script]</span><span class="math-xarrow-line">───▶</span></span></span> <code>◻(Room_Situated_Trace)</code> <span class="md-math"><span class="math-xarrow"><span class="math-xarrow-lbl">[Kablitz_1988_Split]</span><span class="math-xarrow-line">───▶</span></span></span> <code>◻(E10: Information_Distribution)</code>.
+   - <em>Closure Verdict</em>: <strong>COMMUTES</strong>—whereas single-pass LLM focalization prompts (<a href="https://zenodo.org/records/19494802">Pichler &amp; Pagel 2025: 1012</a>) collapse <code>◻(E09)</code> and <code>◻(E10)</code> into pretraining noise.</li>
+<li><strong>Diagram C3 — Stereoscopic Edition Synchronization (Moves IV, V, VII)</strong>:
+   - <code>◻(E15: ENC_State_Hash)</code> <span class="md-math"><span class="math-xarrow"><span class="math-xarrow-lbl">[Project_Watch_Register]</span><span class="math-xarrow-line">───▶</span></span></span> <code>◻(E13: 96_FlourSacks_&amp;_T_ZERO)</code> and <code>◻(E15)</code> <span class="md-math"><span class="math-xarrow"><span class="math-xarrow-lbl">[Project_Read_Register]</span><span class="math-xarrow-line">───▶</span></span></span> <code>◻(E16: Sluice_Bars_&amp;_Slopegraphs)</code> commute onto identical survivor counts and <code>crm:E13_Attribute_Assignment</code> provenance chains.</li>
+</ol>
+<h3 id="3-naurian-assumption-ledger-change-tests-and-residual-human-theory">3. Naurian Assumption Ledger, Change Tests, and Residual Human Theory<a class="h-anchor" href="#3-naurian-assumption-ledger-change-tests-and-residual-human-theory" aria-label="Link to section">#</a></h3>
+<ul>
+<li><strong>Assumption Ledger</strong>:</li>
+<li><code>&lt;safe&gt;</code>: <span class="md-math">12<sup>12</sup> = 8,916,100,448,256</span>, <span class="md-math">8,874,296,672,256 = 12<sup>6</sup>(12<sup>6</sup> - 14,000)</span>, and <span class="md-math">12<sup>12</sup> / 8,255,648,563,200 = 27/25</span> are arithmetic identities independent of interpretive priors.</li>
+<li><code>&lt;uncertain&gt;</code>: Whether the <code>14,000</code> carry loss in <code>8,874,296,672,256</code> entered in Calvino&rsquo;s 1972–1973 manuscript worksheet or during subsequent editorial transcription (testable against Mondadori&rsquo;s 1993 <em>Prima che tu dica &ldquo;pronto&rdquo;</em> Italian numerals vs. February 1973 Italian <em>Playboy</em>).</li>
+<li><code>&lt;requires-user-decision&gt;</code>: (1) Whether <code>Lab 7</code> (<code>2700-fa26</code>) and <code>CRASH LAB</code> (<code>bolas</code>) should stay intentionally air-gapped during student exercises before unlocking bidirectional <code>ENC</code> deep links, or cross-link live immediately; (2) canonicalizing three distinct UI/prose names for <code>"the rules"</code> (<code>Ledger-3.32T</code>, <code>Belindo-2.66T</code>, <code>Lamp-3.79Y</code>) so readers never conflate them.</li>
+<li><strong>Change Test 1 (Actor Pool Expansion — Deed XIII / Skiller Enters)</strong>: When insurer Skiller enters the actor pool (<span class="md-math">N=4  →  5</span>, raising arsonist uniform prior from <span class="md-math">75.0\%</span> to <span class="md-math">80.0\%</span>), ordered non-reflexive pairs per deed jump from <span class="md-math">4  ×  3 = 12</span> to <span class="md-math">5  ×  4 = 20</span> (<span class="md-math">20<sup>13</sup> = 8.192  ×  10<sup>16</sup></span>). Hardcoded 12-column punch-card arrays (<code>player.html</code>) break unless parameterized over <span class="md-math">N(N-1)</span>, whereas the bitmask Markov DP generalizes cleanly from <span class="md-math">4</span>-bit to <span class="md-math">5</span>-bit <code>dead_mask</code> (<span class="md-math"> ≤  72</span> canonical states).</li>
+<li><strong>Change Test 2 (Shut-Door Illumination Mutation)</strong>: Unbarring the 4 shut-door deeds in <code>flour-sacks/</code> and <code>by-what-light/</code> expands procedural Canvas rigs from <span class="md-math">8  ×  12 = 96</span> to <span class="md-math">12  ×  12 = 144</span>, collapses epistemic ambiguity in <code>◻(E09)</code>, and drains dramatic irony from <code>◻(E10)</code>—proving Charlesworth &amp; Warwick&rsquo;s (<a href="https://zenodo.org/records/19494802">2025: 198</a>) thesis that <strong>absence is load-bearing relational structure</strong>, not missing work.</li>
+<li><strong>Residual Human Theory</strong>: No script or BibTeX file self-enforces <em>why</em> <code>PAE-04</code> refuses to crown one &ldquo;true murderer.&rdquo; A future maintainer who optimizes MCTS to output a single top-scoring mystery solution destroys Calvino&rsquo;s clinamen, Latour/Jacomy&rsquo;s irreductionism, and the entire philosophical point of <em>The Whole House</em>.</li>
+</ul>
+<h2 id="iv-maximum-fuel-operative-artifacts-ttl-2">IV. MAXIMUM-FUEL OPERATIVE ARTIFACTS (<code>ttl = 2</code>)<a class="h-anchor" href="#iv-maximum-fuel-operative-artifacts-ttl-2" aria-label="Link to section">#</a></h2>
+<h3 id="artifact-iva-scholarly-research-echo-operative-argument-prompt-for-the-p">Artifact IV.A — Scholarly <code>RESEARCH_ECHO</code> (Operative Argument Prompt for the PAE-04 Paper)<a class="h-anchor" href="#artifact-iva-scholarly-research-echo-operative-argument-prompt-for-the-p" aria-label="Link to section">#</a></h3>
+<blockquote>
+<p>Open the paper on the exact prime-lattice lock between Elena Pierazzo&rsquo;s <code>8,255,648,563,200</code> <em>Capitolo dei Frati</em> variants (<span class="md-math">2<sup>24</sup> ·  3<sup>9</sup> ·  5<sup>2</sup></span>, <a href="https://zenodo.org/records/19494802">Pierazzo 2025: 1014</a>) and Italo Calvino&rsquo;s <code>8,916,100,448,256</code> burned-house histories (<span class="md-math">12<sup>12</sup> = 2<sup>24</sup> ·  3<sup>12</sup></span>)—a <code>25:27</code> mathematical twinship that fractures immediately on method: where manuscript philology collapses fluid traditions into an <code>"average manuscript"</code> centroid, Oulipian detective fiction and actuarial risk collapse if averaged, demanding lossless <code>BigInt</code> dynamic-programming compression (<span class="md-math"> ≤  28</span> and <span class="md-math"> ≤  85,008</span> states) paired with <a href="https://doi.org/10.48550/arXiv.1504.04909">Mouret &amp; Clune&rsquo;s (2015)</a> irreductionist <em>Six Memos</em> archive (<a href="https://zenodo.org/records/19494802">Jacomy et al. 2025: 1287</a>). Turn classical error-philology back onto Calvino&rsquo;s own paratext by proving that the printed <code>8,874,296,672,256</code> equals <span class="md-math">12<sup>6</sup>(12<sup>6</sup> - 14,000)</span>—a 1973 8-digit pocket-calculator overflow scar further truncated to <code>874,296,672,256</code> on <a href="https://en.wikipedia.org/wiki/The_Burning_of_the_Abominable_House">Wikipedia</a>—grounding <em>The Whole House</em> as an algorithmic edition (<a href="https://zenodo.org/records/19494802">Enns, Michel, &amp; Kuczera 2025: 233</a>) and 1970s punch-card reconstruction (<a href="https://zenodo.org/records/19494802">Roeder 2025: 1042</a>). Deploy <a href="https://zenodo.org/records/19494802">Šeļa, Haider, &amp; Plecháč (2025: 116–118)</a> on formal-constraint confounding to explain why forbidding Belindo from knifing or being strangled (<code>2,663,172,255,744</code> paths) redistributes lethal pairings onto Ogiva and slashes Widow Roessler&rsquo;s life-insurance payout from <code>84.0%</code> to <code>79.4%</code>, while strictly disambiguating the project&rsquo;s three distinct rule sieves (<code>3.32 × 10^12</code>, <code>2.66 × 10^12</code>, <code>3.79 × 10^24</code>). Treat the charred copybook, the four shut-door deeds, and unindexed Deed XIII as relational data (<a href="https://zenodo.org/records/19494802">Charlesworth &amp; Warwick 2025: 198</a>), pairing exact DP marginalization with <code>333,333</code>-run BDI/memory-stream simulations (<a href="https://zenodo.org/records/19494802">Camps et al. 2025: 958</a>; <a href="https://zenodo.org/records/19494802">Pianzola et al. 2025: 201–202</a>; <a href="https://zenodo.org/records/19494802">Giovannini 2025: 261</a>; <a href="https://zenodo.org/records/19494802">Jokisch &amp; Rojas Castro 2025: 798</a>) and Genettean <code>T ZERO</code> pauses (<a href="https://zenodo.org/records/19494802">Yeager 2025: 558</a>). Clinch the architectural case against prompt-only storytelling with <a href="https://zenodo.org/records/19494802">Pichler &amp; Pagel&rsquo;s (2025: 1011–1012)</a> LLM focalization failure and <a href="https://zenodo.org/records/19494802">Onal et al.&rsquo;s (2025: 120–121)</a> comic-strip critique: <code>By What Light</code> encodes <a href="https://zenodo.org/records/19494802">Kablitz&rsquo;s (1988)</a> split between Sortes room-and-lamp perception (<a href="https://zenodo.org/records/19494802">Cugliana et al. 2025: 209–210</a>) and Bayesian dramatic irony (<a href="https://doi.org/10.1016/j.cognition.2009.07.005">Baker, Saxe, &amp; Tenenbaum 2009</a>), while <code>96</code> procedural Canvas flour sacks (<a href="https://zenodo.org/records/19494802">Johnston &amp; Thomas 1981</a>; <a href="https://zenodo.org/records/19494802">Broadwell et al. 2025: 173</a>) and stereoscopic Watch/Read sluice gates (<a href="https://zenodo.org/records/19494802">Casavola et al. 2025: 195</a>; <a href="https://zenodo.org/records/19494802">Richardson &amp; Butterworth 2025: 1034</a>; <a href="https://zenodo.org/records/19494802">Calado et al. 2025: 74</a>) turn every AI-written module into an auditable browser instrument.<br />
+<code>#oulipo-anticombinatorics #bigint-philology #kablitz-lamp-logic #flour-sack-dramaturgy #constraint-entanglement #irreductionist-edition</code></p>
+</blockquote>
+<h3 id="artifact-ivb-operative-kurosawa-cinepromptographic-final-prompt-c-3364-c">Artifact IV.B — Operative Kurosawa / Cinepromptographic <code>FINAL_PROMPT_C</code> (<code>3,364</code> Characters, Verified <code>[3000, 3500]</code>)<a class="h-anchor" href="#artifact-ivb-operative-kurosawa-cinepromptographic-final-prompt-c-3364-c" aria-label="Link to section">#</a></h3>
+<p>Split-level cross-section of a charred four-story Turin-to-Paris boarding house suspended above an IBM 1973 punch-card analyst&rsquo;s desk at T ZERO, rendered in dual stereoscopic registers: upper frame in coarse-grained 16mm hand-inked Lotte Reiniger hinged-silhouette cut-paper, Peter Foldes metamorphic ink contours, and scratched-emulsion animation on scorched cream rag paper with brick-red (#a3321f) arsonist registration marks; lower frame in Ivan Sutherland vector-phosphor green CRT traces, John Whitney polar-coordinate harmonic rings, 80-column Hollerith card chads, and Tuftean ink slopegraphs bleeding wet soot across brass calculating wheels. Inside the cut-open boarding house, four faceless weighted canvas flour sacks—no eyes, no mouths, seam volume and center-of-gravity posture carrying every gram of Boris Yarkho self-interest and Ollie Johnston / Frank Thomas line-of-action tension—inhabit four stacked rooms divided by cracked plaster walls, transom slits, and steep timber stairs. In the upper-left parlor under amber tungsten lamp spill, a broad-shouldered sack (Belindo, taut burlap seams straining) recoils from a tall aristocratic sack (Inigo) brandishing a matte-black revolver silhouette; in the upper-right bedroom under sick mercury-vapor streetlamp slats slicing through motel blinds, a slender draped sack (Ogiva, synthetic wig fibers catching halation) knots coarse hemp rope around a heavy matronly sack (Widow Roessler), freezing her load-bearing base across two exposure frames; across four central doorways nailed shut with blackened timber X-bars, nothing inside is drawn—only thin blades of yellow key-slit floor glow, drifting ash, and red acoustic shock-ticks on the margin x-sheet marking four unseen deeds whose physical traces (dropped blade, overturned vial, scorched satin, snapped cord) leak beneath thresholds into lit corridors to trigger 64% third-tenant discovery. Below the floorboards, programmer Waldemar&rsquo;s hunched silhouette sits at a steel desk flanked by card decks stamped I through XII above a blistered alphabetical index of twelve verbs, his eight-digit pocket calculator displaying the overflowed factor 2,985,984 beside a hand-scrawled carry slip reading 2,971,984 = 8,874,296,672,256 while true 8,916,100,448,256 glows in hairline amber numerals along a 28-node Markov trellis whose sluice-gate bars narrow from 3,316,025,558,016 legal paths to 2,663,172,255,744 as Widow Roessler&rsquo;s life-policy mercury column drops from 84.0% to 79.4%. Camera executes a slow multiplane perpendicular pull-back: foreground floating cellulose ash and blistered plastic notebook cover drift rapidly across the lens; midground rooms hold dead Genettean pause (fabula velocity zero) while twelve ghosted yellow trajectory arcs fan out from each sack&rsquo;s pelvis to map equiprobable next violence; background wasteland hump and approaching fire-brigade rotating red beacon pulse through wet nocturnal fog. At the far right frosted-glass laboratory door, insurance agent Skiller&rsquo;s tall distorted shadow presses inward as Deed XIII, unindexed on the charred back cover, while Waldemar&rsquo;s thumb clicks off a steel safety catch beside a freshly signed fire-policy sheet—the illusion that combinatorial filtering insulates the analyst from the crime shattering into ash, wet asphalt reflection, and irreversible actuarial complicity.</p>
+<h3 id="artifact-ivc-executable-enc-citation-rule-disambiguation-kernel-pae04-en">Artifact IV.C — Executable <code>ENC</code> Citation &amp; Rule-Disambiguation Kernel (<code>pae04-enc.mjs</code>)<a class="h-anchor" href="#artifact-ivc-executable-enc-citation-rule-disambiguation-kernel-pae04-en" aria-label="Link to section">#</a></h3>
+<p>Directly resolves the two structural vulnerabilities surfaced in Moves II and IV—conflating the three meanings of <code>"the rules"</code> (<a href="https://zenodo.org/records/19494802">Šeļa et al. 2025</a>) and unparameterized cross-repo links between <code>2700-fa26</code> and <code>bolas</code> (<a href="https://zenodo.org/records/19494802">Enns, Michel, &amp; Kuczera 2025</a>):</p>
+<div class="md-code-wrap"><div class="md-code-bar"><span>javascript</span><button type="button" class="code-copy-btn" data-copy-code>Copy</button></div><pre><code>// Verified in Node.js sandbox: exact BigInt invariants + Explicitly Notated Citation (ENC) URIs
+export const PAE04_REGIMES = Object.freeze({
+  RAW_COMBINATORIAL: {
+    id: &quot;RAW_12_POW_12&quot;,
+    dpStates: 1n,
+    survivors: 12n ** 12n, // 8,916,100,448,256n
+    widowPayoutPct: 84.0278,
+    spec: &quot;Unconstrained 12 deeds x 12 non-reflexive (doer, sufferer) tenant pairs&quot;
+  },
+  CALVINO_1973_PARATEXT: {
+    id: &quot;PARATEXT_8_87T&quot;,
+    dpStates: null,
+    survivors: (12n ** 6n) * ((12n ** 6n) - 14000n), // 8,874,296,672,256n
+    widowPayoutPct: null,
+    spec: &quot;1973 hand-squaring slip: 2,985,984 * 2,971,984 (-41,803,776,000 phantom stories)&quot;
+  },
+  LEDGER_VITALITY: {
+    id: &quot;LEDGER_LEGAL_3_32T&quot;,
+    dpStates: 28n,
+    survivors: 3_316_025_558_016n,
+    widowPayoutPct: null,
+    spec: &quot;Marcus/Jokisch stage-vitality sieve: dead never act; tied tenant waits 2 deeds&quot;
+  },
+  BELINDO_5RULE_FILM: {
+    id: &quot;BELINDO_5RULE_2_66T&quot;,
+    dpStates: 28n,
+    survivors: 2_663_172_255_744n,
+    widowPayoutPct: 79.4,
+    spec: &quot;Ledger vitality + Belindo exclusions (Belindo never knifes; nobody strangles Belindo)&quot;
+  },
+  KABLITZ_LAMP_HISTOIRE: {
+    id: &quot;KABLITZ_LIGHT_3_79Y&quot;,
+    dpStates: 85_008n,
+    survivors: 3_790_040_669_283_834_371_506_176n,
+    widowPayoutPct: null,
+    spec: &quot;Knowles-Tenney room/light/trace/witness perception sieve (64% 3rd-tenant awareness)&quot;
+  }
+});
+
+export function auditPierazzoCalvinoLock() {
+  const calvino = PAE04_REGIMES.RAW_COMBINATORIAL.survivors;
+  const pierazzo = 8_255_648_563_200n;
+  const gcd = (a, b) =&gt; (b === 0n ? a : gcd(b, a % b));
+  const sharedSpine = gcd(calvino, pierazzo); // 330,225,942,528n = 2^24 * 3^9
+  return {
+    sharedPrimeSpine: sharedSpine.toString(),
+    exactRatio: `${calvino / sharedSpine}:${pierazzo / sharedSpine}`, // &quot;27:25&quot;
+    multiplier: Number((calvino * 10000n) / pierazzo) / 10000         // 1.08
+  };
+}
+
+export function mintENC({ commit, regimeKey, register = &quot;watch+read&quot;, tZero = 0, pie = 0.50, planted = 0.75 }) {
+  const regime = PAE04_REGIMES[regimeKey];
+  if (!regime) throw new Error(`Disambiguate &#x27;the rules&#x27;: unknown regime &#x27;${regimeKey}&#x27;`);
+  const canonical = `${commit}|${regime.id}|${register}|t0=${tZero}|pie=${pie.toFixed(2)}|p=${planted.toFixed(2)}`;
+  let hash = 0x811c9dc5;
+  for (let i = 0; i &lt; canonical.length; i++) {
+    hash = Math.imul(hash ^ canonical.charCodeAt(i), 0x01000193) &gt;&gt;&gt; 0;
+  }
+  return `enc://pae04/${commit.slice(0, 7)}/${regime.id.toLowerCase()}?reg=${register}&amp;t0=${tZero}&amp;pie=${pie.toFixed(2)}&amp;plant=${planted.toFixed(2)}#${hash.toString(16).padStart(8, &quot;0&quot;)}`;
+}</code></pre></div>
+<h3 id="artifact-ivd-upgraded-proceedingsdh2025boa-bibtex-anchor">Artifact IV.D — Upgraded <code>@proceedings{dh2025boa}</code> BibTeX Anchor<a class="h-anchor" href="#artifact-ivd-upgraded-proceedingsdh2025boa-bibtex-anchor" aria-label="Link to section">#</a></h3>
+<p>Replaces the generic Creative Commons placeholder URL in the dossier&rsquo;s root BibTeX entry with the verified archival record on <a href="https://zenodo.org/records/19494802">Zenodo (<code>10.5281/zenodo.19494802</code>)</a>:</p>
+<div class="md-code-wrap"><div class="md-code-bar"><span>bibtex</span><button type="button" class="code-copy-btn" data-copy-code>Copy</button></div><pre><code>@proceedings{dh2025boa,
+  editor    = {del Rio Riande, Gimena and Portela, Manuel and Alves, Daniel and Paulino, Joana Vieira},
+  title     = {Digital Humanities 2025: Book of Abstracts},
+  year      = {2025},
+  address   = {Lisbon},
+  publisher = {NOVA FCSH / ADHO},
+  doi       = {10.5281/zenodo.19494802},
+  url       = {https://zenodo.org/records/19494802}
+}</code></pre></div>
+<h2 id="v-divergent-philogyny-blind-critique-quine-reentry-the-travelers-stance">V. DIVERGENT PHILOGYNY, BLIND CRITIQUE &amp; QUINE REENTRY (<code>THE TRAVELER'S STANCE</code>)<a class="h-anchor" href="#v-divergent-philogyny-blind-critique-quine-reentry-the-travelers-stance" aria-label="Link to section">#</a></h2>
+<p>Rather than closing <code>PAE-04</code> into a tidy conference retrospective, three isolated stepping-stone branches push its weirdest aberrations into autonomous territory:</p>
+<h3 id="1-orthogonal-stepping-stone-branches-select-top-k-3">1. Orthogonal Stepping-Stone Branches (<code>select_top_k = 3</code>)<a class="h-anchor" href="#1-orthogonal-stepping-stone-branches-select-top-k-3" aria-label="Link to section">#</a></h3>
+<ul>
+<li><strong>Branch α — <code>invert_axiom</code>: <em>The Phantom Deck of 41,803,776,000 Lost Stories</em></strong><br />
+  Instead of silently &ldquo;fixing&rdquo; Calvino&rsquo;s <code>8,874,296,672,256</code> to <span class="md-math">12<sup>12</sup></span>, build an interactive counter-edition (<code>phantom-14000.html</code>) of the <strong>exact <span class="md-math">14,000  ×  12<sup>6</sup> = 41,803,776,000</span> histories erased by the 1973 carry slip</strong>. In Calvino&rsquo;s finale (<a href="https://www.ruanyifeng.com/calvino/2008/12/the_burning_of_the_abominable_house_en.html">English witness</a>), Waldemar suspects <em>&ldquo;the real computer is elsewhere&rdquo;</em> feeding rigged noise into his deck: treat the missing <code>14,000</code> prefixes of Deeds I–VI as <strong>Skiller&rsquo;s redacted punch-card drawer</strong>, turning a fifty-year typesetting/arithmetic error into a playable forensic chamber where Deed XIII hides inside the rounding chasm.</li>
+<li><strong>Branch β — <code>mirror_axis</code>: <em>Adversarial Underwriting (Playable Šeļa Entanglement)</em></strong><br />
+  Invert <code>policies.html</code> from an explanatory calculator into a two-player zero-sum game (<code>underwriter-vs-widow</code>): Player 1 (Skiller) and Player 2 (estate counsel) take turns adding innocent-sounding formal Oulipian constraints on <em>other</em> characters or rooms—forbidden ever to name their true beneficiary—trying to weaponize <a href="https://zenodo.org/records/19494802">Šeļa, Haider, &amp; Plecháč&rsquo;s (2025)</a> constraint entanglement to tank or rescue a rival policy payout through collateral marginal drift.</li>
+<li><strong>Branch γ — <code>transmute_medium</code> + <code>slow_time</code>: <em>Shut-Door Acoustic Sortes (<code>4-of-12 Blind Mode</code>)</em> </strong><br />
+  Radicalize <a href="https://zenodo.org/records/19494802">Charlesworth &amp; Warwick (2025)</a>, <a href="https://zenodo.org/records/19494802">Cugliana et al. (2025)</a>, and <a href="https://zenodo.org/records/19494802">Yeager (2025)</a>: add a <code>SHUT DOOR ONLY</code> switch to <code>film.html</code> that <strong>blacks out the 8 visible Flour-Sack deeds</strong> and leaves the user standing in the hallway outside the <strong>4 unshown deeds</strong> at <code>T ZERO</code>, reconstructing <code>crm:E13_Attribute_Assignment</code> chains (<a href="https://zenodo.org/records/19494802">Pianzola et al. 2025: 202</a>) solely from muffled impact rhythms, key-slit lamp changes, and post-deed floor traces.</li>
+</ul>
+<h3 id="2-the-emergent-scion-wedge-blind-validation-ledger">2. The Emergent Scion Wedge &amp; Blind Validation Ledger<a class="h-anchor" href="#2-the-emergent-scion-wedge-blind-validation-ledger" aria-label="Link to section">#</a></h3>
+<ul>
+<li><strong>Obsolete Cow-Path Category</strong>: Static critical editions and prompt-wrapped &ldquo;AI Story/Text Companions&rdquo; that summarize variant traditions into average prose or rely on fragile LLM focalization prompts.</li>
+<li><strong>The Scion Primitive</strong>: <strong>Client-Side <code>BigInt</code> State-Sieve + <code>ENC</code>-Hashed Quality-Diversity Edition</strong>—zero-server browser modules where exact dynamic programming handles combinatorial law, <a href="https://doi.org/10.48550/arXiv.1504.04909">MAP-Elites</a> preserves irreconcilable narrative extremes, and every URL hash reproduces the exact mathematical and visual state.</li>
+<li><strong>Incumbent Trap</strong>: Cloud LLM platforms and traditional scholarly portals are disincentivized from shipping zero-server <code>BigInt</code> state machines because deterministic 28-state browser kernels burn zero API tokens per query and refuse to flatten ambiguous archives into single chat answers.</li>
+</ul>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th style="text-align: left;">Claim / Artifact</th>
+<th style="text-align: left;">Epistemic Tag</th>
+<th style="text-align: left;">Verification Method &amp; Exact Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><span class="md-math">12<sup>12</sup> / 8,255,648,563,200 = 27 / 25 = 1.08</span> exact</td>
+<td style="text-align: left;"><code>MEASURED</code></td>
+<td style="text-align: left;">Executed Python &amp; Node <code>BigInt</code> GCD (<code>330,225,942,528 = 2^24 * 3^9</code>)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>8,874,296,672,256 == 12^6 * (12^6 - 14,000)</code></td>
+<td style="text-align: left;"><code>MEASURED</code></td>
+<td style="text-align: left;">Executed Python exact division (<code>2,985,984 * 2,971,984</code>, zero remainder)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Unconstrained <span class="md-math">(11/12)<sup>2</sup> = 84.03\%</span> vs. naive <span class="md-math">(8/9)<sup>2</sup> = 79.01\%</span> vs. DP <code>79.4%</code></td>
+<td style="text-align: left;"><code>MEASURED</code></td>
+<td style="text-align: left;">Executed Python probability verification showing <span class="md-math">-4.6\%</span> drop + <span class="md-math">+0.39\%</span> ledger buffer</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>FINAL_PROMPT_C</code> character budget (<code>3,364</code> chars)</td>
+<td style="text-align: left;"><code>MEASURED</code></td>
+<td style="text-align: left;">Executed Python <code>len()</code> check inside <code>[3300, 3450]</code> target window</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Olog</code> Diagrams <code>C1–C3</code> &amp; <code>pae04-enc.mjs</code> URI hashing</td>
+<td style="text-align: left;"><code>STRUCTURAL</code></td>
+<td style="text-align: left;">Executed Python endpoint-closure test &amp; Node <code>enc://pae04/...#635de2b1</code> run</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>DH2025</code> Lisbon Zenodo DOI (<code>10.5281/zenodo.19494802</code>)</td>
+<td style="text-align: left;"><code>MEASURED</code></td>
+<td style="text-align: left;">Verified against <a href="https://zenodo.org/records/19494802">Zenodo record <code>19494802</code></a></td>
+</tr>
+<tr>
+<td style="text-align: left;">Whether <code>14,000</code> slip occurred in Calvino&rsquo;s 1972–73 MS vs. print typesetting</td>
+<td style="text-align: left;"><code>UNKNOWN</code></td>
+<td style="text-align: left;">Requires physical/scan collation of Feb. 1973 Italian <em>Playboy</em> vs. 1993 Mondadori</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="3-quine-reentry-seeds-ttl-1-refusing-final-arrival">3. Quine Reentry Seeds (<code>ttl = 1</code> — Refusing Final Arrival)<a class="h-anchor" href="#3-quine-reentry-seeds-ttl-1-refusing-final-arrival" aria-label="Link to section">#</a></h3>
+<div class="md-code-wrap"><div class="md-code-bar"><span>yaml</span><button type="button" class="code-copy-btn" data-copy-code>Copy</button></div><pre><code>quine_children:
+  - child_id: &quot;PAE04_QUINE_ALPHA&quot;
+    ttl: 1
+    mutation_op: &quot;invert_axiom (error == archive)&quot;
+    seed_prompt: &quot;Construct the 28-state Markov sieve exclusively over the 41,803,776,000 stories lost between 12^12 and 8,874,296,672,256, testing whether Widow Roessler&#x27;s payout diverges inside Skiller&#x27;s missing 14,000 prefixes.&quot;
+  - child_id: &quot;PAE04_QUINE_BETA&quot;
+    ttl: 1
+    mutation_op: &quot;mirror_axis (exposition -&gt; adversarial play)&quot;
+    seed_prompt: &quot;Compile Branch Beta into a single-file zero-dependency browser game (actuarial-sluice.html) where two players add non-local Oulipian constraints on a 4-node flour-sack graph to covertly invert each other&#x27;s insurance payouts.&quot;</code></pre></div>
+      </div>
+
+      <nav class="doc-pager" aria-label="Document pagination"><a class="pager-card" href="./words-to-world-research-notes.html"><div class="pager-dir">← Previous Document</div><div class="pager-title">Words to World: Anticombinatorics &amp; Agent-Scale Video-Text</div></a><a class="pager-card" href="./logline-journal-entries.html"><div class="pager-dir">Next Document →</div><div class="pager-title">Loglines, Journal Entries 21–38 &amp; Complete Asset Audit</div></a></nav>
+    </main>
+  </div>
+
+  <script src="./reader.js"></script>
+</body>
+</html>

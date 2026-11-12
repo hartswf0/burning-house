@@ -47,7 +47,7 @@ ul.refs{margin:0;padding-left:18px}ul.refs li{margin-bottom:3px;font-size:15px}
 @media (min-width:880px){main{grid-template-rows:none;grid-template-columns:minmax(300px,1fr) minmax(0,1.5fr)}#list{border-bottom:0;border-right:1px solid var(--line)}#detail{padding:20px 26px 60px}}
 </style></head><body>
 <header>
- <div class="row"><h1>Find</h1><span id="count"></span><div class="links"><a href="./">Home</a><a href="read.html">Read the paper</a><a href="vtx01_build/viewer/index.html">VTX-0.1</a></div></div>
+ <div class="row"><h1>Find</h1><span id="count"></span><div class="links"><a href="./">Home</a><a href="docs/index.html">Reading Room</a><a href="read.html">Read the paper</a><a href="paeleo/abominable-house/index.html">PAE-04</a><a href="vtx01_build/viewer/index.html">VTX-0.1</a></div></div>
  <div class="row"><input id="q" type="search" placeholder="Search cards, entries, sections, claims, files" aria-label="Search" autocomplete="off"></div>
  <div class="chips" id="chips" role="group" aria-label="Kind"></div>
 </header>
@@ -82,12 +82,12 @@ function search(){const terms=$('q').value.toLowerCase().split(/\s+/).filter(t=>
 function sec(D,h,t){if(!t)return;D.append(el('h3','',h));D.append(el('p','',t))}
 function link(D,href,label){const a=el('a','open-a',label);a.href=href;D.append(a)}
 function open(i,quiet){cur=i;const D=$('detail');D.textContent='';document.querySelectorAll('.res').forEach((b,n)=>b.setAttribute('aria-current',shown[n]===i));if(!i){D.append(el('p','','Nothing matches.'));return}const d=i.d;
- if(i.k==='claims'){const m=el('p','meta');m.append(el('span','pill '+d.status,d.status),'  '+d.id+' · '+d.where);D.append(m);D.append(el('h2','',d.claim));sec(D,'Evidence',d.evidence);sec(D,'What would settle it',d.next)}
- else if(i.k==='cards'){D.append(el('p','meta',d.id+(d.variant?' · variant '+d.variant+' of 2':'')+' · '+d.words+' words'));D.append(el('h2','',d.title));
+ if(i.k==='claims'){const m=el('p','meta');m.append(el('span','pill '+d.status,d.status),'  '+d.id+' · '+d.where);D.append(m);D.append(el('h2','',d.claim));link(D,'docs/claims.html','Open styled Claims table');sec(D,'Evidence',d.evidence);sec(D,'What would settle it',d.next)}
+ else if(i.k==='cards'){D.append(el('p','meta',d.id+(d.variant?' · variant '+d.variant+' of 2':'')+' · '+d.words+' words'));D.append(el('h2','',d.title));if(d.href)link(D,d.href,'Open in styled Zettelkasten edition');
   D.append(el('h3','','Used in'));if(d.refs.length){const u=el('ul','refs');d.refs.forEach(r=>{const li=el('li'),a=el('a','',r.label);a.href=r.href;li.append(a);u.append(li)});D.append(u)}else D.append(el('p','','No journal entry or document section cites this card yet.'));
   for(const[k,v]of Object.entries(d.fields))sec(D,k.toLowerCase(),v)}
  else if(i.k==='journal'){D.append(el('p','meta','Journal entry '+d.n+' · '+d.when));D.append(el('h2','',d.title));link(D,d.href,'Open the entry with its exhibits');sec(D,'Seen',d.text);sec(D,'Line kept',d.kept);sec(D,'Not checked',d.unchecked);sec(D,'How it is known',d.source)}
- else if(i.k==='paper'){D.append(el('p','meta',d.docname+' · '+d.role+' · '+d.doc));D.append(el('h2','',d.heading));link(D,d.href,d.href.startsWith('read.html')?'Open in the reading edition':'Open the file');sec(D,'Text',d.text)}
+ else if(i.k==='paper'){D.append(el('p','meta',d.docname+' · '+d.role+' · '+d.doc));D.append(el('h2','',d.heading));link(D,d.href,(d.href.startsWith('read.html')||d.href.startsWith('docs/'))?'Open in the reading edition':'Open the file');sec(D,'Text',d.text)}
  else{D.append(el('p','meta',d.kind+' · '+kb(d.size)));D.append(el('h2','',d.path));link(D,d.path,'Open the file')}
  if(!quiet)D.scrollTop=0}
 function setKind(k){kind=KINDS.some(x=>x[0]===k)?k:'all';document.querySelectorAll('#chips button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.k===kind));cur=null;search();try{history.replaceState(null,'',kind==='all'?location.pathname:'#'+kind)}catch(e){}}

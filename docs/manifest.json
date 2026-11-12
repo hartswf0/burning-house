@@ -1,0 +1,342 @@
+{
+  "Abominable_House_Framing_Notes.md": {
+    "slug": "abominable-house-framing-notes",
+    "html": "docs/abominable-house-framing-notes.html",
+    "title": "Research & Framing Notes: PAE-04 (The Abominable House)",
+    "category": "Papers & Specifications",
+    "desc": "Core thesis, flour-sack refusal bypass, Anthropic's Scion analogy, Double Indemnity actuarial tables, and Lem's semascope.",
+    "words": 3744,
+    "read_mins": 16,
+    "units": "19 sections"
+  },
+  "Abominable_House_Submission_Draft.md": {
+    "slug": "abominable-house-submission-draft",
+    "html": "docs/abominable-house-submission-draft.html",
+    "title": "Minimum Viable Video-Text: Conference & Journal Submission Draft",
+    "category": "Papers & Specifications",
+    "desc": "Full scholarly paper connecting Calvino's 1973 IBM/Playboy story, Disney's flour-sack test, SCION agent swarms, and Skiller's actuarial confound.",
+    "words": 4486,
+    "read_mins": 20,
+    "units": "8 sections"
+  },
+  "CLAIMS.md": {
+    "slug": "claims",
+    "html": "docs/claims.html",
+    "title": "Claims Checked: Status, Evidence & Verification Conditions",
+    "category": "Papers & Specifications",
+    "desc": "Fourteen core historical, mathematical, and empirical claims audited across the repository with status (supported, measured, open, conflicting, unsupported) and settlement criteria.",
+    "words": 932,
+    "read_mins": 4,
+    "units": "1 sections"
+  },
+  "VTX01_MVVT_Research_Memo_and_Spec.md": {
+    "slug": "vtx01-mvvt-memo-and-spec",
+    "html": "docs/vtx01-mvvt-memo-and-spec.html",
+    "title": "VTX-0.1 Working Memo & Formal Specification",
+    "category": "Papers & Specifications",
+    "desc": "Formal specification of Chance, Memory, and Consequence in the Minimum Viable Video-Text format and the Take A vs. Take B lamp-room experiment.",
+    "words": 5092,
+    "read_mins": 22,
+    "units": "18 sections"
+  },
+  "abominable_house_mvvt_research_notes.md": {
+    "slug": "words-to-world-research-notes",
+    "html": "docs/words-to-world-research-notes.html",
+    "title": "Words to World: Anticombinatorics & Agent-Scale Video-Text",
+    "category": "Papers & Specifications",
+    "desc": "Early foundational working paper on Oulipian anticombinatorics, BDI/LEGOS agents, Geertz, and reading over the machine's shoulder.",
+    "words": 2712,
+    "read_mins": 12,
+    "units": "13 sections"
+  },
+  "pae04_abominable_house_scion_run.md": {
+    "slug": "pae04-scion-run",
+    "html": "docs/pae04-scion-run.html",
+    "title": "SCION v3.0 Execution \u2014 PAE-04 & The DH2025 Spine",
+    "category": "Papers & Specifications",
+    "desc": "Rigorous formal verification run across 12^12 stories, Calvino's 14,000 carry slip, Pierazzo's 27:25 prime ratio, and the 28-state DP quotient.",
+    "words": 4840,
+    "read_mins": 21,
+    "units": "18 sections"
+  },
+  "Logline_Journal_Entries_and_Existing_Assets.md": {
+    "slug": "logline-journal-entries",
+    "html": "docs/logline-journal-entries.html",
+    "title": "Loglines, Journal Entries 21\u201338 & Complete Asset Audit",
+    "category": "Journals & Inventories",
+    "desc": "Three register loglines, eighteen dated lab notebook entries bridging PAE-04 to VTX-0.1, and an inventory of existing engines and proofs.",
+    "words": 5781,
+    "read_mins": 25,
+    "units": "27 sections"
+  },
+  "README.md": {
+    "slug": "readme",
+    "html": "docs/readme.html",
+    "title": "Repository Overview & Architecture (README)",
+    "category": "Journals & Inventories",
+    "desc": "Top-level guide to burning-house, uniting PAE-03, PAE-04, Lab 7, VTX-0.1, Zettelkasten decks, and the complete archive.",
+    "words": 787,
+    "read_mins": 3,
+    "units": "7 sections"
+  },
+  "vtx01_build/README.md": {
+    "slug": "vtx01-build-readme",
+    "html": "docs/vtx01-build-readme.html",
+    "title": "VTX-0.1 Reproducible Build & Verifier Manual",
+    "category": "Journals & Inventories",
+    "desc": "Step-by-step guide to reproducing Take A (assist) and Take B (arson), verifying the 1-line goal patch, and running the blinded gate.",
+    "words": 638,
+    "read_mins": 3,
+    "units": "5 sections"
+  },
+  "xzet.md": {
+    "slug": "xzet",
+    "html": "docs/xzet.html",
+    "title": "Cross-Zettel Synthesis Deck (xzet)",
+    "category": "Zettelkasten Slip-Boxes",
+    "desc": "Five high-density synthesis cards colliding kinetic relays, spatial force-fields, and worldtext mechanics.",
+    "words": 6079,
+    "read_mins": 26,
+    "units": "5 Zettel cards"
+  },
+  "zettle-past.md": {
+    "slug": "zettle-past",
+    "html": "docs/zettle-past.html",
+    "title": "Abominable House \u00d7 DH2025 Methodological Zettels (9 Cards)",
+    "category": "Zettelkasten Slip-Boxes",
+    "desc": "Nine precision slip-box cards colliding PAE-04's Film Bank, ledger, and policies with DH2025 philology, network drama, sortes, and constraint theory.",
+    "words": 4549,
+    "read_mins": 20,
+    "units": "9 Zettel cards"
+  },
+  "zettle.md": {
+    "slug": "zettle",
+    "html": "docs/zettle.html",
+    "title": "Master Zettelkasten: Calvino, Six Memos, Blow & Video-Text (28 Cards)",
+    "category": "Zettelkasten Slip-Boxes",
+    "desc": "Deduplicated 28-card research slip-box (26 unique IDs) spanning Calvino's Six Memos, Jonathan Blow's Braid & The Witness, agent architectures, and formal mechanisms.",
+    "words": 31317,
+    "read_mins": 136,
+    "units": "27 Zettel cards"
+  },
+  "DH2025_Concrete_Papers_and_Works_Cited.md": {
+    "slug": "dh2025-concrete-papers",
+    "html": "docs/dh2025-concrete-papers.html",
+    "title": "Concrete Papers & Works Cited from DH2025: Book of Abstracts",
+    "category": "Reference Corpora & Prompts",
+    "desc": "Full verbatim texts, page citations, thematic spine, and extracted bibliographies for all 19 concrete DH2025 reference papers.",
+    "words": 39739,
+    "read_mins": 173,
+    "units": "93 sections"
+  },
+  "p1.md": {
+    "slug": "p1-scion-xml-prompt",
+    "html": "docs/p1-scion-xml-prompt.html",
+    "title": "SCION v1.1 System Prompt (Source XML Specification)",
+    "category": "Reference Corpora & Prompts",
+    "desc": "Structured edition of the SCION v1.1 XML instruction defining Chance, Memory, Consequence, Evidence Seeds C1\u2013L1, and quality gates.",
+    "words": 2926,
+    "read_mins": 13,
+    "units": "9 XML modules"
+  },
+  "scion_mvvt_abominable_house_instruction.md": {
+    "slug": "scion-mvvt-instruction",
+    "html": "docs/scion-mvvt-instruction.html",
+    "title": "Compiled SCION System Instruction & Architectural Rationale",
+    "category": "Reference Corpora & Prompts",
+    "desc": "Design rationale and compiled XML contract governing evidence gates, structural/animation/perceptual gates, and counterfactual branching.",
+    "words": 3250,
+    "read_mins": 14,
+    "units": "5 sections"
+  },
+  "paeleo/flour-tower/BRIEF.md": {
+    "slug": "pae03-brief",
+    "html": "docs/pae03-brief.html",
+    "title": "PAE-03 \u00b7 The Flour Tower: Brief Every Swarm Receives",
+    "category": "PAE-03 Flour Tower & Critic Logs",
+    "desc": "Shared 32-second score, ten acting beats, volume conservation rules, and forbidden-tween contract given to all six SCION swarms.",
+    "words": 1824,
+    "read_mins": 8,
+    "units": "7 sections"
+  },
+  "paeleo/flour-tower/critic/02/round1.md": {
+    "slug": "pae03-critic-02-r1",
+    "html": "docs/pae03-critic-02-r1.html",
+    "title": "SCION 02 \u00b7 Critic Round 1",
+    "category": "PAE-03 Flour Tower & Critic Logs",
+    "desc": "Independent visual/kinematic critic inspection for 02 \u00b7 Reiniger Silhouette Cutout, round 1.",
+    "words": 1421,
+    "read_mins": 6,
+    "units": "1 sections"
+  },
+  "paeleo/flour-tower/critic/02/round2.md": {
+    "slug": "pae03-critic-02-r2",
+    "html": "docs/pae03-critic-02-r2.html",
+    "title": "SCION 02 \u00b7 Critic Round 2",
+    "category": "PAE-03 Flour Tower & Critic Logs",
+    "desc": "Independent visual/kinematic critic inspection for 02 \u00b7 Reiniger Silhouette Cutout, round 2.",
+    "words": 1746,
+    "read_mins": 8,
+    "units": "1 sections"
+  },
+  "paeleo/flour-tower/critic/02/round3.md": {
+    "slug": "pae03-critic-02-r3",
+    "html": "docs/pae03-critic-02-r3.html",
+    "title": "SCION 02 \u00b7 Critic Round 3",
+    "category": "PAE-03 Flour Tower & Critic Logs",
+    "desc": "Independent visual/kinematic critic inspection for 02 \u00b7 Reiniger Silhouette Cutout, round 3.",
+    "words": 1602,
+    "read_mins": 7,
+    "units": "1 sections"
+  },
+  "paeleo/flour-tower/critic/06/round1.md": {
+    "slug": "pae03-critic-06-r1",
+    "html": "docs/pae03-critic-06-r1.html",
+    "title": "SCION 06 \u00b7 Critic Round 1",
+    "category": "PAE-03 Flour Tower & Critic Logs",
+    "desc": "Independent visual/kinematic critic inspection for 06 \u00b7 Whitney Harmonic Dots, round 1.",
+    "words": 1396,
+    "read_mins": 6,
+    "units": "1 sections"
+  },
+  "paeleo/flour-tower/critic/06/round2.md": {
+    "slug": "pae03-critic-06-r2",
+    "html": "docs/pae03-critic-06-r2.html",
+    "title": "SCION 06 \u00b7 Critic Round 2",
+    "category": "PAE-03 Flour Tower & Critic Logs",
+    "desc": "Independent visual/kinematic critic inspection for 06 \u00b7 Whitney Harmonic Dots, round 2.",
+    "words": 1583,
+    "read_mins": 7,
+    "units": "1 sections"
+  },
+  "paeleo/flour-tower/critic/06/round3.md": {
+    "slug": "pae03-critic-06-r3",
+    "html": "docs/pae03-critic-06-r3.html",
+    "title": "SCION 06 \u00b7 Critic Round 3",
+    "category": "PAE-03 Flour Tower & Critic Logs",
+    "desc": "Independent visual/kinematic critic inspection for 06 \u00b7 Whitney Harmonic Dots, round 3.",
+    "words": 1709,
+    "read_mins": 7,
+    "units": "1 sections"
+  },
+  "paeleo/flour-tower/critic/07/round1.md": {
+    "slug": "pae03-critic-07-r1",
+    "html": "docs/pae03-critic-07-r1.html",
+    "title": "SCION 07 \u00b7 Critic Round 1",
+    "category": "PAE-03 Flour Tower & Critic Logs",
+    "desc": "Independent visual/kinematic critic inspection for 07 \u00b7 Foldes Drawn Metamorphosis, round 1.",
+    "words": 1549,
+    "read_mins": 7,
+    "units": "1 sections"
+  },
+  "paeleo/flour-tower/critic/07/round2.md": {
+    "slug": "pae03-critic-07-r2",
+    "html": "docs/pae03-critic-07-r2.html",
+    "title": "SCION 07 \u00b7 Critic Round 2",
+    "category": "PAE-03 Flour Tower & Critic Logs",
+    "desc": "Independent visual/kinematic critic inspection for 07 \u00b7 Foldes Drawn Metamorphosis, round 2.",
+    "words": 1686,
+    "read_mins": 7,
+    "units": "1 sections"
+  },
+  "paeleo/flour-tower/critic/08/round1.md": {
+    "slug": "pae03-critic-08-r1",
+    "html": "docs/pae03-critic-08-r1.html",
+    "title": "SCION 08 \u00b7 Critic Round 1",
+    "category": "PAE-03 Flour Tower & Critic Logs",
+    "desc": "Independent visual/kinematic critic inspection for 08 \u00b7 Sutherland Sketchpad, round 1.",
+    "words": 1586,
+    "read_mins": 7,
+    "units": "1 sections"
+  },
+  "paeleo/flour-tower/critic/08/round2.md": {
+    "slug": "pae03-critic-08-r2",
+    "html": "docs/pae03-critic-08-r2.html",
+    "title": "SCION 08 \u00b7 Critic Round 2",
+    "category": "PAE-03 Flour Tower & Critic Logs",
+    "desc": "Independent visual/kinematic critic inspection for 08 \u00b7 Sutherland Sketchpad, round 2.",
+    "words": 1592,
+    "read_mins": 7,
+    "units": "1 sections"
+  },
+  "paeleo/flour-tower/critic/08/round3.md": {
+    "slug": "pae03-critic-08-r3",
+    "html": "docs/pae03-critic-08-r3.html",
+    "title": "SCION 08 \u00b7 Critic Round 3",
+    "category": "PAE-03 Flour Tower & Critic Logs",
+    "desc": "Independent visual/kinematic critic inspection for 08 \u00b7 Sutherland Sketchpad, round 3.",
+    "words": 1594,
+    "read_mins": 7,
+    "units": "1 sections"
+  },
+  "paeleo/flour-tower/critic/14/round1.md": {
+    "slug": "pae03-critic-14-r1",
+    "html": "docs/pae03-critic-14-r1.html",
+    "title": "SCION 14 \u00b7 Critic Round 1",
+    "category": "PAE-03 Flour Tower & Critic Logs",
+    "desc": "Independent visual/kinematic critic inspection for 14 \u00b7 Pose-to-Pose Pencil, round 1.",
+    "words": 1556,
+    "read_mins": 7,
+    "units": "1 sections"
+  },
+  "paeleo/flour-tower/critic/14/round2.md": {
+    "slug": "pae03-critic-14-r2",
+    "html": "docs/pae03-critic-14-r2.html",
+    "title": "SCION 14 \u00b7 Critic Round 2",
+    "category": "PAE-03 Flour Tower & Critic Logs",
+    "desc": "Independent visual/kinematic critic inspection for 14 \u00b7 Pose-to-Pose Pencil, round 2.",
+    "words": 1675,
+    "read_mins": 7,
+    "units": "1 sections"
+  },
+  "paeleo/flour-tower/critic/14/round3.md": {
+    "slug": "pae03-critic-14-r3",
+    "html": "docs/pae03-critic-14-r3.html",
+    "title": "SCION 14 \u00b7 Critic Round 3",
+    "category": "PAE-03 Flour Tower & Critic Logs",
+    "desc": "Independent visual/kinematic critic inspection for 14 \u00b7 Pose-to-Pose Pencil, round 3.",
+    "words": 1562,
+    "read_mins": 7,
+    "units": "1 sections"
+  },
+  "paeleo/flour-tower/critic/41/round1.md": {
+    "slug": "pae03-critic-41-r1",
+    "html": "docs/pae03-critic-41-r1.html",
+    "title": "SCION 41 \u00b7 Critic Round 1",
+    "category": "PAE-03 Flour Tower & Critic Logs",
+    "desc": "Independent visual/kinematic critic inspection for 41 \u00b7 Soft-Body Continuum, round 1.",
+    "words": 1411,
+    "read_mins": 6,
+    "units": "1 sections"
+  },
+  "paeleo/flour-tower/critic/41/round2.md": {
+    "slug": "pae03-critic-41-r2",
+    "html": "docs/pae03-critic-41-r2.html",
+    "title": "SCION 41 \u00b7 Critic Round 2",
+    "category": "PAE-03 Flour Tower & Critic Logs",
+    "desc": "Independent visual/kinematic critic inspection for 41 \u00b7 Soft-Body Continuum, round 2.",
+    "words": 1395,
+    "read_mins": 6,
+    "units": "1 sections"
+  },
+  "paeleo/flour-tower/critic/41/round3.md": {
+    "slug": "pae03-critic-41-r3",
+    "html": "docs/pae03-critic-41-r3.html",
+    "title": "SCION 41 \u00b7 Critic Round 3",
+    "category": "PAE-03 Flour Tower & Critic Logs",
+    "desc": "Independent visual/kinematic critic inspection for 41 \u00b7 Soft-Body Continuum, round 3.",
+    "words": 1368,
+    "read_mins": 6,
+    "units": "1 sections"
+  },
+  "paeleo/flour-tower/process/README.md": {
+    "slug": "pae03-process",
+    "html": "docs/pae03-process.html",
+    "title": "PAE-03 \u00b7 How the Cuts and Openings Were Made",
+    "category": "PAE-03 Flour Tower & Critic Logs",
+    "desc": "Production pipeline notes on headless frame capture, audio muxing, and contact-sheet inspection for The Flour Tower.",
+    "words": 458,
+    "read_mins": 2,
+    "units": "4 sections"
+  }
+}

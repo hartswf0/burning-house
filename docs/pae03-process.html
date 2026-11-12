@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" data-plate="paper" data-size="md" data-width="book">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PAE-03 · How the Cuts and Openings Were Made — burning-house</title>
+  <meta name="description" content="Production pipeline notes on headless frame capture, audio muxing, and contact-sheet inspection for The Flour Tower." />
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+  <link rel="icon" type="image/png" sizes="64x64" href="../assets/favicon-64.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
+  <link rel="shortcut icon" href="../favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png" />
+  <script>
+    (function () {
+      try {
+        var qp = new URLSearchParams(location.search).get('plate');
+        var p = qp || localStorage.getItem('bh_doc_plate') || localStorage.getItem('bh_plate') || 'paper';
+        if (['paper','notebook','ochre','night'].indexOf(p) !== -1) document.documentElement.setAttribute('data-plate', p);
+        var s = localStorage.getItem('bh_doc_size') || 'md';
+        if (['sm','md','lg'].indexOf(s) !== -1) document.documentElement.setAttribute('data-size', s);
+        var w = localStorage.getItem('bh_doc_width') || 'book';
+        if (['book','wide'].indexOf(w) !== -1) document.documentElement.setAttribute('data-width', w);
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./reader.css" />
+</head>
+<body id="top">
+  <div class="read-progress" id="readProgress"></div>
+
+  <header class="reader-topbar">
+    <div class="topbar-left">
+      <button type="button" class="crumb-link mob-toc-btn" id="mobTocBtn">☰ Contents</button>
+      <a class="brand-pill" href="../index.html">burning-house</a>
+      <span class="crumb-sep">/</span>
+      <a class="crumb-link" href="./index.html">Reading Room</a>
+      <a class="crumb-link" href="../paeleo/abominable-house/index.html">PAE-04</a>
+    </div>
+    <div class="topbar-right">
+      <div class="ctrl-group" role="group" aria-label="Reading theme">
+        <button type="button" class="ctrl-btn active" data-set-plate="paper">Paper</button>
+        <button type="button" class="ctrl-btn" data-set-plate="notebook">Notebook</button>
+        <button type="button" class="ctrl-btn" data-set-plate="ochre">Ochre</button>
+        <button type="button" class="ctrl-btn" data-set-plate="night">Night</button>
+      </div>
+      <div class="ctrl-group" role="group" aria-label="Font size">
+        <button type="button" class="ctrl-btn" data-set-size="sm">A−</button>
+        <button type="button" class="ctrl-btn active" data-set-size="md">A</button>
+        <button type="button" class="ctrl-btn" data-set-size="lg">A+</button>
+      </div>
+      <div class="ctrl-group" role="group" aria-label="Column width">
+        <button type="button" class="ctrl-btn active" data-set-width="book">Book</button>
+        <button type="button" class="ctrl-btn" data-set-width="wide">Wide</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="reader-shell">
+    <aside class="reader-rail" id="readerRail" aria-label="Table of contents">
+      <div class="rail-meta-box">
+        <div class="rail-kicker">PAE-03 Flour Tower &amp; Critic Logs</div>
+        <div class="rail-stats">
+          <span>458 words</span>
+          <span>· ~2 min read</span>
+          <span>· 4 sections</span>
+        </div>
+      </div>
+      <input type="search" id="tocFilter" class="toc-filter" placeholder="Filter contents…" aria-label="Filter table of contents" />
+      <div class="toc-heading">Contents</div>
+      <ul class="toc-list">
+        <li class="toc-item lvl-2"><a href="#the-world-camera-world-camera">The world camera (world-camera/)</a></li>
+<li class="toc-item lvl-2"><a href="#the-openings-openings-and-live">The openings (openings/ and ../live/)</a></li>
+<li class="toc-item lvl-2"><a href="#the-sound-sound">The sound (sound/)</a></li>
+<li class="toc-item lvl-2"><a href="#the-other-cuts">The other cuts</a></li>
+      </ul>
+    </aside>
+
+    <main class="reader-main">
+      <header class="doc-header">
+        <div class="doc-kicker">PAE-03 Flour Tower &amp; Critic Logs · paeleo/flour-tower/process/README.md</div>
+        <h1 class="doc-title">PAE-03 · How the Cuts and Openings Were Made</h1>
+        <p class="doc-subtitle">Production pipeline notes on headless frame capture, audio muxing, and contact-sheet inspection for The Flour Tower.</p>
+        <div class="doc-byline">
+          <span>458 words · ~2 min read · 4 sections</span>
+          <div class="doc-actions">
+            <button type="button" class="doc-act-btn" data-copy-url="">Copy URL</button>
+            <button type="button" class="doc-act-btn" onclick="window.print()">Print / PDF</button>
+            <a class="doc-act-btn" href="../paeleo/flour-tower/process/README.md">Raw .md</a>
+          </div>
+        </div>
+      </header>
+
+      
+
+      <div class="md-prose">
+        <h1 id="pae-03-how-the-cuts-and-openings-were-made">PAE-03 · How the cuts and openings were made</h1>
+<p>Everything here was built from the six self-measuring films in <code>../films/</code>. The scripts are kept as they ran; their paths point at the working folders they were made in (<code>/home/claude/...</code>), so read them as a record rather than a one-command build.</p>
+<h2 id="the-world-camera-world-camera">The world camera (<code>world-camera/</code>)<a class="h-anchor" href="#the-world-camera-world-camera" aria-label="Link to section">#</a></h2>
+<p>Every film records the sack and the penny in its own world metres (<code>window.PAE_TRACE</code>). <code>calibration.json</code> maps each film&rsquo;s metres to its canvas, measured from known points (the tower at x = 0.8 m, the table at y = 0, the penny at y ≈ 0.95 m). With that, one virtual camera can shoot all six films in a single shared world: a cut between films keeps the sack in the same place, pose and scale, and only the material changes.
+- <code>film.py</code> is the shot list: story time per shot, which film, camera keyframes or a lock on the current film&rsquo;s sack, speed ramps, crossfades, shakes. It writes the crop for every frame.
+- <code>cap.js</code> seeks each film (<code>PAE_SEEK</code>) and screenshots exactly that crop at high resolution. Slow motion is real: the films are sampled between their own frames.
+- <code>compose.py</code> assembles the frames and titles.</p>
+<h2 id="the-openings-openings-and-live">The openings (<code>openings/</code> and <code>../live/</code>)<a class="h-anchor" href="#the-openings-openings-and-live" aria-label="Link to section">#</a></h2>
+<p>Three title sequences, each playable live in <code>../live/</code>:
+1. <strong>Picture book</strong>: ink on paper; the sack pours its own flour into the mug, and the game is acted step by step.
+2. <strong>Flour grains</strong>: about 20,000 grains under one lamp. Upside-down letters are poured, packed, flipped, given a penny, cut on four turns, collapsed; the sack&rsquo;s hop; the flour rises into the title.
+3. <strong>Cel tower</strong>: the same game, but every brick is an animation cel cut around the sack from one of the six films (<code>atlas.jpg</code>, 24 frames per film, captured by <code>celcap.js</code>), each playing its own loop.</p>
+<h2 id="the-sound-sound">The sound (<code>sound/</code>)<a class="h-anchor" href="#the-sound-sound" aria-label="Link to section">#</a></h2>
+<p>The flour-sack test for sound is the one-source exercise: score a scene with a single material and no melody to lean on, so feeling has to come from rhythm, density, pitch and weight. Here the one material is the grain: <code>gran.py</code> builds every sound from short windowed grains. Each cel landing is a pitched grain (the tower plays a rising A-minor pentatonic as it stacks), the pour is a grain hiss, the knife and collapse are grain bursts, the title chord is one grain per arriving cel. <code>score_gran.py</code> re-voices the film&rsquo;s score from grains with the same cue sheet as <code>score.py</code>.</p>
+<h2 id="the-other-cuts">The other cuts<a class="h-anchor" href="#the-other-cuts" aria-label="Link to section">#</a></h2>
+<ul>
+<li><code>compilation/</code>: the 4-minute cut of all six films with title cards and the YouTube description.</li>
+<li><code>frankenstein/</code>: the 40-second cut with sewn seams and 59 cuts across bodies under one score.</li>
+<li><code>short/</code>: the vertical short, framed by hand per shot.</li>
+</ul>
+      </div>
+
+      <nav class="doc-pager" aria-label="Document pagination"><a class="pager-card" href="./pae03-critic-41-r3.html"><div class="pager-dir">← Previous Document</div><div class="pager-title">SCION 41 · Critic Round 3</div></a></nav>
+    </main>
+  </div>
+
+  <script src="./reader.js"></script>
+</body>
+</html>

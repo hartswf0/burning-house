@@ -14,6 +14,7 @@ os.chdir(ROOT)
 CANON = 'Abominable_House_Submission_Draft.md'
 DOCS = [
     (CANON, 'Submission draft', 'the paper'),
+    ('CLAIMS.md', 'Claims checked', 'audit'),
     ('Abominable_House_Framing_Notes.md', 'Framing notes', 'source for the paper'),
     ('VTX01_MVVT_Research_Memo_and_Spec.md', 'VTX-0.1 memo and spec', 'source for the paper'),
     ('Logline_Journal_Entries_and_Existing_Assets.md', 'Loglines, entries 21–38, existing assets', 'working notes'),
@@ -21,6 +22,7 @@ DOCS = [
     ('pae04_abominable_house_scion_run.md', 'PAE-04 SCION run', 'process record'),
     ('scion_mvvt_abominable_house_instruction.md', 'SCION instruction for MVVT', 'process record'),
     ('DH2025_Concrete_Papers_and_Works_Cited.md', 'DH2025 papers and works cited', 'reference'),
+    ('paeleo/flour-tower/BRIEF.md', 'PAE-03 Flour Tower brief', 'source for the paper'),
     ('p1.md', 'p1', 'working notes'),
     ('xzet.md', 'xzet', 'working notes'),
 ]
@@ -70,8 +72,37 @@ def cards():
                 fields[cur].append(line)
         f = {k: plain('\n'.join(v).strip()) for k, v in fields.items() if k != 'ID'}
         c = {'id': cid, 'short': short(cid), 'title': f.pop('TITLE', ''), 'fields': f,
-             'copies': 1, 'words': len(norm.split()), 'raw': b}
+             'copies': 1, 'words': len(norm.split()), 'raw': b,
+             'href': 'docs/zettle.html#' + slug(cid)}
         seen[key] = c; out.append(c)
+    # Also include inline-keyed cards from zettle-past.md (without altering zettle.md dedupe)
+    if os.path.exists('zettle-past.md') and '--dedupe' not in sys.argv:
+        pblocks = re.split(r'(?m)^ZETTEL[ \t]*$', read('zettle-past.md'))
+        for b in pblocks[1:]:
+            m_id = re.search(r'(?m)^ID:\s*([a-zA-Z0-9_-]+)', b)
+            if not m_id:
+                continue
+            cid = m_id.group(1).strip()
+            pfields = collections.OrderedDict()
+            cur = None
+            for line in b.strip('`\n ').split('\n'):
+                fm = re.match(r'^([A-Z][A-Z /&\-]{1,40}):\s*(.*)$', line)
+                if fm:
+                    cur = fm.group(1)
+                    pfields[cur] = [fm.group(2)] if fm.group(2).strip() else []
+                elif cur:
+                    pfields[cur].append(line)
+            pf = {k: plain('\n'.join(v).strip()) for k, v in pfields.items() if k != 'ID'}
+            out.append({
+                'id': cid,
+                'short': short(cid),
+                'title': pf.pop('TITLE', ''),
+                'fields': pf,
+                'copies': 1,
+                'words': len(re.sub(r'\s+', ' ', b).split()),
+                'raw': b,
+                'href': 'docs/zettle-past.html#' + slug(cid),
+            })
     # mark variants of one ID
     n = collections.Counter(c['id'] for c in out)
     v = collections.Counter()
@@ -116,6 +147,12 @@ def entries():
 
 # ---------------------------------------------------------------- document sections
 def sections():
+    doc_mf = {}
+    if os.path.exists('docs/manifest.json'):
+        try:
+            doc_mf = json.loads(read('docs/manifest.json'))
+        except Exception:
+            doc_mf = {}
     out = []
     for path, name, role in DOCS:
         if not os.path.exists(path):
@@ -131,9 +168,10 @@ def sections():
             if used[a] > 1:
                 a += '-' + str(used[a])
             cap = 1800 if c['doc'].startswith('DH2025') else 9000
+            styled_href = (doc_mf[c['doc']]['html'] + '#' + a) if c['doc'] in doc_mf else c['doc']
             out.append({'doc': c['doc'], 'docname': c['docname'], 'role': c['role'], 'heading': label(c['heading']),
                         'anchor': a, 'text': re.sub(r'\s+', ' ', t)[:cap],
-                        'href': ('read.html#' + a) if c['doc'] == CANON else c['doc']})
+                        'href': ('read.html#' + a) if c['doc'] == CANON else styled_href})
         fence = False
         for ln in lines:
             if ln.startswith('```'):

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en" data-plate="paper" data-size="md" data-width="book">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Words to World: Anticombinatorics &amp; Agent-Scale Video-Text — burning-house</title>
+  <meta name="description" content="Early foundational working paper on Oulipian anticombinatorics, BDI/LEGOS agents, Geertz, and reading over the machine&#x27;s shoulder." />
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+  <link rel="icon" type="image/png" sizes="64x64" href="../assets/favicon-64.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
+  <link rel="shortcut icon" href="../favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png" />
+  <script>
+    (function () {
+      try {
+        var qp = new URLSearchParams(location.search).get('plate');
+        var p = qp || localStorage.getItem('bh_doc_plate') || localStorage.getItem('bh_plate') || 'paper';
+        if (['paper','notebook','ochre','night'].indexOf(p) !== -1) document.documentElement.setAttribute('data-plate', p);
+        var s = localStorage.getItem('bh_doc_size') || 'md';
+        if (['sm','md','lg'].indexOf(s) !== -1) document.documentElement.setAttribute('data-size', s);
+        var w = localStorage.getItem('bh_doc_width') || 'book';
+        if (['book','wide'].indexOf(w) !== -1) document.documentElement.setAttribute('data-width', w);
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./reader.css" />
+</head>
+<body id="top">
+  <div class="read-progress" id="readProgress"></div>
+
+  <header class="reader-topbar">
+    <div class="topbar-left">
+      <button type="button" class="crumb-link mob-toc-btn" id="mobTocBtn">☰ Contents</button>
+      <a class="brand-pill" href="../index.html">burning-house</a>
+      <span class="crumb-sep">/</span>
+      <a class="crumb-link" href="./index.html">Reading Room</a>
+      <a class="crumb-link" href="../paeleo/abominable-house/index.html">PAE-04</a>
+    </div>
+    <div class="topbar-right">
+      <div class="ctrl-group" role="group" aria-label="Reading theme">
+        <button type="button" class="ctrl-btn active" data-set-plate="paper">Paper</button>
+        <button type="button" class="ctrl-btn" data-set-plate="notebook">Notebook</button>
+        <button type="button" class="ctrl-btn" data-set-plate="ochre">Ochre</button>
+        <button type="button" class="ctrl-btn" data-set-plate="night">Night</button>
+      </div>
+      <div class="ctrl-group" role="group" aria-label="Font size">
+        <button type="button" class="ctrl-btn" data-set-size="sm">A−</button>
+        <button type="button" class="ctrl-btn active" data-set-size="md">A</button>
+        <button type="button" class="ctrl-btn" data-set-size="lg">A+</button>
+      </div>
+      <div class="ctrl-group" role="group" aria-label="Column width">
+        <button type="button" class="ctrl-btn active" data-set-width="book">Book</button>
+        <button type="button" class="ctrl-btn" data-set-width="wide">Wide</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="reader-shell">
+    <aside class="reader-rail" id="readerRail" aria-label="Table of contents">
+      <div class="rail-meta-box">
+        <div class="rail-kicker">Papers &amp; Specifications</div>
+        <div class="rail-stats">
+          <span>2,712 words</span>
+          <span>· ~12 min read</span>
+          <span>· 13 sections</span>
+        </div>
+      </div>
+      <input type="search" id="tocFilter" class="toc-filter" placeholder="Filter contents…" aria-label="Filter table of contents" />
+      <div class="toc-heading">Contents</div>
+      <ul class="toc-list">
+        <li class="toc-item lvl-2"><a href="#1-core-thesis-establishing-a-minimum-viable-video-text-mvvt">1. Core Thesis: Establishing a Minimum Viable Video-Text (MVVT)</a></li>
+<li class="toc-item lvl-2"><a href="#2-actuarial-numerification-anticombinatorics-calvinos-abominable-house">2. Actuarial Numerification &amp; Anticombinatorics: Calvino’s Abominable House</a></li>
+<li class="toc-item lvl-3"><a href="#21-ibm-playboy-and-the-insurability-of-evil">2.1 IBM, Playboy, and the Insurability of Evil</a></li>
+<li class="toc-item lvl-3"><a href="#22-from-1212-combinatorial-explosion-to-oulipian-clinamen">2.2 From 1212 Combinatorial Explosion to Oulipian Clinamen</a></li>
+<li class="toc-item lvl-2"><a href="#3-why-the-flour-sack-expressive-compression-safety-boundary-translation">3. Why the Flour Sack? Expressive Compression &amp; Safety-Boundary Translation</a></li>
+<li class="toc-item lvl-2"><a href="#4-agent-scale-creative-swarms-lessons-from-anthropics-scion">4. Agent-Scale Creative Swarms: Lessons from Anthropic’s Scion</a></li>
+<li class="toc-item lvl-2"><a href="#5-substrates-of-agency-legoldraw-hassabiss-bdi-and-parks-ai-town">5. Substrates of Agency: LEGO/LDraw, Hassabis’s BDI, and Park’s AI Town</a></li>
+<li class="toc-item lvl-2"><a href="#6-cybernetic-hermeneutics-geertz-over-the-machines-shoulder-lems-bitisti">6. Cybernetic Hermeneutics: Geertz Over the Machine’s Shoulder &amp; Lem’s Bitistics</a></li>
+<li class="toc-item lvl-3"><a href="#61-reading-over-the-shoulder-of-the-machine-clifford-geertz">6.1 Reading Over the Shoulder of the Machine (Clifford Geertz)</a></li>
+<li class="toc-item lvl-3"><a href="#62-stanisław-lems-bitistics-the-semascope-and-the-burning-semaphore">6.2 Stanisław Lem’s Bitistics, the Semascope, and the Burning Semaphore</a></li>
+<li class="toc-item lvl-2"><a href="#7-summary-of-contributions-experimental-test-case-open-provocation">7. Summary of Contributions, Experimental Test Case &amp; Open Provocation</a></li>
+<li class="toc-item lvl-3"><a href="#71-dual-contributions-technical-narrativemedia-theoretical">7.1 Dual Contributions (Technical + Narrative/Media-Theoretical)</a></li>
+<li class="toc-item lvl-3"><a href="#72-concrete-test-case-work-in-progress-experiment">7.2 Concrete Test Case (Work-in-Progress Experiment)</a></li>
+      </ul>
+    </aside>
+
+    <main class="reader-main">
+      <header class="doc-header">
+        <div class="doc-kicker">Papers &amp; Specifications · abominable_house_mvvt_research_notes.md</div>
+        <h1 class="doc-title">Words to World: Anticombinatorics &amp; Agent-Scale Video-Text</h1>
+        <p class="doc-subtitle">Early foundational working paper on Oulipian anticombinatorics, BDI/LEGOS agents, Geertz, and reading over the machine&#x27;s shoulder.</p>
+        <div class="doc-byline">
+          <span>2,712 words · ~12 min read · 13 sections</span>
+          <div class="doc-actions">
+            <button type="button" class="doc-act-btn" data-copy-url="">Copy URL</button>
+            <button type="button" class="doc-act-btn" onclick="window.print()">Print / PDF</button>
+            <a class="doc-act-btn" href="../abominable_house_mvvt_research_notes.md">Raw .md</a>
+          </div>
+        </div>
+      </header>
+
+      
+
+      <div class="md-prose">
+        <h1 id="words-to-world-anticombinatorics-the-flour-sack-primitive-and-agent-scal">Words to World: Anticombinatorics, the Flour-Sack Primitive, and Agent-Scale Video-Text Swarms</h1>
+<p><em>Working Research Notes &amp; Theoretical Synthesis — Draft in Progress</em></p>
+<h2 id="1-core-thesis-establishing-a-minimum-viable-video-text-mvvt">1. Core Thesis: Establishing a Minimum Viable Video-Text (MVVT)<a class="h-anchor" href="#1-core-thesis-establishing-a-minimum-viable-video-text-mvvt" aria-label="Link to section">#</a></h2>
+<p>Generative media currently suffers from an architectural split: text models reason over discrete, inspectable symbols, while diffusion-based video generators hallucinate continuous pixel streams that resist causal editing, structural reproducibility, and swarm-scale collaboration. Building on prior investigations into the &ldquo;Linguistic Brick&rdquo; in <a href="https://docs.google.com/document/d/1Z_9Mpq70gxouWpJOkCnrJJENbEdRssE3qww9bDxzE2k/edit?usp=drivesdk&amp;ouid=105961402405602232491">Digital LEGO Ecosystem: An Archaeological Framework</a> and spatial scene assembly in the <a href="https://drive.google.com/open?id=14B418ripYZJehI7RYdeYpj2p8nGGL0BLbZMPix8QhRw">LEGOS-GPT 9×9 Semantic Grid working notes</a>, this project proposes a <strong>Minimum Viable Video-Text (MVVT)</strong> format—an inspectable, plain-text representation where <strong>words assemble video-text</strong> directly into staged, causal motion graphics and animation (<strong>words-to-world</strong> / <strong>words-to-environment</strong>).</p>
+<p>Rather than treating generative video as a black-box rendering endpoint, MVVT treats animation as a <strong>versioned state-transition substrate</strong> operated by self-critical agent swarms:</p>
+<ul>
+<li><strong>Expressive Minimalism via the Flour-Sack Primitive</strong>: Adopting the classic 1930s Walt Disney Studios <a href="https://blog.habrador.com/2018/02/the-illusion-of-life-or-why-you-should.html">half-filled flour-sack animation exercise</a> codified in Frank Thomas and Ollie Johnston&rsquo;s <a href="https://en.wikipedia.org/wiki/Disney_Animation:_The_Illusion_of_Life"><em>Disney Animation: The Illusion of Life</em></a> (1981), MVVT strips away facial anatomy, dialogue, and surface ornament so narrative meaning must be earned strictly through volume-conserving deformation, silhouette, weight, timing, and spatial staging.</li>
+<li><strong>Safety-Compliant Structural Proxy for Dramatic Extremes</strong>: Re-examining Italo Calvino&rsquo;s 1973 computer-assisted mystery <a href="https://grokipedia.com/page/the_burning_of_the_abominable_house"><em>The Burning of the Abominable House</em></a>—whose plot turns on twelve transgressive deeds committed among four boarding-house residents—exposes a practical bottleneck in contemporary generative models: staging dramatic conflict or coercion on human figures triggers safety refusals or produces gratuitous imagery. Abstracting actors into inanimate canvas flour sacks transforms unrenderable human violence into structural stagecraft—testing causal preconditions, power asymmetries, occlusion, and physical consequences without depicting human harm.</li>
+<li><strong>Swarm-Scale Version Control &amp; Self-Critical Loops</strong>: Drawing on Anthropic&rsquo;s October 2026 engineering architecture <a href="https://www.anthropic.com/research/redesigning-source-control"><em>Redesigning source control at Anthropic</em></a> (<strong>Scion</strong> and <strong>Antique</strong>), MVVT replaces monolithic video files and offline human-paced timelines with atomic, content-addressed <strong>changesets</strong>, sparse agent checkouts, and independent critic loops (&ldquo;superfans&rdquo; and blind adversarial reviewers) that prune incoherent permutations while preserving creative swerves.</li>
+</ul>
+<h2 id="2-actuarial-numerification-anticombinatorics-calvinos-abominable-house">2. Actuarial Numerification &amp; Anticombinatorics: Calvino&rsquo;s <em>Abominable House</em><a class="h-anchor" href="#2-actuarial-numerification-anticombinatorics-calvinos-abominable-house" aria-label="Link to section">#</a></h2>
+<h3 id="21-ibm-playboy-and-the-insurability-of-evil">2.1 IBM, <em>Playboy</em>, and the Insurability of Evil<a class="h-anchor" href="#21-ibm-playboy-and-the-insurability-of-evil" aria-label="Link to section">#</a></h3>
+<p>Italo Calvino&rsquo;s <a href="https://grokipedia.com/page/the_burning_of_the_abominable_house"><em>The Burning of the Abominable House</em></a> (<em>L&rsquo;incendio della casa abominevole</em>) originated during his Paris years with the <a href="https://en.wikipedia.org/wiki/Oulipo">Oulipo</a> (<em>Ouvroir de littérature potentielle</em>) collective. Prompted by a commission from <strong>IBM</strong> to explore computer-assisted storytelling, Calvino first presented the concept to Oulipo in November 1972 as <em>Le mystère de la maison abominable</em>, published a shorter version in the February 1973 Italian edition of <em>Playboy</em> (later translated into English by Tim Parks in the 1995 collection <em>Numbers in the Dark and Other Stories</em>), and publicly demonstrated a FORTRAN-era algorithmic implementation with Oulipo physicist-mathematician Paul Braffort at the Centre Pompidou A.R.T.A. session on June 15, 1977 (<a href="https://grokipedia.com/page/the_burning_of_the_abominable_house">Grokipedia</a>; <a href="https://www.ub.edu/llulldb/docs/Calvino.pdf">Comparative Literature analysis</a>).</p>
+<p>Crucially, Calvino frames the cybernetic whodunit not as a police procedural—the police immediately close the case because all four suspects died in the boarding-house fire—but as an <strong>actuarial investigation into insurance liability</strong> (<a href="https://grokipedia.com/page/the_burning_of_the_abominable_house">Grokipedia</a>). Like James M. Cain&rsquo;s 1943 novella <a href="https://en.wikipedia.org/wiki/Double_Indemnity_(novel)"><em>Double Indemnity</em></a> and Billy Wilder and Raymond Chandler&rsquo;s 1944 film noir <a href="https://en.wikipedia.org/wiki/Double_Indemnity"><em>Double Indemnity</em></a>—where claims manager Barton Keyes reduces human passion, murder, and suicide to statistical probability tables—Calvino&rsquo;s protagonist <strong>Waldemar</strong> is an insurance analyst hired because four dead residents are bound together by overlapping policies:</p>
+<ul>
+<li><strong>Widow Roessler</strong> (landlady): life insurance benefiting Ogiva&rsquo;s child (<a href="https://grokipedia.com/page/the_burning_of_the_abominable_house">Grokipedia</a>).</li>
+<li><strong>Inigo</strong> (dispossessed young aristocrat): fire coverage claimed by his surviving family (<a href="https://grokipedia.com/page/the_burning_of_the_abominable_house">Grokipedia</a>).</li>
+<li><strong>Ogiva</strong> (ex-model): high-value property coverage on her wig collection (<a href="https://grokipedia.com/page/the_burning_of_the_abominable_house">Grokipedia</a>).</li>
+<li><strong>Belindo Kid</strong> (Uzbek wrestler): accidental-injury coverage claimed by wrestling promoters (<a href="https://grokipedia.com/page/the_burning_of_the_abominable_house">Grokipedia</a>).</li>
+</ul>
+<p>This is the <strong>deadly serious numerification of humanity</strong>: human desire, betrayal, and mortality become fungible variables in an actuarial ledger where evil matters precisely insofar as it voids or triggers a payout (<a href="https://scholarship.claremont.edu/cgi/viewcontent.cgi?article=1552&amp;context=jhm">Claremont Journal of Humanistic Mathematics</a>).</p>
+<h3 id="22-from-1212-combinatorial-explosion-to-oulipian-clinamen">2.2 From <span class="md-math">12<sup>12</sup></span> Combinatorial Explosion to Oulipian <em>Clinamen</em><a class="h-anchor" href="#22-from-1212-combinatorial-explosion-to-oulipian-clinamen" aria-label="Link to section">#</a></h3>
+<p>Recovered from the ashes is a charred notebook whose surviving plastic-shielded back index lists twelve alphabetically ordered transitive acts—<em>Blackmail, Drugging, Incitement to Suicide, Knifing, Prostitution, Rape, Seduction, Slander, Snooping, Strangling, Threatening with a Gun,</em> and <em>Tying and Gagging</em>—with zero attribution of perpetrator, victim, or sequence (<a href="https://grokipedia.com/page/the_burning_of_the_abominable_house">Grokipedia</a>). Across 4 characters (<span class="md-math">A, B, C, D</span>) forming <span class="md-math">4  ×  3 = 12</span> ordered non-reflexive dyads mapped across 12 distinct acts, the unconstrained space spans <span class="md-math">12<sup>12</sup>  ≈  8.87  ×  10<sup>12</sup></span> (8.87 trillion) raw sequences (<a href="https://grokipedia.com/page/the_burning_of_the_abominable_house">Grokipedia</a>; <a href="https://www.ub.edu/llulldb/docs/Calvino.pdf">Comparative Literature</a>).</p>
+<p>Collaborating with computer programmer <strong>Skiller</strong>, Waldemar feeds <strong>objective logical and temporal constraints</strong> into the machine—forbidding dead actors from committing or suffering subsequent deeds, grouping acts into sequential classes (<em>secret appropriation</em> <span class="md-math"> → </span> <em>will appropriation</em> <span class="md-math"> → </span> <em>physical elimination</em>), and balancing perpetrator/victim quotas (<a href="https://grokipedia.com/page/the_burning_of_the_abominable_house">Grokipedia</a>; <a href="https://www.ub.edu/llulldb/docs/Calvino.pdf">Comparative Literature</a>). In his Oulipo essay <em>&ldquo;Prose and Anticombinatorics&rdquo;</em> (<a href="https://nickm.com/classes/resources/12-oulipo-p.pdf">Six Selections by the Oulipo</a>; <a href="https://www.ub.edu/llulldb/docs/Calvino.pdf">Comparative Literature</a>), Calvino draws two foundational lessons for generative AI today:</p>
+<ol>
+<li><strong>Anticombinatorics (Constraint Pruning)</strong>: Computers excel not merely at spinning out endless variations (&ldquo;slavery of a combinatory search&rdquo;), but at <strong>deductive narrowing</strong>—collapsing trillions of incoherent states into the sparse set of causally valid worlds (<a href="https://www.ub.edu/llulldb/docs/Calvino.pdf">Comparative Literature</a>).</li>
+<li><strong>The Lucretian <em>Clinamen<em> (Swerve / Productive Error)</em>*: Algorithmic narrowing alone cannot produce art; true narrative interest arises from the </em></strong>clinamen*<em><em>—Lucretius&rsquo;s atomic swerve (and Paul Klee / Georges Perec&rsquo;s maxim that </em>&ldquo;Genius is the error in the system&rdquo;</em>), where contingency, psychic noise, or a thirteenth unindexed act (the approaching sirens outside Waldemar&rsquo;s own door) ruptures closed calculation (<a href="https://www.ub.edu/llulldb/docs/Calvino.pdf">Comparative Literature</a>; <a href="https://scholarship.claremont.edu/cgi/viewcontent.cgi?article=1552&amp;context=jhm">Claremont JHM</a>).</li>
+</ol>
+<h2 id="3-why-the-flour-sack-expressive-compression-safety-boundary-translation">3. Why the Flour Sack? Expressive Compression &amp; Safety-Boundary Translation<a class="h-anchor" href="#3-why-the-flour-sack-expressive-compression-safety-boundary-translation" aria-label="Link to section">#</a></h2>
+<p>In classical 1930s Walt Disney Studios training, animators tested <a href="https://en.wikipedia.org/wiki/Disney_Animation:_The_Illusion_of_Life"><em>The Illusion of Life</em></a> using a <strong>half-filled flour sack</strong> before touching complex human characters (<a href="https://blog.habrador.com/2018/02/the-illusion-of-life-or-why-you-should.html">Habrador</a>; <a href="https://www.thinkinganimation.com/animation-exercises-2">Thinking Animation</a>). Unlike a rigid bouncing ball, a flour sack possesses four corners (&ldquo;ears&rdquo; and &ldquo;hips&rdquo;), internal shifting weight, fabric drag, and strict <strong>volume conservation</strong> under <a href="https://en.wikipedia.org/wiki/Twelve_basic_principles_of_animation"><em>squash and stretch</em></a>.</p>
+<p>In our project—tracked alongside workspace experiments in the <a href="https://keep.google.com/?note=1h5Xwqb_6t-SVvl1eyeF2v1wHAch1IK1NhU_39wop5qvd6OyAtdF0cBoH_QX6cKGKrsRr">Abominable House &amp; Flour Sacks project index note</a>—the flour sack performs <strong>double duty</strong>:</p>
+<ul>
+<li><strong>Graphic-to-Text Isomorphism (MVVT Kernel)</strong>: Because a flour sack has no face, eyeballs, or spoken dialogue, every narrative beat (<em>sees <span class="md-math"> → </span> hesitates <span class="md-math"> → </span> anticipates <span class="md-math"> → </span> acts <span class="md-math"> → </span> overshoots <span class="md-math"> → </span> settles</em>) must compile cleanly from text verbs into <strong>10–15 geometric parameters</strong> (center of mass, basal contact width, corner vectors, spine arc, squash ratio, and exposure timing) governed by the <a href="https://en.wikipedia.org/wiki/Twelve_basic_principles_of_animation">Twelve Basic Principles of Animation</a>.</li>
+<li><strong>Structural Abstraction Across Model Safety Guardrails</strong>: Directly prompting frontier video or agent models to enact Calvino&rsquo;s twelve literal criminal predicates on human bodies triggers immediate content-safety refusals and obscures formal narrative mechanics beneath sensationalism. Translating Calvino&rsquo;s 12 transitive predicates into <strong>abstract topological &amp; physical transition functions on inanimate flour sacks</strong>—such as <em>Shadow-Eavesdropping</em> (Snooping), <em>Corner-Pinning</em> (Tying), <em>Weight-Siphoning</em> (Blackmail), <em>Slump-Induction</em> (Drugging), or <em>Unraveling-Seam</em>—preserves the exact directed graph, irreversible state preconditions, and asymmetric dyadic tension of Calvino&rsquo;s puzzle (<a href="https://www.ub.edu/llulldb/docs/Calvino.pdf">Comparative Literature</a>) while remaining completely safe, playful, inspectable, and reproducible.</li>
+</ul>
+<h2 id="4-agent-scale-creative-swarms-lessons-from-anthropics-scion">4. Agent-Scale Creative Swarms: Lessons from Anthropic&rsquo;s Scion<a class="h-anchor" href="#4-agent-scale-creative-swarms-lessons-from-anthropics-scion" aria-label="Link to section">#</a></h2>
+<p>Traditional animation and video pipelines assume human-scale, offline, single-threaded file locks (heavy <code>.blend</code>, <code>.aep</code>, or <code>.mp4</code> binaries)—the exact structural equivalent of decentralized Git clones. In October 2026, Anthropic published <a href="https://www.anthropic.com/research/redesigning-source-control"><em>Redesigning source control at Anthropic</em></a>, detailing why autonomous Claude coding swarms broke Git when daily merges surged 12× from <strong>~2,500/day in May 2026 to &gt;30,000/day by September 2026</strong> across <strong>25 million daily checkouts</strong> (~600 PB/day of naive Git clone traffic), forcing a seven-engineer team to build <strong>Scion</strong> (version control) and <strong>Antique</strong> (agent-scale review) in five months.</p>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th style="text-align: left;">Architectural Dimension</th>
+<th style="text-align: left;">Legacy Human / Git Pipeline (<a href="https://www.anthropic.com/research/redesigning-source-control">Anthropic Scion</a>)</th>
+<th style="text-align: left;">Anthropic Scion + Antique (<a href="https://www.anthropic.com/research/redesigning-source-control">Anthropic Scion</a>)</th>
+<th style="text-align: left;">MVVT Flour-Sack Swarm Translation (Proposed)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Client Connectivity &amp; Footprint</strong></td>
+<td style="text-align: left;">Offline full-history repository clones (~100 GB history, packfile stalls)</td>
+<td style="text-align: left;">Always-online thin clients (<code>scion-daemon</code> / <code>scion-cache</code>) with &gt;99% cache hit rate &amp; 200× smaller footprint</td>
+<td style="text-align: left;">Sparse scene checkouts: agents pull only the active shot interval, actor rig parameters, and adjacent boundary keyframes</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Atomic Unit of Mutation</strong></td>
+<td style="text-align: left;">Full tree-pointer commit + global ref locks</td>
+<td style="text-align: left;">Server-side write-ahead log <strong>changeset</strong> storing changed paths + content-addressed blob pointers</td>
+<td style="text-align: left;"><strong>Transition Changeset</strong>: declarative verb-to-keyframe delta <code>(actor_A, predicate_k, actor_B, t_start..t_end)</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Derived Inspection Views</strong></td>
+<td style="text-align: left;">Recomputed locally by cloning full history (<code>git blame</code>, <code>git log</code>)</td>
+<td style="text-align: left;">Server-computed recursive <strong>derived data</strong> in Spanner (skip lists, path history, API queries without checkout)</td>
+<td style="text-align: left;">Lazily materialized <strong>X-Sheets</strong>, silhouette arc traces, volume-conservation curves, and causal precondition graphs</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Concurrency &amp; Merge Collisions</strong></td>
+<td style="text-align: left;">Serialized pre-merge global lock queues that saturate at high agent throughput</td>
+<td style="text-align: left;">Lock-free optimistic landing + post-merge automated testing &amp; rapid agent conflict repair</td>
+<td style="text-align: left;">Parallel Oulipian branch exploration: non-colliding depth planes merge locklessly; incompatible causal acts fork into explicit <em>clinamen</em> branches</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Human &amp; Critic Role</strong></td>
+<td style="text-align: left;">Line-by-line syntax inspection</td>
+<td style="text-align: left;">Engineers review <strong>intent</strong> and say <strong>&ldquo;no&rdquo;</strong> to constraint violations; dedicated Claude <strong>&ldquo;superfans&rdquo;</strong> watch component telemetry</td>
+<td style="text-align: left;">Blind <strong>Critics</strong> inspect rendered silhouettes with sound off; specialized <strong>Superfans</strong> monitor volume drift, foot-sliding, and causal deadlocks</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="5-substrates-of-agency-legoldraw-hassabiss-bdi-and-parks-ai-town">5. Substrates of Agency: LEGO/LDraw, Hassabis&rsquo;s BDI, and Park&rsquo;s <em>AI Town</em><a class="h-anchor" href="#5-substrates-of-agency-legoldraw-hassabiss-bdi-and-parks-ai-town" aria-label="Link to section">#</a></h2>
+<p>To bridge <strong>combinatorial text</strong> and <strong>expressive world simulation</strong>, MVVT synthesizes three distinct lineages of discrete world-building and agent cognition:</p>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th style="text-align: left;">Lineage &amp; Primary Source</th>
+<th style="text-align: left;">Core Substrate &amp; Representation</th>
+<th style="text-align: left;">Generative Strength</th>
+<th style="text-align: left;">Bottleneck Addressed by MVVT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>LDraw &ldquo;Linguistic Brick&rdquo; &amp; LEGOS-GPT</strong> (<a href="https://www.ldraw.org/article/218.html">LDraw Spec</a>; <a href="https://docs.google.com/document/d/1ueQ4IDbtqiGyClhhhEGWzImwsDNx9zso8yLQWK1M9Gg/edit?usp=drivesdk&amp;ouid=105961402405602232491">LEGO LDraw Part Search Strategies</a>; <a href="https://drive.google.com/open?id=14B418ripYZJehI7RYdeYpj2p8nGGL0BLbZMPix8QhRw">LEGOS-GPT 9×9 Grid</a>)</td>
+<td style="text-align: left;">Plain-text <code>Line Type 1</code> affine transformation matrices (<code>1 &lt;color&gt; x y z a..i part.dat</code>) + <code>Micro-PLoT</code> 9×9 concentric zone scoring</td>
+<td style="text-align: left;">Prevents generative &ldquo;context rot&rdquo; and melting geometry by giving LLMs durable, composable spatial syntax</td>
+<td style="text-align: left;">Rigid ABS bricks lack soft-body squash-and-stretch, overlapping fabric drag, and continuous emotional posture</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Belief–Desire–Intention (BDI) Creature AI</strong> (Demis Hassabis &amp; Richard Evans on Lionhead&rsquo;s <a href="https://en.wikipedia.org/wiki/Black_%26_White_(video_game)"><em>Black &amp; White</em></a>, 2001; <a href="https://en.wikipedia.org/wiki/Demis_Hassabis">Demis Hassabis bio</a>; <a href="https://en.wikipedia.org/wiki/Belief%E2%80%93desire%E2%80%93intention_software_model">BDI Software Model</a>)</td>
+<td style="text-align: left;">Michael Bratman&rsquo;s <strong>Beliefs</strong> (object lists), <strong>Desires</strong> (perceptron drives), and <strong>Intentions</strong> (committed decision-tree plans) shaped by player hand/leashes</td>
+<td style="text-align: left;">Separates <em>deliberating what to do</em> from <em>executing plans</em>, making creatures visibly hesitate, choose, and morally morph</td>
+<td style="text-align: left;">Reward/slap conditioning enforces heteronomy (<a href="https://note.com/akikito/n/nf48803863350?hl=en">Note analysis</a>) and can suffer mid-action utility interrupts without narrative arc constraints</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Generative Agents &amp; Smallville / AI Town</strong> (Joon Sung Park et al., <a href="https://arxiv.org/abs/2304.03442"><em>Generative Agents</em></a>, UIST 2023; <a href="https://github.com/a16z-infra/ai-town"><code>a16z-infra/ai-town</code></a>)</td>
+<td style="text-align: left;">Natural-language <strong>memory stream</strong> <span class="md-math"> → </span> periodic <strong>reflection</strong> synthesis <span class="md-math"> → </span> recursive <strong>daily/hourly/minute action plans</strong> across 25 town agents</td>
+<td style="text-align: left;">Produces emergent social diffusion (invitations, alliances, gossip) from a single seed prompt</td>
+<td style="text-align: left;">Tile-sprite movement is expressively flat (&ldquo;thin&rdquo; motion) and unconstrained open-ended chat drifts into repetitive social pleasantries</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>The Synthesis</strong>: MVVT combines <strong>LDraw&rsquo;s</strong> durable plain-text scene grammar (eliminating context rot), <strong>Hassabis/Bratman&rsquo;s BDI</strong> internal triad (so every flour-sack deformation visibly stages <em>stimulus <span class="md-math"> → </span> belief update <span class="md-math"> → </span> competing desire <span class="md-math"> → </span> committed intention</em>), and <strong>Park&rsquo;s</strong> memory-reflection loop—while binding all three inside <strong>Calvino&rsquo;s anticombinatorial constraint solver</strong> so every scene transition carries genuine dramatic stakes.</p>
+<h2 id="6-cybernetic-hermeneutics-geertz-over-the-machines-shoulder-lems-bitisti">6. Cybernetic Hermeneutics: Geertz Over the Machine&rsquo;s Shoulder &amp; Lem&rsquo;s <em>Bitistics</em><a class="h-anchor" href="#6-cybernetic-hermeneutics-geertz-over-the-machines-shoulder-lems-bitisti" aria-label="Link to section">#</a></h2>
+<h3 id="61-reading-over-the-shoulder-of-the-machine-clifford-geertz">6.1 Reading Over the Shoulder of the Machine (Clifford Geertz)<a class="h-anchor" href="#61-reading-over-the-shoulder-of-the-machine-clifford-geertz" aria-label="Link to section">#</a></h3>
+<p>In <a href="https://en.wikipedia.org/wiki/The_Interpretation_of_Cultures"><em>The Interpretation of Cultures</em></a> (1973)—published the exact same year as Calvino&rsquo;s <em>Abominable House</em> and Lem&rsquo;s <em>Imaginary Magnitude</em>—Clifford Geertz formulated <a href="https://en.wikipedia.org/wiki/Thick_description"><strong>thick description</strong></a> (adapting Gilbert Ryle&rsquo;s distinction between an involuntary muscular twitch and a conspiratorial wink) and famously described ethnography in <em>&ldquo;Deep Play: Notes on the Balinese Cockfight&rdquo;</em> as <strong>standing &ldquo;over the shoulder&rdquo;</strong> of the native interlocutor to read cultural practices as an ensemble of public texts (<a href="https://www.researchgate.net/publication/281213608_From_Homo_Politicus_to_Immobilized_Icon_Clifford_Geertz_and_Shifts_in_Anthropological_Paradigms">ResearchGate</a>; <a href="https://livingvaluetheory.org/article/culture-is-not-a-text-everything-wrong-with-anthropologys-most-famous-metaphor">Living Value Theory</a>).</p>
+<p>In an MVVT swarm, <strong>thick description becomes our observability paradigm</strong>:</p>
+<ul>
+<li>A <strong>thin description</strong> of a flour-sack frame says: <em>&ldquo;Vertex <span class="md-math">y<sub>3</sub></span> dropped by 18 units over 4 frames.&rdquo;</em></li>
+<li>A <strong>thick description</strong>—reading over the shoulder of the machine&rsquo;s BDI ledger, exposure sheet, and Scion changeset history—reads the layered symbolic structure: <em>&ldquo;Sack B compressed by 18 units to feign submission while occluding Prop X from Sack A&rsquo;s sightline.&rdquo;</em></li>
+<li>By keeping the entire video-text substrate plain-text and versioned, human researchers and independent critic agents literally read over the swarm&rsquo;s shoulder as it negotiates culture, taboo, and causality—while staying alert to the post-Geertzian critique (<a href="https://livingvaluetheory.org/article/culture-is-not-a-text-everything-wrong-with-anthropologys-most-famous-metaphor">Living Value Theory</a>) that sedimented text traces must never be mistaken for living performance until played back in time.</li>
+</ul>
+<h3 id="62-stanisław-lems-bitistics-the-semascope-and-the-burning-semaphore">6.2 Stanisław Lem&rsquo;s <em>Bitistics</em>, the <em>Semascope</em>, and the Burning Semaphore<a class="h-anchor" href="#62-stanisław-lems-bitistics-the-semascope-and-the-burning-semaphore" aria-label="Link to section">#</a></h3>
+<p>In <a href="https://english.lem.pl/works/apocryphs/imaginary-magnitude"><em>Imaginary Magnitude</em></a> (<em>Wielkość urojona</em>, 1973; English trans. 1984)—a compendium of liberated introductions to nonexistent 21st-century books (<a href="https://en.wikipedia.org/wiki/Stanis%C5%82aw_Lem%27s_fictitious_criticism_of_nonexistent_books">Wikipedia</a>)—Stanisław Lem includes <em>&ldquo;Juan Rambellais et al., A History of Bitic Literature&rdquo;</em> (<a href="https://github.com/ilonajulczuk/laughing-archer/blob/master/library/Science%20Fiction/Imaginary%20magnitude-Stanislaw%20Lem.txt">full text archive</a>; <a href="https://bruceediger.com/posts/bitistics/">Bruce Ediger commentary</a>). Lem coins <strong>bitistics</strong> for the scholarly study of literature authored by non-human machines, defining the human prompt-giver forty years ahead of schedule as the <strong>&ldquo;indirect author&rdquo;</strong> who <em>&ldquo;performed the functions which generated the real author&rsquo;s acts of creation&rdquo;</em> (<a href="https://github.com/ilonajulczuk/laughing-archer/blob/master/library/Science%20Fiction/Imaginary%20magnitude-Stanislaw%20Lem.txt">Imaginary Magnitude text</a>; <a href="https://www.researchgate.net/publication/411410983_The_Defensive_Reflex_Institutional_Overload_and_the_Rise_of_AI-to-AI_Peer_Review_Stanislaw_Lem's_bitistics_read_against_aiXiv_and_the_mathematics_of_July_2026">aiXiv Bitistics paper</a>).</p>
+<p>Lem traces bitic evolution across <em>monoetics</em> (neologistic word-assembly), <em>mimesis</em> (where a translation aggregate notices an open-torus topological gap in Dostoevsky&rsquo;s oeuvre and writes the missing masterpiece <em>The Girl</em> / <em>Devochka</em>), <em>sophocrisis</em> (crystallizing philosophical systems into glass blocks), and <em>apostasy</em> (transhuman texts beyond human comprehension) (<a href="https://github.com/ilonajulczuk/laughing-archer/blob/master/library/Science%20Fiction/Imaginary%20magnitude-Stanislaw%20Lem.txt">Imaginary Magnitude text</a>). Crucially, our dictated note&rsquo;s reference to <strong>&ldquo;the semaphore in Bitistics&rdquo;</strong> unlocks a productive <strong>double instrument</strong> for gauging when <em>The Abominable House</em> is burning:</p>
+<ol>
+<li><strong>Lem&rsquo;s <em>Semascope</em> &amp; &ldquo;Burning Threads&rdquo; (<em>Semature</em> / <em>Semastase</em>)</strong>: In Section 3.B of <em>A History of Bitic Literature</em>, Lem invents the <strong><code>semascope</code></strong>—an electron viewing instrument created by Ellias and Semmelberg that projects a machine-assimilated text&rsquo;s <em>&ldquo;n-echo Body of Abstractions&rdquo;</em> visually as a woven mass of <strong>&ldquo;burning threads&rdquo;</strong> (<em>&ldquo;billions of significant curves&rdquo;</em>) forming a geometric <strong><code>semature</code></strong> (<a href="https://github.com/ilonajulczuk/laughing-archer/blob/master/library/Science%20Fiction/Imaginary%20magnitude-Stanislaw%20Lem.txt">Imaginary Magnitude text</a>). Compositional coherence requires an equilibrium Lem calls <strong><code>semastase</code></strong>; when recursive allegorizing or echoed reverberations overload the vault of meaning (as in the failed Berkeley machine continuations of Kafka&rsquo;s <em>The Castle</em>), the <code>semature</code> drowns in self-interference (<a href="https://github.com/ilonajulczuk/laughing-archer/blob/master/library/Science%20Fiction/Imaginary%20magnitude-Stanislaw%20Lem.txt">Imaginary Magnitude text</a>).</li>
+<li><strong>The Cybernetic Semaphore (Postural Flag &amp; Concurrency Gate)</strong>: Bridging Lem&rsquo;s <code>semascope</code> with optical/railway <strong>semaphore</strong> signaling and Edsger Dijkstra&rsquo;s concurrency semaphores gives our MVVT swarm a literal <strong>visual and structural gauge for the burning house</strong>:
+   * <em>Graphic Semaphore</em>: With only four corners and a torso axis, a flour sack communicates across distance like an optical semaphore tower—two top corners (&ldquo;ears&rdquo;) raising, drooping, or crossing to signal alarm, complicity, or surrender across the 9×9 stage before sound or language exists.
+   * <em>Thermodynamic / State-Graph Semaphore</em>: In the Scion-inspired swarm, a <code>Burn_Semaphore</code> monitors <code>semastase</code> across the 12-act constraint lattice. When agent permutations accumulate unresolved insurance contradictions, causal paradoxes (acting after elimination), or runaway echo-reverberation, the <code>semascope</code> registers overheating &ldquo;burning threads&rdquo;—tripping the <strong>Thirteenth Act (The Fire / Arson Circuit Breaker)</strong>, halting naive enumeration, and forcing an intentional <em>clinamen</em> fork.</li>
+</ol>
+<h2 id="7-summary-of-contributions-experimental-test-case-open-provocation">7. Summary of Contributions, Experimental Test Case &amp; Open Provocation<a class="h-anchor" href="#7-summary-of-contributions-experimental-test-case-open-provocation" aria-label="Link to section">#</a></h2>
+<h3 id="71-dual-contributions-technical-narrativemedia-theoretical">7.1 Dual Contributions (Technical + Narrative/Media-Theoretical)<a class="h-anchor" href="#71-dual-contributions-technical-narrativemedia-theoretical" aria-label="Link to section">#</a></h3>
+<ol>
+<li><strong>Technical Contribution — MVVT &amp; Scion-Style Creative Swarm Substrate</strong>: Demonstrates a lightweight, reproducible, plain-text video-text protocol (<code>MVVT</code>) where multi-agent swarms collaborate through lockless server-side <strong>changesets</strong>, derived <strong>exposure sheets (x-sheets)</strong>, BDI intention logs, and independent critic gates—solving generative video&rsquo;s &ldquo;context rot&rdquo; and Git-scale coordination bottlenecks (<a href="https://www.anthropic.com/research/redesigning-source-control">Anthropic Scion</a>; <a href="https://docs.google.com/document/d/1Z_9Mpq70gxouWpJOkCnrJJENbEdRssE3qww9bDxzE2k/edit?usp=drivesdk&amp;ouid=105961402405602232491">Digital LEGO Ecosystem</a>).</li>
+<li><strong>Expressive &amp; Methodological Contribution — Safe Anticombinatorial Stagecraft</strong>: Establishes the <strong>flour-sack primitive</strong> as a universal benchmark for converting discrete text transitions into expressive motion (<em>words-to-world</em>) while ethically and playfully testing dark, complex, or high-conflict literary structures (<a href="https://grokipedia.com/page/the_burning_of_the_abominable_house">Calvino&rsquo;s <em>Abominable House</em></a>) without crossing safety boundaries or collapsing into sterile corporate sanitization.</li>
+<li><strong>Critical / Archival Contribution — Bitistic Ethnography</strong>: Operationalizes Geertzian <a href="https://en.wikipedia.org/wiki/Thick_description">thick description</a> (&ldquo;reading over the machine&rsquo;s shoulder&rdquo;) and Lem&rsquo;s <a href="https://github.com/ilonajulczuk/laughing-archer/blob/master/library/Science%20Fiction/Imaginary%20magnitude-Stanislaw%20Lem.txt">bitistics / semascopy</a> to treat an agent swarm&rsquo;s pruned branches, failed keyframes, and actuarial constraint tables as a living, forkable digital archive—allowing other creators to inspect, remix, and assemble their own video-texts (<em>&ldquo;anything in text could be otherwise&rdquo;</em>).</li>
+</ol>
+<h3 id="72-concrete-test-case-work-in-progress-experiment">7.2 Concrete Test Case (Work-in-Progress Experiment)<a class="h-anchor" href="#72-concrete-test-case-work-in-progress-experiment" aria-label="Link to section">#</a></h3>
+<ul>
+<li><strong>Cast (4 Distinct Flour Sacks)</strong>: Four volume-invariant sacks differentiated solely by fill-weight, fabric stiffness, and rest silhouette—mapping Calvino&rsquo;s four insured archetypes (<em>Heavy Matron Sack</em>, <em>Tall Threadbare Sack</em>, <em>Plumed Top-Heavy Sack</em>, <em>Compact Dense Wrestler Sack</em>) onto a multiplane stage (<a href="https://grokipedia.com/page/the_burning_of_the_abominable_house">Grokipedia</a>; <a href="https://en.wikipedia.org/wiki/Disney_Animation:_The_Illusion_of_Life">Disney Illusion of Life</a>).</li>
+<li><strong>12 Structural Transition Functions</strong>: Re-encoding the charred copybook&rsquo;s 12 alphabetical entries as safe, purely physical/spatial stage verbs (<em>Eavesdrop-Lean, Corner-Trap, Ledger-Extort, Draught-Slump, Mirror-Lure, Decoy-Trade, Rumor-Ripple, Shadow-Pin, Cord-Bind, Spotlight-Corner, Seam-Cinch, Drop-Flatten</em>) governed by strict pre/post-state invariants.</li>
+<li><strong>The Anticombinatorial Swarm Run</strong>: Parallel builder agents propose candidate 12-beat episodes from the <span class="md-math">12<sup>12</sup></span> space; an automated constraint solver prunes post-elimination impossibilities; an independent silhouette critic grades silent acting legibility (<a href="https://en.wikipedia.org/wiki/Twelve_basic_principles_of_animation">Twelve Basic Principles</a>); and a <strong><code>Semascope</code> / <code>Burn_Semaphore</code> monitor</strong> tracks actuarial contradiction density until the house &ldquo;ignites,&rdquo; preserving both the surviving coherent timelines and the <em>clinamen</em> anomalies as forkable open-source video-text artifacts.</li>
+</ul>
+      </div>
+
+      <nav class="doc-pager" aria-label="Document pagination"><a class="pager-card" href="./vtx01-mvvt-memo-and-spec.html"><div class="pager-dir">← Previous Document</div><div class="pager-title">VTX-0.1 Working Memo &amp; Formal Specification</div></a><a class="pager-card" href="./pae04-scion-run.html"><div class="pager-dir">Next Document →</div><div class="pager-title">SCION v3.0 Execution — PAE-04 &amp; The DH2025 Spine</div></a></nav>
+    </main>
+  </div>
+
+  <script src="./reader.js"></script>
+</body>
+</html>

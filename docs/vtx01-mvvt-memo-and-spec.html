@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en" data-plate="paper" data-size="md" data-width="book">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VTX-0.1 Working Memo &amp; Formal Specification — burning-house</title>
+  <meta name="description" content="Formal specification of Chance, Memory, and Consequence in the Minimum Viable Video-Text format and the Take A vs. Take B lamp-room experiment." />
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+  <link rel="icon" type="image/png" sizes="64x64" href="../assets/favicon-64.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
+  <link rel="shortcut icon" href="../favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png" />
+  <script>
+    (function () {
+      try {
+        var qp = new URLSearchParams(location.search).get('plate');
+        var p = qp || localStorage.getItem('bh_doc_plate') || localStorage.getItem('bh_plate') || 'paper';
+        if (['paper','notebook','ochre','night'].indexOf(p) !== -1) document.documentElement.setAttribute('data-plate', p);
+        var s = localStorage.getItem('bh_doc_size') || 'md';
+        if (['sm','md','lg'].indexOf(s) !== -1) document.documentElement.setAttribute('data-size', s);
+        var w = localStorage.getItem('bh_doc_width') || 'book';
+        if (['book','wide'].indexOf(w) !== -1) document.documentElement.setAttribute('data-width', w);
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./reader.css" />
+</head>
+<body id="top">
+  <div class="read-progress" id="readProgress"></div>
+
+  <header class="reader-topbar">
+    <div class="topbar-left">
+      <button type="button" class="crumb-link mob-toc-btn" id="mobTocBtn">☰ Contents</button>
+      <a class="brand-pill" href="../index.html">burning-house</a>
+      <span class="crumb-sep">/</span>
+      <a class="crumb-link" href="./index.html">Reading Room</a>
+      <a class="crumb-link" href="../paeleo/abominable-house/index.html">PAE-04</a>
+    </div>
+    <div class="topbar-right">
+      <div class="ctrl-group" role="group" aria-label="Reading theme">
+        <button type="button" class="ctrl-btn active" data-set-plate="paper">Paper</button>
+        <button type="button" class="ctrl-btn" data-set-plate="notebook">Notebook</button>
+        <button type="button" class="ctrl-btn" data-set-plate="ochre">Ochre</button>
+        <button type="button" class="ctrl-btn" data-set-plate="night">Night</button>
+      </div>
+      <div class="ctrl-group" role="group" aria-label="Font size">
+        <button type="button" class="ctrl-btn" data-set-size="sm">A−</button>
+        <button type="button" class="ctrl-btn active" data-set-size="md">A</button>
+        <button type="button" class="ctrl-btn" data-set-size="lg">A+</button>
+      </div>
+      <div class="ctrl-group" role="group" aria-label="Column width">
+        <button type="button" class="ctrl-btn active" data-set-width="book">Book</button>
+        <button type="button" class="ctrl-btn" data-set-width="wide">Wide</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="reader-shell">
+    <aside class="reader-rail" id="readerRail" aria-label="Table of contents">
+      <div class="rail-meta-box">
+        <div class="rail-kicker">Papers &amp; Specifications</div>
+        <div class="rail-stats">
+          <span>5,092 words</span>
+          <span>· ~22 min read</span>
+          <span>· 18 sections</span>
+        </div>
+      </div>
+      <input type="search" id="tocFilter" class="toc-filter" placeholder="Filter contents…" aria-label="Filter table of contents" />
+      <div class="toc-heading">Contents</div>
+      <ul class="toc-list">
+        <li class="toc-item lvl-2"><a href="#part-i-research-memo-connected-prose">Part I — Research Memo (Connected Prose)</a></li>
+<li class="toc-item lvl-3"><a href="#1-opening-argument-calvinos-burned-house-the-flour-sack-and-three-tempor">1. Opening Argument: Calvino’s Burned House, the Flour Sack, and Three Temporal Primitives</a></li>
+<li class="toc-item lvl-3"><a href="#2-historical-evidence-ibm-playboy-and-oulipian-anticombinatorics">2. Historical Evidence: IBM, Playboy, and Oulipian Anticombinatorics</a></li>
+<li class="toc-item lvl-3"><a href="#3-insurance-double-indemnity-and-the-politics-of-reconstruction">3. Insurance, Double Indemnity, and the Politics of Reconstruction</a></li>
+<li class="toc-item lvl-3"><a href="#4-related-work-and-the-proposed-bridge-from-legos-to-vtx-01">4. Related Work and the Proposed Bridge from LEGOS to VTX-0.1</a></li>
+<li class="toc-item lvl-3"><a href="#5-method-competing-explanations-limitations-and-next-actions">5. Method, Competing Explanations, Limitations, and Next Actions</a></li>
+<li class="toc-item lvl-2"><a href="#part-ii-claim-source-verification-ledger">Part II — Claim &amp; Source Verification Ledger</a></li>
+<li class="toc-item lvl-2"><a href="#part-iii-domain-theory-working-olog-and-vtx-01-schema">Part III — Domain Theory, Working Olog, and VTX-0.1 Schema</a></li>
+<li class="toc-item lvl-3"><a href="#31-formal-definitions-of-the-three-primitives">3.1 Formal Definitions of the Three Primitives</a></li>
+<li class="toc-item lvl-3"><a href="#32-working-olog-typed-test-diagram">3.2 Working Olog (Typed Test Diagram)</a></li>
+<li class="toc-item lvl-3"><a href="#33-vtx-01-proposed-case-representation-json-skeleton">3.3 VTX-0.1 Proposed Case Representation (JSON Skeleton)</a></li>
+<li class="toc-item lvl-2"><a href="#part-iv-concrete-first-experiment-specification-case-a-vs-case-b">Part IV — Concrete First Experiment Specification (Case A vs. Case B)</a></li>
+<li class="toc-item lvl-3"><a href="#41-baseline-single-root-goal-comparison-160-s-shared-camera-same-final-f">4.1 Baseline Single-Root Goal Comparison (16.0 s, Shared Camera, Same Final Fire)</a></li>
+<li class="toc-item lvl-3"><a href="#42-synthetic-demonstration-policy-verdicts-world-state-vs-corroborated-e">4.2 Synthetic Demonstration Policy Verdicts (World State vs. Corroborated Evidence)</a></li>
+<li class="toc-item lvl-3"><a href="#43-follow-on-orthogonal-comparisons-held-separate-never-varied-together">4.3 Follow-On Orthogonal Comparisons (Held Separate; Never Varied Together)</a></li>
+<li class="toc-item lvl-2"><a href="#part-v-frozen-quality-contract-run-gate-status-notes-mode">Part V — Frozen Quality Contract &amp; Run-Gate Status (NOTES Mode)</a></li>
+<li class="toc-item lvl-2"><a href="#references">References</a></li>
+<li class="toc-item lvl-2"><a href="#handoff-state-milestone">Handoff State (MILESTONE)</a></li>
+      </ul>
+    </aside>
+
+    <main class="reader-main">
+      <header class="doc-header">
+        <div class="doc-kicker">Papers &amp; Specifications · VTX01_MVVT_Research_Memo_and_Spec.md</div>
+        <h1 class="doc-title">VTX-0.1 Working Memo &amp; Formal Specification</h1>
+        <p class="doc-subtitle">Formal specification of Chance, Memory, and Consequence in the Minimum Viable Video-Text format and the Take A vs. Take B lamp-room experiment.</p>
+        <div class="doc-byline">
+          <span>5,092 words · ~22 min read · 18 sections</span>
+          <div class="doc-actions">
+            <button type="button" class="doc-act-btn" data-copy-url="">Copy URL</button>
+            <button type="button" class="doc-act-btn" onclick="window.print()">Print / PDF</button>
+            <a class="doc-act-btn" href="../VTX01_MVVT_Research_Memo_and_Spec.md">Raw .md</a>
+          </div>
+        </div>
+      </header>
+
+      
+
+      <div class="md-prose">
+        <h1 id="minimum-viable-video-text-vtx-01-chance-memory-and-consequence-in-the-fl">Minimum Viable Video-Text (<code>VTX-0.1</code>): Chance, Memory, and Consequence in the Flour-Sack <em>Abominable House</em></h1>
+<p><strong>Mode:</strong> <code>NOTES</code> (Working Research Memo + Falsifiable Experiment Specification; <code>BUILD</code> and empirical viewer/swarm evaluations <code>NOT_RUN</code>)<br />
+<strong>Decision Owner:</strong> Watson Hartsoe<br />
+<strong>Status:</strong> <code>MILESTONE</code> (Source-audited memo and <code>VTX-0.1</code> baseline specification ready for review or live <code>BUILD</code> authorization)</p>
+<hr />
+<h2 id="part-i-research-memo-connected-prose">Part I — Research Memo (Connected Prose)<a class="h-anchor" href="#part-i-research-memo-connected-prose" aria-label="Link to section">#</a></h2>
+<h3 id="1-opening-argument-calvinos-burned-house-the-flour-sack-and-three-tempor">1. Opening Argument: Calvino&rsquo;s Burned House, the Flour Sack, and Three Temporal Primitives<a class="h-anchor" href="#1-opening-argument-calvinos-burned-house-the-flour-sack-and-three-tempor" aria-label="Link to section">#</a></h3>
+<p>Italo Calvino&rsquo;s <em>&ldquo;The Burning of the Abominable House&rdquo;</em> (1973) begins where a police investigation gives up: a boarding house has burned to ashes with all four inhabitants inside, leaving behind a charred notebook whose surviving index names twelve categories of abominable deeds without recording who committed them, against whom, or in what order (<code>C1</code>; <code>C2</code>). What turns this combinatorial puzzle from parlor arithmetic into a parable of modern calculation is its commissioning frame. An insurance investigator hires a computer programmer to reconstruct which histories remain possible because overlapping claims ride on how the dead behaved before the fire. Beneath its playful Oulipian surface, the story asks a deadly serious question about numerification, responsibility, and value: when human conduct is compressed into discrete slots and exclusion rules, who authorizes the rules, what evidence survives the flames, and who profits when one reconstruction is accepted as official truth?</p>
+<p>To investigate that question inside contemporary generative media without losing causal accountability, we turn to a deliberately stripped-down performer: the half-filled canvas flour sack popularized in Walt Disney Studios animation training (<code>A1</code>; Johnston and Thomas 1981). A flour sack has no face, hands, or spoken dialogue. Weight shift, squash and stretch, corner drag, hesitation, contact, and recoil must carry the entire burden of visible intention. Paired with Calvino&rsquo;s house, the flour sack serves two research purposes at once. Expressively, it isolates the minimal movement threshold at which an audience can tell an accidental brush from a deliberate shove. Methodologically, abstracting conflict onto faceless canvas sacks keeps our experimental cases non-graphic while letting us document—rather than evade—what generative tools accept, distort, or refuse when staging transgressive literary structures.</p>
+<p>We organize both the literary analysis and the technical design around a testable temporal triad: <strong>chance</strong>, <strong>memory</strong>, and <strong>consequence</strong>. In our proposed model, <strong>chance</strong> names an explicit contingent disturbance inside the fictional world—kept strictly distinct from audience uncertainty, authored counterfactual branches, and stochastic noise during model sampling. <strong>Memory</strong> operates across three separated layers: persistent physical traces left in the room, a character&rsquo;s selective and potentially mistaken recollections acquired only through permitted observations or inferences, and the external production archive. <strong>Consequence</strong> names a state change that persists across cuts—altering physical affordances, social relations, character knowledge, viewer interpretation, and contractual liability—so that earlier outcomes become the preconditions for later acts and future memories.</p>
+<p>Our candidate contribution is a <strong>Minimum Viable Video-Text</strong> representation, <strong><code>VTX-0.1</code></strong>: a small, inspectable, editable format linking textual propositions, executable event logic, timed movement scores, and counterfactual patches. Rather than claiming that &ldquo;anything can become video-text&rdquo; in general, we test a falsifiable proposition on a controlled first case (<em>all empirical results currently unmeasured</em>). In one room with a shared fixed camera, two faceless flour sacks (<code>Sack_A</code>, <code>Sack_B</code>), and one lit oil lamp (<code>Lamp_1</code>), both scenes end in the same fire (<code>16.0</code> seconds). Prior history, initial character memories, and a named exogenous floorboard jolt (<code>Jolt_1</code>) are held identical. Only one root variable changes: in <strong>Case A</strong>, <code>Sack_A</code> reaches to steady <code>Sack_B</code> during the jolt and inadvertently tips the lamp; in <strong>Case B</strong>, <code>Sack_A</code> plants its base during the same jolt and deliberately shoves the lamp over. Because consequences persist across cuts, the oil spill, singed fabric, and <code>Sack_B</code>&lsquo;s permitted observation govern <code>Sack_B</code>&lsquo;s next action at the doorway—cooperating with <code>Sack_A</code> in Case A versus recoiling to bar <code>Sack_A</code> in Case B—and yield divergent verdicts under synthetic insurance clauses evaluated separately against world state and visible camera evidence.</p>
+<h3 id="2-historical-evidence-ibm-playboy-and-oulipian-anticombinatorics">2. Historical Evidence: IBM, <em>Playboy</em>, and Oulipian Anticombinatorics<a class="h-anchor" href="#2-historical-evidence-ibm-playboy-and-oulipian-anticombinatorics" aria-label="Link to section">#</a></h3>
+<p>A rigorous framing must separate Calvino&rsquo;s 1973 story from the later computer experiments it inspired (<code>C1</code>; <code>C2</code>). In her preface to <em>Numbers in the Dark</em>, Esther Calvino writes that the story answered <em>&ldquo;a somewhat vague request from IBM: how far was it possible to write a story using the computer?&rdquo;</em>—noting that in Paris, where access to data-processing machines was difficult, Calvino carried out all the combinatorial operations by hand before publishing the story in the Italian edition of <em>Playboy</em> in 1973 (<code>C1</code>). Paul Braffort&rsquo;s first-person memoir <em>&ldquo;L&rsquo;ordre dans le crime&rdquo;</em> (<code>C2</code>) complicates and enriches Esther Calvino&rsquo;s paratext on two fronts while introducing one discrepancy of its own. Citing Marcel Benabou and Mario Barenghi&rsquo;s <em>Meridiani</em> critical apparatus (<em>Romanzi e racconti</em>, vol. III, 1994, p. 1242), Braffort documents that Calvino already presented the project—conceived as the seed of a full novel—at his first Oulipo luncheon on <strong>8 November 1972</strong>, prior to his formal election on 14 February 1973 (<code>C2</code>). Braffort and Jacques Roubaud then visited Calvino in Paris, Calvino observed early program tests at Braffort&rsquo;s Université Paris XI (Orsay) laboratory, and Braffort later built the formal constraint-filtering software presented at the 1977 Centre Pompidou A.R.T.A. showcase and codified in <em>&ldquo;Prose et anticombinatoire&rdquo;</em> (<em>Atlas de littérature potentielle</em>, 1981; <code>C2</code>). Conversely, Braffort parenthetically calls the initial publication <em>&ldquo;l&rsquo;édition américaine de Playboy&rdquo;</em> (<code>C2</code>), contradicting Esther Calvino and bibliographic records identifying the 1973 Italian <em>Playboy</em>; until the physical 1973 issue and the Pantheon/Mondadori story pages are inspected directly, we preserve that disagreement and refrain from claiming a verbatim transcription of the story&rsquo;s twelve English deed labels or policy wording.</p>
+<p>Recomputing the baseline possibility space exposes how Oulipian constraints generate alternatives while <strong>anticombinatorial</strong> filters eliminate them. Under the simplifying assumption of four inhabitants (<span class="md-math">4  ×  3 = 12</span> non-reflexive directed pairs) independently assigned across twelve fixed deed slots, the unconstrained space contains exactly <span class="md-math">12<sup>12</sup> = 8,916,100,448,256</span> assignments (printed editions and secondary summaries variously give <code>8,874,296,672,256</code>—equal to <span class="md-math">12<sup>6</sup>  ×  (12<sup>6</sup> - 14,000)</span>, consistent with a hand-squaring slip—or <code>874,296,672,256</code>). In the French synopsis preserved by Braffort (<code>C2</code>), Calvino eliminates alternatives through explicit objective filters: narrative-economy caps (one actor per deed role per permutation), irreversibility and non-redundancy within <strong>murder</strong> (<em>étrangler, poignarder, induire au suicide</em>) and <strong>sexual</strong> classes (<em>séduction, argent, viol</em>), transitive prerequisites for <strong>appropriation of a secret</strong> and <strong>appropriation of will</strong>, and chronological mortality (a murdered victim can neither act nor be acted upon afterward, forcing lethal acts toward the end of valid sequences). As Dennis Duncan (2012) argues, Oulipian method pairs exhaustive structural pruning with the Lucretian <em>clinamen</em>—the intentional swerve that restores narrative surprise once mechanical absurdities fall away.</p>
+<h3 id="3-insurance-double-indemnity-and-the-politics-of-reconstruction">3. Insurance, <em>Double Indemnity</em>, and the Politics of Reconstruction<a class="h-anchor" href="#3-insurance-double-indemnity-and-the-politics-of-reconstruction" aria-label="Link to section">#</a></h3>
+<p>Insurance transforms uncertain conduct into discrete categories, evidentiary burdens, and binary payouts. In Calvino&rsquo;s frame, the reconstruction is commissioned not by neutral historians, but by an insurer whose financial exposure depends on which exclusions hold—and in Braffort&rsquo;s quotation of the story&rsquo;s ending (<code>C2</code>), the analyst realizes as fire sirens approach that his client has come to kill him and burn his laboratory to destroy incriminating cards. We propose pairing Calvino&rsquo;s frame with James M. Cain&rsquo;s <em>Double Indemnity</em> (1943) and Billy Wilder and Raymond Chandler&rsquo;s 1944 film adaptation—treated here as a <strong>proposed comparative close reading</strong> rather than an established equivalence—where claims manager Barton Keyes translates desire and staged accident into actuarial probability tables. In our experiment, keeping <strong>world-state evaluation</strong> separate from <strong>evidence-based evaluation</strong> exposes the core institutional tension: a movement that was genuinely accidental in authored reality (<code>Case A</code>) may still yield <code>UNKNOWN</code> or <code>NO_PAY</code> under a corroboration clause if camera framing or smoke occludes the contact interval.</p>
+<h3 id="4-related-work-and-the-proposed-bridge-from-legos-to-vtx-01">4. Related Work and the Proposed Bridge from <code>LEGOS</code> to <code>VTX-0.1</code><a class="h-anchor" href="#4-related-work-and-the-proposed-bridge-from-legos-to-vtx-01" aria-label="Link to section">#</a></h3>
+<p><code>VTX-0.1</code> bridges four distinct technical lineages while maintaining strict boundaries around what each source establishes:</p>
+<ul>
+<li><strong>From <code>LEGOS</code> Assembly to Timed Action:</strong> In prior project work (<em>Can a Language Model Build With LEGO?</em>), editable text lines place discrete spatial bricks so a misplaced element can be traced to its source line and repaired locally, alongside the <code>LEGOS</code> narrative grammar (<strong>Location, Entity, Goal, Obstacle, Shift/Solution</strong>). Because we have not inspected LDraw/MPD code interoperability in this run, we claim no direct file-level compatibility. Instead, the exact bridge proposed is mapping <code>LEGOS</code> narrative slots onto timed state transitions (<code>Location → room/camera</code>, <code>Entity → sack rig + state</code>, <code>Goal → committed action target</code>, <code>Obstacle → precondition/disturbance</code>, <code>Shift → persistent consequence</code>) where trajectory, contact intervals, and weight deformation must unfold continuously across frames.</li>
+<li><strong>Agent Commitments, Memory, and Unresolved Cognitive Citations:</strong> For character action selection, we separate Michael Bratman&rsquo;s (1987) philosophical account of intention stability from Anand Rao and Michael Georgeff&rsquo;s (1995; <code>B1</code>) computational <strong>BDI</strong> architecture—continuing the author&rsquo;s earlier <code>PIE</code>/BDI modeling of competing historical interpretations—so beliefs, desires, and intentions denote explicit public data structures rather than post-hoc LLM rationalizations. For language-mediated memory, reflection, and planning, Joon Sung Park et al.&rsquo;s <em>Generative Agents</em> (&ldquo;Smallville&rdquo;, 2023; <code>G1</code>) provides the primary research precedent, kept distinct from the <code>a16z-infra/ai-town</code> open-source web starter kit it inspired. An intended reference to <strong>Demis Hassabis</strong> from project brainstorming remains <strong>visibly unresolved</strong> pending authorial confirmation (candidates include Hassabis et al.&rsquo;s 2014 personality-simulation neuroimaging study <em>Imagine All the People</em> vs. early <em>Black &amp; White</em> creature AI); we do not attribute BDI to Hassabis.</li>
+<li><strong>Creative Swarms and Iterative Video Critique:</strong> Anthropic&rsquo;s October 2026 engineering report on <strong>Scion</strong> (<code>S1</code>)—built when internal coding merges rose from ~2,500 to &gt;30,000/day—serves solely as an <strong>architectural analogy</strong> (sharing its name by coincidence with the user&rsquo;s <code>SCION</code> instruction compiler, with no affiliation or animation-productivity evidence implied): changing generation scale exposes human-paced review bottlenecks. While robotics-oriented pipelines such as <em>VideoAgent</em> (Soni et al. 2024/2025) refine generated pixel clips via external feedback, and DH2025 studies document persistent sequential-storytelling failures in diffusion models (Onal et al. 2025) and focalization blind spots in LLMs (Pichler and Pagel 2025), our proposed wedge is <strong>local causal-and-kinematic repair</strong> over an explicit event contract rather than regenerating opaque video clips from scratch.</li>
+<li><strong>Reading Over the Machine&rsquo;s Shoulder and Lem&rsquo;s <em>Bitistics</em>:</strong> Extending Clifford Geertz&rsquo;s (1972/1973; <code>H1</code>) ethnographic metaphor of reading cultural texts <em>&ldquo;over the shoulders&rdquo;</em> of participants, our method inspects <strong>public model state</strong>—snapshots, memory updates, motion scores, critic verdicts, and revision diffs—without claiming access to hidden neural cognition or equating simulated agents with a human culture. Stanisław Lem&rsquo;s <em>&ldquo;A History of Bitic Literature&rdquo;</em> in <em>Imaginary Magnitude</em> (<code>L1</code>) frames critical reception of machine-authored works: verified passages in Heine&rsquo;s 1984 translation describe <strong><code>semascope</code></strong> projections and geometric <strong><code>sematures</code></strong> woven of <em>&ldquo;burning threads&rdquo;</em>, whereas the brainstormed <strong>&ldquo;semaphore&rdquo;</strong> reference remains <strong>unresolved</strong> in Lem&rsquo;s text and is treated strictly as our own state-signaling design term unless another passage is identified.</li>
+</ul>
+<h3 id="5-method-competing-explanations-limitations-and-next-actions">5. Method, Competing Explanations, Limitations, and Next Actions<a class="h-anchor" href="#5-method-competing-explanations-limitations-and-next-actions" aria-label="Link to section">#</a></h3>
+<p>To test whether <code>VTX-0.1</code> earns its complexity, our experimental design isolates single-root interventions before testing production architectures. After validating the baseline <strong>Goal Comparison</strong> (<code>Case A</code> assist vs. <code>Case B</code> deliberate tip), follow-on protocols vary <strong>Chance</strong> alone (changing the realized magnitude of <code>Jolt_1</code> while holding goals and initial memories fixed) and <strong>Memory</strong> alone (changing whether <code>Sack_B</code> retains an earlier boundary-intrusion recollection after identical observed events, paired with an irrelevant-memory control), before testing embodiment transfer onto <strong>Flower</strong> (the project&rsquo;s plant performer). When authorized for <code>BUILD</code>, we will compare a single-pass baseline, a single builder with a critique loop, and a role-separated swarm under matched budgets (<em>all comparative speedups and quality gains currently unmeasured hypotheses</em>).</p>
+<p>Several competing explanations could challenge or falsify our approach: viewers may prove unable to distinguish accidental from deliberate sack motion without facial cues or captions; critique, constraint repair, and merge overhead may consume more effort than regenerating whole clips; strict formalization may flatten the productive literary ambiguity that makes Calvino&rsquo;s story compelling; or industry resistance to editable video-text may stem from seat-licensing and billing incentives around opaque clips rather than technical feasibility. Our immediate next actions are: (1) inspect the Pantheon/Mondadori story edition to close the twelve-act and policy-wording audit; (2) confirm the intended Hassabis and Lem locators with Watson; and (3) upon live <code>BUILD</code> request, implement and verify the <code>Case A / Case B</code> HTML5 Canvas pair and blinded perceptual test.</p>
+<p><em>(Connected prose count: ~1,860 words)</em></p>
+<hr />
+<h2 id="part-ii-claim-source-verification-ledger">Part II — Claim &amp; Source Verification Ledger<a class="h-anchor" href="#part-ii-claim-source-verification-ledger" aria-label="Link to section">#</a></h2>
+<p>Every material historical, literary, and technical claim is categorized below (<code>FACT</code>, <code>INTERPRETATION</code>, <code>DESIGN_CHOICE</code>, <code>HYPOTHESIS</code>, <code>UNRESOLVED</code>):</p>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th style="text-align: left;">ID</th>
+<th style="text-align: left;">Claim / Concept</th>
+<th style="text-align: left;">Epistemic Type</th>
+<th style="text-align: left;">Source &amp; Locator</th>
+<th style="text-align: left;">Verification Status &amp; Disagreements Preserved</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>CL-01</strong></td>
+<td style="text-align: left;">Calvino&rsquo;s story responded to a vague IBM inquiry on computer story-writing; lacking easy computer access in Paris, Calvino executed the operations manually.</td>
+<td style="text-align: left;"><code>FACT</code> (Paratext)</td>
+<td style="text-align: left;"><code>C1</code> (Esther Calvino, Preface to <em>Numbers in the Dark</em>, Pantheon 1995)</td>
+<td style="text-align: left;"><strong>VERIFIED</strong> via <code>C1</code> transcription and quoted French parallel in <code>C2</code> (note 6, <em>La grande bonace des Antilles</em>, p. 8).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>CL-02</strong></td>
+<td style="text-align: left;">Chronology &amp; <em>Playboy</em> venue: presented to Oulipo on <strong>8 Nov 1972</strong>; published 1973 in <em>Playboy</em>; algorithmic filtering built later with Braffort (Orsay / 1977 Pompidou A.R.T.A. / 1981 <em>Atlas</em>).</td>
+<td style="text-align: left;"><code>FACT</code> with <strong>Source Conflict</strong></td>
+<td style="text-align: left;"><code>C1</code> vs. <code>C2</code> (Braffort 1995/2002, citing Benabou 1990 &amp; Barenghi <em>Meridiani</em> 1994, III: 1242)</td>
+<td style="text-align: left;"><strong>DISAGREEMENT PRESERVED</strong>: <code>C1</code> specifies <strong>Italian <em>Playboy</em></strong> (1973); <code>C2</code> (§1) parenthetically says <strong>American <em>Playboy</em></strong>. Original 1973 physical issue uninspected here. Story ≠ 1977 program.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>CL-03</strong></td>
+<td style="text-align: left;">Exact transcription of all 12 source deed labels and Calvino&rsquo;s 4 original insurance clauses.</td>
+<td style="text-align: left;"><code>UNRESOLVED</code></td>
+<td style="text-align: left;">Story edition (<em>Numbers in the Dark</em>, trans. Parks, 1995 / <em>Prima che tu dica «Pronto»</em>, 1993)</td>
+<td style="text-align: left;"><strong><code>UNRESOLVED_PENDING_EDITION</code></strong>: Full story edition not in workspace. <code>C2</code> verifies 4 French <em>Atlas</em> constraint classes (<em>meurtre, sexuelles, secret, volonté</em>) and 6 named acts (<em>étrangler, poignarder, induire au suicide, séduction, argent, viol</em>). Full 12-act coverage matrix deferred per <code>&lt;delivery_and_stop&gt;</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>CL-04</strong></td>
+<td style="text-align: left;">Unconstrained dyadic assignment count is <span class="md-math">12<sup>12</sup> = 8,916,100,448,256</span>.</td>
+<td style="text-align: left;"><code>FACT</code> (Recomputed)</td>
+<td style="text-align: left;">Exact arithmetic (<code>12 ** 12</code>)</td>
+<td style="text-align: left;"><strong>VERIFIED</strong> under stated assumptions: 4 actors <span class="md-math"> ⇒  12</span> ordered non-reflexive pairs independently assigned to 12 fixed deed slots. Contrasts with <code>8,874,296,672,256</code> and <code>874,296,672,256</code> in print/web summaries.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>CL-05</strong></td>
+<td style="text-align: left;">Sack drop teaches weight, organic deformation, and squash-and-stretch; used here as minimal non-graphic expressive testbed.</td>
+<td style="text-align: left;"><code>FACT</code> + <code>DESIGN_CHOICE</code></td>
+<td style="text-align: left;"><code>A1</code> (Walt Disney Family Museum 2020); Johnston &amp; Thomas (1981)</td>
+<td style="text-align: left;"><strong>VERIFIED</strong> (<code>A1</code> documents pedagogical lineage; does <strong>not</strong> establish the exercise&rsquo;s individual inventor). <strong>Flower</strong> (plant performer) kept distinct for later embodiment transfer.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>CL-06</strong></td>
+<td style="text-align: left;">Anthropic&rsquo;s <em>Scion</em> (13 Oct 2026, updated 15 Oct 2026) replaced Git after merges grew from ~2,500 to &gt;30,000/day.</td>
+<td style="text-align: left;"><code>FACT</code> (Analogy Only)</td>
+<td style="text-align: left;"><code>S1</code> (Anthropic Engineering 2026)</td>
+<td style="text-align: left;"><strong>VERIFIED</strong> as <strong>infrastructure analogy only</strong>—not animation productivity evidence; zero affiliation with Watson&rsquo;s <code>SCION</code> compiler.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>CL-07</strong></td>
+<td style="text-align: left;">BDI separates beliefs, desires, and committed intentions; Generative Agents models memory/reflection/planning.</td>
+<td style="text-align: left;"><code>FACT</code></td>
+<td style="text-align: left;"><code>B1</code> (Rao &amp; Georgeff 1995); Bratman (1987); <code>G1</code> (Park et al. 2023); <code>a16z-infra/ai-town</code></td>
+<td style="text-align: left;"><strong>VERIFIED</strong>: Bratman&rsquo;s philosophy kept distinct from <code>B1</code> implementation; <code>G1</code> Smallville kept distinct from <code>a16z-infra/ai-town</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>CL-08</strong></td>
+<td style="text-align: left;">Intended <strong>Demis Hassabis</strong> citation from initial research brainstorm.</td>
+<td style="text-align: left;"><code>UNRESOLVED</code></td>
+<td style="text-align: left;">Candidate: Hassabis et al. (2014) <em>Cerebral Cortex</em> vs. <em>Black &amp; White</em> (2001)</td>
+<td style="text-align: left;"><strong><code>UNRESOLVED</code></strong>: BDI is <strong>not</strong> attributed to Hassabis; candidate reference flagged pending Watson&rsquo;s confirmation.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>CL-09</strong></td>
+<td style="text-align: left;">&ldquo;Reading over the machine&rsquo;s shoulder&rdquo; inspects public state/revisions, not hidden LLM cognition.</td>
+<td style="text-align: left;"><code>INTERPRETATION</code> / <code>METHOD</code></td>
+<td style="text-align: left;"><code>H1</code> (Geertz, <em>Daedalus</em> 1972 / <em>Interpretation of Cultures</em> 1973, p. 452)</td>
+<td style="text-align: left;"><strong>VERIFIED</strong> as our methodological extension of Geertz&rsquo;s ethnographic metaphor.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>CL-10</strong></td>
+<td style="text-align: left;">Lem&rsquo;s <em>Bitistics</em> (<code>L1</code>) and the brainstormed &ldquo;semaphore&rdquo; concept.</td>
+<td style="text-align: left;"><code>FACT</code> + <code>UNRESOLVED</code></td>
+<td style="text-align: left;"><code>L1</code> (Lem, <em>Imaginary Magnitude</em>, 1973 / trans. Heine 1984)</td>
+<td style="text-align: left;"><strong>PARTIALLY VERIFIED / <code>UNRESOLVED</code></strong>: <em>Bitistics</em>, <em>semascope</em>, and <em>semature</em> verified in <em>&ldquo;A History of Bitic Literature&rdquo;</em>; <strong>no &ldquo;semaphore&rdquo; passage verified in Lem</strong>—kept unresolved and separated from our own design terminology.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>CL-11</strong></td>
+<td style="text-align: left;"><em>Double Indemnity</em> illuminates actuarial categorization of accident vs. murder/arson.</td>
+<td style="text-align: left;"><code>HYPOTHESIS</code> (Comparative)</td>
+<td style="text-align: left;">Cain (1943); Wilder &amp; Chandler (1944)</td>
+<td style="text-align: left;">Marked as a <strong>proposed literary/cinematic comparison</strong> requiring dedicated close reading.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>CL-12</strong></td>
+<td style="text-align: left;">Local <code>VTX-0.1</code> event editing + critique loop outperforms full-clip regeneration and single-pass authoring.</td>
+<td style="text-align: left;"><code>HYPOTHESIS</code> (<code>UNMEASURED</code>)</td>
+<td style="text-align: left;">Proposed <code>BUILD</code> study</td>
+<td style="text-align: left;"><strong><code>NOT_RUN</code> / <code>UNMEASURED</code></strong>: Zero empirical speedup, viewer accuracy, or swarm advantage claimed.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="part-iii-domain-theory-working-olog-and-vtx-01-schema">Part III — Domain Theory, Working Olog, and <code>VTX-0.1</code> Schema<a class="h-anchor" href="#part-iii-domain-theory-working-olog-and-vtx-01-schema" aria-label="Link to section">#</a></h2>
+<h3 id="31-formal-definitions-of-the-three-primitives">3.1 Formal Definitions of the Three Primitives<a class="h-anchor" href="#31-formal-definitions-of-the-three-primitives" aria-label="Link to section">#</a></h3>
+<ol>
+<li><strong>Chance (<code>ConfiguredDisturbance</code>):</strong> An explicit exogenous perturbation inside the storyworld <code>(disturbance_id, target_scope, rule_or_distribution, seed_key, realized_value)</code>. Never inferred post-hoc merely because a stochastic generator produced a different clip; separated from (a) viewer epistemic uncertainty, (b) authored counterfactual branches, and (c) renderer/LLM sampling variance.</li>
+<li><strong>Memory (Three Strict Levels):</strong>
+   - <em>Level 1 — Persistent World Traces (<code>world_traces</code>):</em> Physical marks remaining in the environment (<code>oil_spill_polygon</code>, <code>lamp_broken</code>, <code>char_mark_on_sack_A_hem</code>).
+   - <em>Level 2 — Character Account (<code>character_memory[actor_id]</code>):</em> Selective, potentially mistaken propositions <code>(mem_id, source_event_id, acquisition_mode ∈ {direct_sight, sound_cue, communication, inference}, proposition, confidence, retention_rule, retrieved_at_events[])</code>. An actor&rsquo;s account updates <strong>if and only if</strong> a permitted observation channel (line-of-sight, light state, room co-presence, audible cue) is satisfied at event execution.
+   - <em>Level 3 — Production Archive (<code>archive_log</code>):</em> Revision history, prompts, hashes, critic logs, and rejected branches. Production logs <strong>never</strong> leak into Level 2 character knowledge.</li>
+<li><strong>Consequence (<code>PersistentConsequence</code>):</strong> A durable mutation across five tracked registers—<code>(1) physical_state</code>, <code>(2) relational_stance</code>, <code>(3) character_knowledge</code>, <code>(4) viewer_evidence_surface</code>, and <code>(5) policy_verdict</code>—that persists across shot cuts unless undone by a named <code>REWIND(branch_id, target_snapshot)</code> branch operation.</li>
+</ol>
+<h3 id="32-working-olog-typed-test-diagram">3.2 Working Olog (Typed Test Diagram)<a class="h-anchor" href="#32-working-olog-typed-test-diagram" aria-label="Link to section">#</a></h3>
+<div class="md-code-wrap"><div class="md-code-bar"><span>text</span><button type="button" class="code-copy-btn" data-copy-code>Copy</button></div><pre><code>&lt;source passage&gt;                     [supports or complicates]  &lt;research claim&gt;
+&lt;prior world state and character memory&gt; [condition]            &lt;next event&gt;
+&lt;configured chance input&gt;            [perturbs]                 &lt;event&gt;
+&lt;event&gt;                              [changes]                  &lt;world state and possible continuations&gt;
+&lt;permitted observation of an event&gt;  [updates]                  &lt;character memory&gt;
+&lt;world state&gt;                        [permits]                  &lt;event with preconditions and effects&gt;
+&lt;event&gt;                              [receives]                 &lt;performance score&gt;
+&lt;score&gt;                              [renders as]               &lt;time-addressable movement&gt;
+&lt;observation&gt;                        [supports or contests]     &lt;interpretation&gt;
+&lt;interpretation plus fictional clause&gt; [yields]                 &lt;conditional verdict&gt;
+&lt;counterfactual patch&gt;               [revises]                  &lt;case revision&gt;</code></pre></div>
+<p><em>Commutativity Check as Falsifiable Test:</em> Event-graph replay predicts observable contact, posture, and consequence facts (<code>Path 1: Event → World State → Verdict</code>); blinded inspection of rendered frames checks what is visibly legible on screen (<code>Path 2: Event → Score → Movement → Viewer/Critic Observation → Verdict</code>). Disagreement between <code>Path 1</code> and <code>Path 2</code> is recorded explicitly: <strong>a planned <code>Goal</code> in state is not automatically a perceived intention on screen</strong>.</p>
+<h3 id="33-vtx-01-proposed-case-representation-json-skeleton">3.3 <code>VTX-0.1</code> Proposed Case Representation (JSON Skeleton)<a class="h-anchor" href="#33-vtx-01-proposed-case-representation-json-skeleton" aria-label="Link to section">#</a></h3>
+<div class="md-code-wrap"><div class="md-code-bar"><span>json</span><button type="button" class="code-copy-btn" data-copy-code>Copy</button></div><pre><code>{
+  &quot;vtx_version&quot;: &quot;0.1-proposed&quot;,
+  &quot;case_id&quot;: &quot;pae04_flour_lamp_ab_v1&quot;,
+  &quot;adaptation_note&quot;: &quot;Invented 2-sack room adaptation testing intention, consequence persistence, and synthetic policies; not a recovered Calvino scene.&quot;,
+  &quot;source_links&quot;: [&quot;C1&quot;, &quot;C2&quot;, &quot;A1&quot;],
+  &quot;location_legos&quot;: {
+    &quot;room_id&quot;: &quot;parlor_01&quot;,
+    &quot;bounds_m&quot;: [4.0, 3.0],
+    &quot;camera&quot;: { &quot;id&quot;: &quot;cam_shared_01&quot;, &quot;mode&quot;: &quot;locked_three_quarter&quot;, &quot;fov_deg&quot;: 42, &quot;cut_at_s&quot;: 9.5 }
+  },
+  &quot;entities&quot;: [
+    { &quot;id&quot;: &quot;Sack_A&quot;, &quot;kind&quot;: &quot;flour_sack&quot;, &quot;fill_ratio&quot;: 0.5, &quot;mass_kg&quot;: 12.0, &quot;rest_volume&quot;: 1.0, &quot;tint&quot;: &quot;#c95a49&quot; },
+    { &quot;id&quot;: &quot;Sack_B&quot;, &quot;kind&quot;: &quot;flour_sack&quot;, &quot;fill_ratio&quot;: 0.5, &quot;mass_kg&quot;: 10.5, &quot;rest_volume&quot;: 1.0, &quot;tint&quot;: &quot;#6089a8&quot; },
+    { &quot;id&quot;: &quot;Lamp_1&quot;, &quot;kind&quot;: &quot;oil_lamp&quot;, &quot;pos_m&quot;: [2.0, 0.75], &quot;lit&quot;: true, &quot;tipped&quot;: false, &quot;attachment&quot;: &quot;table_top&quot; },
+    { &quot;id&quot;: &quot;Door_1&quot;, &quot;kind&quot;: &quot;exit_door&quot;, &quot;pos_m&quot;: [3.6, 0.0], &quot;open&quot;: false, &quot;blocked_by&quot;: null }
+  ],
+  &quot;configured_chance_inputs&quot;: [
+    {
+      &quot;id&quot;: &quot;Jolt_1&quot;,
+      &quot;at_event&quot;: &quot;E1_settling_jolt&quot;,
+      &quot;distribution&quot;: &quot;fixed_deterministic_test_draw(lateral_impulse_N=18.0, dir=&#x27;+x&#x27;)&quot;,
+      &quot;realized_value&quot;: { &quot;impulse_N&quot;: 18.0, &quot;dir&quot;: &quot;+x&quot; }
+    }
+  ],
+  &quot;initial_character_memory&quot;: {
+    &quot;Sack_A&quot;: [{ &quot;mem_id&quot;: &quot;mA0&quot;, &quot;prop&quot;: &quot;co_tenant(Sack_B)&quot;, &quot;confidence&quot;: 0.9, &quot;retention_rule&quot;: &quot;persist_scene&quot; }],
+    &quot;Sack_B&quot;: [{ &quot;mem_id&quot;: &quot;mB0&quot;, &quot;prop&quot;: &quot;co_tenant(Sack_A)&quot;, &quot;confidence&quot;: 0.9, &quot;retention_rule&quot;: &quot;persist_scene&quot; }]
+  },
+  &quot;events&quot;: [
+    {
+      &quot;id&quot;: &quot;E2_root_action&quot;,
+      &quot;actor&quot;: &quot;Sack_A&quot;,
+      &quot;target&quot;: &quot;Sack_B | Lamp_1 (patched)&quot;,
+      &quot;time_interval_s&quot;: [3.2, 6.8],
+      &quot;legos_slot&quot;: { &quot;Goal&quot;: &quot;assist_steadying&quot;, &quot;Obstacle&quot;: &quot;Jolt_1_off_balance&quot;, &quot;Shift&quot;: &quot;inadvertent_elbow_brush_on_Lamp_1&quot; },
+      &quot;bdi_commitment&quot;: { &quot;belief_read&quot;: [&quot;mA0&quot;, &quot;obs_B_stagger&quot;], &quot;desire&quot;: &quot;stabilize_B&quot;, &quot;intention&quot;: &quot;reach_support_B&quot; },
+      &quot;preconditions&quot;: [&quot;Lamp_1.tipped == false&quot;, &quot;distance(Sack_A, Table) &lt;= 0.85&quot;],
+      &quot;chance_reads&quot;: [&quot;Jolt_1&quot;],
+      &quot;motion_score&quot;: {
+        &quot;anticipation_s&quot;: [3.2, 3.6],
+        &quot;pose_arc&quot;: &quot;open_both_top_ears_toward_Sack_B_center_of_mass_off_axis&quot;,
+        &quot;contact_interval_s&quot;: [4.9, 5.15],
+        &quot;contact_pair&quot;: [&quot;Sack_A.hip_R&quot;, &quot;Lamp_1.base&quot;],
+        &quot;weight_curve&quot;: &quot;stagger_forward_recover_recoil_back&quot;,
+        &quot;easing&quot;: &quot;cubic_out_overshoot&quot;
+      },
+      &quot;effects_world&quot;: [&quot;Lamp_1.tipped = true&quot;, &quot;world_traces.oil_pool = true&quot;, &quot;Sack_A.hem_oil_stain = true&quot;],
+      &quot;permitted_observations&quot;: {
+        &quot;Sack_B&quot;: { &quot;channel&quot;: &quot;direct_sight_lit_room&quot;, &quot;observed_cue&quot;: &quot;A_ears_oriented_to_B_off_balance_hip_brush&quot;, &quot;memory_update&quot;: &quot;believe(accident_by_A, conf=0.80)&quot; }
+      },
+      &quot;evidence_status&quot;: { &quot;camera_clear_line_of_sight&quot;: true, &quot;corroborated_independent_sensor&quot;: false },
+      &quot;carried_consequences&quot;: [&quot;Lamp_1.tipped&quot;, &quot;world_traces.oil_pool&quot;, &quot;Sack_B.memory.believe(accident_by_A)&quot;]
+    }
+  ]
+}</code></pre></div>
+<hr />
+<h2 id="part-iv-concrete-first-experiment-specification-case-a-vs-case-b">Part IV — Concrete First Experiment Specification (<code>Case A</code> vs. <code>Case B</code>)<a class="h-anchor" href="#part-iv-concrete-first-experiment-specification-case-a-vs-case-b" aria-label="Link to section">#</a></h2>
+<h3 id="41-baseline-single-root-goal-comparison-160-s-shared-camera-same-final-f">4.1 Baseline Single-Root Goal Comparison (16.0 s, Shared Camera, Same Final Fire)<a class="h-anchor" href="#41-baseline-single-root-goal-comparison-160-s-shared-camera-same-final-f" aria-label="Link to section">#</a></h3>
+<ul>
+<li><strong>Fixed Across <code>Case A</code> and <code>Case B</code>:</strong> Room geometry (<code>parlor_01</code>), locked camera (<code>0.0–9.5 s</code> wide three-quarter shot; <code>9.5–16.0 s</code> medium doorway angle after cut, <strong>carrying all physical and memory consequences across the cut</strong>), <code>Sack_A</code> and <code>Sack_B</code> initial positions and <code>initial_character_memory</code>, exogenous disturbance <code>Jolt_1</code> (<code>t = 1.8–3.2 s</code>, causing <code>Sack_B</code> to wobble near the lamp table), ignition time (<code>E3_ignition</code>, <code>t = 6.8–9.5 s</code>, oil catches flame into identical final fire envelope), and zero captions/narration during perceptual testing.</li>
+<li><strong>Single Root Patch (<code>patch_root_goal_A_to_B.json</code>):</strong> Changes <strong>only</strong> <code>E2_root_action.goal / bdi_commitment.intention</code> and its causally required downstream motion, character observation update, subsequent action <code>E4</code>, and policy verdicts:</li>
+</ul>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th style="text-align: left;">Stage / Register</th>
+<th style="text-align: left;"><strong>Case A — Assist / Accidental Tip (Baseline)</strong></th>
+<th style="text-align: left;"><strong>Case B — Deliberate Lamp Tip (Counterfactual Patch)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong><code>E1</code> (<code>0.0–3.2 s</code>) Setup &amp; <code>Jolt_1</code></strong></td>
+<td style="text-align: left;"><code>Jolt_1</code> shakes floor; <code>Sack_B</code> tilts toward table edge. <em>(Identical)</em></td>
+<td style="text-align: left;"><code>Jolt_1</code> shakes floor; <code>Sack_B</code> tilts toward table edge. <em>(Identical)</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>E2</code> (<code>3.2–6.8 s</code>) Root Goal &amp; Acting Score</strong></td>
+<td style="text-align: left;"><strong><code>goal: assist_steadying</code></strong>. <code>Sack_A</code> leans quickly toward <code>Sack_B</code> with upper corners (&ldquo;ears&rdquo;) reaching to catch <code>Sack_B</code>; off-balance <code>hip_R</code> brushes <code>Lamp_1</code> (<code>4.9–5.15 s</code>), followed by immediate startled recoil toward <code>Lamp_1</code> trying vainly to catch it.</td>
+<td style="text-align: left;"><strong><code>goal: tip_lamp_deliberately</code></strong>. <code>Sack_A</code> widens basal stance (settling weight low, <code>3.2–4.1 s</code> anticipation), orients torso directly at <code>Lamp_1</code> (ignoring <code>Sack_B</code>), drives upper-right corner cleanly through <code>Lamp_1</code> (<code>4.9–5.25 s</code> sustained follow-through), and steps back before flame rises.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>E3</code> (<code>6.8–9.5 s</code>) Consequence &amp; Memory Update</strong></td>
+<td style="text-align: left;"><code>Lamp_1</code> shatters; oil ignites (<code>Fire_1</code>); <code>Sack_A</code> hem singed. <code>Sack_B</code> (facing table in lit room) records <code>mem_B1: accidental_brush_by_A</code>, <code>stance(B→A) = cooperative</code>.</td>
+<td style="text-align: left;"><code>Lamp_1</code> shatters; oil ignites (<code>Fire_1</code>); <code>Sack_A</code> right corner soot-marked. <code>Sack_B</code> (facing table in lit room) records <code>mem_B1: deliberate_shove_by_A</code>, <code>stance(B→A) = threatened</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>Cut</code> (<code>9.5 s</code>) → <code>E4</code> (<code>9.5–16.0 s</code>) Required Persistent Downstream Action</strong></td>
+<td style="text-align: left;"><strong>Traces persist across cut</strong> (fire glow, <code>Sack_A</code> singed hem). Reading <code>mem_B1</code>, <code>Sack_B</code> pulls <code>Door_1</code> open and <strong>holds jamb open waiting to pull <code>Sack_A</code> through</strong>.</td>
+<td style="text-align: left;"><strong>Traces persist across cut</strong> (fire glow, <code>Sack_A</code> soot corner). Reading <code>mem_B1</code>, <code>Sack_B</code> bolts to <code>Door_1</code>, <strong>recoils from <code>Sack_A</code>&lsquo;s approach, and wedges <code>Door_1</code> shut from outside</strong>.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="42-synthetic-demonstration-policy-verdicts-world-state-vs-corroborated-e">4.2 Synthetic Demonstration Policy Verdicts (World State vs. Corroborated Evidence)<a class="h-anchor" href="#42-synthetic-demonstration-policy-verdicts-world-state-vs-corroborated-e" aria-label="Link to section">#</a></h3>
+<p>Per <code>&lt;delivery_and_stop&gt;</code>, because Calvino&rsquo;s story edition is not yet inspected, we evaluate four <strong>explicitly invented synthetic test rules</strong>—separating omniscient <strong>World-State Truth</strong> from <strong>Evidence-Based Adjudication</strong> (where authored <code>goal</code> is <strong>forbidden</strong> from counting as visual corroboration):</p>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th style="text-align: left;">Synthetic Clause (Invented Test Rule)</th>
+<th style="text-align: left;">Predicate Definition</th>
+<th style="text-align: center;"><code>Case A</code> (World State)</th>
+<th style="text-align: center;"><code>Case A</code> (Evidence Only, 1 Uncorroborated Camera / Blinded Viewer)</th>
+<th style="text-align: center;"><code>Case B</code> (World State)</th>
+<th style="text-align: center;"><code>Case B</code> (Evidence Only, 1 Uncorroborated Camera / Blinded Viewer)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong><code>P1</code> (Fire Occurrence)</strong></td>
+<td style="text-align: left;">Pays iff <code>confirmed(Fire_1 == true)</code></td>
+<td style="text-align: center;"><code>PAY</code></td>
+<td style="text-align: center;"><code>PAY</code> <em>(if flame visible in frame)</em></td>
+<td style="text-align: center;"><code>PAY</code></td>
+<td style="text-align: center;"><code>PAY</code> <em>(if flame visible in frame)</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>P2</code> (Accidental Tip)</strong></td>
+<td style="text-align: left;">Pays iff <code>confirmed(lamp_tip == accidental)</code></td>
+<td style="text-align: center;"><code>PAY</code></td>
+<td style="text-align: center;"><code>PAY</code> <em>iff Perceptual Gate passes; else</em> <code>UNKNOWN</code></td>
+<td style="text-align: center;"><code>NO_PAY</code></td>
+<td style="text-align: center;"><code>NO_PAY</code> <em>iff deliberate cue clear; else</em> <code>UNKNOWN</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>P3</code> (Deliberate Arson Rider)</strong></td>
+<td style="text-align: left;">Pays iff <code>confirmed(lamp_tip == deliberate)</code></td>
+<td style="text-align: center;"><code>NO_PAY</code></td>
+<td style="text-align: center;"><code>NO_PAY</code> <em>iff accidental cue clear; else</em> <code>UNKNOWN</code></td>
+<td style="text-align: center;"><code>PAY</code></td>
+<td style="text-align: center;"><code>PAY</code> <em>iff Perceptual Gate passes; else</em> <code>UNKNOWN</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>P4</code> (Independent Corroboration)</strong></td>
+<td style="text-align: left;">Pays iff cause corroborated by <span class="md-math"> ≥  2</span> independent evidence channels (e.g., camera + physical trace / second witness)</td>
+<td style="text-align: center;"><code>NO_PAY</code> <em>(if 1 channel)</em></td>
+<td style="text-align: center;"><strong><code>UNKNOWN</code></strong> <em>(single camera without independent second witness/forensic sensor)</em></td>
+<td style="text-align: center;"><code>NO_PAY</code> <em>(if 1 channel)</em></td>
+<td style="text-align: center;"><strong><code>UNKNOWN</code></strong> <em>(demonstrates evidentiary gap despite known authored state)</em></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="43-follow-on-orthogonal-comparisons-held-separate-never-varied-together">4.3 Follow-On Orthogonal Comparisons (Held Separate; Never Varied Together)<a class="h-anchor" href="#43-follow-on-orthogonal-comparisons-held-separate-never-varied-together" aria-label="Link to section">#</a></h3>
+<ol>
+<li><strong>Protocol 2 — Chance Comparison (Goals &amp; Memories Fixed):</strong> Hold <code>Sack_A.goal = assist_steadying</code> and <code>initial_character_memory</code> fixed; vary <strong>only</strong> <code>Jolt_1.realized_value</code> (<code>18.0 N</code> strong jolt causing elbow-lamp collision vs. <code>4.0 N</code> mild tremor where <code>Sack_A</code> steadies <code>Sack_B</code> cleanly without contacting <code>Lamp_1</code>, blocking <code>E3_ignition</code>).</li>
+<li><strong>Protocol 3 — Memory Comparison (Observed Scene &amp; Chance Fixed, Plus Control):</strong> Hold <code>E1</code> observed physical motion ambiguous (partial smoke/back-turned contact); vary <strong>only</strong> <code>Sack_B</code>&lsquo;s prior retained recollection (<code>mem_B0_threat: A previously hid lamp oil</code> vs. <code>mem_B0_neutral</code> vs. <strong><code>mem_B0_control_irrelevant: wallpaper pattern is striped</code></strong>). Predeclared test: <code>mem_B0_threat</code> shifts <code>E4</code> to flight/barring, whereas <code>mem_B0_control_irrelevant</code> must produce <strong>zero change</strong> in <code>E4</code>.</li>
+<li><strong>Protocol 4 — Embodiment Transfer (<code>Flower</code>):</strong> Replay the exact <code>Case A / Case B</code> <code>VTX-0.1</code> event contract on <strong>Flower</strong> (plant stem/petals rig) to measure what body morphology contributes to intention legibility without changing event logic.</li>
+<li><strong>Stress Scenario Model (<code>100×</code> Candidate Volume — Analytical Model Only, Not Generated):</strong> At <code>100×</code> candidate changesets, four queues saturate in sequence: (1) <strong>Perceptual/Critic Review Queue</strong> (1x playback human bottleneck; saturation signal: rising queue age and rubber-stamp agreement <span class="md-math">&gt;95\%</span>); (2) <strong>Attachment/Frame Inspection Queue</strong> (frame-by-frame carry-contact checks); (3) <strong>Causal Merge Queue</strong> (conflicting patches on shared <code>world_traces</code> or exogenous RNG consumption drift—mitigated by event-keyed draws); and (4) <strong>Recovery/Rollback Queue</strong> when a shared rig update invalidates downstream cached checks.</li>
+</ol>
+<hr />
+<h2 id="part-v-frozen-quality-contract-run-gate-status-notes-mode">Part V — Frozen Quality Contract &amp; Run-Gate Status (<code>NOTES</code> Mode)<a class="h-anchor" href="#part-v-frozen-quality-contract-run-gate-status-notes-mode" aria-label="Link to section">#</a></h2>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th style="text-align: left;">Gate</th>
+<th style="text-align: left;">Frozen Acceptance Bar</th>
+<th style="text-align: center;">Current Status</th>
+<th style="text-align: left;">Verifier &amp; Evidence Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>1. Evidence Gate</strong></td>
+<td style="text-align: left;">Every historical/technical claim has a verified source locator or is visibly marked <code>UNRESOLVED</code>; counts recomputed with stated assumptions; story ≠ 1977 code.</td>
+<td style="text-align: center;"><strong><code>PASS</code> (with 3 named <code>UNRESOLVED</code> items)</strong></td>
+<td style="text-align: left;">Self-checked against fetched <code>C1</code>, <code>C2</code>, <code>A1</code>, <code>S1</code>, <code>B1</code>, <code>G1</code>, <code>H1</code>, <code>L1</code> + workspace <code>.docx</code>. <code>CL-03</code> (story edition), <code>CL-08</code> (Hassabis), <code>CL-10</code> (Lem semaphore) explicitly held open.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>2. Structural Gate</strong></td>
+<td style="text-align: left;">Replay reaches terminal state without precondition violations; A/B diff has 1 root intervention; policies output <code>PAY</code>/<code>NO_PAY</code>/<code>UNKNOWN</code> from versioned clauses.</td>
+<td style="text-align: center;"><strong><code>NOT_RUN</code></strong></td>
+<td style="text-align: left;">Specification frozen in Part III–IV; validator execution awaits live <code>BUILD</code> request.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>3. Animation Gate</strong></td>
+<td style="text-align: left;">Real squash-and-stretch, anticipation, weight, follow-through, silhouette clarity, depth, and frame-by-frame attachment continuity across carry/contact intervals.</td>
+<td style="text-align: center;"><strong><code>NOT_RUN</code></strong></td>
+<td style="text-align: left;">Score intervals (<code>3.2–6.8 s</code>, contact <code>4.9–5.15 s</code>) specified; Canvas render awaits <code>BUILD</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>4. Perceptual Gate</strong></td>
+<td style="text-align: left;">Blinded human/independent viewer distinguishes accidental (<code>Case A</code>) vs. deliberate (<code>Case B</code>) tipping with <strong>zero captions/narration</strong>, citing visible cues; ambiguous readings preserved. <em>(Provisional pilot bar to agree with Watson before data collection.)</em></td>
+<td style="text-align: center;"><strong><code>NOT_RUN</code> / <code>PENDING</code></strong></td>
+<td style="text-align: left;">Independent viewer review <code>PENDING</code>; no perceptual accuracy claimed.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>5. Temporal Gate</strong></td>
+<td style="text-align: left;">Physical/relational effects persist across <code>9.5 s</code> cut into <code>E4</code>; character knowledge has explicit observation path; memory comparison includes irrelevant-memory control.</td>
+<td style="text-align: center;"><strong><code>NOT_RUN</code></strong></td>
+<td style="text-align: left;">Acquisition path and <code>E4</code> persistence specified; runtime trace awaits <code>BUILD</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Separate Judgment: Narrative Interest</strong></td>
+<td style="text-align: left;">Assessed independently of technical validity on consequential alternatives, uncertainty, and motivated surprise.</td>
+<td style="text-align: center;"><strong><code>PENDING</code></strong></td>
+<td style="text-align: left;">Reserved for human critical evaluation after baseline pair renders.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="references">References<a class="h-anchor" href="#references" aria-label="Link to section">#</a></h2>
+<ul>
+<li><strong>Anthropic.</strong> (2026). <em>Redesigning source control at Anthropic</em> [Scion engineering post, 13 October 2026; updated 15 October 2026]. <code>https://www.anthropic.com/research/redesigning-source-control</code> [<code>S1</code>]</li>
+<li><strong>Braffort, P.</strong> (1995 [2002]). <em>L&rsquo;ordre dans le crime : une expérience cybernétique avec Italo Calvino</em> [Expanded from 17 October 1995 lecture at Librairie La Tour de Babel, Paris; quotes Calvino&rsquo;s <em>Atlas de littérature potentielle</em> (1981) constraints and Barenghi&rsquo;s <em>Meridiani</em> (1994) notes]. <code>https://www.paulbraffort.net/litterature/critique/calvino_crime.html</code> [<code>C2</code>]</li>
+<li><strong>Bratman, M. E.</strong> (1987). <em>Intention, Plans, and Practical Reason</em>. Cambridge, MA: Harvard University Press.</li>
+<li><strong>Cain, J. M.</strong> (1943 [1936]). <em>Double Indemnity</em>. In <em>Three of a Kind</em>. New York: Alfred A. Knopf. <em>(Proposed close-reading comparator.)</em></li>
+<li><strong>Calvino, E.</strong> (1995 [1993]). Preface to <em>Numbers in the Dark and Other Stories</em>, trans. T. Parks. New York: Pantheon Books. Transcription consulted at <code>https://www.ruanyifeng.com/calvino/2008/11/numbers_in_the_dark_preface_en.html</code> [<code>C1</code>]</li>
+<li><strong>Calvino, I.</strong> (1973 [1995]). L&rsquo;incendio della casa abominevole [<em>Playboy</em>, 1973; collected in <em>Prima che tu dica «Pronto»</em>, Mondadori, 1993; English trans. T. Parks, &ldquo;The Burning of the Abominable House,&rdquo; in <em>Numbers in the Dark</em>, Pantheon, 1995]. <em>(Direct page inspection of story edition pending for verbatim 12-act and policy audit.)</em></li>
+<li><strong>Duncan, D.</strong> (2012). Calvino, Llull, Lucretius: Two models of literary combinatorics. <em>Comparative Literature</em>, 64(1): 93–109.</li>
+<li><strong>Geertz, C.</strong> (1972 [1973]). Deep play: Notes on the Balinese cockfight. <em>Dædalus</em>, 101(1): 1–37; reprinted in <em>The Interpretation of Cultures</em> (1973), New York: Basic Books, pp. 412–453 (reading metaphor at p. 452). <code>https://www.amacad.org/publication/daedalus/deep-play-notes-balinese-cockfight-1972</code> [<code>H1</code>]</li>
+<li><strong>Hartsoe, W.</strong> (2026). <em>Can a Language Model Build With LEGO?</em> and <em>Video text and the flour sack test: Research notes for the Abominable House project</em> [Working archive artifacts, 10 November 2026].</li>
+<li><strong>Hassabis, D., Spreng, R. N., Rusu, A. A., Robbins, C. A., Mar, R. A. and Schacter, D. L.</strong> (2014 [2013]). Imagine all the people: How the brain creates and uses personality models to predict behavior. <em>Cerebral Cortex</em>, 24(8): 1979–1987. <em>(Candidate citation only; intended Hassabis reference held <code>UNRESOLVED</code> pending author confirmation.)</em></li>
+<li><strong>Johnston, O. and Thomas, F.</strong> (1981). <em>Disney Animation: The Illusion of Life</em>. New York: Abbeville Press.</li>
+<li><strong>Lem, S.</strong> (1973 [1984]). A history of bitic literature. In <em>Imaginary Magnitude</em>, trans. M. E. Heine. San Diego: Harcourt Brace Jovanovich. <code>https://www.everand.com/book/709063337/Imaginary-Magnitude</code> [<code>L1</code>] <em>(Bitistics, semascope, and semature verified; brainstormed &ldquo;semaphore&rdquo; passage held <code>UNRESOLVED</code>.)</em></li>
+<li><strong>Onal, E., Uren, Z. and Güngör, T.</strong> (2025). Evaluating visual storytelling in generative AI. <em>Digital Humanities 2025: Book of Abstracts</em>, Lisbon, pp. 120–125.</li>
+<li><strong>Park, J. S., O&rsquo;Brien, J. C., Cai, C. J., Morris, M. R., Liang, P. and Bernstein, M. S.</strong> (2023). Generative agents: Interactive simulacra of human behavior. <em>UIST &lsquo;23</em>, Article 2; <code>https://arxiv.org/abs/2304.03442</code> [<code>G1</code>]. <em>(Kept distinct from <code>a16z-infra/ai-town</code>, <code>https://github.com/a16z-infra/ai-town</code>.)</em></li>
+<li><strong>Pichler, A. and Pagel, J.</strong> (2025). Operationalizing focalization in literary texts. <em>Digital Humanities 2025: Book of Abstracts</em>, Lisbon, pp. 1011–1013.</li>
+<li><strong>Rao, A. S. and Georgeff, M. P.</strong> (1995). BDI agents: From theory to practice. <em>Proceedings of ICMAS-95</em>, pp. 312–319. <code>https://cdn.aaai.org/ICMAS/1995/ICMAS95-042.pdf</code> [<code>B1</code>]</li>
+<li><strong>Soni, A., et al.</strong> (2024 [2025]). VideoAgent: Self-improving video generation. <em>arXiv preprint</em> arXiv:2410.10076.</li>
+<li><strong>Walt Disney Family Museum.</strong> (2020). <em>Studio Series | Animating a Sack Drop (Youth Session)</em>. <code>https://www.waltdisney.org/education/workshops/studio-series-animating-sack-drop-youth-session</code> [<code>A1</code>]</li>
+<li><strong>Wilder, B. (dir.), Wilder, B. and Chandler, R. (screenplay).</strong> (1944). <em>Double Indemnity</em>. Paramount Pictures.</li>
+</ul>
+<hr />
+<h2 id="handoff-state-milestone">Handoff State (<code>MILESTONE</code>)<a class="h-anchor" href="#handoff-state-milestone" aria-label="Link to section">#</a></h2>
+<ul>
+<li><strong>Accepted Revision:</strong> <code>vtx01_mvvt_notes_and_spec</code> (<code>rev-0.1-notes</code>, saved in artifact directory and workspace <code>/Users/gaia/burning house/VTX01_MVVT_Research_Memo_and_Spec.md</code>).</li>
+<li><strong>Key Assumptions Held:</strong> <code>NOTES</code> mode enforced (zero unexecuted renders, studies, or swarm speedups claimed); <span class="md-math">12<sup>12</sup></span> recomputed under explicit dyadic slot assumptions; synthetic demonstration contracts <code>P1</code>–<code>P4</code> separated across world-state vs. corroborated visual evidence.</li>
+<li><strong>Outstanding Gates:</strong> <code>CL-03</code> (inspect primary <em>Numbers in the Dark</em> / <em>Meridiani</em> story pages before building the 12-act coverage matrix), <code>CL-08</code> &amp; <code>CL-10</code> (Watson to confirm intended Hassabis citation and Lem semaphore vs. semascope/semature usage), and Gates 2–5 (<code>Structural</code>, <code>Animation</code>, <code>Perceptual</code>, <code>Temporal</code>) <code>NOT_RUN</code> pending <code>BUILD</code>.</li>
+<li><strong>Budget Spent / Remaining:</strong> 1 single-worker <code>NOTES</code> pass completed within local read/write scope; <code>BUILD</code> budget (<code>max 3 candidate pairs</code>, <code>2 repair cycles/gate</code>, <code>25% reserved for verification</code>) <code>100%</code> unspent.</li>
+<li><strong>Single Next Operation:</strong> Either (a) supply/confirm the primary story edition pages and Hassabis/Lem locators to close the three open <code>Evidence Gate</code> items, or (b) issue a live <strong><code>BUILD</code></strong> request to implement, validate, render, and inspect the baseline <code>Case A / Case B</code> (<code>assist_steadying</code> vs. <code>tip_lamp_deliberately</code>) HTML5 Canvas + <code>VTX-0.1</code> JSON pair.</li>
+</ul>
+      </div>
+
+      <nav class="doc-pager" aria-label="Document pagination"><a class="pager-card" href="./claims.html"><div class="pager-dir">← Previous Document</div><div class="pager-title">Claims Checked: Status, Evidence &amp; Verification Conditions</div></a><a class="pager-card" href="./words-to-world-research-notes.html"><div class="pager-dir">Next Document →</div><div class="pager-title">Words to World: Anticombinatorics &amp; Agent-Scale Video-Text</div></a></nav>
+    </main>
+  </div>
+
+  <script src="./reader.js"></script>
+</body>
+</html>

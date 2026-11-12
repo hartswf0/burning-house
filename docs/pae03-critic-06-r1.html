@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" data-plate="paper" data-size="md" data-width="book">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SCION 06 · Critic Round 1 — burning-house</title>
+  <meta name="description" content="Independent visual/kinematic critic inspection for 06 · Whitney Harmonic Dots, round 1." />
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+  <link rel="icon" type="image/png" sizes="64x64" href="../assets/favicon-64.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
+  <link rel="shortcut icon" href="../favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png" />
+  <script>
+    (function () {
+      try {
+        var qp = new URLSearchParams(location.search).get('plate');
+        var p = qp || localStorage.getItem('bh_doc_plate') || localStorage.getItem('bh_plate') || 'paper';
+        if (['paper','notebook','ochre','night'].indexOf(p) !== -1) document.documentElement.setAttribute('data-plate', p);
+        var s = localStorage.getItem('bh_doc_size') || 'md';
+        if (['sm','md','lg'].indexOf(s) !== -1) document.documentElement.setAttribute('data-size', s);
+        var w = localStorage.getItem('bh_doc_width') || 'book';
+        if (['book','wide'].indexOf(w) !== -1) document.documentElement.setAttribute('data-width', w);
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./reader.css" />
+</head>
+<body id="top">
+  <div class="read-progress" id="readProgress"></div>
+
+  <header class="reader-topbar">
+    <div class="topbar-left">
+      <button type="button" class="crumb-link mob-toc-btn" id="mobTocBtn">☰ Contents</button>
+      <a class="brand-pill" href="../index.html">burning-house</a>
+      <span class="crumb-sep">/</span>
+      <a class="crumb-link" href="./index.html">Reading Room</a>
+      <a class="crumb-link" href="../paeleo/abominable-house/index.html">PAE-04</a>
+    </div>
+    <div class="topbar-right">
+      <div class="ctrl-group" role="group" aria-label="Reading theme">
+        <button type="button" class="ctrl-btn active" data-set-plate="paper">Paper</button>
+        <button type="button" class="ctrl-btn" data-set-plate="notebook">Notebook</button>
+        <button type="button" class="ctrl-btn" data-set-plate="ochre">Ochre</button>
+        <button type="button" class="ctrl-btn" data-set-plate="night">Night</button>
+      </div>
+      <div class="ctrl-group" role="group" aria-label="Font size">
+        <button type="button" class="ctrl-btn" data-set-size="sm">A−</button>
+        <button type="button" class="ctrl-btn active" data-set-size="md">A</button>
+        <button type="button" class="ctrl-btn" data-set-size="lg">A+</button>
+      </div>
+      <div class="ctrl-group" role="group" aria-label="Column width">
+        <button type="button" class="ctrl-btn active" data-set-width="book">Book</button>
+        <button type="button" class="ctrl-btn" data-set-width="wide">Wide</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="reader-shell">
+    <aside class="reader-rail" id="readerRail" aria-label="Table of contents">
+      <div class="rail-meta-box">
+        <div class="rail-kicker">PAE-03 Flour Tower &amp; Critic Logs</div>
+        <div class="rail-stats">
+          <span>1,396 words</span>
+          <span>· ~6 min read</span>
+          <span>· 1 sections</span>
+        </div>
+      </div>
+      <input type="search" id="tocFilter" class="toc-filter" placeholder="Filter contents…" aria-label="Filter table of contents" />
+      <div class="toc-heading">Contents</div>
+      <ul class="toc-list">
+        <li class="toc-item"><a href="#top">Top of document</a></li>
+      </ul>
+    </aside>
+
+    <main class="reader-main">
+      <header class="doc-header">
+        <div class="doc-kicker">PAE-03 Flour Tower &amp; Critic Logs · paeleo/flour-tower/critic/06/round1.md</div>
+        <h1 class="doc-title">SCION 06 · Critic Round 1</h1>
+        <p class="doc-subtitle">Independent visual/kinematic critic inspection for 06 · Whitney Harmonic Dots, round 1.</p>
+        <div class="doc-byline">
+          <span>1,396 words · ~6 min read · 1 sections</span>
+          <div class="doc-actions">
+            <button type="button" class="doc-act-btn" data-copy-url="">Copy URL</button>
+            <button type="button" class="doc-act-btn" onclick="window.print()">Print / PDF</button>
+            <a class="doc-act-btn" href="../paeleo/flour-tower/critic/06/round1.md">Raw .md</a>
+          </div>
+        </div>
+      </header>
+
+      <div class="critic-banner"><div><span class="verdict-stamp verdict-fail">DOES NOT PASS (NARROWLY)</span><span style="margin-left:10px;font-family:var(--font-mono);font-size:12px;">06 · Whitney Harmonic Dots</span></div><div class="doc-actions"><a class="doc-act-btn" style="background:var(--btn-bg);color:var(--btn-fg);" href="./pae03-critic-06-r1.html">Round 1</a><a class="doc-act-btn" href="./pae03-critic-06-r2.html">Round 2</a><a class="doc-act-btn" href="./pae03-critic-06-r3.html">Round 3</a><a class="doc-act-btn" href="./pae03-critic-all.html">All 17 Rounds</a><a class="doc-act-btn" href="../paeleo/flour-tower/films/06-whitney.html">Open Live Swarm ↗</a></div></div>
+
+      <div class="md-prose">
+        <h1 id="scion-06-critic-round-1-does-not-pass-narrowly">SCION 06 · critic round 1 · DOES NOT PASS (narrowly)</h1>
+<p><strong>Method.</strong> Rendered headless at 1280x720 through window.PAE_SEEK: 376 frames (every 0.5 s across 0–32 s plus every frame in the ten windows), read as contact sheets and cropped full-resolution sheets, and checked the 390x844 layout once. I judged the picture first and read window.PAE_CHECK afterwards. The only console error is a failed Google Fonts load. Frames and sheets are in /home/claude/pae03/critic/06/frames and /sheets.</p>
+<p><strong>The world is in the lineage&rsquo;s language.</strong> Everything is points of light: a dotted teal outline, cream flour dots, a dotted knife, a dotted plate, a dotted penny ring. The flour count is conserved and you can see it: 996 total, and at the gather the sack gains 396 dots while plate and air lose 396. Grains visibly leave the pile in arcs and the plate empties (24.6–27.5). The gather and the final standing sack are the best parts of the film. The sack itself is built in the lineage&rsquo;s language too. Its outline is a harmonic sum (base terms, two Fejér-kernel ear peaks, a crown dip, five phase-ripple harmonics) sampled as 150 dots, with the area rescaled to dots times area per dot. The source keeps that claim, and I found no keyframe or tween library. Two places are borderline against &ldquo;no tweens&rdquo;, and the card should name them. The gait is a scheduled cycloid displacement over fixed t0/duration blocks: seven hops 9.0–14.0, and a single 1.6 s leap blended with a(sin) term. The collapse and gather grains also fly fixed-duration paths. These are parametric timed paths more than oscillators, but they are not keyframes.</p>
+<p><strong>Choices.</strong> Flinch (1.00): weak. The squash is only 0.92, and the hop left (dx −0.22) arrives over 1.0–2.0 s, so in the frames it reads more as a slide-away than a recoil. At 1.00 the interior pops to a radial star for one frame, which reads as a glitch more than a flinch. Flinch less (4.00): weak to does not read. dx −0.07 and squash 0.96 are near invisible at film scale; only the one-frame interior pop at 4.04 marks it. Notice (6.5–6.8): reads. The corners shoot up sharply at 6.79, the body rises from 0.55 to 0.67 and narrows, and it tilts a little toward the tower. This is the clearest beat in Act 1, and it comes before the approach. Come head low (9.0–14.0): weak. The body tilts right and the crown drops into a deep V between the corners, so the measured crown sits below the ears. On screen, though, it reads as a heart or open-shell shape, not a sack leaning forward and down. The hops lift 0.012–0.035 m, too little to see, so the travel reads as a glide. It does read as decided (steady, oriented to the tower). Prop (14.5): reads. The right flank flattens against the tower&rsquo;s leaning face from 14.6, spread wide and low, and the trace shows the tower lean held to 0.16 against a driven 0.32. The stop is hard to see by eye because the lean was small to begin with. Brace (18.0): weak. Cut 3 lands at 17.96–18.04 and the body flattens slightly (aspect 0.80 to 0.72) with no retreat, but the compression is small. Again a single-frame interior pattern switch at 17.96 and 18.29 is louder than the brace. Leap (21.4): reads. At 21.54 the sack is a tall stretched upright form, off the table and rising. Catch (22.2–22.4): reads. The penny drops into the notch between the corners at 22.17 and stays there through 22.9. Land (23.0–23.5): reads, with a wide squash, the penny still on top, and a dot cloud thrown both ways. Gather (24.5–28.5): reads, as described above. Stay (29.8–31.5): reads. The sack stands full and still at x 0.80 with the penny in its notch; the knife descends to about a penny-width above it at 30.1–31.1 and withdraws at 31.3.</p>
+<p><strong>Does it read as a flour sack in every frame?</strong> No. Act 1 (0–6.5 s) fails: the body is wider at the top than at the bottom, the two corners are small nubs on a lumpy blob, and the bottom is rounded and narrower, so the weight sits high, not pooled. At 0.0, 2.0, 3.0 and 5.5 it reads as a generic blob or a cat-face silhouette. The approach (9.0–14.0) fails differently: a top-wide heart or pac-shell with a pointed lower left, and no pooled bottom; see 10.5–11.5 and 12.0–13.5. The prop and brace (14.6–21.0) read better. There the body is a wide low purse with one sharp corner against the tower, but its top edge is wider than its bottom. From the leap onward (21.5–32) it reads as a sack, though the final full figure, with pointed upright corners and a pinwheel interior, leans toward an owl or cat head. A line of action is legible during notice, approach, prop and leap. In the slumped Act 1 there is none.</p>
+<p><strong>Mood as oscillator coupling.</strong> The coupling is visible in the sack&rsquo;s own dots: the interior arrangement moves from ragged stipple when detuned toward clean spirals and radials when locked, and the outline ripple calms at the end. The pure lock at 29–31.5 reads: a steady pinwheel and an even outline. But in Acts 1–2 the coupling shows up as abrupt one-frame swaps between three interior regimes (stipple, spiral, radial star). Examples: 1.00, 1.71, 4.04, 4.12, 8.04, 9.04, 14.29, 14.62, 14.96, 17.96, 18.04, 18.29, 23.54. These read as flicker, not as a mood moving through coupling. Ear drag shows (measured lag 5–8 frames), and you can see the corners whip at 6.79 and 21.54.</p>
+<p><strong>Craft defects.</strong> The interior pattern flickers frame to frame (above). Act 1 is very small in frame: the sack fills about 15% of the canvas width, and the tower and knife are faint grey-blue dots on black, so the cuts at 1.00 and 4.00 are hard to see. Cut 2&rsquo;s spray at 4.0–4.5 is sparse. The approach hops are invisible. At 390x844 the film sits in the top half with no page scroll, and the controls, flour counters, oscillator inset and check table sit below; the check table is cut off at the bottom edge and has to be scrolled inside the panel. The layout is acceptable.</p>
+<p><strong>PAE_CHECK compared to the picture.</strong> All onsets are within 0.05 s of the score; volume holds within 0.44% outside the gather; flour is conserved; the end is at x 0.80, height 0.943, and the knife gap is 0.18. The numbers are honest. Where they say HOLDS but the picture is weak are flinch 2 (dx −0.07 passes as &ldquo;smaller&rdquo; but barely reads), head low (the crown-below-ears metric is met by a V-notch, not a forward-down lean), and brace (an aspect change too small to see).</p>
+<p><strong>Verdict:</strong> DOES NOT PASS (narrowly). Act 3 and the material language are strong, but the brief requires a sack with a pooled bottom and two corners in every frame, and roughly 0–14 s is a top-heavy blob or heart. Repair conditions, ranked:
+1. From 0 to 21.0, every frame&rsquo;s outline must be wider in its lower third than its upper third, with the bottom flattened on the table and two distinct corners above a narrower crown. Check frames 0.0, 2.0, 5.5, 10.5, 12.0 and 16.0.
+2. Remove the single-frame swaps between interior regimes at 1.00, 4.04, 8.04, 9.04, 14.29, 14.62, 17.96, 18.29 and 23.54. The interior should drift continuously from stipple toward lock, with no regime change between consecutive frames, except perhaps one deliberate frame at a knife strike.
+3. Head low, 9.5–13.5: the whole body leans forward and down, with the crown ahead of the base and lower than the rear corner, not a V-notch in an upright body. The hops must visibly leave the table (a gap of at least 4 px at 1280 width) at each of the seven steps.
+4. Flinches at 1.00 and 4.00: a visible recoil within 3 frames, meaning a squash of at least 15% at cut 1 and 8% at cut 2, with a stretch-back. The left hop should finish by 1.4 s, not drift until 2.0.
+5. Brace at 18.0: compression of at least 15% held 18.0–20.9 against the tower face, and the tower&rsquo;s lean visibly stops at the contact (draw the lean so a viewer can see it hold, for example a lean of 0.2 m or more held flat through 18–21).</p>
+      </div>
+
+      <nav class="doc-pager" aria-label="Document pagination"><a class="pager-card" href="./pae03-critic-02-r3.html"><div class="pager-dir">← Previous Document</div><div class="pager-title">SCION 02 · Critic Round 3</div></a><a class="pager-card" href="./pae03-critic-06-r2.html"><div class="pager-dir">Next Document →</div><div class="pager-title">SCION 06 · Critic Round 2</div></a></nav>
+    </main>
+  </div>
+
+  <script src="./reader.js"></script>
+</body>
+</html>

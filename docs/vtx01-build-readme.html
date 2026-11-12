@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" data-plate="paper" data-size="md" data-width="book">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VTX-0.1 Reproducible Build &amp; Verifier Manual — burning-house</title>
+  <meta name="description" content="Step-by-step guide to reproducing Take A (assist) and Take B (arson), verifying the 1-line goal patch, and running the blinded gate." />
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+  <link rel="icon" type="image/png" sizes="64x64" href="../assets/favicon-64.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
+  <link rel="shortcut icon" href="../favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png" />
+  <script>
+    (function () {
+      try {
+        var qp = new URLSearchParams(location.search).get('plate');
+        var p = qp || localStorage.getItem('bh_doc_plate') || localStorage.getItem('bh_plate') || 'paper';
+        if (['paper','notebook','ochre','night'].indexOf(p) !== -1) document.documentElement.setAttribute('data-plate', p);
+        var s = localStorage.getItem('bh_doc_size') || 'md';
+        if (['sm','md','lg'].indexOf(s) !== -1) document.documentElement.setAttribute('data-size', s);
+        var w = localStorage.getItem('bh_doc_width') || 'book';
+        if (['book','wide'].indexOf(w) !== -1) document.documentElement.setAttribute('data-width', w);
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./reader.css" />
+</head>
+<body id="top">
+  <div class="read-progress" id="readProgress"></div>
+
+  <header class="reader-topbar">
+    <div class="topbar-left">
+      <button type="button" class="crumb-link mob-toc-btn" id="mobTocBtn">☰ Contents</button>
+      <a class="brand-pill" href="../index.html">burning-house</a>
+      <span class="crumb-sep">/</span>
+      <a class="crumb-link" href="./index.html">Reading Room</a>
+      <a class="crumb-link" href="../paeleo/abominable-house/index.html">PAE-04</a>
+    </div>
+    <div class="topbar-right">
+      <div class="ctrl-group" role="group" aria-label="Reading theme">
+        <button type="button" class="ctrl-btn active" data-set-plate="paper">Paper</button>
+        <button type="button" class="ctrl-btn" data-set-plate="notebook">Notebook</button>
+        <button type="button" class="ctrl-btn" data-set-plate="ochre">Ochre</button>
+        <button type="button" class="ctrl-btn" data-set-plate="night">Night</button>
+      </div>
+      <div class="ctrl-group" role="group" aria-label="Font size">
+        <button type="button" class="ctrl-btn" data-set-size="sm">A−</button>
+        <button type="button" class="ctrl-btn active" data-set-size="md">A</button>
+        <button type="button" class="ctrl-btn" data-set-size="lg">A+</button>
+      </div>
+      <div class="ctrl-group" role="group" aria-label="Column width">
+        <button type="button" class="ctrl-btn active" data-set-width="book">Book</button>
+        <button type="button" class="ctrl-btn" data-set-width="wide">Wide</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="reader-shell">
+    <aside class="reader-rail" id="readerRail" aria-label="Table of contents">
+      <div class="rail-meta-box">
+        <div class="rail-kicker">Journals &amp; Inventories</div>
+        <div class="rail-stats">
+          <span>638 words</span>
+          <span>· ~3 min read</span>
+          <span>· 5 sections</span>
+        </div>
+      </div>
+      <input type="search" id="tocFilter" class="toc-filter" placeholder="Filter contents…" aria-label="Filter table of contents" />
+      <div class="toc-heading">Contents</div>
+      <ul class="toc-list">
+        <li class="toc-item lvl-2"><a href="#directory-layout">Directory Layout</a></li>
+<li class="toc-item lvl-2"><a href="#reproduction-instructions">Reproduction Instructions</a></li>
+<li class="toc-item lvl-3"><a href="#1-derive-case-b-from-case-a-patch-and-run-gate-validation">1. Derive Case B from Case A + Patch and Run Gate Validation</a></li>
+<li class="toc-item lvl-3"><a href="#2-rebuild-offline-viewer-bundle">2. Rebuild Offline Viewer Bundle</a></li>
+<li class="toc-item lvl-3"><a href="#3-re-render-1280x720-unlabeled-mp4-videos-frame-contact-sheets">3. Re-render 1280x720 Unlabeled .mp4 Videos &amp; Frame Contact Sheets</a></li>
+      </ul>
+    </aside>
+
+    <main class="reader-main">
+      <header class="doc-header">
+        <div class="doc-kicker">Journals &amp; Inventories · vtx01_build/README.md</div>
+        <h1 class="doc-title">VTX-0.1 Reproducible Build &amp; Verifier Manual</h1>
+        <p class="doc-subtitle">Step-by-step guide to reproducing Take A (assist) and Take B (arson), verifying the 1-line goal patch, and running the blinded gate.</p>
+        <div class="doc-byline">
+          <span>638 words · ~3 min read · 5 sections</span>
+          <div class="doc-actions">
+            <button type="button" class="doc-act-btn" data-copy-url="">Copy URL</button>
+            <button type="button" class="doc-act-btn" onclick="window.print()">Print / PDF</button>
+            <a class="doc-act-btn" href="../vtx01_build/README.md">Raw .md</a>
+          </div>
+        </div>
+      </header>
+
+      
+
+      <div class="md-prose">
+        <h1 id="vtx-01-minimum-viable-video-text-build-package">VTX-0.1 — Minimum Viable Video-Text (<code>BUILD</code> Package)</h1>
+<p>Source-grounded reference implementation, single-root A/B animation pair, deterministic trace validator, offline HTML5 Canvas workbench + blinded perceptual test harness, and retained revision history for Watson Hartsoe&rsquo;s Flour Test / <em>The Burning of the Abominable House</em> research (<code>SCION v1.1</code>).</p>
+<blockquote>
+<p><strong>Scope &amp; Provenance Note</strong>
+- <strong>Invented Adaptation</strong>: <code>vtx01_case_a_assist</code> and <code>vtx01_case_b_deliberate</code> are an invented minimal two-actor parlor test, <strong>not</strong> a recovered scene from Italo Calvino&rsquo;s 1973 text.
+- <strong>Synthetic Policies (<code>P1</code>–<code>P4</code>)</strong>: <code>cases/policies_synthetic_p1_p4.json</code> defines explicitly invented demonstration clauses separating <strong>World State</strong> from <strong>Corroborated Visual Evidence</strong> (<code>authored goal</code> never counts as visual corroboration).
+- <strong>Human Perceptual Gate (<code>PENDING</code>)</strong>: The blinded zero-caption evaluation harness (<code>viewer/index.html</code>) and unlabeled <code>.mp4</code> exports are ready, but voluntary human respondent testing and narrative-interest judgment have <strong>not</strong> been conducted (<code>UNTESTED</code>).</p>
+</blockquote>
+<hr />
+<h2 id="directory-layout">Directory Layout<a class="h-anchor" href="#directory-layout" aria-label="Link to section">#</a></h2>
+<div class="md-code-wrap"><div class="md-code-bar"><span>text</span><button type="button" class="code-copy-btn" data-copy-code>Copy</button></div><pre><code>vtx01_build/
+├── README.md
+├── cases/
+│   ├── case_a_assist.vtx.json              # Canonical Case A (E2.goal = &quot;assist_steadying&quot;, rev2)
+│   ├── patch_a_to_b_goal.json              # Exact single-root A -&gt; B goal patch
+│   ├── case_b_deliberate.vtx.json          # Derived Case B (E2.goal = &quot;tip_lamp_deliberately&quot;, rev2)
+│   ├── policies_synthetic_p1_p4.json       # Synthetic demonstration policies P1–P4 (v0.1-synthetic)
+│   └── protocols_followup_specs.json       # Follow-up Chance, Memory, Policy &amp; Flower transfer specs
+├── src/
+│   ├── vtx_engine.js                       # Deterministic replay, 2.5D flour-sack rig &amp; display list
+│   ├── validate_vtx.js                     # Structural, Kinematic/Attachment &amp; Temporal gate validator
+│   ├── export_mp4.py                       # 2x-supersampled (2560x1440 -&gt; 1280x720) MP4 &amp; sheet exporter
+│   └── build_viewer_bundle.js              # Offline file:// bundle builder for viewer/index.html
+├── viewer/
+│   ├── index.html                          # Interactive Workbench, Live JSON Remix &amp; Blinded Test UI
+│   └── bundle_data.js                      # Pre-bundled offline case/policy/trace payload
+├── traces/
+│   ├── chance_trace.json                   # Exogenous keyed Jolt_1 seed/draw invariance across A &amp; B
+│   ├── memory_trace.json                   # 3-level separation: World vs Character vs Authorial History
+│   ├── consequence_trace.json              # Persistent updates + enabled/blocked downstream actions
+│   ├── policy_traces.json                  # P1–P4 World Verdict vs Corroborated Evidence Verdict
+│   └── validation_report.json              # Deterministic structural, kinematic &amp; temporal audit
+└── revisions/
+    ├── rev1_rejected/                      # Retained unsuccessful candidate (failed kinematic gate)
+    │   ├── case_a_rev1_rejected.mp4
+    │   ├── case_b_rev1_rejected.mp4
+    │   ├── ab_focus_comparison_rev1_rejected.png
+    │   ├── inspection_sheet_case_a_rev1_rejected.png
+    │   ├── inspection_sheet_case_b_rev1_rejected.png
+    │   └── validation_report_rev1_failed.json
+    └── rev2_accepted/                      # Repaired candidate passing Structural/Animation/Temporal gates
+        ├── case_a_rev2_accepted.mp4        # 16.0s, 384f @ 24fps, 1280x720, zero scene captions
+        ├── case_b_rev2_accepted.mp4        # 16.0s, 384f @ 24fps, 1280x720, zero scene captions
+        ├── ab_paired_clean_rev2_accepted.mp4
+        ├── ab_focus_comparison_rev2_accepted.png
+        ├── inspection_sheet_case_a_rev2_accepted.png
+        ├── inspection_sheet_case_b_rev2_accepted.png
+        ├── carry_73frames_case_a_rev2_accepted.png
+        ├── carry_73frames_case_b_rev2_accepted.png
+        └── verification_record.json        # SHA-256 hashes, tool versions, lineage &amp; gate statuses</code></pre></div>
+<hr />
+<h2 id="reproduction-instructions">Reproduction Instructions<a class="h-anchor" href="#reproduction-instructions" aria-label="Link to section">#</a></h2>
+<p>Tested on macOS (<code>arm64</code>) with:
+- Node.js <code>/opt/homebrew/bin/node</code> (<code>v23.6.0</code>)
+- Python <code>/Users/gaia/anaconda3/bin/python3</code> (<code>3.11</code>, <code>numpy 1.26.4</code>, <code>opencv-python 4.10.0</code>)
+- FFmpeg <code>/Users/gaia/anaconda3/bin/ffmpeg</code> (<code>4.3.2</code>, <code>libx264</code>)</p>
+<h3 id="1-derive-case-b-from-case-a-patch-and-run-gate-validation">1. Derive <code>Case B</code> from <code>Case A + Patch</code> and Run Gate Validation<a class="h-anchor" href="#1-derive-case-b-from-case-a-patch-and-run-gate-validation" aria-label="Link to section">#</a></h3>
+<div class="md-code-wrap"><div class="md-code-bar"><span>bash</span><button type="button" class="code-copy-btn" data-copy-code>Copy</button></div><pre><code>/opt/homebrew/bin/node &quot;/Users/gaia/burning house/vtx01_build/src/validate_vtx.js&quot;</code></pre></div>
+<p>This deterministically regenerates <code>cases/case_b_deliberate.vtx.json</code> from <code>cases/case_a_assist.vtx.json</code> + <code>cases/patch_a_to_b_goal.json</code>, verifies identical exogenous <code>E1</code> frames (<code>0..76</code>), inspects all <code>384</code> frames per case (including all <code>73</code> frames of the carried <code>Wedge_1</code> interval <code>[10.50, 13.50] s</code> and the <code>9.50 s</code> camera cut), and writes <code>revisions/validation_report.json</code> + <code>revisions/traces_a_and_b.json</code>.</p>
+<h3 id="2-rebuild-offline-viewer-bundle">2. Rebuild Offline Viewer Bundle<a class="h-anchor" href="#2-rebuild-offline-viewer-bundle" aria-label="Link to section">#</a></h3>
+<div class="md-code-wrap"><div class="md-code-bar"><span>bash</span><button type="button" class="code-copy-btn" data-copy-code>Copy</button></div><pre><code>/opt/homebrew/bin/node &quot;/Users/gaia/burning house/vtx01_build/src/build_viewer_bundle.js&quot;</code></pre></div>
+<p>Open <code>/Users/gaia/burning house/vtx01_build/viewer/index.html</code> directly in any modern browser (<code>file://</code> compatible, zero server required):
+- <strong>Tab 1 — Blinded Perceptual Test (Zero Captions)</strong>: Randomizes Case A and Case B as unlabeled <code>Clip X</code> / <code>Clip Y</code> with zero captions, state Inspector, or trace spoilers, collects independent viewer judgments + confidence + timestamp cues, and exports a JSON response packet before unblinding.
+- <strong>Tab 2 — Synchronized A/B Inspector</strong>: Frame-accurate <code>24 fps</code> scrubber (<code>0..383</code>), live Chance / Memory / Consequence traces, and side-by-side synthetic policy (<code>P1</code>–<code>P4</code>) World vs. Corroborated Evidence tables.
+- <strong>Tab 3 — Live <code>VTX-0.1</code> Remix Editor</strong>: Edit <code>E2_root_action.goal</code>, <code>Jolt_1</code> impulse, or <code>Sack_B</code> initial memory live in JSON, replay causal traces, and inspect immediate visual changes on canvas.</p>
+<h3 id="3-re-render-1280x720-unlabeled-mp4-videos-frame-contact-sheets">3. Re-render <code>1280x720</code> Unlabeled <code>.mp4</code> Videos &amp; Frame Contact Sheets<a class="h-anchor" href="#3-re-render-1280x720-unlabeled-mp4-videos-frame-contact-sheets" aria-label="Link to section">#</a></h3>
+<div class="md-code-wrap"><div class="md-code-bar"><span>bash</span><button type="button" class="code-copy-btn" data-copy-code>Copy</button></div><pre><code>/Users/gaia/anaconda3/bin/python3 &quot;/Users/gaia/burning house/vtx01_build/src/export_mp4.py&quot; rev2_accepted</code></pre></div>
+      </div>
+
+      <nav class="doc-pager" aria-label="Document pagination"><a class="pager-card" href="./readme.html"><div class="pager-dir">← Previous Document</div><div class="pager-title">Repository Overview &amp; Architecture (README)</div></a><a class="pager-card" href="./xzet.html"><div class="pager-dir">Next Document →</div><div class="pager-title">Cross-Zettel Synthesis Deck (xzet)</div></a></nav>
+    </main>
+  </div>
+
+  <script src="./reader.js"></script>
+</body>
+</html>

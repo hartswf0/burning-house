@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en" data-plate="paper" data-size="md" data-width="book">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Repository Overview &amp; Architecture (README) — burning-house</title>
+  <meta name="description" content="Top-level guide to burning-house, uniting PAE-03, PAE-04, Lab 7, VTX-0.1, Zettelkasten decks, and the complete archive." />
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+  <link rel="icon" type="image/png" sizes="64x64" href="../assets/favicon-64.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
+  <link rel="shortcut icon" href="../favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png" />
+  <script>
+    (function () {
+      try {
+        var qp = new URLSearchParams(location.search).get('plate');
+        var p = qp || localStorage.getItem('bh_doc_plate') || localStorage.getItem('bh_plate') || 'paper';
+        if (['paper','notebook','ochre','night'].indexOf(p) !== -1) document.documentElement.setAttribute('data-plate', p);
+        var s = localStorage.getItem('bh_doc_size') || 'md';
+        if (['sm','md','lg'].indexOf(s) !== -1) document.documentElement.setAttribute('data-size', s);
+        var w = localStorage.getItem('bh_doc_width') || 'book';
+        if (['book','wide'].indexOf(w) !== -1) document.documentElement.setAttribute('data-width', w);
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./reader.css" />
+</head>
+<body id="top">
+  <div class="read-progress" id="readProgress"></div>
+
+  <header class="reader-topbar">
+    <div class="topbar-left">
+      <button type="button" class="crumb-link mob-toc-btn" id="mobTocBtn">☰ Contents</button>
+      <a class="brand-pill" href="../index.html">burning-house</a>
+      <span class="crumb-sep">/</span>
+      <a class="crumb-link" href="./index.html">Reading Room</a>
+      <a class="crumb-link" href="../paeleo/abominable-house/index.html">PAE-04</a>
+    </div>
+    <div class="topbar-right">
+      <div class="ctrl-group" role="group" aria-label="Reading theme">
+        <button type="button" class="ctrl-btn active" data-set-plate="paper">Paper</button>
+        <button type="button" class="ctrl-btn" data-set-plate="notebook">Notebook</button>
+        <button type="button" class="ctrl-btn" data-set-plate="ochre">Ochre</button>
+        <button type="button" class="ctrl-btn" data-set-plate="night">Night</button>
+      </div>
+      <div class="ctrl-group" role="group" aria-label="Font size">
+        <button type="button" class="ctrl-btn" data-set-size="sm">A−</button>
+        <button type="button" class="ctrl-btn active" data-set-size="md">A</button>
+        <button type="button" class="ctrl-btn" data-set-size="lg">A+</button>
+      </div>
+      <div class="ctrl-group" role="group" aria-label="Column width">
+        <button type="button" class="ctrl-btn active" data-set-width="book">Book</button>
+        <button type="button" class="ctrl-btn" data-set-width="wide">Wide</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="reader-shell">
+    <aside class="reader-rail" id="readerRail" aria-label="Table of contents">
+      <div class="rail-meta-box">
+        <div class="rail-kicker">Journals &amp; Inventories</div>
+        <div class="rail-stats">
+          <span>787 words</span>
+          <span>· ~3 min read</span>
+          <span>· 7 sections</span>
+        </div>
+      </div>
+      <input type="search" id="tocFilter" class="toc-filter" placeholder="Filter contents…" aria-label="Filter table of contents" />
+      <div class="toc-heading">Contents</div>
+      <ul class="toc-list">
+        <li class="toc-item lvl-2"><a href="#start-here">Start Here</a></li>
+<li class="toc-item lvl-2"><a href="#one-unified-system-from-one-flour-sack-to-1212-stories">One Unified System: From One Flour Sack to 1212 Stories</a></li>
+<li class="toc-item lvl-2"><a href="#editorial-reading-room-web-styled-markdown-editions">Editorial Reading Room (Web-Styled Markdown Editions)</a></li>
+<li class="toc-item lvl-3"><a href="#papers-framing-specifications-claims">Papers, Framing, Specifications &amp; Claims</a></li>
+<li class="toc-item lvl-3"><a href="#zettelkasten-slip-boxes-42-cross-linked-cards-across-3-decks">Zettelkasten Slip-Boxes (42 Cross-Linked Cards Across 3 Decks)</a></li>
+<li class="toc-item lvl-3"><a href="#journals-reference-corpora-xml-prompts-critic-logs">Journals, Reference Corpora, XML Prompts &amp; Critic Logs</a></li>
+<li class="toc-item lvl-2"><a href="#rebuilding-local-editions-finding-aids">Rebuilding Local Editions &amp; Finding Aids</a></li>
+      </ul>
+    </aside>
+
+    <main class="reader-main">
+      <header class="doc-header">
+        <div class="doc-kicker">Journals &amp; Inventories · README.md</div>
+        <h1 class="doc-title">Repository Overview &amp; Architecture (README)</h1>
+        <p class="doc-subtitle">Top-level guide to burning-house, uniting PAE-03, PAE-04, Lab 7, VTX-0.1, Zettelkasten decks, and the complete archive.</p>
+        <div class="doc-byline">
+          <span>787 words · ~3 min read · 7 sections</span>
+          <div class="doc-actions">
+            <button type="button" class="doc-act-btn" data-copy-url="">Copy URL</button>
+            <button type="button" class="doc-act-btn" onclick="window.print()">Print / PDF</button>
+            <a class="doc-act-btn" href="../README.md">Raw .md</a>
+          </div>
+        </div>
+      </header>
+
+      
+
+      <div class="md-prose">
+        <h1 id="burning-house">burning-house</h1>
+<p><strong>Live System Hub:</strong> <a href="https://hartswf0.github.io/burning-house/">https://hartswf0.github.io/burning-house/</a> · <strong>Ochre Mode:</strong> <a href="https://hartswf0.github.io/burning-house/?plate=ochre">https://hartswf0.github.io/burning-house/?plate=ochre</a><br />
+<strong>Main Case (<code>PAE-04</code>):</strong> <a href="https://hartswf0.github.io/burning-house/paeleo/abominable-house/">https://hartswf0.github.io/burning-house/paeleo/abominable-house/</a><br />
+<strong>Styled Reading Room (All 34 <code>.md</code> Editions):</strong> <a href="https://hartswf0.github.io/burning-house/docs/">https://hartswf0.github.io/burning-house/docs/</a> · <strong>Find &amp; Claims:</strong> <a href="https://hartswf0.github.io/burning-house/find.html">https://hartswf0.github.io/burning-house/find.html</a></p>
+<hr />
+<h2 id="start-here">Start Here<a class="h-anchor" href="#start-here" aria-label="Link to section">#</a></h2>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th style="text-align: left;">To do this</th>
+<th style="text-align: left;">Open</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Enter</strong> the main 4-sack house (<span class="md-math">12<sup>12</sup></span> stories, Film Bank, T ZERO, Policies, Numbers)</td>
+<td style="text-align: left;"><a href="https://hartswf0.github.io/burning-house/paeleo/abominable-house/"><code>paeleo/abominable-house/index.html</code></a> and <a href="https://hartswf0.github.io/burning-house/paeleo/abominable-house/whole-house.html"><code>whole-house.html</code></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Explore</strong> the 1-sack precursor (<code>PAE-03</code>: 6 handmade swarms, 17 critic rounds)</td>
+<td style="text-align: left;"><a href="https://hartswf0.github.io/burning-house/paeleo/flour-sacks/"><code>paeleo/flour-sacks/index.html</code></a> and <a href="https://hartswf0.github.io/burning-house/paeleo/flour-tower/"><code>paeleo/flour-tower/index.html</code></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Find</strong> any card, journal entry, section, claim or file, and see what cites what</td>
+<td style="text-align: left;"><a href="https://hartswf0.github.io/burning-house/find.html"><code>find.html</code></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Read</strong> every <code>.md</code> paper, Zettel deck, spec, XML prompt &amp; critic round in book-grade web styles</td>
+<td style="text-align: left;"><a href="https://hartswf0.github.io/burning-house/docs/"><code>docs/index.html</code></a> (plus single-column <a href="https://hartswf0.github.io/burning-house/read.html"><code>read.html</code></a>)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Use</strong> the 2-sack counterfactual (<code>VTX-0.1</code>): change one goal line, compare takes</td>
+<td style="text-align: left;"><a href="https://hartswf0.github.io/burning-house/vtx01_build/viewer/index.html"><code>vtx01_build/viewer/index.html</code></a> and <a href="https://hartswf0.github.io/burning-house/docs/vtx01-build-readme.html"><code>docs/vtx01-build-readme.html</code></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Check</strong> what is and is not established across 14 audited claims</td>
+<td style="text-align: left;"><a href="https://hartswf0.github.io/burning-house/docs/claims.html">Styled <code>docs/claims.html</code></a> · <a href="./claims.html"><code>CLAIMS.md</code></a> · <a href="https://hartswf0.github.io/burning-house/find.html#claims"><code>find.html#claims</code></a></td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="one-unified-system-from-one-flour-sack-to-1212-stories">One Unified System: From One Flour Sack to <span class="md-math">12<sup>12</sup></span> Stories<a class="h-anchor" href="#one-unified-system-from-one-flour-sack-to-1212-stories" aria-label="Link to section">#</a></h2>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th style="text-align: left;">Rung</th>
+<th style="text-align: left;">Scale</th>
+<th style="text-align: left;">Suite</th>
+<th style="text-align: left;">What It Tests &amp; Proves</th>
+<th style="text-align: left;">Live Entry Points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>I</strong></td>
+<td style="text-align: left;"><strong>1 Sack</strong></td>
+<td style="text-align: left;"><strong><code>PAE-03</code> · Flour Sacks &amp; The Flour Tower</strong></td>
+<td style="text-align: left;">Six independent SCION swarms animate one half-filled flour sack across a shared 32s score with zero tween libraries, conserving volume and surviving 17 blind critic rounds.</td>
+<td style="text-align: left;"><a href="https://hartswf0.github.io/burning-house/paeleo/flour-sacks/">Flour Sacks</a> · <a href="https://hartswf0.github.io/burning-house/paeleo/flour-tower/">Flour Tower</a> · <a href="https://hartswf0.github.io/burning-house/docs/pae03-critic-all.html">17 Critic Logs</a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>II</strong></td>
+<td style="text-align: left;"><strong>2 Sacks</strong></td>
+<td style="text-align: left;"><strong><code>VTX-0.1</code> · Lamp-Room Counterfactual</strong></td>
+<td style="text-align: left;">Two faceless sacks, one kerosene lamp, and a <strong>1-line root goal patch</strong> (<code>assist_neighbor</code> vs. <code>knock_over_lamp</code>): frame-locked through <code>f=77</code>, diverging across 46 causal paths and flipping a persistent door trace + insurance verdict.</td>
+<td style="text-align: left;"><a href="https://hartswf0.github.io/burning-house/vtx01_build/viewer/">VTX-0.1 Viewer &amp; Blinded Gate</a> · <a href="https://hartswf0.github.io/burning-house/docs/vtx01-mvvt-memo-and-spec.html">Spec</a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>III</strong></td>
+<td style="text-align: left;"><strong>4 Sacks (Main)</strong></td>
+<td style="text-align: left;"><strong><code>PAE-04</code> · The Burning of the Abominable House</strong></td>
+<td style="text-align: left;">Roessler (<code>R</code>), Belindo (<code>B</code>), Inigo (<code>I</code>), and Ogiva (<code>O</code>) across 12 alphabetical deeds: <strong>41 atomic JS scene modules</strong> (<code>12 deeds + 12 consequences + 13 transitions + 4 memories</code>), <span class="md-math">12<sup>12</sup> = 8,916,100,448,256</span> addressable films, and the 6,030-film <em>Six Memos</em> Atlas.</td>
+<td style="text-align: left;"><a href="https://hartswf0.github.io/burning-house/paeleo/abominable-house/">Main Case</a> · <a href="https://hartswf0.github.io/burning-house/paeleo/abominable-house/whole-house.html">Whole House</a> · <a href="https://hartswf0.github.io/burning-house/paeleo/abominable-house/live/film.html">Film Bank</a> · <a href="https://hartswf0.github.io/burning-house/paeleo/abominable-house/live/player.html">T ZERO 12×12</a> · <a href="https://hartswf0.github.io/burning-house/paeleo/abominable-house/live/abom.html">Atomic Bank</a> · <a href="https://hartswf0.github.io/burning-house/paeleo/abominable-house/live/array.html">The Array</a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>IV</strong></td>
+<td style="text-align: left;"><strong>4 Sacks + Observer / Insurer</strong></td>
+<td style="text-align: left;"><strong><code>Lab 7</code> (27–29) &amp; Skiller&rsquo;s Policies</strong></td>
+<td style="text-align: left;">BDI (<code>0.52</code>) vs. Symbolic (<code>0.35</code>) vs. Random (<code>0.29</code>) tenant reasoning (<em>Occupied</em>), candle vs. switch visibility collapsing <span class="md-math">5.46  ×  10<sup>36</sup></span> to <code>524,880</code> (<em>By What Light</em>), and exact 28-state DP pricing exposing the <strong><code>−4.6 pp</code> Widow Life confound</strong> (<code>84.0% → 79.4%</code>).</td>
+<td style="text-align: left;"><a href="https://hartswf0.github.io/burning-house/paeleo/abominable-house/live/policies.html">The Policies</a> · <a href="https://hartswf0.github.io/burning-house/paeleo/abominable-house/live/numbers.html">The Numbers</a> · <a href="https://hartswf0.github.io/burning-house/lab7/abominable-house/">Lab 7 · 27</a> · <a href="https://hartswf0.github.io/burning-house/lab7/house-is-occupied/">Lab 7 · 28</a> · <a href="https://hartswf0.github.io/burning-house/lab7/by-what-light/">Lab 7 · 29</a></td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="editorial-reading-room-web-styled-markdown-editions">Editorial Reading Room (Web-Styled Markdown Editions)<a class="h-anchor" href="#editorial-reading-room-web-styled-markdown-editions" aria-label="Link to section">#</a></h2>
+<p>Every <code>.md</code> document in this repository compiles into a book-grade web HTML edition under <a href="./index.html"><code>docs/</code></a> with four synchronized reading plates (<strong>Paper <code>#fdf8f2</code></strong>, <strong>Notebook <code>#f4f2ea</code></strong>, <strong>Ochre <code>#d78410</code></strong>, <strong>Night <code>#13120f</code></strong>), sticky table of contents, live search, cross-linked Zettelkasten cards, formatted tables, native math, and raw <code>.md</code> links:</p>
+<h3 id="papers-framing-specifications-claims">Papers, Framing, Specifications &amp; Claims<a class="h-anchor" href="#papers-framing-specifications-claims" aria-label="Link to section">#</a></h3>
+<ul>
+<li><strong>Reading Over the Machine&rsquo;s Shoulder (DH2027 Short Paper PDF)</strong> — <a href="../Reading_Over_the_Machines_Shoulder_DH2027.pdf"><code>Reading_Over_the_Machines_Shoulder_DH2027.pdf</code></a></li>
+<li><strong>Canonical Submission Draft</strong> — <a href="https://hartswf0.github.io/burning-house/docs/abominable-house-submission-draft.html">Web Edition</a> · <a href="https://hartswf0.github.io/burning-house/read.html">Plain <code>read.html</code></a> · <a href="./abominable-house-submission-draft.html"><code>Abominable_House_Submission_Draft.md</code></a></li>
+<li><strong>Claims Checked (14 Audited Claims)</strong> — <a href="https://hartswf0.github.io/burning-house/docs/claims.html">Web Edition</a> · <a href="./claims.html"><code>CLAIMS.md</code></a></li>
+<li><strong>The Flour Sack and the Sieve (<code>PAE-04</code> Paper)</strong> — <a href="https://hartswf0.github.io/burning-house/paeleo/abominable-house/paper.html">Web Edition</a></li>
+<li><strong>VTX-0.1 Working Memo &amp; Formal Spec</strong> — <a href="https://hartswf0.github.io/burning-house/docs/vtx01-mvvt-memo-and-spec.html">Web Edition</a> · <a href="./vtx01-mvvt-memo-and-spec.html"><code>VTX01_MVVT_Research_Memo_and_Spec.md</code></a></li>
+<li><strong>PAE-04 Framing Notes</strong> — <a href="https://hartswf0.github.io/burning-house/docs/abominable-house-framing-notes.html">Web Edition</a> · <a href="./abominable-house-framing-notes.html"><code>Abominable_House_Framing_Notes.md</code></a></li>
+<li><strong>Words to World Research Notes</strong> — <a href="https://hartswf0.github.io/burning-house/docs/words-to-world-research-notes.html">Web Edition</a> · <a href="./words-to-world-research-notes.html"><code>abominable_house_mvvt_research_notes.md</code></a></li>
+<li><strong>SCION v3.0 Formal Verification Run (<code>PAE-04</code> × DH2025)</strong> — <a href="https://hartswf0.github.io/burning-house/docs/pae04-scion-run.html">Web Edition</a> · <a href="./pae04-scion-run.html"><code>pae04_abominable_house_scion_run.md</code></a></li>
+</ul>
+<h3 id="zettelkasten-slip-boxes-42-cross-linked-cards-across-3-decks">Zettelkasten Slip-Boxes (42 Cross-Linked Cards Across 3 Decks)<a class="h-anchor" href="#zettelkasten-slip-boxes-42-cross-linked-cards-across-3-decks" aria-label="Link to section">#</a></h3>
+<ul>
+<li><strong>Abominable House × DH2025 Zettels (9 Cards)</strong> — <a href="https://hartswf0.github.io/burning-house/docs/zettle-past.html">Web Edition</a> · <a href="./zettle-past.html"><code>zettle-past.md</code></a></li>
+<li><strong>Master Zettelkasten: Calvino, <em>Six Memos</em>, Blow &amp; Video-Text (28 Cards / 26 IDs)</strong> — <a href="https://hartswf0.github.io/burning-house/docs/zettle.html">Web Edition</a> · <a href="./zettle.html"><code>zettle.md</code></a></li>
+<li><strong>Cross-Zettel Collisions (5 Cards)</strong> — <a href="https://hartswf0.github.io/burning-house/docs/xzet.html">Web Edition</a> · <a href="./xzet.html"><code>xzet.md</code></a></li>
+</ul>
+<h3 id="journals-reference-corpora-xml-prompts-critic-logs">Journals, Reference Corpora, XML Prompts &amp; Critic Logs<a class="h-anchor" href="#journals-reference-corpora-xml-prompts-critic-logs" aria-label="Link to section">#</a></h3>
+<ul>
+<li><strong>Loglines, Journal Entries 21–38 &amp; Asset Audit</strong> — <a href="https://hartswf0.github.io/burning-house/docs/logline-journal-entries.html">Web Edition</a> · <a href="./logline-journal-entries.html"><code>Logline_Journal_Entries_and_Existing_Assets.md</code></a> · <a href="../Abominable_House_Journal_38/index.html"><code>Abominable_House_Journal_38</code></a></li>
+<li><strong>Abominable House Journals (01–20)</strong> — <a href="https://hartswf0.github.io/burning-house/paeleo/abominable-house/journal.html">PAE-04 Journal</a> · <a href="https://hartswf0.github.io/burning-house/abominable_house_journal/">Standalone Edition</a></li>
+<li><strong>DH2025 Concrete Papers &amp; Works Cited (19 Papers)</strong> — <a href="https://hartswf0.github.io/burning-house/docs/dh2025-concrete-papers.html">Web Edition</a> · <a href="./dh2025-concrete-papers.html"><code>DH2025_Concrete_Papers_and_Works_Cited.md</code></a> · <a href="../DH2025_Concrete_Papers_Packet.pdf"><code>DH2025_Concrete_Papers_Packet.pdf</code></a></li>
+<li><strong>Compiled SCION Architecture &amp; XML Prompt (<code>v1.1</code>)</strong> — <a href="https://hartswf0.github.io/burning-house/docs/scion-mvvt-instruction.html">Architecture Rationale</a> · <a href="https://hartswf0.github.io/burning-house/docs/p1-scion-xml-prompt.html">Structured XML Spec</a> · <a href="./p1-scion-xml-prompt.html"><code>p1.md</code></a></li>
+<li><strong>PAE-03 Brief &amp; All 17 Independent Critic Rounds</strong> — <a href="https://hartswf0.github.io/burning-house/docs/pae03-brief.html">Swarm Brief</a> · <a href="https://hartswf0.github.io/burning-house/docs/pae03-critic-all.html">17 Critic Rounds Anthology</a></li>
+</ul>
+<hr />
+<h2 id="rebuilding-local-editions-finding-aids">Rebuilding Local Editions &amp; Finding Aids<a class="h-anchor" href="#rebuilding-local-editions-finding-aids" aria-label="Link to section">#</a></h2>
+<div class="md-code-wrap"><div class="md-code-bar"><span>bash</span><button type="button" class="code-copy-btn" data-copy-code>Copy</button></div><pre><code># Recompile all 34 Markdown documents into docs/*.html + docs/index.html
+python3 scripts/build_docs.py
+
+# Rebuild finding aids (data/index.js, read.html, CLAIMS.md)
+python3 tools/build_index.py
+
+# Rebuild root index.html with updated manifest &amp; exact byte sizes
+python3 scripts/build_index.py</code></pre></div>
+      </div>
+
+      <nav class="doc-pager" aria-label="Document pagination"><a class="pager-card" href="./logline-journal-entries.html"><div class="pager-dir">← Previous Document</div><div class="pager-title">Loglines, Journal Entries 21–38 &amp; Complete Asset Audit</div></a><a class="pager-card" href="./vtx01-build-readme.html"><div class="pager-dir">Next Document →</div><div class="pager-title">VTX-0.1 Reproducible Build &amp; Verifier Manual</div></a></nav>
+    </main>
+  </div>
+
+  <script src="./reader.js"></script>
+</body>
+</html>

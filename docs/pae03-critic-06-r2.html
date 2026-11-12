@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" data-plate="paper" data-size="md" data-width="book">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SCION 06 · Critic Round 2 — burning-house</title>
+  <meta name="description" content="Independent visual/kinematic critic inspection for 06 · Whitney Harmonic Dots, round 2." />
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+  <link rel="icon" type="image/png" sizes="64x64" href="../assets/favicon-64.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
+  <link rel="shortcut icon" href="../favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png" />
+  <script>
+    (function () {
+      try {
+        var qp = new URLSearchParams(location.search).get('plate');
+        var p = qp || localStorage.getItem('bh_doc_plate') || localStorage.getItem('bh_plate') || 'paper';
+        if (['paper','notebook','ochre','night'].indexOf(p) !== -1) document.documentElement.setAttribute('data-plate', p);
+        var s = localStorage.getItem('bh_doc_size') || 'md';
+        if (['sm','md','lg'].indexOf(s) !== -1) document.documentElement.setAttribute('data-size', s);
+        var w = localStorage.getItem('bh_doc_width') || 'book';
+        if (['book','wide'].indexOf(w) !== -1) document.documentElement.setAttribute('data-width', w);
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./reader.css" />
+</head>
+<body id="top">
+  <div class="read-progress" id="readProgress"></div>
+
+  <header class="reader-topbar">
+    <div class="topbar-left">
+      <button type="button" class="crumb-link mob-toc-btn" id="mobTocBtn">☰ Contents</button>
+      <a class="brand-pill" href="../index.html">burning-house</a>
+      <span class="crumb-sep">/</span>
+      <a class="crumb-link" href="./index.html">Reading Room</a>
+      <a class="crumb-link" href="../paeleo/abominable-house/index.html">PAE-04</a>
+    </div>
+    <div class="topbar-right">
+      <div class="ctrl-group" role="group" aria-label="Reading theme">
+        <button type="button" class="ctrl-btn active" data-set-plate="paper">Paper</button>
+        <button type="button" class="ctrl-btn" data-set-plate="notebook">Notebook</button>
+        <button type="button" class="ctrl-btn" data-set-plate="ochre">Ochre</button>
+        <button type="button" class="ctrl-btn" data-set-plate="night">Night</button>
+      </div>
+      <div class="ctrl-group" role="group" aria-label="Font size">
+        <button type="button" class="ctrl-btn" data-set-size="sm">A−</button>
+        <button type="button" class="ctrl-btn active" data-set-size="md">A</button>
+        <button type="button" class="ctrl-btn" data-set-size="lg">A+</button>
+      </div>
+      <div class="ctrl-group" role="group" aria-label="Column width">
+        <button type="button" class="ctrl-btn active" data-set-width="book">Book</button>
+        <button type="button" class="ctrl-btn" data-set-width="wide">Wide</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="reader-shell">
+    <aside class="reader-rail" id="readerRail" aria-label="Table of contents">
+      <div class="rail-meta-box">
+        <div class="rail-kicker">PAE-03 Flour Tower &amp; Critic Logs</div>
+        <div class="rail-stats">
+          <span>1,583 words</span>
+          <span>· ~7 min read</span>
+          <span>· 1 sections</span>
+        </div>
+      </div>
+      <input type="search" id="tocFilter" class="toc-filter" placeholder="Filter contents…" aria-label="Filter table of contents" />
+      <div class="toc-heading">Contents</div>
+      <ul class="toc-list">
+        <li class="toc-item"><a href="#top">Top of document</a></li>
+      </ul>
+    </aside>
+
+    <main class="reader-main">
+      <header class="doc-header">
+        <div class="doc-kicker">PAE-03 Flour Tower &amp; Critic Logs · paeleo/flour-tower/critic/06/round2.md</div>
+        <h1 class="doc-title">SCION 06 · Critic Round 2</h1>
+        <p class="doc-subtitle">Independent visual/kinematic critic inspection for 06 · Whitney Harmonic Dots, round 2.</p>
+        <div class="doc-byline">
+          <span>1,583 words · ~7 min read · 1 sections</span>
+          <div class="doc-actions">
+            <button type="button" class="doc-act-btn" data-copy-url="">Copy URL</button>
+            <button type="button" class="doc-act-btn" onclick="window.print()">Print / PDF</button>
+            <a class="doc-act-btn" href="../paeleo/flour-tower/critic/06/round2.md">Raw .md</a>
+          </div>
+        </div>
+      </header>
+
+      <div class="critic-banner"><div><span class="verdict-stamp verdict-fail">DOES NOT PASS (NARROWLY)</span><span style="margin-left:10px;font-family:var(--font-mono);font-size:12px;">06 · Whitney Harmonic Dots</span></div><div class="doc-actions"><a class="doc-act-btn" href="./pae03-critic-06-r1.html">Round 1</a><a class="doc-act-btn" style="background:var(--btn-bg);color:var(--btn-fg);" href="./pae03-critic-06-r2.html">Round 2</a><a class="doc-act-btn" href="./pae03-critic-06-r3.html">Round 3</a><a class="doc-act-btn" href="./pae03-critic-all.html">All 17 Rounds</a><a class="doc-act-btn" href="../paeleo/flour-tower/films/06-whitney.html">Open Live Swarm ↗</a></div></div>
+
+      <div class="md-prose">
+        <h1 id="scion-06-critic-round-2-does-not-pass-narrowly">SCION 06 · critic round 2 · DOES NOT PASS (narrowly)</h1>
+<p><strong>Method.</strong> I rendered the film headless at 1280x720 through window.PAE_SEEK: 393 frames, one every 0.5 s across 0–32 s plus every frame in the ten windows. I read them as contact sheets and as full-resolution frames, and checked the 390x844 layout once. I judged the picture before reading window.PAE_CHECK, and read the source only for PAE_SEEK and to verify the cards. I read round1.md only after writing the per-choice judgments below.</p>
+<p>Material and lineage. Everything visible is points of light: a teal dotted outline, cream flour dots, a dotted knife and plate, and an amber dotted penny. The flour total is 996 in every frame, and the sack gains exactly the 396 dots the plate and air lose. The sack&rsquo;s outline is a harmonic sum (sin/sin3 gravity terms, cos2/cos4 width and shoulders, two Fejer peaks for the corners, a crown-dip sum) sampled as dots. Its mood shows in its own dots: the interior drifts from ragged stipple when detuned toward clean spiral and radial order when locked. The round-1 one-frame regime swaps are gone. Consecutive frames now change continuously; I checked 6.79–6.92 and 4.00–4.12 frame by frame, and PAE_CHECK gives a maximum interior jump of 0.059 at 4.08. The body is moved by damped oscillators retargeted at score times, and the gait and grain flights are named on the card as scheduled. Built and moved in the lineage&rsquo;s language: yes, with the exceptions in the next paragraph.</p>
+<p>Claims. The card names two scheduled things: the cycloid gait blocks and the grain phasors. Two more scheduled paths are not named. (a) The penny from 21.0 to 22.4 is a cosine-eased interpolation between two fixed endpoints, the tower top and the catch point, plus a 0.26 m sine arc (pennyAt, source lines 284–286). That is a tween in everything but name. On screen it also makes the penny rise about 0.3 m after the tower is cut (0.915 at 21.0 to 1.23 at 21.9) before it drops, so it reads as tossed up, not as falling. (b) The knife strike is a fixed ((1-cos)/2)^10 window over 0.5 s at each cut time (kpulse), not a spring. The bar says any scheduled path must be named on the card. These two are not, so that claim is false as published.</p>
+<p><strong>Choices.</strong>
+- Flinch (1.00): reads. At 1.00–1.04 the sack squashes wide and low (29%), shifts left, rebounds tall by 1.12, and settles by about 1.3.
+- Flinch less (4.00): reads. There is a visible squash at 4.04 (about 15%), a smaller shift left (−0.07), and a rebound at 4.12. It is clearly smaller than flinch 1.
+- Notice (6.5): reads. At 6.58–6.79 the corners shoot up, the body rises and narrows, and it tilts slightly toward the tower. This comes before any travel.
+- Come head low (9.0–14.0): reads, narrowly. From 9.17 the whole body tips forward toward the tower, the rear corner is high, the leading corner is low and ahead, and seven hops carry it. The hop clearance is small but visible, about 13 px at 1280. It reads as decided. The silhouette at 9.25–9.6 and 10.5–11.5 is an odd forward-tipped shell with the leading corner jutting like a snout, though the base stays flat.
+- Prop (14.5): reads, weakly. From 14.6 the sack&rsquo;s right flank flattens against the tower&rsquo;s leaning face, low and wide. The trace holds the lean at 0.146 against a driven 0.31 through 15–18, but the lean is small enough that the eye has to work to see the hold.
+- Brace (18.0): reads. At 18.04–18.2 the sack compresses hard (height 0.534 to 0.434) and holds against the face through 20.9. Two things weaken it. The sack&rsquo;s centre slides back about 0.07 m (x 0.293 to 0.226) while the right edge stays on the face. And the tower&rsquo;s lean doubles at the cut (0.15 to 0.31), so the tower is not visibly stopped. It reads as the sack being loaded more heavily, which is acceptable.
+- Leap (21.4): reads. The sack is squat at 21.42, stretched tall and off the table by 21.50–21.54, and the corners whip.
+- Catch (22.4): reads. The penny settles into the notch between the corners at 22.17–22.3 and stays there through the landing.
+- Land (23.0): reads. There is a wide squash at 23.08–23.25 with the penny on top and a two-sided dot cloud.
+- Gather (24.5–28.5): reads, and is the best passage. Grains leave the pile in arcs into the sack, the plate empties, and the sack rises to 0.94.
+- Stay (30.0–31.2): reads. The sack is full and still at x 0.80, the knife hovers about 0.19 above the penny, and it withdraws at 31.25–31.38. The withdrawal takes about three frames, which reads as a yank.</p>
+<p>Does the sack read as a flour sack in every frame? Mostly. Act 1 (0–6.5) is now right: the lower third is wider, the bottom is flat on the table, two corners sit over a dipped crown, and it reads as a half-empty sack. The approach reads as a tipped sack. The frames that fail are three runs:
+- 18.1–21.0: a long low slab with a squared right end and a single hump, like a slipper or shoe. The second corner is lost in the face contact, so there are not two corners (see 18.25, 19.0, 20.5).
+- 6.8–8.9 and 22.0–22.9: tall pointed upright corners over a V crown read as a cat-head or owl silhouette.
+- 27.5–32: the full sack has the same pointed ears and reads more as a cat or owl than as a tied flour sack. The pooled bottom helps but does not cancel it.
+None of these runs reads as a generic blob, a heart or a Lissajous figure. They are recognisably the same character, but the corner shape drifts toward the animal. The line of action is legible in notice, approach, prop and leap. In the final stand it is a vertical, which is correct.</p>
+<p><strong>Craft defects.</strong>
+- Act 1 is small in frame. Its tower is legible now, and the cuts at 1.0 and 4.0 are visible.
+- After cut 3 (18.1–21.0) the tower reads as a curving plume of dots, not a packed tower. Its top arcs out over the sack and the penny hangs on the plume.
+- The penny rises after the collapse (see Claims).
+- The knife exits in about three frames.
+- At 390x844 the film fills the top half and the page does not scroll (scroll height 844). The flour counters, phasor inset and check table sit below, and the table scrolls inside the panel. The layout is acceptable.</p>
+<p><strong>PAE_CHECK compared with the picture.</strong> All onsets fall within 0.21 s of the score; the largest offset is &ldquo;stays&rdquo; at 29.79 against 30.0. Volume stays within 1.2% outside the gather, flour is conserved, the penny stays on top, and the end is at x 0.80, height 0.94. The numbers agree with the picture except in two places. braceRetreat reports −0.009, but the trace x falls 0.07 m from 18.0 to 19.0. And the lower-over-upper shape metric passes every frame before 21, while the 18–21 slab has lost a corner, which that metric does not measure.</p>
+<p>Round 1&rsquo;s five repair conditions:
+1. Lower third wider, flat bottom, two corners from 0 to 21: met for 0–18. Not met for 18.1–21.0, where one corner is lost.
+2. Interior regime flicker: met.
+3. Head low and visible hops: met. The lean is forward and down, and the hop clearance is about 13 px.
+4. Flinches: met. Squash 29% and 15%, stretch-back, hop ends at 1.3.
+5. Brace: compression met (19%, held). The tower lean holding visibly is not met: the lean steps from 0.15 to 0.31 at cut 3.</p>
+<p><strong>Verdict:</strong> DOES NOT PASS (narrowly). The picture is now close to a pass: all ten choices read, the material language is consistent, and the round-1 flicker and Act 1 shape faults are fixed. It stops short for two reasons. The film&rsquo;s own card is untrue about what is scheduled: the penny&rsquo;s flight is a tween that the card does not name. And the brace slab loses the sack&rsquo;s two corners for 3 s.</p>
+<p>Repair conditions, ranked:
+1. Make the claims true. Either name the penny flight (21.0–22.4) and the knife-strike pulse on the &ldquo;Moved by&rdquo; card as scheduled paths, or drive the penny with an integrated oscillator or ballistic step. In either case the penny&rsquo;s height must not rise after 21.0; it should fall monotonically from the tower top to the catch.
+2. From 18.0 to 21.0, two distinct corners must be visible above the crown in every frame. The face contact may flatten the flank, but not the near corner. Check 18.25, 19.0 and 20.5.
+3. Brace without retreat: the sack&rsquo;s centroid x must move by less than 0.02 m between 17.9 and 20.9. PAE_CHECK.braceRetreat must be computed from that centroid, so it agrees with the trace.
+4. The corners should read as sack corners, not ears. At 7.5, 22.5 and 30.0, each corner peak&rsquo;s height above the crown dip should be at most about 1.5 times its base width, with rounded tips, so the figure stops reading as a cat or owl head.
+5. The tower holds at the prop and the brace: from 14.6 to 20.9 the drawn tower lean should change by less than 0.03 rad. In particular it must not step at cut 3, so the viewer sees the sack stop it.</p>
+      </div>
+
+      <nav class="doc-pager" aria-label="Document pagination"><a class="pager-card" href="./pae03-critic-06-r1.html"><div class="pager-dir">← Previous Document</div><div class="pager-title">SCION 06 · Critic Round 1</div></a><a class="pager-card" href="./pae03-critic-06-r3.html"><div class="pager-dir">Next Document →</div><div class="pager-title">SCION 06 · Critic Round 3</div></a></nav>
+    </main>
+  </div>
+
+  <script src="./reader.js"></script>
+</body>
+</html>

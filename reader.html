@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" data-plate="paper" data-size="md" data-width="book">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Markdown Web Reader — burning-house</title>
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+  <link rel="icon" type="image/png" sizes="64x64" href="./assets/favicon-64.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32.png" />
+  <link rel="shortcut icon" href="./favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./docs/reader.css" />
+</head>
+<body>
+  <header class="reader-topbar">
+    <div class="topbar-left">
+      <a class="brand-pill" href="./index.html">burning-house</a>
+      <span class="crumb-sep">/</span>
+      <a class="crumb-link" href="./docs/index.html">Reading Room</a>
+    </div>
+    <div class="topbar-right">
+      <div class="ctrl-group" role="group" aria-label="Reading theme">
+        <button type="button" class="ctrl-btn active" data-set-plate="paper">Paper</button>
+        <button type="button" class="ctrl-btn" data-set-plate="notebook">Notebook</button>
+        <button type="button" class="ctrl-btn" data-set-plate="ochre">Ochre</button>
+        <button type="button" class="ctrl-btn" data-set-plate="night">Night</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="room-wrap" id="liveReaderRoot">
+    <p style="font-family:var(--font-mono);font-size:13px;color:var(--muted);">Loading styled web edition…</p>
+  </main>
+
+  <script src="./docs/reader.js"></script>
+  <script>
+    (async function () {
+      var params = new URLSearchParams(location.search);
+      var src = (params.get('file') || params.get('src') || '').replace(/^\.\//, '');
+      var root = document.getElementById('liveReaderRoot');
+      if (!src) {
+        location.replace('./docs/index.html');
+        return;
+      }
+      try {
+        var mf = await fetch('./docs/manifest.json').then(function (r) { return r.json(); });
+        if (mf[src] && mf[src].html) {
+          location.replace('./' + mf[src].html + location.hash);
+          return;
+        }
+      } catch (e) {}
+
+      // Fallback live client-side Markdown renderer for any newly added .md file
+      try {
+        var res = await fetch('./' + src);
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        var txt = await res.text();
+        var esc = function (s) {
+          return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        };
+        var htmlOut = esc(txt)
+          .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+          .replace(/^## (.+)$/gm, '<h2>$1</h2>')
+          .replace(/^# (.+)$/gm, '<h1>$1</h1>')
+          .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+          .replace(/\*([^*\n]+)\*/g, '<em>$1</em>')
+          .replace(/`([^`\n]+)`/g, '<code>$1</code>')
+          .replace(/\n\n+/g, '</p><p>');
+        root.innerHTML =
+          '<header class="doc-header"><div class="doc-kicker">Live Markdown View · ' + esc(src) + '</div>' +
+          '<h1 class="doc-title">' + esc(src) + '</h1>' +
+          '<div class="doc-byline"><a class="doc-act-btn" href="./' + esc(src) + '">Raw .md</a></div></header>' +
+          '<div class="md-prose"><p>' + htmlOut + '</p></div>';
+      } catch (err) {
+        root.innerHTML = '<p>Could not load <code>' + src.replace(/</g, '&lt;') + '</code>. <a href="./docs/index.html">Open Reading Room →</a></p>';
+      }
+    })();
+  </script>
+</body>
+</html>

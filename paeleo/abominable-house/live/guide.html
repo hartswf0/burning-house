@@ -1,0 +1,1051 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Field Guide &amp; Slide Deck · Inside the Film &amp; Deed Banks</title>
+<meta name="description" content="Illustrated paper and interactive slide deck explaining every mechanism in The Abominable House Film Bank and Deed Bank: PIE (Growing Entanglements), Tenenbaum inverse planning, PLoT tug-of-war, Barthesian archetypes and stagecraft levers, BDI + Park memory streams, Kurosawa's egoistic lies, believability tiers, and the 41 SCION animation modules.">
+<link rel="icon" type="image/svg+xml" href="../../../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../../../assets/favicon-32.png">
+<link rel="shortcut icon" href="../../../favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="../../../assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;family=IM+Fell+English:ital@0;1&amp;family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,600;1,7..72,400&amp;display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f4f2ea; --card:#ebe3cf; --card2:#faf6ee; --ink:#151411; --body:#26221c;
+  --mute:#6a6459; --rule:#d3ccb9; --rule-strong:#8f8675; --acc:#a3321f; --hl:#ffdc00;
+  --R:#6e3a33; --B:#2a2622; --I:#b0915e; --O:#7a3b8f;
+  --T0:#b33025; --T1:#b77a1f; --T2:#587c2c; --T3:#246f7e; --T4:#5448a8;
+  --f-disp:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+  --f-fell:"IM Fell English",Georgia,serif;
+  --f-serif:"Literata",Georgia,serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#14130f; --card:#1f1d17; --card2:#26231c; --ink:#efe9da; --body:#dad2c2;
+    --mute:#9c9587; --rule:#333028; --rule-strong:#5c5649; --acc:#e06443; --hl:#5c4d00;
+    --R:#c67a6e; --B:#a39b8e; --I:#d4b67e; --O:#b583c8;
+    --T0:#e26055; --T1:#dda040; --T2:#8bbd54; --T3:#56b4c7; --T4:#988df0;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#14130f; --card:#1f1d17; --card2:#26231c; --ink:#efe9da; --body:#dad2c2;
+  --mute:#9c9587; --rule:#333028; --rule-strong:#5c5649; --acc:#e06443; --hl:#5c4d00;
+  --R:#c67a6e; --B:#a39b8e; --I:#d4b67e; --O:#b583c8;
+  --T0:#e26055; --T1:#dda040; --T2:#8bbd54; --T3:#56b4c7; --T4:#988df0;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--body);font:16px/1.62 var(--f-serif);-webkit-font-smoothing:antialiased}
+a{color:var(--acc);text-underline-offset:.2em}
+a:hover{color:var(--ink)}
+
+/* Top sticky workbench bar */
+.topbar{position:sticky;top:0;z-index:60;background:color-mix(in srgb,var(--paper) 94%,transparent);backdrop-filter:blur(10px);border-bottom:2px solid var(--ink)}
+.topbar-inner{max-width:1220px;margin:0 auto;padding:8px 18px;display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;justify-content:space-between}
+.nav-links{display:flex;flex-wrap:wrap;gap:5px;align-items:center;font:600 11px var(--f-mono);letter-spacing:.05em}
+.nav-links a,.btn{color:var(--ink);background:var(--card2);text-decoration:none;border:1.5px solid var(--ink);padding:4px 8px;font:600 11px var(--f-mono);letter-spacing:.05em;cursor:pointer}
+.nav-links a:hover,.btn:hover{background:var(--ink);color:var(--paper)}
+.btn.active{background:var(--acc);color:#fff;border-color:var(--acc)}
+.film-ctrl{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font:500 11px var(--f-mono)}
+.film-ctrl input[type="text"],.film-ctrl select{font:600 11.5px var(--f-mono);background:var(--card2);color:var(--ink);border:1.5px solid var(--rule-strong);padding:4px 7px}
+.film-ctrl input[type="text"]{width:154px}
+
+/* Chapter strip */
+.toc-strip{border-top:1px solid var(--rule);background:var(--card);overflow-x:auto;scrollbar-width:none}
+.toc-strip::-webkit-scrollbar{display:none}
+.toc-inner{max-width:1220px;margin:0 auto;padding:5px 18px;display:flex;gap:6px;align-items:center}
+.toc-btn{white-space:nowrap;border:1px solid transparent;background:transparent;color:var(--mute);font:600 11px var(--f-mono);padding:3px 7px;cursor:pointer;text-decoration:none}
+.toc-btn:hover,.toc-btn.on{color:var(--ink);background:var(--card2);border-color:var(--rule-strong)}
+
+/* Container & Hero */
+main{max-width:1220px;margin:0 auto;padding:28px 18px 96px}
+.hero{border-bottom:2px solid var(--ink);padding-bottom:26px;margin-bottom:36px;display:grid;grid-template-columns:minmax(0,1.45fr) minmax(280px,1fr);gap:28px;align-items:end}
+@media (max-width:860px){.hero{grid-template-columns:1fr}}
+.eyebrow{font:600 11.5px var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--acc);margin:0 0 8px}
+h1{font:400 clamp(36px,5.6vw,64px)/1.0 var(--f-fell);color:var(--ink);margin:0 0 12px;text-wrap:balance}
+.lede{font-size:19px;line-height:1.48;color:var(--ink);margin:0;max-width:58ch}
+.hero-card{background:var(--card);border:1px solid var(--rule-strong);border-left:4px solid var(--acc);padding:14px 16px;font:12.5px/1.55 var(--f-mono)}
+.hero-card b{color:var(--ink)}
+
+/* Slide / Section cards */
+.slide{padding:32px 0 42px;border-bottom:1.5px solid var(--rule);scroll-margin-top:96px}
+.slide-head{display:grid;grid-template-columns:64px minmax(0,1fr);gap:14px;align-items:baseline;margin-bottom:18px}
+.slide-no{font:800 38px/1 var(--f-disp);color:var(--acc);letter-spacing:.02em}
+.slide-kicker{font:600 11px var(--f-mono);letter-spacing:.11em;text-transform:uppercase;color:var(--mute);display:block;margin-bottom:3px}
+h2{font:400 clamp(26px,3.6vw,40px)/1.08 var(--f-fell);color:var(--ink);margin:0}
+h3{font:700 19px/1.25 var(--f-disp);letter-spacing:.03em;text-transform:uppercase;color:var(--ink);margin:20px 0 8px}
+
+.two-col{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1.15fr);gap:28px;align-items:start}
+@media (max-width:920px){.two-col{grid-template-columns:1fr}}
+p{margin:0 0 13px;max-width:65ch}
+ul.tight,ol.tight{margin:0 0 14px;padding-left:20px;max-width:65ch}
+ul.tight li,ol.tight li{margin-bottom:6px}
+
+/* Boxes, callouts, formulas */
+.panel-box{background:var(--card2);border:1px solid var(--rule-strong);padding:16px 18px}
+.callout{background:var(--card);border-left:3px solid var(--acc);padding:12px 15px;margin:14px 0;font-size:14.5px}
+.formula{font:500 12.5px/1.6 var(--f-mono);background:var(--card);border:1px solid var(--rule-strong);padding:10px 13px;margin:12px 0;overflow-x:auto;color:var(--ink)}
+code{font:500 .86em var(--f-mono);background:var(--card);padding:1px 5px;color:var(--ink)}
+
+/* Annotated terminal replica */
+.term{background:#141310;color:#ece3d2;border:1px solid #38332b;padding:14px 16px;font:12px/1.5 var(--f-mono)}
+.term .th{font:800 14px var(--f-disp);letter-spacing:.06em;color:#e06443;margin:10px 0 4px;text-transform:uppercase}
+.term .th:first-child{margin-top:0}
+.term .tm{color:#9d9484;font-size:11px}
+.annot-grid{display:grid;gap:8px;margin-top:12px}
+.annot-item{display:grid;grid-template-columns:150px minmax(0,1fr);gap:10px;padding:8px 10px;background:var(--card2);border:1px solid var(--rule);font-size:13.5px;align-items:baseline}
+.annot-item dt{font:600 11.5px var(--f-mono);color:var(--acc)}
+.annot-item dd{margin:0}
+@media (max-width:600px){.annot-item{grid-template-columns:1fr;gap:3px}}
+
+/* Tables */
+.tw{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th{font:600 10.5px var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--mute);text-align:left;padding:7px 9px;border-bottom:1.5px solid var(--ink)}
+td{padding:7px 9px;border-bottom:1px solid var(--rule);vertical-align:top}
+.mono{font-family:var(--f-mono);font-size:12px;font-variant-numeric:tabular-nums}
+.chip{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+.tier{display:inline-block;font:600 10px var(--f-mono);letter-spacing:.07em;padding:1px 6px;border:1.5px solid currentColor}
+.T0{color:var(--T0)}.T1{color:var(--T1)}.T2{color:var(--T2)}.T3{color:var(--T3)}.T4{color:var(--T4)}
+
+/* Bars & interactive controls */
+.bar-row{display:grid;grid-template-columns:128px minmax(0,1fr) 118px;gap:8px;align-items:center;font:11.5px var(--f-mono);margin:4px 0}
+.bar-track{height:9px;background:color-mix(in srgb,var(--ink) 12%,transparent);position:relative;border:1px solid var(--rule-strong)}
+.bar-fill{position:absolute;left:0;top:0;bottom:0;background:var(--acc)}
+.bar-tick{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--ink)}
+.slider-group{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:10px 0}
+@media (max-width:680px){.slider-group{grid-template-columns:1fr}}
+.sl-card{background:var(--card);border:1px solid var(--rule-strong);padding:8px 10px;font:11px var(--f-mono)}
+.sl-card label{display:flex;justify-content:space-between;font-weight:600;color:var(--ink);margin-bottom:4px}
+.sl-card input[type="range"]{width:100%;accent-color:var(--acc)}
+
+/* Slide deck presentation mode */
+body.deck-mode .hero{display:none}
+body.deck-mode main{padding-top:16px;padding-bottom:74px}
+body.deck-mode .slide{display:none;border-bottom:0;min-height:calc(100dvh - 150px)}
+body.deck-mode .slide.active-slide{display:block}
+.deck-footer{display:none;position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--card);border-top:2px solid var(--ink);padding:8px 18px}
+body.deck-mode .deck-footer{display:block}
+.deck-footer-inner{max-width:1220px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:12px;font:600 12px var(--f-mono)}
+
+svg{display:block;width:100%;height:auto}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <nav class="nav-links" aria-label="Suite navigation">
+      <a href="../../../index.html">BURNING-HOUSE</a>
+      <a href="../index.html">PAE-04 CASE</a>
+      <a id="lnkFilm" href="film.html?n=1541585241617">FILM BANK</a>
+      <a id="lnkDeed" href="player.html?n=1541585241617">DEED BANK</a>
+      <a id="lnkArray" href="array.html">THE ARRAY</a>
+      <a href="policies.html">POLICIES</a>
+      <a href="numbers.html">NUMBERS</a>
+      <button type="button" class="btn" id="modePaper" onclick="setDeckMode(false)">READ PAPER</button>
+      <button type="button" class="btn" id="modeDeck" onclick="setDeckMode(true)">PRESENT SLIDES (10)</button>
+    </nav>
+    <div class="film-ctrl">
+      <label for="filmInput">Film #</label>
+      <input id="filmInput" type="text" value="1,541,585,241,617" aria-label="Film number (0 to 12^12 - 1)">
+      <button type="button" class="btn" onclick="applyFilmInput()">LOAD</button>
+      <select id="presetSel" onchange="if(this.value)loadPreset(this.value)" aria-label="Preset films">
+        <option value="1541585241617">Most Likely (MCTS)</option>
+        <option value="5885051002576">Bank Sample</option>
+        <option value="random">Roll Random Film</option>
+      </select>
+      <label for="deedSel">Inspect Deed</label>
+      <select id="deedSel" onchange="setInspectDeed(+this.value)" aria-label="Inspect deed slot"></select>
+    </div>
+  </div>
+  <div class="toc-strip">
+    <div class="toc-inner" id="tocInner">
+      <a class="toc-btn on" data-idx="0" href="#overview" onclick="return jumpSlide(0,event)">01 · Overview &amp; Controls</a>
+      <a class="toc-btn" data-idx="1" href="#tiers" onclick="return jumpSlide(1,event)">02 · Rating Tiers &amp; P(film)</a>
+      <a class="toc-btn" data-idx="2" href="#pie" onclick="return jumpSlide(2,event)">03 · PIE &amp; Growing Entanglements</a>
+      <a class="toc-btn" data-idx="3" href="#audience" onclick="return jumpSlide(3,event)">04 · Audience Inverse Planning</a>
+      <a class="toc-btn" data-idx="4" href="#plot" onclick="return jumpSlide(4,event)">05 · PLoT Tug-of-War</a>
+      <a class="toc-btn" data-idx="5" href="#barthes" onclick="return jumpSlide(5,event)">06 · Barthes &amp; Stage Levers</a>
+      <a class="toc-btn" data-idx="6" href="#minds" onclick="return jumpSlide(6,event)">07 · BDI + Park Minds</a>
+      <a class="toc-btn" data-idx="7" href="#lies" onclick="return jumpSlide(7,event)">08 · Kurosawa's Lies</a>
+      <a class="toc-btn" data-idx="8" href="#modules" onclick="return jumpSlide(8,event)">09 · Memory, Chance &amp; Transitions</a>
+      <a class="toc-btn" data-idx="9" href="#deedbank" onclick="return jumpSlide(9,event)">10 · Deed Bank (144 Cells)</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div>
+      <p class="eyebrow">PAE-04 Companion Monograph &amp; Interactive Slide Deck</p>
+      <h1>How to Give Four Flour Sacks a Mind, a Stage, and a Watcher</h1>
+      <p class="lede">The Film Bank and Deed Bank pack five cognitive, literary, and animation engines into a single browser sidebar. This companion unpacks every control, equation, curve, lever, and animation module—running live against whichever of the 8,916,100,448,256 films you load above.</p>
+    </div>
+    <div class="hero-card" id="heroLiveSummary">
+      Loading live ledger, agents, story scorer, and inverse planner…
+    </div>
+  </section>
+
+  <!-- ================= SLIDE 01: OVERVIEW & CONTROLS ================= -->
+  <section class="slide active-slide" id="overview" data-slide="0">
+    <div class="slide-head">
+      <span class="slide-no">01</span>
+      <div>
+        <span class="slide-kicker">Architecture of the Side Panel · Reading Over the Machine's Shoulder</span>
+        <h2>One Base-12 Number Drives Five Interlocking Engines</h2>
+      </div>
+    </div>
+    <div class="two-col">
+      <div>
+        <p>When you open <a href="film.html?n=1541585241617">The Film Bank</a>, the right-hand panel looks dense because it refuses to hide the machine's state behind a video file. Following Clifford Geertz's (1973) image of reading cultural texts <em>“over the shoulders”</em> of participants, every number in the sidebar comes from one of <strong>five deterministic JavaScript modules</strong> reading the exact same 12-digit base-12 film number.</p>
+        <div class="callout">
+          <strong>Why the controls split into two jobs:</strong><br>
+          <strong>1. Screening controls</strong> change <em>how</em> you watch the current film (<code>PACE</code>, <code>LEVERS</code>, <code>T ZERO</code>, <code>WATCH RENDER</code>).<br>
+          <strong>2. Authorship &amp; search controls</strong> ask a different agent to <em>choose a new film number</em> out of $12^{12}$ (<code>ROLL</code> = uniform chance; <code>LET THEM DECIDE</code> = BDI + Park + PIE tenants; <code>MOST LIKELY</code> = Monte Carlo Tree Search; <code>IRONY / SUSPENSE / TWIST</code> = inverse-inverse author beam search; <code>OPENINGS</code> = Calvino's 1,728 beginnings; <code>SIX MEMOS</code> = MAP-Elites quality-diversity archive).
+        </div>
+        <h3>Quick Key to Every Button in the Film Bank</h3>
+        <div class="tw">
+          <table>
+            <thead><tr><th>Control</th><th>What It Does</th><th>Engine</th></tr></thead>
+            <tbody>
+              <tr><td class="mono"><b>PACE: FAST / WATCH / CUT</b></td><td><b>FAST</b> plays only the 12 raw 6s deeds (72s). <b>WATCH</b> adds every chapter card, memory, transition, and consequence (~3m 45s). <b>CUT</b> (director's cut) keeps chapter cards + transitions and only the 7 highest-impact consequences.</td><td class="mono">film.html</td></tr>
+              <tr><td class="mono"><b>LEVERS</b></td><td>Toggles Barthesian stagecraft compositing: scales predators larger (<code>loom</code>), shrinks victims, casts spotlights (<code>halo</code>) and shadows, and desaturates corpses (<code>grey</code>).</td><td class="mono">ledger.js</td></tr>
+              <tr><td class="mono"><b>T ZERO</b></td><td>Pauses the film (after Calvino's <em>t zero</em>) and fans out all 12 ways the current deed could go, showing agent probability <code>p</code> and believability. Click any tile to rewrite history from that slot.</td><td class="mono">agents.js + story.js</td></tr>
+              <tr><td class="mono"><b>PIE + LET THEM DECIDE</b></td><td>Generates a 12-deed film step-by-step from the four sacks' own BDI beliefs, memories, and plans, weighted by Practical/Symbolic (<code>P</code>), Individual/Collective (<code>I</code>), and Chance (<code>E</code>).</td><td class="mono">agents.js</td></tr>
+              <tr><td class="mono"><b>MOST LIKELY</b></td><td>Runs 400 rollouts of Upper-Confidence-Tree Monte Carlo Tree Search (<code>UCT</code>) to surface high-believability trajectories.</td><td class="mono">story.js</td></tr>
+              <tr><td class="mono"><b>IRONY / SUSPENSE / TWIST</b></td><td>Runs width-14 beam search (Chandra et al. 2024) to author a film that maximizes what an observing audience will infer, dread, or misread.</td><td class="mono">crossed.js</td></tr>
+              <tr><td class="mono"><b>OPENINGS</b></td><td>Runs all $12^3 = 1,728$ three-deed beginnings, groups them into 589 distinct house states, and stops each film where the next deed is a 50/50 toss-up (after <em>If on a winter's night a traveler</em>).</td><td class="mono">crossed.js</td></tr>
+              <tr><td class="mono"><b>ATLAS / SIX MEMOS</b></td><td>Opens the 6,030-film behavioral scatter map and the 125-cell MAP-Elites grid indexed by Exactitude × Multiplicity × Visibility.</td><td class="mono">atlas.js</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="panel-box">
+        <h3 style="margin-top:0">System Dataflow · From Base-12 Integer to Canvas &amp; Sidebar</h3>
+        <svg viewBox="0 0 560 470" role="img" aria-label="Dataflow diagram of the five Film Bank modules">
+          <rect width="560" height="470" fill="none"/>
+          <g font-family="IBM Plex Mono, monospace" font-size="11">
+            <!-- Top node -->
+            <rect x="120" y="10" width="320" height="48" fill="var(--card)" stroke="var(--ink)" stroke-width="1.8"/>
+            <text x="280" y="30" text-anchor="middle" font-weight="600" fill="var(--acc)">FILM ADDRESS n ∈ [0, 12¹² − 1]</text>
+            <text x="280" y="47" text-anchor="middle" fill="var(--ink)" id="svgBase12Digits">12 base-12 digits → 12 (Doer, Victim) pairs</text>
+
+            <line x1="280" y1="58" x2="280" y2="86" stroke="var(--ink)" stroke-width="1.6"/>
+            <!-- Ledger -->
+            <rect x="60" y="86" width="440" height="72" fill="var(--card)" stroke="var(--ink)" stroke-width="1.6"/>
+            <text x="76" y="106" font-weight="600" fill="var(--ink)">1 · LEDGER.JS — Causal &amp; Epistemic State Machine</text>
+            <text x="76" y="124" fill="var(--mute)">• Vitality, bondage (tiedUntil), &amp; body marks (rope, torn, coins…)</text>
+            <text x="76" y="140" fill="var(--mute)">• House of Dust frame (Room, Light, Witnesses, Traces)</text>
+            <text x="76" y="154" fill="var(--mute)">• PLoT Tug-of-War beliefs + Barthes 15 Mythic Archetypes → 7 Levers</text>
+
+            <!-- Branches -->
+            <line x1="165" y1="158" x2="145" y2="190" stroke="var(--ink)" stroke-width="1.5"/>
+            <line x1="395" y1="158" x2="415" y2="190" stroke="var(--ink)" stroke-width="1.5"/>
+
+            <!-- Story.js -->
+            <rect x="16" y="190" width="256" height="86" fill="var(--card)" stroke="var(--ink)" stroke-width="1.5"/>
+            <text x="28" y="210" font-weight="600" fill="var(--ink)">2 · STORY.JS — Forensic Scorer</text>
+            <text x="28" y="227" fill="var(--mute)">• Raw fit [0..1] &amp; 5 Modal Tiers</text>
+            <text x="28" y="243" fill="var(--mute)">• Calvino's exclusion laws &amp; MCTS</text>
+            <text x="28" y="259" fill="var(--mute)">• Kurosawa's 4 Lies &amp; LEGOS YAML</text>
+
+            <!-- Agents.js -->
+            <rect x="288" y="190" width="256" height="86" fill="var(--card)" stroke="var(--ink)" stroke-width="1.5"/>
+            <text x="300" y="210" font-weight="600" fill="var(--ink)">3 · AGENTS.JS — Tenant Minds</text>
+            <text x="300" y="227" fill="var(--mute)">• BDI (Beliefs, Desires, Intentions)</text>
+            <text x="300" y="243" fill="var(--mute)">• Park Memory + Reflection Stream</text>
+            <text x="300" y="259" fill="var(--mute)">• Hartsoe PIE Utility Mixer</text>
+
+            <line x1="145" y1="276" x2="220" y2="306" stroke="var(--ink)" stroke-width="1.5"/>
+            <line x1="415" y1="276" x2="340" y2="306" stroke="var(--ink)" stroke-width="1.5"/>
+
+            <!-- Crossed.js -->
+            <rect x="50" y="306" width="460" height="68" fill="var(--card)" stroke="var(--ink)" stroke-width="1.5"/>
+            <text x="66" y="325" font-weight="600" fill="var(--ink)">4 · CROSSED.JS — Watcher, Author &amp; Crossed Strands</text>
+            <text x="66" y="342" fill="var(--mute)">• Tenenbaum Inverse Planning: Surprise, Twist, Suspense, Irony</text>
+            <text x="66" y="358" fill="var(--mute)">• Author Beam Search (I²P) + Castle 4-Row Strands + 1,728 Openings</text>
+
+            <line x1="280" y1="374" x2="280" y2="400" stroke="var(--acc)" stroke-width="2"/>
+
+            <!-- Renderer -->
+            <rect x="30" y="400" width="500" height="58" fill="var(--card)" stroke="var(--acc)" stroke-width="2"/>
+            <text x="280" y="421" text-anchor="middle" font-weight="600" fill="var(--acc)">5 · 41 SCION MODULES + GRANULAR FOLEY (1920×1080 CANVAS)</text>
+            <text x="280" y="440" text-anchor="middle" fill="var(--ink)">12 Deeds · 12 Consequences · 4 Memory Engines · 13 Transitions</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SLIDE 02: BELIEVABILITY TIERS & PROBABILITIES ================= -->
+  <section class="slide" id="tiers" data-slide="1">
+    <div class="slide-head">
+      <span class="slide-no">02</span>
+      <div>
+        <span class="slide-kicker">Forensic &amp; Modal Scoring · story.js</span>
+        <h2>Preposterous, Possible, Plausible, Probable, Certain: How Deeds Are Rated</h2>
+      </div>
+    </div>
+    <div class="two-col">
+      <div>
+        <p>Every deed in a film carries <strong>two distinct numbers</strong> in the sidebar—for instance, <code>believability 0.64 PLAUSIBLE · p 0.192 of 12 pairs</code>. Separating them is essential:</p>
+        <ol class="tight">
+          <li><strong>Absolute Event Believability (<code>raw</code> ∈ [0, 1]):</strong> Measures whether <em>this specific actor doing this deed to this victim right now</em> makes dramatic, physical, and psychological sense—even if all twelve options are terrible (for example, when three tenants are already dead).</li>
+          <li><strong>Normalized Pair Share (<code>p</code> ∈ [0, 1], summing to 1 across 12 pairs):</strong> Computes $\text{raw}_i / \sum_{j=1}^{12} \text{raw}_j$ (where uniform chance is $1/12 \approx 0.083$), and sums $\log P = \sum_{k=0}^{11} \ln p_k$ along the 12-step tree.</li>
+        </ol>
+        <div class="formula">
+raw(k, A → V) = clamp₀..₁ [ Motive(d, A) · (Target(d, V) / 0.6)
+  × VitalityGate(0.02 if A dead; 0.03 if V dead; 0.05 if A tied)
+  × Overpower(0.3 + σ(1.4(str_A − str_V) + 1.6·weak_V))   [for tying, strangling, assault]
+  × CalvinoLaws(wrestler rules, gun-before-rope, seduction-after-assault, 3-deadly cap)
+  × MindMomentum(1 + 0.9·grudge + 0.3·fear − 0.6·guilt)
+  × BarthesMyth(1 ± 0.6 · Predator_A) ]
+
+Film Believability = GeometricMean(raw₀ … raw₁₁) = exp( (1/12) · Σₖ ln max(10⁻⁴, rawₖ) )
+        </div>
+        <p><strong>Why a geometric mean for the whole film?</strong> In a forensic reconstruction, an arithmetic average would let eleven `0.85` deeds hide one impossible `0.02` corpse-acting contradiction (`mean = 0.78`). The geometric mean penalizes broken links multiplicatively, pulling the film down into <code>POSSIBLE</code> or <code>PREPOSTEROUS</code> the moment causality snaps.</p>
+        <div class="tw">
+          <table>
+            <thead><tr><th>Modal Tier</th><th>Score Band</th><th>Forensic Meaning in the House</th></tr></thead>
+            <tbody>
+              <tr><td><span class="tier T0">PREPOSTEROUS</span></td><td class="mono">0.00 – 0.05</td><td>Violates life, bondage, or core physics (a corpse or bound sack acts; courting right after assault).</td></tr>
+              <tr><td><span class="tier T1">POSSIBLE</span></td><td class="mono">0.05 – 0.30</td><td>Physically open yet against character or missing setup (tying Belindo without holding him at gunpoint first).</td></tr>
+              <tr><td><span class="tier T2">PLAUSIBLE</span></td><td class="mono">0.30 – 0.70</td><td>Credible alignment of character temperament, physical capacity, and opportunity.</td></tr>
+              <tr><td><span class="tier T3">PROBABLE</span></td><td class="mono">0.70 – 0.95</td><td>Strongly propelled by accumulated grievance, prior leverage (gun → rope), and role.</td></tr>
+              <tr><td><span class="tier T4">CERTAIN</span></td><td class="mono">0.95 – 1.00</td><td>Overdetermined culmination where trait motive, grudge, weakened target, and predator myth converge.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="panel-box">
+        <h3 style="margin-top:0">Live 12-Deed Rating Breakdown · Current Film</h3>
+        <div id="tiersFilmHeader" class="callout" style="margin-top:0"></div>
+        <div class="tw">
+          <table id="tiersLiveTable">
+            <thead><tr><th>#</th><th>Deed &amp; Cast</th><th>Raw</th><th>p(12)</th><th>Tier &amp; Active Multipliers</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SLIDE 03: PIE & GROWING ENTANGLEMENTS ================= -->
+  <section class="slide" id="pie" data-slide="2">
+    <div class="slide-head">
+      <span class="slide-no">03</span>
+      <div>
+        <span class="slide-kicker">Cultural Rationality · Hartsoe (Fall 2024), Growing Entanglements</span>
+        <h2>PIE: Holding Practical Action, Symbolic Myth, and Entropy in View</h2>
+      </div>
+    </div>
+    <div class="two-col">
+      <div>
+        <p>The three sliders labeled <code>PIE</code> in the Film Bank come directly from Watson Hartsoe's Fall 2024 research monograph, <a href="https://hartswf0.github.io/elsewhere/watson-hartsoe-site/aphoristic-social-models/index.html" target="_blank" rel="noopener"><em>Growing Entanglements: Captain Cook, cultural rationality, and seven small worlds</em></a> (<em>Probabilistic Cultural Systems Ontology</em>).</p>
+        <p>When Captain Cook arrived at Kealakekua Bay during the <em>Makahiki</em> festival (17 January 1779) and was killed upon returning with a damaged mast (14 February 1779), anthropology split into two causal worlds: <strong>Marshall Sahlins</strong> read action inside cosmological and ritual categories (<em>Lono</em>, sacred timing), while <strong>Gananath Obeyesekere</strong> read Hawaiian actors through practical political calculation (a stolen cutter, hostage leverage, rank, and force). Rather than declaring one ontology winner, <code>PIE</code> gives the disagreement <strong>three explicit handles</strong>:</p>
+        <ul class="tight">
+          <li><strong><code>P</code> — Symbolic Obligation (0) ↔ Practical Pressure (1):</strong> At <code>P = 1</code> (Obeyesekere's pole), tenants choose deeds for leverage, grudge, fear, debt, and muscle advantage $P$. At <code>P = 0</code> (Sahlins / Barthes's pole), tenants act out the mythic masks the house has cast them into ($Sy$: <code>MISER</code> extorting <code>SCAPEGOAT</code>, <code>IDOL</code> seducing <code>DREAMER</code>, <code>PREDATOR</code> striking <code>VICTIM</code>).</li>
+          <li><strong><code>I</code> — Collective Schema (0) ↔ Individual Belief (1):</strong> At <code>I = 0</code>, a sack judges everyone's strength and danger by the boarding house's shared rumor mean; at <code>I = 1</code>, it acts strictly on what <em>it personally witnessed or uncovered in lit rooms</em>.</li>
+          <li><strong><code>E</code> — Order / Reorganization (0) ↔ Chance / Breakdown (1):</strong> Sets the softmax temperature $\tau = 0.08 + 1.6E$. Low <code>E</code> locks tenants onto their highest-utility compulsion; high <code>E</code> lets breakdown and chance scramble the house.</li>
+        </ul>
+        <div class="formula">
+U(s → v) = P(s,v)^pie.P  ×  Sy(s,v)^(1 − pie.P)  ×  C_intent(s,v)
+P_choice(pair i | State_k) = exp( ln U_i / τ ) / Σ_j exp( ln U_j / τ ),   where τ = 0.08 + 1.6 · pie.E
+        </div>
+      </div>
+      <div class="panel-box">
+        <h3 style="margin-top:0">Interactive PIE Sandbox · Watch the 12 Pairings Shift Live</h3>
+        <svg viewBox="0 0 540 120" role="img" aria-label="Obeyesekere practical vs Sahlins symbolic synthesis" style="margin-bottom:8px">
+          <rect width="540" height="120" fill="var(--card)"/>
+          <line x1="270" y1="14" x2="270" y2="106" stroke="var(--rule-strong)" stroke-dasharray="4 3"/>
+          <text x="18" y="28" font-family="IBM Plex Mono, monospace" font-size="10.5" font-weight="600" fill="var(--T3)">OBEYESEKERE · PRACTICAL (P → 1)</text>
+          <text x="18" y="48" font-family="Literata, serif" font-size="13" fill="var(--ink)">Grudge, fear, debt, blackmail leverage,</text>
+          <text x="18" y="66" font-family="Literata, serif" font-size="13" fill="var(--ink)">physical strength advantage σ(Δstr).</text>
+          <text x="522" y="28" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="10.5" font-weight="600" fill="var(--T2)">SAHLINS / BARTHES · SYMBOLIC (P → 0)</text>
+          <text x="522" y="48" text-anchor="end" font-family="Literata, serif" font-size="13" fill="var(--ink)">Mythic roles assigned by the house:</text>
+          <text x="522" y="66" text-anchor="end" font-family="Literata, serif" font-size="13" fill="var(--ink)">Miser, Idol, Dreamer, Scapegoat, Predator.</text>
+          <rect x="155" y="82" width="230" height="24" fill="var(--card2)" stroke="var(--acc)" stroke-width="1.5"/>
+          <text x="270" y="98" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" font-weight="600" fill="var(--acc)">U = P^p · Sy^(1−p) · Commitment</text>
+        </svg>
+        <div class="slider-group">
+          <div class="sl-card"><label><span>P · Sym↔Prac</span><output id="outP">0.50</output></label><input id="slP" type="range" min="0" max="100" value="50" oninput="renderPieSandbox()"></div>
+          <div class="sl-card"><label><span>I · Col↔Ind</span><output id="outI">0.50</output></label><input id="slI" type="range" min="0" max="100" value="50" oninput="renderPieSandbox()"></div>
+          <div class="sl-card"><label><span>E · Ord↔Chnc</span><output id="outE">0.40</output></label><input id="slE" type="range" min="0" max="100" value="40" oninput="renderPieSandbox()"></div>
+        </div>
+        <div id="pieSandboxHead" class="mono" style="color:var(--mute);margin-bottom:6px"></div>
+        <div id="pieBars"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SLIDE 04: THE AUDIENCE & INVERSE PLANNING ================= -->
+  <section class="slide" id="audience" data-slide="3">
+    <div class="slide-head">
+      <span class="slide-no">04</span>
+      <div>
+        <span class="slide-kicker">Bayesian Theory of Mind · Baker, Saxe &amp; Tenenbaum (2009); Chandra et al. (2024)</span>
+        <h2>THE AUDIENCE: Inverse Planning, Author Beam Search, and Crossed Strands</h2>
+      </div>
+    </div>
+    <div class="two-col">
+      <div>
+        <p>In human cognition (Baker, Saxe, &amp; Tenenbaum 2009), an observer watching silent figures move through rooms performs <strong>inverse planning</strong>: instead of seeing hidden intentions and predicting deeds, the spectator sees deeds and runs Bayes' rule <em>backward</em> to infer what each agent is secretly plotting. Chandra, Li, Tenenbaum, &amp; Ragan-Kelley (2024, <em>“Storytelling as Inverse Inverse Planning”</em>) go one level higher: a <strong>storyteller</strong> chooses scenes by simulating what that Bayesian audience will think next (<code>I²P</code>).</p>
+        <div class="formula">
+10 Hypotheses per sack s:  h₀ = "no plan" (prior 0.20)
+  + 9 directed plans {make X pay, win X, make it right with X} for X ≠ s  (prior 0.80 / 9 ≈ 0.089 each)
+
+• Surprise = −log₂ P_watch(observed pair) / log₂(12)       [p = 0.28  ⇒  surprise = 0.51]
+• Twist    = Σ_s KL( P_after(h_s) || P_before(h_s) )       [bits of belief revision across all 4 sacks]
+• Suspense = H_binary( P_watch(next lethal deed kills) )   [peaks at 1.00 when survival is 50/50]
+• Irony    = P_watch(A plans harm to V) × (1 − Belief_V(harm_A))  [audience knows; victim doesn't!]
+        </div>
+        <dl class="annot-grid">
+          <div class="annot-item"><dt>Why P(it kills) = 0.00 early?</dt><dd>Only <code>III Incitement</code>, <code>IV Knifing</code>, and <code>XII Strangling</code> can kill—and in <code>ledger.js</code>, Incitement only kills if a victim's accumulated fear+grudge+debt exceeds <code>1.5</code>, while Knifing only kills a non-Belindo sack already carrying <code>rope/emptied/torn/drowsy</code>! Before anyone is weakened, <code>P(III kills) = 0.00</code>, so binary entropy <code>suspense = 0.00</code>.</dd></div>
+          <div class="annot-item"><dt>Why 0.09 vs (no plan 0.20)?</dt><dd>Before Deed I gives clues, each of the 9 specific plans starts at its exact uniform prior $0.80 / 9 = 0.0889 \approx 0.09$ while <code>no plan</code> holds $0.20$. After observing deeds, Bayes shifts weight onto the suspected culprit—and prints <code>· read correctly</code> whenever the audience's top guess matches the sack's true hidden BDI plan!</dd></div>
+          <div class="annot-item"><dt>strands holding: X of 4</dt><dd>From Calvino's <em>Castle of Crossed Destinies</em>: every deed sits in two personal rows of <code>THE TABLEAU</code> (doer &amp; victim). Each sack's own row gets a geometric-mean believability score; it "holds" if <code>believ &gt; 0.30</code> with zero dead/tied contradictions. <code>weakest strand</code> is the <em>Exactitude</em> axis of <em>Six Memos</em>.</dd></div>
+        </dl>
+      </div>
+      <div class="panel-box">
+        <h3 style="margin-top:0">Live Annotated Audience Readout &amp; 12-Deed Curves</h3>
+        <div class="term" id="audLiveTerm"></div>
+        <div id="audCurvesSvg" style="margin-top:14px"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SLIDE 05: PLoT TUG-OF-WAR ================= -->
+  <section class="slide" id="plot" data-slide="4">
+    <div class="slide-head">
+      <span class="slide-no">05</span>
+      <div>
+        <span class="slide-kicker">Probabilistic Language of Thought · Goodman, Tenenbaum &amp; Gerstenberg (2015)</span>
+        <h2>PLOT · Tug-of-War Update: Inferring Unseen Strength &amp; Danger</h2>
+      </div>
+    </div>
+    <div class="two-col">
+      <div>
+        <p>In Noah Goodman, Joshua Tenenbaum, and Tobias Gerstenberg's <strong>Probabilistic Language of Thought (PLoT)</strong>, the canonical textbook program is a <strong>tug-of-war tournament</strong>: nobody ever directly sees "strength." Observers only see who overpowers whom in each match, and condition a generative model backward to update latent Gaussian distributions over strength and danger.</p>
+        <p>In <code>ledger.js</code>, every deed is treated as an asymmetric match between Doer $A$ and Victim $V$:</p>
+        <ul class="tight">
+          <li><strong>Starting Priors (<code>PRIOR_STR</code>):</strong> Belindo starts strongest ($\mu = +1.5 \Rightarrow \sigma(\mu) = 0.82$), Widow Roessler even ($\mu = 0.0 \Rightarrow 0.50$), Ogiva slight ($\mu = -0.4 \Rightarrow 0.40$), and listless Inigo weakest ($\mu = -0.8 \Rightarrow 0.31$).</li>
+          <li><strong>Match Outcome ($y$):</strong> Normally the doer prevails ($y = 1$), so unexpected upsets (Inigo overpowering Belindo!) cause large upward jumps in $\mu_A$ and downward drops in $\mu_V$. The one built-in refusal is trying to strangle the wrestler (`XII` on `B`), which fails ($y = 0$), <em>lowering</em> the attacker's inferred strength!</li>
+          <li><strong>Danger Update (Kalman Filter):</strong> Each observer also tracks `harm` $\in [0, 1]$ for $A$, pulling it toward the intrinsic violence of the verb (<code>knifing = 1.0</code>, <code>assault = 0.9</code>, <code>gun = 0.7</code>, <code>blackmail = 0.3</code>, <code>seduction = 0.0</code>).</li>
+          <li><strong>Epistemic Gate (Knowles &amp; Tenney's <em>House of Dust</em>):</strong> Crucially, a tenant $O$ only updates its belief table <code>belief[O]</code> if $O$ <strong>knows about the deed</strong>—meaning $O$ was $A$ or $V$, $O$ was present in the same room with <code>light ≥ 1</code>, the deed was public (`X Slander`), $O$ snooped (`XI`), or $O$ later walked into that lit room and found its material trace! The sidebar's <code>PLOT · tug-of-war update</code> shows the average across the house, while <code>THE MINDS (B)</code> shows each sack's private belief.</li>
+        </ul>
+        <div class="formula">
+Expected win probability:  p = σ(μ_A − μ_V) = 1 / (1 + exp(−(μ_A − μ_V)))
+Strength update (if known): μ_A ← μ_A + 0.9·v_A·(y − p),   μ_V ← μ_V − 0.9·v_V·(y − p)
+Danger Kalman update:       harm_A ← harm_A + (v_h / (v_h + 0.3)) · (HARM[deed] − harm_A)
+        </div>
+      </div>
+      <div class="panel-box">
+        <h3 style="margin-top:0">Live Tug-of-War &amp; House-of-Dust Witness Inspector</h3>
+        <div id="plotLiveBox"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SLIDE 06: BARTHES & STAGECRAFT LEVERS ================= -->
+  <section class="slide" id="barthes" data-slide="5">
+    <div class="slide-head">
+      <span class="slide-no">06</span>
+      <div>
+        <span class="slide-kicker">Semiotics &amp; Expressive Compositing · Barthes (1957, 1970) + ledger.js</span>
+        <h2>BARTHES · The Match &amp; THE FOUR: How Mythic Archetypes Drive the 7 Stage Levers</h2>
+      </div>
+    </div>
+    <div class="two-col">
+      <div>
+        <p id="levers">Why is the archetype readout titled <strong><code>BARTHES · the match</code></strong>? Not only is Belindo Kid a professional wrestler, but in the opening essay of <em>Mythologies</em> (1957), <strong>“The World of Wrestling”</strong> (<em>Le monde où l'on catche</em>), Roland Barthes famously distinguishes wrestling from boxing: boxing (like Tenenbaum's <code>PLoT</code>!) measures hidden quantitative strength, whereas <strong>wrestling is a theatrical spectacle of immediately legible moral archetypes</strong>—the Miser, the Bastard, the Suffering Victim, the Idol—where every gesture externalizes a second-order social myth (and in <em>S/Z</em>, recurring <em>semes</em> cluster into a character mask).</p>
+        <p>In <code>ledger.js</code>, each sack carries a 15-archetype probability vector (<code>st.myth[id]</code>) initialized to its boarding-house persona: <strong>Roessler</strong> (<code>miser 0.50 · landlady 0.50</code>), <strong>Belindo</strong> (<code>gentle giant 0.60 · brute 0.40</code>), <strong>Inigo</strong> (<code>fallen lord 0.60 · dreamer 0.40</code>), <strong>Ogiva</strong> (<code>idol 0.70 · seducer 0.30</code>). Every deed mixes (`α = 0.35`, or `0.80` upon death) new roles (`PREDATOR, VICTIM, SCAPEGOAT, SPY, INVULNERABLE, CORPSE, GHOST`).</p>
+        <div class="callout">
+          <strong>What “THE FOUR · archetype and levers” actually does to the video:</strong><br>
+          Those seven bars (<code>loom, weight, tempo, halo, shadow, shrink, grey</code>) are <strong>not passive labels</strong>! When the <code>LEVERS</code> button is active in <code>film.html</code>, <code>leverComposite()</code> separates the background, Doer layer, and Victim layer onto offscreen 1920×1080 canvases and uses those 7 numbers to <strong>physically scale, light, cast shadows, re-time, and desaturate each flour sack</strong>—while passing <code>st.body</code> marks (<code>rope, gag, torn, coins, drowsy, emptied, blot, cinched</code>) into subsequent rooms!
+        </div>
+        <div class="tw">
+          <table>
+            <thead><tr><th>Lever</th><th>Archetype Formula</th><th>Visual &amp; Kinematic Effect on Screen</th></tr></thead>
+            <tbody>
+              <tr><td class="mono"><b>loom</b></td><td class="mono">+0.8 Brute +1.0 Predator +0.6 Invuln −0.8 Victim −0.5 Scapegoat</td><td>Scales the sack up to <code>+14%</code> from its floor contact so predators tower over the room.</td></tr>
+              <tr><td class="mono"><b>weight</b></td><td class="mono">+0.5 GentleGiant +0.8 Brute +0.2 Miser −0.4 Dreamer</td><td>Lowers transition hop arcs and lengthens Viterbi minimum pose holds for heavy, grounded mass.</td></tr>
+              <tr><td class="mono"><b>tempo</b></td><td class="mono">+0.4 Idol +0.5 Spy +0.3 Seducer −0.5 Dreamer −1.0 Corpse</td><td>Accelerates gesture cues and hop count; Dreamers and Corpses lag behind the beat.</td></tr>
+              <tr><td class="mono"><b>halo</b></td><td class="mono">+0.8 Idol +0.6 Seducer +0.5 Invulnerable</td><td>Wraps the sack in a warm stage spotlight (<code>28px</code> amber <code>drop-shadow</code> glow).</td></tr>
+              <tr><td class="mono"><b>shadow</b></td><td class="mono">+1.0 Predator +0.6 Spy +0.3 Miser</td><td>Throws a dark diagonal expressionist shadow (<code>−60px, −30px</code>) behind the figure.</td></tr>
+              <tr><td class="mono"><b>shrink</b></td><td class="mono">+0.6 Victim +0.8 Scapegoat</td><td>Contracts stature by up to <code>−22%</code> toward the floor; ears droop inward.</td></tr>
+              <tr><td class="mono"><b>grey</b></td><td class="mono">min(1, Corpse + Ghost)</td><td>Applies <code>grayscale()</code> and dims brightness by <code>25%</code> when dead (or acting as a contradiction Ghost).</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="panel-box">
+        <h3 style="margin-top:0">Interactive Flour-Sack Lever Stage · Click Any Tenant or Archetype</h3>
+        <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px" id="archPresetBtns"></div>
+        <canvas id="sackDemoCv" width="520" height="250" style="width:100%;height:auto;background:#141210;border:1px solid var(--ink)"></canvas>
+        <div id="leverLiveReadout" style="margin-top:10px"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SLIDE 07: THE MINDS (BDI + PARK) ================= -->
+  <section class="slide" id="minds" data-slide="6">
+    <div class="slide-head">
+      <span class="slide-no">07</span>
+      <div>
+        <span class="slide-kicker">Cognitive Architecture · LEGOS + Bratman (1987) / Rao &amp; Georgeff (1995) + Park et al. (2023)</span>
+        <h2>THE MINDS: Giving a Faceless Flour Sack Beliefs, Desires, Plans, and Reflections</h2>
+      </div>
+    </div>
+    <div class="two-col">
+      <div>
+        <p>How do you give a 2D flour sack an inspectable mind without handing authorship over to an unrepeatable cloud LLM? <code>agents.js</code> fuses <strong>three classic AI lineages</strong> into 67 lines of deterministic JavaScript:</p>
+        <ol class="tight">
+          <li><strong><code>B</code> — Beliefs (Epistemic PLoT):</strong> What this specific sack currently estimates about the other three tenants' <code>str</code> (strength, 0..1) and <code>harm</code> (danger, 0..1), based <em>solely</em> on deeds it participated in, witnessed in lit rooms, snooped via keyhole, or uncovered from room traces.</li>
+          <li><strong><code>D</code> — Desires (<code>LEGOS</code> Goal + Temperament-Weighted Affect):</strong> Each sack holds a permanent <code>LEGOS</code> life goal plus pairwise affects (<code>fear, guilt, grudge, desire, debt, pride</code>) scaled by its personal <code>TEMPER</code>—for example, Widow Roessler nurses grudges (<code>0.90</code>) with almost no guilt (<code>0.25</code>), whereas Belindo feels crushing guilt (<code>1.00</code>) and mild grudge (<code>0.40</code>).</li>
+          <li><strong><code>I</code> — Intentions (Bratman 1987; Rao &amp; Georgeff 1995):</strong> Desires pull in many directions at once; an <strong>Intention</strong> is a <em>committed plan</em> (<code>make X pay</code>, <code>win X</code>, or <code>make it right with X</code>) that multiplies matching deed utilities by <strong><code>2.2×</code></strong> and persists across rooms until discharged (<code>Done: X.</code>).</li>
+          <li><strong>Memory &amp; Reflection Stream (Joon Sung Park et al., “Generative Agents”, 2023):</strong> Every known event appends a timestamped record shown as <code>[Deed#] [Kind: O/R/P] [Importance 1..10]</code>:
+            <ul>
+              <li><code>O</code> (<strong>Observation</strong>): e.g., <code>2 O 8 Roessler drugged me.</code></li>
+              <li><code>R</code> (<strong>Reflection</strong>): Triggered automatically whenever accumulated importance crosses <strong><code>14</code></strong>! The sack tallies who has weighed heaviest on its mind and writes higher-level syntheses (<em>“Roessler is dangerous.”</em>, <em>“The house sees me as the scapegoat.”</em>).</li>
+              <li><code>P</code> (<strong>Plan</strong>): Commits a new BDI intention into the stream. When two sacks meet again, <code>retrieve()</code> ranks memories by $\text{Recency}(0.85^{\Delta t}) + \text{Importance}/10 + \text{Relevance}$, highlighting active memories in <span style="color:var(--acc);font-weight:600">ember red</span> and flashing them onto the film canvas!</li>
+            </ul>
+          </li>
+        </ol>
+      </div>
+      <div class="panel-box">
+        <h3 style="margin-top:0">Live Mind Inspector · Before Inspected Deed</h3>
+        <div id="mindsLiveBox"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SLIDE 08: KUROSAWA'S LIES ================= -->
+  <section class="slide" id="lies" data-slide="7">
+    <div class="slide-head">
+      <span class="slide-no">08</span>
+      <div>
+        <span class="slide-kicker">Egoism &amp; Tragic Arc · Akira Kurosawa, Rashomon (1950) &amp; Something Like an Autobiography (1982)</span>
+        <h2>THE LIES · Kurosawa: Protective Self-Deceptions and What Shatters Them</h2>
+      </div>
+    </div>
+    <div class="two-col">
+      <div>
+        <p>Why is the penultimate section of the Film Bank called <strong><code>THE LIES · Kurosawa</code></strong>? In his memoir <em>Something Like an Autobiography</em> (1982), explaining what drove <em>Rashomon</em> (1950), Akira Kurosawa described the human heart's inability to live—or recount its own story—without an egoistic protective fiction:</p>
+        <blockquote style="margin:12px 0;padding:10px 14px;background:var(--card);border-left:3px solid var(--ink);font-style:italic">
+          “Human beings are unable to be honest with themselves about themselves. They cannot talk about themselves without embellishing. This script portrays such human beings—the kind who cannot survive without lies to make them feel they are better people than they really are.” — Akira Kurosawa (1982)
+        </blockquote>
+        <p>In <em>Rashomon</em>, each witness bends the grove's violence around their vanity (strength, honor, modesty). In <code>story.js</code> (<code>CAST</code> &amp; <code>BREAKS</code>) and <code>array.html</code>'s <code>CHARACTER</code> view, each of Calvino's four tenants enters the boarding house clinging to a <strong>protective life-lie</strong>—an equation about what keeps them safe or blameless:</p>
+        <ul class="tight">
+          <li><strong>Widow Roessler:</strong> <em>“Possession equals safety.”</em> Broken the first time she is still alive and targeted as victim of <code>blackmail</code>, <code>prostitution</code>, <code>knifing</code>, <code>assault</code>, or <code>slander</code>—proving her deeds and strongbox shield nothing.</li>
+          <li><strong>Belindo Kid:</strong> <em>“Strength makes me safe.”</em> Broken when the wrestler is felled not by fair muscle, but by chemistry, rope, despair, or a revolver (victim of <code>drugging</code>, <code>tying</code>, <code>incitement</code>, or <code>gun</code>).</li>
+          <li><strong>Inigo:</strong> <em>“Nothing I do counts.”</em> Unlike the others, Inigo's lie is aristocratic detachment—so it is broken only when <em>he himself acts as perpetrator</em> of an irreversible lethal deed (<code>knifing</code>, <code>strangling</code>, or <code>incitement</code>).</li>
+          <li><strong>Ogiva:</strong> <em>“Being looked at is being safe.”</em> Broken when visibility turns into invasive humiliation or violence (victim of <code>slander</code>, <code>snooping</code>, <code>assault</code>, or <code>knifing</code>).</li>
+        </ul>
+      </div>
+      <div class="panel-box">
+        <h3 style="margin-top:0">The Four Lies in the Current Film</h3>
+        <div id="liesLiveTable"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SLIDE 09: MEMORY, CHANCE, CONSEQUENCE & TRANSITIONS ================= -->
+  <section class="slide" id="modules" data-slide="8">
+    <div class="slide-head">
+      <span class="slide-no">09</span>
+      <div>
+        <span class="slide-kicker">Words-to-World Assembly · 41 SCION Modules + VTX-0.1 + Granular Foley</span>
+        <h2>Memory, Chance, Consequence &amp; Transition Functions: Assembling Continuous Cinema</h2>
+      </div>
+    </div>
+    <div class="two-col">
+      <div>
+        <p>If twelve autonomous SCION swarms build twelve deeds in wildly different visual languages—from Lotte Reiniger shadow cut-outs to spring pendulums, Yuri Norstein fog glass, and ARAP triangle meshes—why doesn't a film look like twelve disconnected clips? Because <code>film.html</code> composes <strong>41 procedural modules</strong> across a strict state joint:</p>
+        <div class="formula">
+Beat k = [Chapter Card 1.8s] → [Memory Beat 2.5s] → [Transition 2–3s]
+       → [Deed 6.0s + pre/post + .1s/.4s Memory Flashes] → [Consequence Beat 2.5s]
+        </div>
+        <ul class="tight">
+          <li><strong>4 Character Memory Engines (<code>memory/{R,B,I,O}.js</code>):</strong> Each tenant remembers in the medium of its own psychology! <strong>Roessler</strong> (<code>SCION-38</code>) runs a Viterbi dynamic-programming decoder over 10 fixed ledger-keeper drawings; <strong>Belindo</strong> (<code>SCION-37</code>) binds crops of past deeds as textures onto his 6-bone skinned cloth body; <strong>Inigo</strong> (<code>SCION-10</code>) warps stills via Moving Least Squares into dreamy distortion; <strong>Ogiva</strong> (<code>SCION-26</code>) views past deeds inside polygon-masked mirror shards.</li>
+          <li><strong>13 Continuity Transitions (<code>trans/00..12.js</code>):</strong> Every transition renders the <em>exact final frame</em> (<code>t = 5.99s</code>) of Deed $k-1$ and the <em>exact opening frame</em> (<code>t = 0.00s</code>) of Deed $k$ (with levers &amp; body marks applied!), classifies sacks as <code>STAY</code>, <code>LEAVE</code>, or <code>ENTER</code>, inserts a <strong>mid-walk hesitation stall</strong> if an entering sack carries a heavy memory of the tenant it is about to face, and rewrites the room via Collage Graph Rewriting, Live2D Cubism, MLS mesh warps, Bounded Biharmonic Weights, Moho Smart Bones, or After Effects corner-pin mattes!</li>
+          <li><strong>12 Consequence Modules (<code>conseq/01..12.js</code>):</strong> Stage the forensic aftermath—Provenance DAGs (<code>01</code>), Alpha-Matte drug waking (<code>02</code>), GrabCut evidence extraction (<code>04</code>), Toon Boom needle-and-thread mending behind a bolted door (<code>08</code>), and SAM-2 mask proposals (<code>11</code>).</li>
+          <li><strong>Two Levels of Chance &amp; Granular Sound:</strong> At the macro level, <code>PIE</code> entropy $\tau$ governs choice stochasticity while <code>OPENINGS</code> halts where Shannon ambiguity peaks; at the micro kinematic level (<a href="../../../vtx01_build/viewer/index.html"><code>VTX-0.1</code></a>), exogenous physical chance (an invariant <code>18 N</code> floor jolt in <code>chance_trace.json</code>) is held fixed across counterfactual takes so viewer attribution isolates intent. And in <code>kit.js</code>, <strong>every sound is synthesized live from grains of cloth and flour</strong> (`R` 600Hz creak, `B` 45Hz thump, `I` 2400Hz breath, `O` 5200Hz glass triad).</li>
+        </ul>
+      </div>
+      <div class="panel-box">
+        <h3 style="margin-top:0">Live Segment Timeline of Current Film (<span id="segDurSpan"></span>)</h3>
+        <div id="segTimelineBox"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SLIDE 10: THE DEED BANK (144 CELLS) ================= -->
+  <section class="slide" id="deedbank" data-slide="9">
+    <div class="slide-head">
+      <span class="slide-no">10</span>
+      <div>
+        <span class="slide-kicker">Atomic Performance Workbench · player.html</span>
+        <h2>Inside The Deed Bank: 144 Ordered-Pair Cells, 96 Role Rigs, and 12 SCION Lineages</h2>
+      </div>
+    </div>
+    <div class="two-col">
+      <div>
+        <p>Opening <a id="lnkDeedInline" href="player.html?n=1541585241617">The Deed Bank</a> isolates the raw 6-second performances without memory interludes or transitions. Its right-hand <strong>Punch Card</strong> is a $12 \times 12$ matrix:</p>
+        <ul class="tight">
+          <li><strong>12 Columns</strong> = the twelve deeds in alphabetical copybook order (<code>I Blackmail</code> through <code>XII Strangling</code>).</li>
+          <li><strong>12 Rows</strong> = the $4 \times 3 = 12$ ordered pairs of distinct tenants (<code>R→B, R→I, R→O, B→R, …</code>), yielding <strong>144 playable cells</strong> (`D.draw(g, t, A, V, K)`), authored from <strong>96 single-sack role schedules</strong> (`12 deeds × 4 sacks × 2 roles`).</li>
+          <li><strong>Four Flour &amp; Costume Signatures (<code>kit.js</code>):</strong>
+            <br><span class="chip" style="background:#6e3a33"></span><strong>Widow Roessler (<code>R</code>):</strong> Squat <code>168×122</code> warm-flour sack (<code>#d6bf96</code>) with burgundy shawl (<code>#6e3a33</code>) across the top fifth; creaking mid-band voice.
+            <br><span class="chip" style="background:#2a2622"></span><strong>Belindo Kid (<code>B</code>):</strong> Massive <code>244×214</code> sack (<code>#e8d5ae</code>) cinched by a charcoal wrestler's belt (<code>#2a2622</code>) at 40% height with wheat stencil; 45 Hz sub-thump.
+            <br><span class="chip" style="background:#c9b089"></span><strong>Inigo (<code>I</code>):</strong> Narrow, slumped <code>128×98</code> sack (<code>#e2cea5</code> / <code>#c9b089</code>) whose long ears hang limp; airy 2400 Hz breath.
+            <br><span class="chip" style="background:#7a3b8f"></span><strong>Ogiva (<code>O</code>):</strong> Tall, slender <code>80×184</code> pale sack (<code>#f0e4c8</code>) crowned with a sculpted purple wig (<code>#7a3b8f</code>); 5200 Hz crystalline triad.
+          </li>
+        </ul>
+      </div>
+      <div class="panel-box">
+        <h3 style="margin-top:0">Complete 12-Deed SCION Animation &amp; Consequence Matrix</h3>
+        <div class="tw">
+          <table id="deedCatalogTable">
+            <thead><tr><th>#</th><th>Deed &amp; Room</th><th>Deed Animation Lineage</th><th>Consequence Lineage &amp; Trace</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="deck-footer" aria-label="Slide deck controls">
+  <div class="deck-footer-inner">
+    <button type="button" class="btn" onclick="stepSlide(-1)">← PREV SLIDE</button>
+    <span id="deckCounter">SLIDE 1 / 10 · Use ← → arrow keys</span>
+    <div style="display:flex;gap:6px">
+      <button type="button" class="btn" onclick="setDeckMode(false)">EXIT TO PAPER</button>
+      <button type="button" class="btn active" onclick="stepSlide(1)">NEXT SLIDE →</button>
+    </div>
+  </div>
+</footer>
+
+<script src="kit.js"></script>
+<script src="ledger.js"></script>
+<script src="story.js"></script>
+<script src="agents.js"></script>
+<script src="crossed.js"></script>
+<script>
+(function(){
+  const NAMES=['Blackmail','Drugging','Incitement to Suicide','Knifing','Prostitution','Threatening with a Gun','Tying and Gagging','Assault (Implied)','Seduction','Slander','Snooping','Strangling'];
+  const RN=['I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII'];
+  const WHO={R:'Roessler',B:'Belindo',I:'Inigo',O:'Ogiva'};
+  const COL={R:'var(--R)',B:'var(--B)',I:'var(--I)',O:'var(--O)'};
+  const TIERN=['PREPOSTEROUS','POSSIBLE','PLAUSIBLE','PROBABLE','CERTAIN'];
+  const N12=8916100448256n;
+
+  const DEED_META=[
+    ['SCION-02 · Lotte Reiniger hinged cut-card shadow theatre','SCION-54 · Provenance DAG (sepia photo + coin debt)'],
+    ['SCION-41 · Damped spring-pendulum secondary dynamics','SCION-31 · Alpha-matte green spill waking solve'],
+    ['SCION-05 · Yuri Norstein multiplane glass fog stack','SCION-18 · Cartoon Saloon painterly interior'],
+    ['SCION-07 · Peter Foldès 5-landmark contour metamorphosis','SCION-29 · GrabCut cutout evidence extraction'],
+    ['SCION-48 · 3-agent finite state machines (with refusal)','SCION-04 · Frank Mouris catalogue image torrent'],
+    ['SCION-33 · FABRIK spine + 2-bone ear Inverse Kinematics','SCION-44 · Multiplane depth-camera parallax'],
+    ['SCION-08 · Ivan Sutherland Sketchpad constraint relaxation','SCION-32 · Hierarchical forward-kinematics rig'],
+    ['SCION-45 · Alpha-matte curtain occlusion (harm withheld)','SCION-20 · Toon Boom bolted-door seam mending'],
+    ['SCION-06 · John Whitney 3:4:6:8 harmonic oscillators','SCION-23 · Spine weighted skeletal mesh'],
+    ['SCION-Gilliam · Engraved scissor-cut paper collage','SCION-SouthPark · Street-front cutout grammar'],
+    ['SCION-39 · 4-view discrete turnaround keyhole cutaway','SCION-30 · SAM-2 prompted mask proposal'],
+    ['SCION-34 · ARAP 160-triangle shape-preserving mesh','SCION-03 · Max Ernst surreal stairwell engraving']
+  ];
+
+  let curN=1541585241617n, curFilm=[], curK=0, deckMode=false, curSlide=0;
+  let L=null, SC=null, MINDS=null, AUD=null, STR=null;
+  let demoArch='R', demoWho='R';
+
+  function decBig(n){
+    n=BigInt(n); if(n<0n)n=0n; if(n>=N12)n=N12-1n;
+    const d=[]; let x=n;
+    for(let k=0;k<12;k++){ d.unshift(Number(x%12n)); x/=12n; }
+    return d;
+  }
+  function encBig(d){ return d.reduce((a,x)=>a*12n+BigInt(x),0n); }
+
+  const deedSel=document.getElementById('deedSel');
+  deedSel.innerHTML=RN.map((r,k)=>`<option value="${k}">${r} · ${NAMES[k]}</option>`).join('');
+
+  // Populate static Deed Bank catalog table
+  document.querySelector('#deedCatalogTable tbody').innerHTML=LEDGER.ORDER.map((key,k)=>{
+    const site=LEDGER.SITE[key], ev=LEDGER.RULE[key].evidence;
+    return `<tr>
+      <td class="mono"><b>${RN[k]}</b></td>
+      <td><b>${NAMES[k]}</b><br><span class="mono" style="color:var(--mute)">${site}</span></td>
+      <td>${DEED_META[k][0]}</td>
+      <td>${DEED_META[k][1]}<br><span class="mono" style="color:var(--acc)">trace: ${ev}</span></td>
+    </tr>`;
+  }).join('');
+
+  // Populate archetype demo buttons
+  const archBtns=document.getElementById('archPresetBtns');
+  [['R','Roessler (Film state)'],['B','Belindo (Film state)'],['I','Inigo (Film state)'],['O','Ogiva (Film state)'],
+   ['PREDATOR','Pure PREDATOR'],['VICTIM','Pure VICTIM'],['IDOL','Pure IDOL'],['CORPSE','Pure CORPSE']].forEach(([key,lab])=>{
+    const b=document.createElement('button');
+    b.type='button'; b.className='btn'; b.textContent=lab;
+    b.onclick=()=>{demoArch=key; if(['R','B','I','O'].includes(key))demoWho=key; renderSackDemo();};
+    archBtns.appendChild(b);
+  });
+
+  window.loadFilmBig=function(n){
+    curN=BigInt(n);
+    if(curN<0n)curN=0n; if(curN>=N12)curN=N12-1n;
+    curFilm=decBig(curN);
+    document.getElementById('filmInput').value=curN.toLocaleString('en-US');
+    const ns=curN.toString();
+    document.getElementById('lnkFilm').href='film.html?n='+ns;
+    document.getElementById('lnkDeed').href='player.html?n='+ns;
+    document.getElementById('lnkDeedInline').href='player.html?n='+ns;
+    document.getElementById('lnkArray').href='array.html?n='+ns;
+    try{
+      const u=new URL(location.href); u.searchParams.set('n',ns);
+      history.replaceState(null,'',u.pathname+u.search+u.hash);
+    }catch(e){}
+
+    L=LEDGER.run(curFilm);
+    SC=STORY.score(curFilm);
+    MINDS=AGENTS.minds(curFilm);
+    AUD=CROSSED.audience(curFilm);
+    STR=CROSSED.strands(curFilm,AUD);
+    renderAll();
+  };
+
+  window.applyFilmInput=function(){
+    const raw=document.getElementById('filmInput').value.replace(/[^0-9]/g,'');
+    loadFilmBig(raw?BigInt(raw):0n);
+  };
+  window.loadPreset=function(v){
+    if(v==='random'){
+      const d=Array.from({length:12},()=>Math.floor(Math.random()*12));
+      loadFilmBig(encBig(d));
+    } else loadFilmBig(BigInt(v));
+  };
+  window.setInspectDeed=function(k){
+    curK=Math.max(0,Math.min(11,k));
+    deedSel.value=String(curK);
+    renderAll();
+  };
+
+  function renderAll(){
+    const b12=curFilm.map(x=>x.toString(12).toUpperCase()).join(' ');
+    document.getElementById('svgBase12Digits').textContent=`base-12 [${b12}] → 12 pairs`;
+    const contra=L.states[12].impossible.length;
+    document.getElementById('heroLiveSummary').innerHTML=
+      `<b>ACTIVE FILM:</b> ${curN.toLocaleString('en-US')}<br>`+
+      `<b>Base-12 digits:</b> [${b12}]<br>`+
+      `<b>Whole-film believability:</b> ${SC.believ.toFixed(3)} <span class="tier T${TIERN.indexOf(SC.tier)}">${SC.tier}</span> · log P ${SC.logp.toFixed(1)}<br>`+
+      `<b>Ledger consistency:</b> ${contra===0?'0 contradictions (all actors alive &amp; unbound)':contra+' contradiction(s)'}<br>`+
+      `<b>Crossed strands holding:</b> ${STR.holding} of 4 (weakest: ${WHO[STR.weakest]} ${STR.min.toFixed(2)})`;
+
+    renderTiersSection();
+    renderPieSandbox();
+    renderAudienceSection();
+    renderPlotSection();
+    renderSackDemo();
+    renderMindsSection();
+    renderLiesSection();
+    renderModulesTimeline();
+  }
+
+  function renderTiersSection(){
+    document.getElementById('tiersFilmHeader').innerHTML=
+      `<b>Film ${curN.toLocaleString('en-US')}</b> · Geometric mean = <b>${SC.believ.toFixed(3)}</b> `+
+      `<span class="tier T${TIERN.indexOf(SC.tier)}">${SC.tier}</span> · Cumulative <code>log P = ${SC.logp.toFixed(2)}</code> (uniform random baseline: <code>12 × ln(1/12) = −29.82</code>)`;
+    document.querySelector('#tiersLiveTable tbody').innerHTML=SC.ev.map((ev,k)=>{
+      const isCur=k===curK;
+      return `<tr style="${isCur?'background:color-mix(in srgb,var(--acc) 11%,transparent)':''};cursor:pointer" onclick="setInspectDeed(${k})">
+        <td class="mono"><b>${RN[k]}</b></td>
+        <td><b>${NAMES[k]}</b><br><span class="chip" style="background:${COL[ev.A]}"></span>${WHO[ev.A]} → <span class="chip" style="background:${COL[ev.V]}"></span>${WHO[ev.V]}</td>
+        <td class="mono"><b>${ev.raw.toFixed(2)}</b></td>
+        <td class="mono">${ev.p.toFixed(3)}</td>
+        <td><span class="tier T${TIERN.indexOf(ev.tier)}">${ev.tier}</span><div class="mono" style="color:var(--mute);margin-top:3px">${ev.why.join(' · ')}</div></td>
+      </tr>`;
+    }).join('');
+  }
+
+  window.renderPieSandbox=function(){
+    const pie={
+      P:+document.getElementById('slP').value/100,
+      I:+document.getElementById('slI').value/100,
+      E:+document.getElementById('slE').value/100
+    };
+    document.getElementById('outP').textContent=pie.P.toFixed(2);
+    document.getElementById('outI').textContent=pie.I.toFixed(2);
+    document.getElementById('outE').textContent=pie.E.toFixed(2);
+    let st=LEDGER.init(); const mind=AGENTS.newMind();
+    for(let j=0;j<curK;j++) st=CROSSED.agentStep(st,mind,j,curFilm[j]);
+    const tau=0.08+pie.E*1.6;
+    const U=LEDGER.PAIRS.map(([a,v])=>AGENTS.utility(st,curK,a,v,mind,pie));
+    const lg=U.map(u=>Math.log(Math.max(u,1e-12))/tau);
+    const mx=Math.max(...lg);
+    const w=lg.map(x=>Math.exp(x-mx)), z=w.reduce((a,b)=>a+b,0);
+    const probs=w.map(x=>x/z);
+    const topP=Math.max(...probs);
+    document.getElementById('pieSandboxHead').innerHTML=
+      `Deed <b>${RN[curK]} ${NAMES[curK]}</b> · temperature τ = <b>${tau.toFixed(2)}</b> · orange tick = pair chosen in active film`;
+    document.getElementById('pieBars').innerHTML=LEDGER.PAIRS.map(([a,v],i)=>{
+      const chosen=i===curFilm[curK];
+      return `<div class="bar-row" style="${chosen?'font-weight:600;color:var(--ink)':''}">
+        <span><span class="chip" style="background:${COL[a]}"></span>${WHO[a].slice(0,4)}→${WHO[v].slice(0,4)}</span>
+        <div class="bar-track"><div class="bar-fill" style="width:${(probs[i]/topP*100).toFixed(1)}%;background:${chosen?'var(--acc)':'var(--rule-strong)'}"></div></div>
+        <span style="text-align:right">p ${(probs[i]*100).toFixed(1)}% · U ${U[i].toFixed(2)}</span>
+      </div>`;
+    }).join('');
+  };
+
+  function renderAudienceSection(){
+    const k=curK, a=AUD[k], truth=MINDS.per[k].intent;
+    const lines=['R','B','I','O'].map(id=>{
+      const b=a.before[id], it=truth[id];
+      const real=it?CROSSED.hypText(id,it):'no plan';
+      const hit=it&&b.h&&b.h.kind===it.kind&&b.h.target===it.target;
+      return `<div><b>${WHO[id]}</b> · watcher suspects <b>${b.text}</b> ${b.p.toFixed(2)} <span class="tm">(no plan ${b.none.toFixed(2)})</span> · in fact: ${real}${hit?' <span style="color:#ffdc00">· read correctly</span>':''}</div>`;
+    }).join('');
+    document.getElementById('audLiveTerm').innerHTML=
+      `<div class="th">THE AUDIENCE · before Deed ${RN[k]} (${NAMES[k]}: ${WHO[L.ev[k].A]} → ${WHO[L.ev[k].V]})</div>`+
+      `<div>surprise <b>${a.surprise.toFixed(2)}</b> · twist <b>${a.twist.toFixed(2)}</b> · suspense <b>${a.suspense.toFixed(2)}</b> · irony <b>${a.irony.toFixed(2)}</b></div>`+
+      `<div class="tm" style="margin:4px 0 8px">next deed that can kill: ${a.lethal!=null?RN[a.lethal]+' '+NAMES[a.lethal]+' · P(it kills) '+a.pd.toFixed(2):'none left'} · this deed was given p ${a.p.toFixed(2)} by the watcher</div>`+
+      lines+
+      `<div class="tm" style="margin-top:6px">strands holding: ${STR.holding} of 4 · weakest strand: ${WHO[STR.weakest]} ${STR.min.toFixed(2)}</div>`;
+
+    // 4 SVG curves
+    const metrics=[['surprise','Surprise (−log₂ p / log₂ 12)','#e06443'],['twist','Twist (KL belief shift)','#d4a03c'],['suspense','Suspense (lethal entropy)','#4da6b8'],['irony','Dramatic Irony','#b583c8']];
+    document.getElementById('audCurvesSvg').innerHTML=metrics.map(([m,label,col])=>{
+      const vals=AUD.map(x=>x[m]), mx=Math.max(0.5,...vals);
+      const pts=vals.map((v,i)=>`${(38+i*42).toFixed(1)},${(44-v/mx*34).toFixed(1)}`).join(' ');
+      const cx=38+k*42, cy=44-vals[k]/mx*34;
+      return `<div style="margin-bottom:6px">
+        <div class="mono" style="display:flex;justify-content:space-between;font-size:11px"><span>${label}</span><b>${vals[k].toFixed(2)} at ${RN[k]}</b></div>
+        <svg viewBox="0 0 520 52"><rect x="30" y="6" width="476" height="40" fill="var(--card)" stroke="var(--rule)"/>
+          <polyline points="${pts}" fill="none" stroke="${col}" stroke-width="2.2"/>
+          <line x1="${cx}" y1="6" x2="${cx}" y2="46" stroke="var(--ink)" stroke-dasharray="2 2"/>
+          <circle cx="${cx}" cy="${cy}" r="4" fill="${col}" stroke="var(--ink)"/>
+        </svg></div>`;
+    }).join('');
+  }
+
+  function renderPlotSection(){
+    const k=curK, r=LEDGER.reading(L,k), f=L.states[k+1].frames[k];
+    const bars=r.plot.map(p=>{
+      const p0=Math.min(1,Math.max(0,p.p0)), p1=Math.min(1,Math.max(0,p.p1));
+      const d=p1-p0;
+      return `<div class="bar-row">
+        <span><span class="chip" style="background:${COL[p.who]}"></span>${WHO[p.who]} ${p.what}</span>
+        <div class="bar-track">
+          <div class="bar-fill" style="width:${(p1*100).toFixed(1)}%"></div>
+          <div class="bar-tick" style="left:${(p0*100).toFixed(1)}%" title="Prior before deed"></div>
+        </div>
+        <span style="text-align:right">${p0.toFixed(2)} → ${p1.toFixed(2)} (${d>=0?'+':''}${d.toFixed(2)})</span>
+      </div>`;
+    }).join('');
+    const knowAfter=['R','B','I','O'].filter(id=>L.states[k+1].know[id].includes(k)).map(id=>WHO[id]).join(', ');
+    document.getElementById('plotLiveBox').innerHTML=
+      `<div class="callout" style="margin-top:0"><b>Deed ${RN[k]} · ${r.headline}</b><br>`+
+      `<span class="mono">Site: <b>${f.site}</b> · Light: <b>${f.lightName}</b> (level ${f.light}/3) · Material trace left: <b>${f.material}</b><br>`+
+      `Other inhabitants in ${f.site}: <b>${f.inhabitants.length?f.inhabitants.map(x=>WHO[x]).join(', '):'none'}</b> (${f.dark?'dark — unseen':'lit — witnessed'})<br>`+
+      `Tenants who update PLoT beliefs from this deed: <b>${knowAfter}</b>`+
+      `${f.found.length?'<br>Prior traces discovered here: '+f.found.map(x=>WHO[x.who]+' finds '+x.mat+' (from '+RN[x.k]+')').join('; '):''}</span></div>`+
+      `<h3>House Belief Shift (Tick = Prior, Fill = Posterior)</h3>${bars}`+
+      `<h3>Barthes Myth Shift on This Match</h3>`+
+      `<div class="formula" style="margin-bottom:0"><b>${r.mythBefore[0]}</b> (${WHO[L.ev[k].A]}) vs <b>${r.mythBefore[1]}</b> (${WHO[L.ev[k].V]})  →  <b>${r.match[0]}</b> vs <b>${r.match[1]}</b></div>`;
+  }
+
+  window.renderSackDemo=function(){
+    const cv=document.getElementById('sackDemoCv'), g=cv.getContext('2d');
+    const st=L.states[curK];
+    let myth, body=[], alive=true, label='';
+    if(['R','B','I','O'].includes(demoArch)){
+      myth=st.myth[demoArch]; body=st.body[demoArch]; alive=st.alive[demoArch];
+      label=`${WHO[demoArch]} before Deed ${RN[curK]}`;
+    } else {
+      myth={}; LEDGER.ARCH.forEach(a=>myth[a]=a===demoArch?1:0);
+      demoWho='R'; alive=demoArch!=='CORPSE';
+      label=`Synthetic pure ${demoArch} archetype`;
+    }
+    const lv=LEDGER.levers(myth);
+    g.clearRect(0,0,520,250);
+    g.fillStyle='#141210'; g.fillRect(0,0,520,250);
+    // Floor line
+    g.strokeStyle='#3c362d'; g.lineWidth=2; g.beginPath(); g.moveTo(20,214); g.lineTo(500,214); g.stroke();
+
+    // Draw baseline ghost outline on left, Lever-composited sack on right
+    const cast=K.CAST[demoWho];
+    function drawOneSack(cx, applyLv, cap){
+      const sc=applyLv?(1+0.14*Math.max(-1,Math.min(1,lv.loom))-0.22*lv.shrink):1;
+      const w=cast.w*0.62*sc, h=cast.h*0.68*sc, fy=212;
+      g.save();
+      if(applyLv && lv.shadow>0.12){
+        g.save(); g.fillStyle=`rgba(0,0,0,${Math.min(0.75,0.3+lv.shadow*0.45)})`;
+        g.beginPath(); g.ellipse(cx-38*lv.shadow, fy-6, w*0.75, 11+8*lv.shadow, -0.18, 0, Math.PI*2); g.fill(); g.restore();
+      }
+      if(applyLv && lv.halo>0.12){
+        const gr=g.createRadialGradient(cx,fy-h*0.55,6,cx,fy-h*0.55,h*1.15);
+        gr.addColorStop(0,`rgba(255,236,180,${Math.min(0.75,lv.halo)})`);
+        gr.addColorStop(1,'rgba(255,236,180,0)');
+        g.fillStyle=gr; g.fillRect(cx-130,10,260,210);
+      }
+      if(applyLv && lv.grey>0.05) g.filter=`grayscale(${Math.min(1,lv.grey)}) brightness(${1-0.25*lv.grey})`;
+      // Sack body with top ears
+      g.fillStyle=cast.fill; g.strokeStyle='#0d0b09'; g.lineWidth=2.2;
+      g.beginPath();
+      g.moveTo(cx-w*0.46, fy);
+      g.quadraticCurveTo(cx-w*0.56, fy-h*0.52, cx-w*0.38, fy-h*0.92);
+      g.lineTo(cx-w*0.48, fy-h*1.12);
+      g.lineTo(cx-w*0.22, fy-h*0.96);
+      g.quadraticCurveTo(cx, fy-h*0.90, cx+w*0.22, fy-h*0.96);
+      g.lineTo(cx+w*0.48, fy-h*1.12);
+      g.lineTo(cx+w*0.38, fy-h*0.92);
+      g.quadraticCurveTo(cx+w*0.56, fy-h*0.52, cx+w*0.46, fy);
+      g.closePath(); g.fill(); g.stroke();
+      // Costume attribute
+      if(demoWho==='R'){ g.fillStyle='#6e3a33'; g.fillRect(cx-w*0.41,fy-h*0.90,w*0.82,h*0.22); }
+      if(demoWho==='B'){ g.fillStyle='#2a2622'; g.fillRect(cx-w*0.49,fy-h*0.58,w*0.98,h*0.13); }
+      if(demoWho==='O'){ g.fillStyle='#7a3b8f'; g.beginPath(); g.arc(cx,fy-h*0.96,w*0.36,Math.PI,0); g.fill(); }
+      if(body.includes('rope')){ g.strokeStyle='#8b6b3e'; g.lineWidth=3.5; g.beginPath(); g.moveTo(cx-w*0.48,fy-h*0.45); g.lineTo(cx+w*0.48,fy-h*0.45); g.stroke(); }
+      if(body.includes('torn')){ g.strokeStyle='#a3321f'; g.lineWidth=2.5; g.beginPath(); g.moveTo(cx-8,fy-h*0.62); g.lineTo(cx+10,fy-h*0.42); g.stroke(); }
+      g.filter='none'; g.restore();
+      g.fillStyle='#bfb5a2'; g.font='11px "IBM Plex Mono", monospace'; g.textAlign='center';
+      g.fillText(cap, cx, 236);
+    }
+    drawOneSack(145, false, 'LEVERS OFF (neutral rig)');
+    drawOneSack(375, true, 'LEVERS ON (myth composited)');
+
+    const top3=LEDGER.ARCH.map(a=>[a,myth[a]||0]).sort((a,b)=>b[1]-a[1]).slice(0,3);
+    document.getElementById('leverLiveReadout').innerHTML=
+      `<div class="mono" style="margin-bottom:6px"><b>${label}</b> · Top archetypes: ${top3.map(([a,v])=>`${a.toLowerCase()} ${v.toFixed(2)}`).join(' · ')} · Marks: <b>${body.join(', ')||'unmarked'}</b></div>`+
+      ['loom','weight','tempo','halo','shadow','shrink','grey'].map(n=>{
+        const v=lv[n], bip=(n==='loom'||n==='weight'||n==='tempo');
+        const left=bip?(v>=0?50:50+v*50):0, width=Math.min(100,Math.abs(v)*(bip?50:100));
+        return `<div class="bar-row"><span>${n}</span><div class="bar-track">${bip?'<div class="bar-tick" style="left:50%"></div>':''}<div class="bar-fill" style="left:${Math.max(0,left).toFixed(1)}%;width:${width.toFixed(1)}%"></div></div><span style="text-align:right">${v>=0?'+':''}${v.toFixed(2)}</span></div>`;
+      }).join('');
+  };
+
+  function renderMindsSection(){
+    const k=curK, st=L.states[k], per=MINDS.per[k];
+    const hot=new Set([...per.recall.A,...per.recall.V].map(r=>r.text+r.t));
+    document.getElementById('mindsLiveBox').innerHTML=['R','B','I','O'].map(id=>{
+      const b=st.belief[id], others=['R','B','I','O'].filter(o=>o!==id);
+      const bl=others.map(o=>`${WHO[o]} str ${(1/(1+Math.exp(-b[o].str.m))).toFixed(2)} harm ${b[o].harm.m.toFixed(2)}`).join(' · ');
+      const des=others.map(o=>{
+        const m=st.mind[id][o], top=Object.entries(m).sort((x,y)=>y[1]-x[1])[0];
+        return top[1]>0.15?`${top[0]}→${WHO[o]} ${top[1].toFixed(2)}`:null;
+      }).filter(Boolean).join(' · ')||'none yet';
+      const it=per.intent[id];
+      const recs=MINDS.mind.stream[id].filter(r=>r.t<k).slice(-5);
+      return `<div style="border:1px solid var(--rule-strong);background:var(--card);padding:9px 11px;margin-bottom:8px;font-size:12px" class="mono">
+        <div><span class="chip" style="background:${COL[id]}"></span><b>${WHO[id]}</b> ${st.alive[id]?'':'(DEAD)'} · <span style="color:var(--mute)">goal: ${STORY.CAST[id].goal}</span></div>
+        <div><b>B:</b> ${bl}</div>
+        <div><b>D:</b> ${des}</div>
+        <div><b>I:</b> ${it?CROSSED.hypText(id,it)+' (committed at Deed '+RN[it.since]+')':'no committed plan'}</div>
+        ${recs.length?'<div style="margin-top:4px;padding-top:4px;border-top:1px dotted var(--rule-strong)">'+recs.map(r=>`<div style="${hot.has(r.text+r.t)?'color:var(--acc);font-weight:600':''}">[${r.t+1} ${r.kind[0].toUpperCase()} imp=${r.importance}] ${r.text}</div>`).join('')+'</div>':'<div style="color:var(--mute)">[stream empty before Deed I]</div>'}
+      </div>`;
+    }).join('');
+  }
+
+  function renderLiesSection(){
+    const lies=STORY.lies(curFilm);
+    const triggers={
+      R:'Victim of Blackmail, Prostitution, Knifing, Assault, or Slander',
+      B:'Victim of Drugging, Tying, Incitement, or Gun',
+      I:'Doer of Knifing, Strangling, or Incitement',
+      O:'Victim of Slander, Snooping, Assault, or Knifing'
+    };
+    document.getElementById('liesLiveTable').innerHTML=`<div class="tw"><table>
+      <thead><tr><th>Tenant</th><th>LEGOS Goal &amp; Protective Lie</th><th>What Breaks It</th><th>Outcome in Film</th></tr></thead>
+      <tbody>${lies.map(x=>`<tr>
+        <td><span class="chip" style="background:${COL[x.id]}"></span><b>${WHO[x.id]}</b></td>
+        <td><div><b>Goal:</b> ${STORY.CAST[x.id].goal}</div><div style="color:var(--acc);font-style:italic">“${x.lie}”</div></td>
+        <td class="mono">${triggers[x.id]}</td>
+        <td class="mono">${x.broken!=null?`<b style="color:var(--acc)">Broken at ${RN[x.broken]} · ${NAMES[x.broken]}</b>`:'<b>Holds unbroken</b>'}${x.dead!=null?`<br>Dies at ${RN[x.dead]} · ${NAMES[x.dead]}`:'<br>Survives to the fire'}</td>
+      </tr>`).join('')}</tbody></table></div>`;
+  }
+
+  function renderModulesTimeline(){
+    // Replicate director's CUT schedule length & beats
+    const imp=Array.from({length:12},(_,k)=>{
+      const a=L.states[k],b=L.states[k+1],e=L.ev[k]; let m=0;
+      for(const o of ['R','B','I','O'])for(const t of ['R','B','I','O'])if(o!==t)for(const f of['fear','guilt','grudge','desire'])m+=Math.abs(b.mind[o][t][f]-a.mind[o][t][f]);
+      if(a.alive[e.V]&&!b.alive[e.V])m+=2; if(b.impossible.some(q=>q.k===k))m+=1; return m;
+    });
+    const cutoff=imp.slice().sort((a,b)=>b-a)[6];
+    let tot=0; const rows=[];
+    for(let k=0;k<12;k++){
+      const e=L.ev[k];
+      const hasMem=LEDGER.memories(L,e.A,k).some(m=>m.other===e.V&&m.weight>0.6);
+      const hasCon=imp[k]>=cutoff;
+      const d=1.8+(hasMem?2.5:0)+(k===0?2.5:2.4)+8.2+(hasCon?2.5:0);
+      tot+=d;
+      rows.push(`<div style="display:flex;flex-wrap:wrap;gap:4px;align-items:center;padding:5px 0;border-bottom:1px solid var(--rule);font:11px var(--f-mono)">
+        <b style="width:32px">${RN[k]}</b>
+        <span style="padding:2px 5px;background:var(--card)">CARD 1.8s</span>
+        ${hasMem?`<span style="padding:2px 5px;background:#3a2742;color:#f3e6fa">MEM (${e.A}) 2.5s</span>`:''}
+        <span style="padding:2px 5px;background:var(--card)">TRANS ${String(k).padStart(2,'0')}</span>
+        <span style="padding:2px 5px;background:var(--acc);color:#fff">DEED ${WHO[e.A]}→${WHO[e.V]} 8.2s</span>
+        ${hasCon?`<span style="padding:2px 5px;background:#263b34;color:#dff5ec">CONSEQ 2.5s</span>`:'<span style="color:var(--mute)">(conseq trimmed in CUT)</span>'}
+      </div>`);
+    }
+    tot+=8.5;
+    document.getElementById('segDurSpan').textContent=`~${Math.floor(tot/60)}m ${String(Math.round(tot%60)).padStart(2,'0')}s in Director's CUT`;
+    document.getElementById('segTimelineBox').innerHTML=rows.join('')+
+      `<div style="padding-top:6px;font:600 11.5px var(--f-mono);color:var(--acc)">XIII · TRANS 12 (Sound-to-Action) + THE FIRE (6.0s Arson over final strangling frame)</div>`;
+  }
+
+  // Slide / Paper mode switching
+  const slides=Array.from(document.querySelectorAll('.slide'));
+  const tocBtns=Array.from(document.querySelectorAll('.toc-btn'));
+  window.setDeckMode=function(on){
+    deckMode=!!on;
+    document.body.classList.toggle('deck-mode',deckMode);
+    document.getElementById('modePaper').classList.toggle('active',!deckMode);
+    document.getElementById('modeDeck').classList.toggle('active',deckMode);
+    updateSlideUI();
+  };
+  window.jumpSlide=function(idx,ev){
+    curSlide=Math.max(0,Math.min(slides.length-1,idx));
+    updateSlideUI();
+    if(deckMode){ if(ev)ev.preventDefault(); window.scrollTo({top:0,behavior:'instant'}); return false; }
+    return true;
+  };
+  window.stepSlide=function(delta){
+    curSlide=(curSlide+delta+slides.length)%slides.length;
+    updateSlideUI();
+    window.scrollTo({top:0,behavior:'smooth'});
+  };
+  function updateSlideUI(){
+    slides.forEach((s,i)=>s.classList.toggle('active-slide',i===curSlide));
+    tocBtns.forEach((b,i)=>b.classList.toggle('on',i===curSlide));
+    document.getElementById('deckCounter').textContent=`SLIDE ${curSlide+1} / ${slides.length} · ${tocBtns[curSlide].textContent}`;
+  }
+  addEventListener('keydown',e=>{
+    if(!deckMode||['INPUT','SELECT','TEXTAREA'].includes(document.activeElement?.tagName))return;
+    if(e.key==='ArrowRight'||e.key==='PageDown'){e.preventDefault();stepSlide(1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();stepSlide(-1);}
+    else if(e.key==='Escape'){setDeckMode(false);}
+  });
+
+  // Boot from URL params
+  const q=new URLSearchParams(location.search);
+  setDeckMode(q.get('mode')==='slides');
+  if(location.hash){
+    const hi=slides.findIndex(s=>'#'+s.id===location.hash || (location.hash==='#levers'&&s.id==='barthes'));
+    if(hi>=0) curSlide=hi;
+    updateSlideUI();
+  }
+  const initK=q.get('k'); if(initK!=null&&/^\d+$/.test(initK)) curK=Math.min(11,+initK);
+  deedSel.value=String(curK);
+  const initN=q.get('n');
+  loadFilmBig(initN&&/^\d+$/.test(initN)?BigInt(initN):1541585241617n);
+})();
+</script>
+</body>
+</html>
