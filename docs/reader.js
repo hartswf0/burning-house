@@ -40,13 +40,29 @@
     }
   }
 
+  function applyPlain(on, persist) {
+    var v = on ? '1' : '0';
+    root.setAttribute('data-plain', v);
+    document.querySelectorAll('[data-toggle-plain]').forEach(function (btn) {
+      btn.classList.toggle('active', v === '1');
+      btn.setAttribute('aria-pressed', v === '1' ? 'true' : 'false');
+    });
+    if (persist) {
+      try { localStorage.setItem('bh_doc_plain', v); } catch (e) {}
+    }
+  }
+
   // Hydrate initial preferences
   try {
-    var qp = new URLSearchParams(location.search).get('plate');
+    var sp = new URLSearchParams(location.search);
+    var qp = sp.get('plate');
     var savedPlate = qp || localStorage.getItem('bh_doc_plate') || localStorage.getItem('bh_plate') || root.getAttribute('data-plate') || 'paper';
     applyPlate(savedPlate, false);
     applySize(localStorage.getItem('bh_doc_size') || 'md', false);
     applyWidth(localStorage.getItem('bh_doc_width') || 'book', false);
+    var qPlain = sp.get('plain');
+    var savedPlain = qPlain !== null ? (qPlain === '1' || qPlain === 'true') : (localStorage.getItem('bh_doc_plain') === '1');
+    applyPlain(savedPlain, false);
   } catch (e) {}
 
   document.addEventListener('click', function (ev) {
@@ -58,6 +74,9 @@
 
     var wBtn = ev.target.closest('[data-set-width]');
     if (wBtn) { applyWidth(wBtn.getAttribute('data-set-width'), true); return; }
+
+    var plBtn = ev.target.closest('[data-toggle-plain]');
+    if (plBtn) { applyPlain(root.getAttribute('data-plain') !== '1', true); return; }
 
     var mobBtn = ev.target.closest('#mobTocBtn');
     var rail = document.getElementById('readerRail');

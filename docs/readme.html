@@ -51,9 +51,10 @@
         <button type="button" class="ctrl-btn active" data-set-size="md">A</button>
         <button type="button" class="ctrl-btn" data-set-size="lg">A+</button>
       </div>
-      <div class="ctrl-group" role="group" aria-label="Column width">
+      <div class="ctrl-group" role="group" aria-label="Column width and plain prose">
         <button type="button" class="ctrl-btn active" data-set-width="book">Book</button>
         <button type="button" class="ctrl-btn" data-set-width="wide">Wide</button>
+        <button type="button" class="ctrl-btn" data-toggle-plain="1" title="Strip inline bold and code styling for continuous plain reading">Plain</button>
       </div>
     </div>
   </header>
@@ -63,8 +64,8 @@
       <div class="rail-meta-box">
         <div class="rail-kicker">Journals &amp; Inventories</div>
         <div class="rail-stats">
-          <span>787 words</span>
-          <span>· ~3 min read</span>
+          <span>885 words</span>
+          <span>· ~4 min read</span>
           <span>· 7 sections</span>
         </div>
       </div>
@@ -74,8 +75,8 @@
         <li class="toc-item lvl-2"><a href="#start-here">Start Here</a></li>
 <li class="toc-item lvl-2"><a href="#one-unified-system-from-one-flour-sack-to-1212-stories">One Unified System: From One Flour Sack to 1212 Stories</a></li>
 <li class="toc-item lvl-2"><a href="#editorial-reading-room-web-styled-markdown-editions">Editorial Reading Room (Web-Styled Markdown Editions)</a></li>
-<li class="toc-item lvl-3"><a href="#papers-framing-specifications-claims">Papers, Framing, Specifications &amp; Claims</a></li>
-<li class="toc-item lvl-3"><a href="#zettelkasten-slip-boxes-42-cross-linked-cards-across-3-decks">Zettelkasten Slip-Boxes (42 Cross-Linked Cards Across 3 Decks)</a></li>
+<li class="toc-item lvl-3"><a href="#canonical-paper-working-sources-claims">Canonical Paper, Working Sources &amp; Claims</a></li>
+<li class="toc-item lvl-3"><a href="#zettelkasten-slip-boxes-40-cross-linked-cards-across-3-decks">Zettelkasten Slip-Boxes (40 Cross-Linked Cards Across 3 Decks)</a></li>
 <li class="toc-item lvl-3"><a href="#journals-reference-corpora-xml-prompts-critic-logs">Journals, Reference Corpora, XML Prompts &amp; Critic Logs</a></li>
 <li class="toc-item lvl-2"><a href="#rebuilding-local-editions-finding-aids">Rebuilding Local Editions &amp; Finding Aids</a></li>
       </ul>
@@ -87,7 +88,7 @@
         <h1 class="doc-title">Repository Overview &amp; Architecture (README)</h1>
         <p class="doc-subtitle">Top-level guide to burning-house, uniting PAE-03, PAE-04, Lab 7, VTX-0.1, Zettelkasten decks, and the complete archive.</p>
         <div class="doc-byline">
-          <span>787 words · ~3 min read · 7 sections</span>
+          <span>885 words · ~4 min read · 7 sections</span>
           <div class="doc-actions">
             <button type="button" class="doc-act-btn" data-copy-url="">Copy URL</button>
             <button type="button" class="doc-act-btn" onclick="window.print()">Print / PDF</button>
@@ -114,28 +115,32 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><strong>Enter</strong> the main 4-sack house (<span class="md-math">12<sup>12</sup></span> stories, Film Bank, T ZERO, Policies, Numbers)</td>
+<td style="text-align: left;"><strong>Start with <code>VTX-0.1</code></strong>: open a case, change one goal line, see what differs &amp; take the blind ballot</td>
+<td style="text-align: left;"><a href="https://hartswf0.github.io/burning-house/vtx01_build/viewer/index.html"><code>vtx01_build/viewer/index.html</code></a> · <a href="https://hartswf0.github.io/burning-house/vtx01_build/viewer/index.html?mode=blind_test">Blind Ballot (<code>?mode=blind_test</code>)</a> · <a href="https://hartswf0.github.io/burning-house/docs/vtx01-build-readme.html"><code>docs/vtx01-build-readme.html</code></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Understand the Film Bank &amp; Deed Bank</strong> (interactive paper + 10-slide live deck on <code>PIE</code>, <code>PLoT</code>, <code>BDI</code>, Barthes, Kurosawa &amp; 41 SCION modules)</td>
+<td style="text-align: left;"><a href="https://hartswf0.github.io/burning-house/paeleo/abominable-house/live/guide.html"><code>paeleo/abominable-house/live/guide.html</code></a> · <a href="https://hartswf0.github.io/burning-house/paeleo/abominable-house/live/film.html">Film Bank</a> · <a href="https://hartswf0.github.io/burning-house/paeleo/abominable-house/live/player.html?n=1541585241617">Deed Bank (<code>?n=1541585241617</code>)</a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>See all <span class="md-math">12<sup>12</sup></span> films at once</strong> (<code>ADDRESS</code> recursive map, <code>BEHAVIOUR</code> map, 132 neighbours &amp; <code>QUERY</code>)</td>
+<td style="text-align: left;"><a href="https://hartswf0.github.io/burning-house/paeleo/abominable-house/live/array.html#address"><code>paeleo/abominable-house/live/array.html#address</code></a> · <a href="https://hartswf0.github.io/burning-house/paeleo/abominable-house/live/array.html#behaviour"><code>#behaviour</code></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Enter</strong> the main 4-sack house (<span class="md-math">12<sup>12</sup></span> stories, Film Bank, Deed Bank, Policies, Numbers, Whole House)</td>
 <td style="text-align: left;"><a href="https://hartswf0.github.io/burning-house/paeleo/abominable-house/"><code>paeleo/abominable-house/index.html</code></a> and <a href="https://hartswf0.github.io/burning-house/paeleo/abominable-house/whole-house.html"><code>whole-house.html</code></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Read</strong> the canonical paper (plain reading edition, DH2027 PDF, or web-styled with one-click <code>Plain</code> mode)</td>
+<td style="text-align: left;"><a href="https://hartswf0.github.io/burning-house/read.html">Plain <code>read.html</code></a> · <a href="https://hartswf0.github.io/burning-house/Reading_Over_the_Machines_Shoulder_DH2027.pdf">DH2027 Short Paper PDF</a> · <a href="https://hartswf0.github.io/burning-house/docs/abominable-house-submission-draft.html">Web Edition</a> · <a href="https://hartswf0.github.io/burning-house/docs/">All 34 Editions (<code>docs/</code>)</a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Find</strong> any card, journal entry, section, claim or file, and see what cites what</td>
+<td style="text-align: left;"><a href="https://hartswf0.github.io/burning-house/find.html"><code>find.html</code></a> · <a href="https://hartswf0.github.io/burning-house/docs/claims.html">Claims Checked (<code>CLAIMS.md</code>)</a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Explore</strong> the 1-sack precursor (<code>PAE-03</code>: 6 handmade swarms, 17 critic rounds)</td>
 <td style="text-align: left;"><a href="https://hartswf0.github.io/burning-house/paeleo/flour-sacks/"><code>paeleo/flour-sacks/index.html</code></a> and <a href="https://hartswf0.github.io/burning-house/paeleo/flour-tower/"><code>paeleo/flour-tower/index.html</code></a></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Find</strong> any card, journal entry, section, claim or file, and see what cites what</td>
-<td style="text-align: left;"><a href="https://hartswf0.github.io/burning-house/find.html"><code>find.html</code></a></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Read</strong> every <code>.md</code> paper, Zettel deck, spec, XML prompt &amp; critic round in book-grade web styles</td>
-<td style="text-align: left;"><a href="https://hartswf0.github.io/burning-house/docs/"><code>docs/index.html</code></a> (plus single-column <a href="https://hartswf0.github.io/burning-house/read.html"><code>read.html</code></a>)</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Use</strong> the 2-sack counterfactual (<code>VTX-0.1</code>): change one goal line, compare takes</td>
-<td style="text-align: left;"><a href="https://hartswf0.github.io/burning-house/vtx01_build/viewer/index.html"><code>vtx01_build/viewer/index.html</code></a> and <a href="https://hartswf0.github.io/burning-house/docs/vtx01-build-readme.html"><code>docs/vtx01-build-readme.html</code></a></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Check</strong> what is and is not established across 14 audited claims</td>
-<td style="text-align: left;"><a href="https://hartswf0.github.io/burning-house/docs/claims.html">Styled <code>docs/claims.html</code></a> · <a href="./claims.html"><code>CLAIMS.md</code></a> · <a href="https://hartswf0.github.io/burning-house/find.html#claims"><code>find.html#claims</code></a></td>
 </tr>
 </tbody>
 </table></div>
@@ -170,8 +175,8 @@
 <td style="text-align: left;"><strong>III</strong></td>
 <td style="text-align: left;"><strong>4 Sacks (Main)</strong></td>
 <td style="text-align: left;"><strong><code>PAE-04</code> · The Burning of the Abominable House</strong></td>
-<td style="text-align: left;">Roessler (<code>R</code>), Belindo (<code>B</code>), Inigo (<code>I</code>), and Ogiva (<code>O</code>) across 12 alphabetical deeds: <strong>41 atomic JS scene modules</strong> (<code>12 deeds + 12 consequences + 13 transitions + 4 memories</code>), <span class="md-math">12<sup>12</sup> = 8,916,100,448,256</span> addressable films, and the 6,030-film <em>Six Memos</em> Atlas.</td>
-<td style="text-align: left;"><a href="https://hartswf0.github.io/burning-house/paeleo/abominable-house/">Main Case</a> · <a href="https://hartswf0.github.io/burning-house/paeleo/abominable-house/whole-house.html">Whole House</a> · <a href="https://hartswf0.github.io/burning-house/paeleo/abominable-house/live/film.html">Film Bank</a> · <a href="https://hartswf0.github.io/burning-house/paeleo/abominable-house/live/player.html">T ZERO 12×12</a> · <a href="https://hartswf0.github.io/burning-house/paeleo/abominable-house/live/abom.html">Atomic Bank</a> · <a href="https://hartswf0.github.io/burning-house/paeleo/abominable-house/live/array.html">The Array</a></td>
+<td style="text-align: left;">Roessler (<code>R</code>), Belindo (<code>B</code>), Inigo (<code>I</code>), and Ogiva (<code>O</code>) across 12 alphabetical deeds: <strong>41 atomic JS scene modules</strong> (<code>12 deeds + 12 consequences + 13 transitions + 4 memories</code>), <strong>144 playable ordered-pair cells</strong> (<code>96</code> single-sack role rigs), <span class="md-math">12<sup>12</sup> = 8,916,100,448,256</span> addressable films, the zero-sampling <em>Address Map</em>, and the 6,030-film <em>Six Memos</em> Atlas.</td>
+<td style="text-align: left;"><a href="https://hartswf0.github.io/burning-house/paeleo/abominable-house/">Main Case</a> · <a href="https://hartswf0.github.io/burning-house/paeleo/abominable-house/live/guide.html">Field Guide &amp; Slides</a> · <a href="https://hartswf0.github.io/burning-house/paeleo/abominable-house/whole-house.html">Whole House</a> · <a href="https://hartswf0.github.io/burning-house/paeleo/abominable-house/live/film.html">Film Bank</a> · <a href="https://hartswf0.github.io/burning-house/paeleo/abominable-house/live/player.html">Deed Bank (144 Cells)</a> · <a href="https://hartswf0.github.io/burning-house/paeleo/abominable-house/live/array.html#address">The Array &amp; Address Map</a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>IV</strong></td>
@@ -185,21 +190,21 @@
 <hr />
 <h2 id="editorial-reading-room-web-styled-markdown-editions">Editorial Reading Room (Web-Styled Markdown Editions)<a class="h-anchor" href="#editorial-reading-room-web-styled-markdown-editions" aria-label="Link to section">#</a></h2>
 <p>Every <code>.md</code> document in this repository compiles into a book-grade web HTML edition under <a href="./index.html"><code>docs/</code></a> with four synchronized reading plates (<strong>Paper <code>#fdf8f2</code></strong>, <strong>Notebook <code>#f4f2ea</code></strong>, <strong>Ochre <code>#d78410</code></strong>, <strong>Night <code>#13120f</code></strong>), sticky table of contents, live search, cross-linked Zettelkasten cards, formatted tables, native math, and raw <code>.md</code> links:</p>
-<h3 id="papers-framing-specifications-claims">Papers, Framing, Specifications &amp; Claims<a class="h-anchor" href="#papers-framing-specifications-claims" aria-label="Link to section">#</a></h3>
+<h3 id="canonical-paper-working-sources-claims">Canonical Paper, Working Sources &amp; Claims<a class="h-anchor" href="#canonical-paper-working-sources-claims" aria-label="Link to section">#</a></h3>
 <ul>
+<li><strong>Canonical Paper</strong> — <a href="https://hartswf0.github.io/burning-house/read.html">Plain <code>read.html</code></a> · <a href="https://hartswf0.github.io/burning-house/docs/abominable-house-submission-draft.html">Web Edition (<code>Plain</code> toggle in topbar)</a> · <a href="./abominable-house-submission-draft.html"><code>Abominable_House_Submission_Draft.md</code></a></li>
 <li><strong>Reading Over the Machine&rsquo;s Shoulder (DH2027 Short Paper PDF)</strong> — <a href="../Reading_Over_the_Machines_Shoulder_DH2027.pdf"><code>Reading_Over_the_Machines_Shoulder_DH2027.pdf</code></a></li>
-<li><strong>Canonical Submission Draft</strong> — <a href="https://hartswf0.github.io/burning-house/docs/abominable-house-submission-draft.html">Web Edition</a> · <a href="https://hartswf0.github.io/burning-house/read.html">Plain <code>read.html</code></a> · <a href="./abominable-house-submission-draft.html"><code>Abominable_House_Submission_Draft.md</code></a></li>
-<li><strong>Claims Checked (14 Audited Claims)</strong> — <a href="https://hartswf0.github.io/burning-house/docs/claims.html">Web Edition</a> · <a href="./claims.html"><code>CLAIMS.md</code></a></li>
+<li><strong>Claims Checked (14 Audited Claims)</strong> — <a href="https://hartswf0.github.io/burning-house/docs/claims.html">Web Edition</a> · <a href="./claims.html"><code>CLAIMS.md</code></a> · <a href="https://hartswf0.github.io/burning-house/find.html#claims"><code>find.html#claims</code></a></li>
 <li><strong>The Flour Sack and the Sieve (<code>PAE-04</code> Paper)</strong> — <a href="https://hartswf0.github.io/burning-house/paeleo/abominable-house/paper.html">Web Edition</a></li>
-<li><strong>VTX-0.1 Working Memo &amp; Formal Spec</strong> — <a href="https://hartswf0.github.io/burning-house/docs/vtx01-mvvt-memo-and-spec.html">Web Edition</a> · <a href="./vtx01-mvvt-memo-and-spec.html"><code>VTX01_MVVT_Research_Memo_and_Spec.md</code></a></li>
-<li><strong>PAE-04 Framing Notes</strong> — <a href="https://hartswf0.github.io/burning-house/docs/abominable-house-framing-notes.html">Web Edition</a> · <a href="./abominable-house-framing-notes.html"><code>Abominable_House_Framing_Notes.md</code></a></li>
-<li><strong>Words to World Research Notes</strong> — <a href="https://hartswf0.github.io/burning-house/docs/words-to-world-research-notes.html">Web Edition</a> · <a href="./words-to-world-research-notes.html"><code>abominable_house_mvvt_research_notes.md</code></a></li>
-<li><strong>SCION v3.0 Formal Verification Run (<code>PAE-04</code> × DH2025)</strong> — <a href="https://hartswf0.github.io/burning-house/docs/pae04-scion-run.html">Web Edition</a> · <a href="./pae04-scion-run.html"><code>pae04_abominable_house_scion_run.md</code></a></li>
+<li><strong>Component Spec (Source): VTX-0.1 Working Memo &amp; Formal Spec</strong> — <a href="https://hartswf0.github.io/burning-house/docs/vtx01-mvvt-memo-and-spec.html">Web Edition</a> · <a href="./vtx01-mvvt-memo-and-spec.html"><code>VTX01_MVVT_Research_Memo_and_Spec.md</code></a></li>
+<li><strong>Working Source Notes: PAE-04 Framing Notes</strong> — <a href="https://hartswf0.github.io/burning-house/docs/abominable-house-framing-notes.html">Web Edition</a> · <a href="./abominable-house-framing-notes.html"><code>Abominable_House_Framing_Notes.md</code></a></li>
+<li><strong>Working Source Notes: Words to World Research Notes</strong> — <a href="https://hartswf0.github.io/burning-house/docs/words-to-world-research-notes.html">Web Edition</a> · <a href="./words-to-world-research-notes.html"><code>abominable_house_mvvt_research_notes.md</code></a></li>
+<li><strong>Process Record: SCION v3.0 Formal Verification Run (<code>PAE-04</code> × DH2025)</strong> — <a href="https://hartswf0.github.io/burning-house/docs/pae04-scion-run.html">Web Edition</a> · <a href="./pae04-scion-run.html"><code>pae04_abominable_house_scion_run.md</code></a></li>
 </ul>
-<h3 id="zettelkasten-slip-boxes-42-cross-linked-cards-across-3-decks">Zettelkasten Slip-Boxes (42 Cross-Linked Cards Across 3 Decks)<a class="h-anchor" href="#zettelkasten-slip-boxes-42-cross-linked-cards-across-3-decks" aria-label="Link to section">#</a></h3>
+<h3 id="zettelkasten-slip-boxes-40-cross-linked-cards-across-3-decks">Zettelkasten Slip-Boxes (40 Cross-Linked Cards Across 3 Decks)<a class="h-anchor" href="#zettelkasten-slip-boxes-40-cross-linked-cards-across-3-decks" aria-label="Link to section">#</a></h3>
 <ul>
 <li><strong>Abominable House × DH2025 Zettels (9 Cards)</strong> — <a href="https://hartswf0.github.io/burning-house/docs/zettle-past.html">Web Edition</a> · <a href="./zettle-past.html"><code>zettle-past.md</code></a></li>
-<li><strong>Master Zettelkasten: Calvino, <em>Six Memos</em>, Blow &amp; Video-Text (28 Cards / 26 IDs)</strong> — <a href="https://hartswf0.github.io/burning-house/docs/zettle.html">Web Edition</a> · <a href="./zettle.html"><code>zettle.md</code></a></li>
+<li><strong>Master Zettelkasten: Calvino, <em>Six Memos</em>, Blow &amp; Video-Text (26 Cards / 26 Unique IDs)</strong> — <a href="https://hartswf0.github.io/burning-house/docs/zettle.html">Web Edition</a> · <a href="./zettle.html"><code>zettle.md</code></a></li>
 <li><strong>Cross-Zettel Collisions (5 Cards)</strong> — <a href="https://hartswf0.github.io/burning-house/docs/xzet.html">Web Edition</a> · <a href="./xzet.html"><code>xzet.md</code></a></li>
 </ul>
 <h3 id="journals-reference-corpora-xml-prompts-critic-logs">Journals, Reference Corpora, XML Prompts &amp; Critic Logs<a class="h-anchor" href="#journals-reference-corpora-xml-prompts-critic-logs" aria-label="Link to section">#</a></h3>

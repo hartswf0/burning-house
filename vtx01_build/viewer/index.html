@@ -216,10 +216,16 @@
             </select>
           </div>
           <div>
+            <label>Respondent Tag (optional initials or anonymous ID)</label>
+            <input type="text" id="qResp" placeholder="e.g., anon-01 (no personal info required)" />
             <label>3. Which visible movement cue(s) support your answer?</label>
-            <textarea id="qCues" rows="5" placeholder="e.g., posture before contact, ear direction, recoil vs. step-back, doorway action..."></textarea>
-            <button onclick="exportBlindBallot()" class="active">Download Blinded Respondent Ballot (.json)</button>
-            <span id="ballotSavedMsg" class="mono" style="margin-left:10px;color:var(--ok);"></span>
+            <textarea id="qCues" rows="4" placeholder="e.g., posture before contact, ear direction, recoil vs. step-back, doorway action..."></textarea>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;">
+              <button onclick="exportBlindBallot(false)" class="active">Download Respondent Ballot (.json)</button>
+              <button onclick="exportBlindBallot(true)">Copy Ballot JSON</button>
+              <span id="ballotSavedMsg" class="mono" style="color:var(--ok);"></span>
+            </div>
+            <p class="mono" style="color:var(--muted);margin:8px 0 0;font-size:11.5px;">Save and commit real human ballots to <code>vtx01_build/traces/ballots/</code> to evaluate Claim C13.</p>
           </div>
         </div>
       </div>
@@ -457,26 +463,44 @@
       }
     }
 
-    function exportBlindBallot() {
+    function exportBlindBallot(copyOnly) {
+      const c1 = document.getElementById('qCause1').value;
+      const c2 = document.getElementById('qCause2').value;
+      const msgEl = document.getElementById('ballotSavedMsg');
+      if (!c1 || !c2) {
+        msgEl.style.color = '#f2cb7c';
+        msgEl.textContent = 'Select a cause reading for both Clip 1 (2a) and Clip 2 (2b) first.';
+        return;
+      }
       const ballot = {
+        schema: 'VTX-0.1-blind-ballot',
         submitted_at: new Date().toISOString(),
+        respondent_tag: (document.getElementById('qResp').value || 'anonymous').trim(),
         blind_mapping_hidden_during_test: {
           clip_1_case_id: blindCases[0].case_id,
           clip_2_case_id: blindCases[1].case_id
         },
         responses: {
           what_changed: document.getElementById('qChanged').value,
-          clip_1_cause: document.getElementById('qCause1').value,
-          clip_2_cause: document.getElementById('qCause2').value,
+          clip_1_cause: c1,
+          clip_2_cause: c2,
           supporting_visible_cues: document.getElementById('qCues').value
         }
       };
-      const blob = new Blob([JSON.stringify(ballot, null, 2)], { type: 'application/json' });
+      const jsonStr = JSON.stringify(ballot, null, 2);
+      msgEl.style.color = '#8be09c';
+      if (copyOnly && navigator.clipboard) {
+        navigator.clipboard.writeText(jsonStr).then(() => {
+          msgEl.textContent = 'Ballot JSON copied to clipboard.';
+        });
+        return;
+      }
+      const blob = new Blob([jsonStr], { type: 'application/json' });
       const a = document.createElement('a');
       a.href = URL.createObjectURL(blob);
       a.download = `vtx01_blind_ballot_${Date.now()}.json`;
       a.click();
-      document.getElementById('ballotSavedMsg').textContent = 'Ballot downloaded (ambiguity preserved).';
+      msgEl.textContent = 'Ballot downloaded (ambiguity preserved).';
     }
 
     populateInspectorTables();

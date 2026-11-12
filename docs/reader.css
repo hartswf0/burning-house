@@ -137,6 +137,27 @@ html[data-size="lg"][data-plate="notebook"] { --prose-size: 18px; }
 html[data-width="book"] { --measure: 66ch; }
 html[data-width="wide"] { --measure: 88ch; }
 
+/* Plain reading mode: strips inline bold & inline code styling for smooth continuous reading */
+html[data-plain="1"] .md-prose p strong,
+html[data-plain="1"] .md-prose p b,
+html[data-plain="1"] .md-prose li strong,
+html[data-plain="1"] .md-prose li b,
+html[data-plain="1"] .md-prose td strong,
+html[data-plain="1"] .md-prose td b,
+html[data-plain="1"] .md-prose blockquote strong,
+html[data-plain="1"] .md-prose blockquote b {
+  font-weight: 400;
+  color: inherit;
+}
+html[data-plain="1"] .md-prose :not(pre) > code {
+  font-family: inherit;
+  font-size: inherit;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  color: inherit;
+}
+
 * { box-sizing: border-box; }
 html {
   scroll-behavior: smooth;

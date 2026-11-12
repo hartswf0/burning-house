@@ -51,12 +51,13 @@ def categorize_file(rel: str) -> tuple[str, str]:
                 "paeleo/abominable-house/paper.html": "The Flour Sack and the Sieve — scholarly draft paper in PAE-04's IM Fell + Inter notebook register.",
                 "paeleo/abominable-house/journal.html": "PAE-04 Working Journal — dated production and mathematical notes.",
                 "paeleo/abominable-house/slides.html": "PAE-04 Presentation Deck — slide sequence for The Burning of the Abominable House.",
-                "paeleo/abominable-house/live/film.html": "The Film Bank — address, scrub, and screen any of 12^12 = 8,916,100,448,256 combinatorial films.",
-                "paeleo/abominable-house/live/player.html": "T ZERO (12×12) — spatial room player staging the four tenants, lamps, traces, and live ledger.",
+                "paeleo/abominable-house/live/guide.html": "Field Guide & 10-Slide Interactive Deck — live mathematical & theoretical companion explaining PIE, modal probabilities, Tenenbaum inverse planning, PLoT tug-of-war, Barthes wrestling levers, BDI + Park memory stream, Kurosawa lies, and the 41 SCION modules.",
+                "paeleo/abominable-house/live/film.html": "The Film Bank — address, scrub, and screen any of 12^12 = 8,916,100,448,256 combinatorial films with integrated 3-tab top rail & 9-card guide deck.",
+                "paeleo/abominable-house/live/player.html": "The Deed Bank (12×12 = 144 playable ordered-pair cells · 96 single-sack role rigs) — atomic 6s deed inspector with live memory, chance, consequence & transition breakdown.",
                 "paeleo/abominable-house/live/numbers.html": "The Numbers — interactive derivations of 12^12, Calvino's 14,000 carry slip, 5 rules, and CP-SAT 11/16 proof.",
                 "paeleo/abominable-house/live/policies.html": "The Policies — Skiller's four insurance contracts priced exactly over 2,663,172,255,744 five-rule stories.",
                 "paeleo/abominable-house/live/abom.html": "Atomic Videotext Bank — 12 deeds + 12 consequences + 4 memories + 13 transitions inspectable individually.",
-                "paeleo/abominable-house/live/array.html": "The Array — multi-screen simultaneous combinatorial wall across the Abominable House.",
+                "paeleo/abominable-house/live/array.html": "The Array — multi-screen combinatorial wall + exact 12^12 recursive ADDRESS map, BEHAVIOUR outcome map, 132 Hamming-1 neighbours & shared QUERY.",
             }
             return "Interactive", descs.get(rel, f"PAE-04 interactive page ({rel}).")
         if ext in (".mp4", ".jpg", ".png", ".svg"):
@@ -176,11 +177,18 @@ VISUAL_PLATES = [
         "href": "./paeleo/abominable-house/live/abom.html",
     },
     {
-        "group": "PAE-04 · Multi-Screen Wall",
-        "title": "The Array · Simultaneous Permutations",
-        "meta": "paeleo/abominable-house/live/array.html",
+        "group": "PAE-04 · Field Guide & Slides",
+        "title": "Inside the Film & Deed Banks (10 Interactive Slides)",
+        "meta": "PIE · Tenenbaum · PLoT · Barthes · BDI/Park · Kurosawa",
+        "img": "./paeleo/abominable-house/sheets/sheetA.jpg",
+        "href": "./paeleo/abominable-house/live/guide.html",
+    },
+    {
+        "group": "PAE-04 · Multi-Screen & Address Map",
+        "title": "The Array + Zero-Sampling 12¹² Address Map",
+        "meta": "paeleo/abominable-house/live/array.html#address",
         "img": "./assets/thumbs/sys-array.jpg",
-        "href": "./paeleo/abominable-house/live/array.html",
+        "href": "./paeleo/abominable-house/live/array.html#address",
     },
     {
         "group": "DH2027 · Short Paper PDF",
@@ -319,11 +327,19 @@ WORKBENCH_PAGES = [
         "img": "./assets/thumbs/sys-deed-bank.jpg",
     },
     {
+        "id": "pae04-guide",
+        "rung": "Explainer + Deck",
+        "title": "Field Guide & Slide Deck",
+        "sub": "Interactive paper & 10-slide presenter for PIE, Inverse Planning, PLoT, Barthes levers, BDI/Park, and Kurosawa lies.",
+        "url": "./paeleo/abominable-house/live/guide.html",
+        "img": "./paeleo/abominable-house/sheets/sheetC.jpg",
+    },
+    {
         "id": "pae04-array",
-        "rung": "Multi-Channel",
-        "title": "The Array",
-        "sub": "Simultaneous grid of parallel house permutations running in lockstep.",
-        "url": "./paeleo/abominable-house/live/array.html",
+        "rung": "Multi-Channel + Lens 1",
+        "title": "The Array & Address Map",
+        "sub": "Simultaneous 12-pair wall + View 5 (ADDRESS): recursive 4×3 map of all 8.92T films with re-rooting & 132 neighbours.",
+        "url": "./paeleo/abominable-house/live/array.html#address",
         "img": "./assets/thumbs/sys-array.jpg",
     },
     {
@@ -1417,9 +1433,11 @@ def build_html(manifest_rows: list[dict]) -> str:
           <span class="mode-dot" aria-hidden="true">·</span>
           <button type="button" class="mode-opt" data-mode-btn="ochre" onclick="setPlate('ochre')">Ochre</button>
         </span>
+        <a class="nav-link" href="#compare">VTX-0.1</a>
         <a class="nav-link" href="#system">System</a>
         <a class="nav-link" href="#insights">Insights</a>
         <a class="nav-link" href="#pages">Workbench</a>
+        <a class="nav-link" href="./paeleo/abominable-house/live/array.html#address">Address Map</a>
         <a class="nav-link" href="./find.html">Find</a>
         <a class="nav-link" href="./read.html">Read</a>
         <a class="nav-link" href="./docs/index.html">Reading Room</a>
@@ -1430,9 +1448,72 @@ def build_html(manifest_rows: list[dict]) -> str:
     <div class="paper-stage">
       <img class="paper-art" src="./assets/hero-paper-sacks.jpg" alt="Two half-filled flour sacks and a fallen brass lamp in graphite and wash" />
       <div class="hero-cta-row">
-        <a class="cta-btn" href="./paeleo/abominable-house/index.html">Enter Abominable House (12¹²)</a>
-        <a class="cta-btn ghost" href="#system">Explore unified system ↓</a>
+        <a class="cta-btn" href="#compare">Compare takes · VTX-0.1</a>
+        <a class="cta-btn ghost" href="./paeleo/abominable-house/index.html">Abominable House (12¹²) →</a>
+        <a class="cta-btn ghost" href="./paeleo/abominable-house/live/array.html#address">The Array · 12¹² Map →</a>
       </div>
+    </div>
+  </section>
+
+  <!-- SECTION 1 (FRONT DOOR): VTX-0.1 COUNTERFACTUAL WORKBENCH -->
+  <section class="wrap" id="compare">
+    <div class="sec-kicker">Start Here · VTX-0.1 Minimum Viable Video-Text</div>
+    <div class="sec-head">
+      <h2>Open this case, change one line, see what differs</h2>
+      <p class="sec-note">Two 16-second flour-sack takes from one world state (<code>case_a_assist.vtx.json</code> + 1-line <code>patch_a_to_b_goal.json</code>). Identical through frame 77; changing only <code>goal</code> flips approach, lamp contact, the persistent door wedge, and the policy verdict—with the critic-rejected first revision preserved beside the accepted second.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1.1fr 0.9fr;gap:14px;margin-bottom:18px;font-family:var(--mono);font-size:12px;">
+      <div style="background:var(--surface);border:1px solid var(--rule-strong);padding:12px 14px;">
+        <div style="color:var(--accent);font-weight:600;margin-bottom:6px;">SINGLE-ROOT PATCH · vtx01_build/cases/patch_a_to_b_goal.json</div>
+        <div style="background:var(--bg);border:1px solid var(--rule);padding:8px 10px;line-height:1.55;">
+          <span style="opacity:0.65;">"target_event_id": "E2_root_action",</span><br/>
+          <span style="color:#8f2511;">− "goal": "assist_steadying"</span> &nbsp;→&nbsp; <span style="color:#235732;font-weight:600;">+ "goal": "tip_lamp_deliberately"</span>
+        </div>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--rule-strong);padding:12px 14px;display:flex;flex-direction:column;justify-content:space-between;gap:8px;">
+        <div style="color:var(--ink-body);line-height:1.45;">Run the live 3-mode inspector, edit the JSON event contract in-browser, or take the caption-free blind ballot (Claim <code>C13</code>):</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+          <a class="mini-cta" href="./vtx01_build/viewer/index.html">Open VTX-0.1 Workbench ↗</a>
+          <a class="mini-cta" href="./vtx01_build/viewer/index.html?mode=blind_test">Take Blind Test (No Labels) ↗</a>
+          <button type="button" class="mini-cta" onclick="openDrawer('./vtx01_build/cases/patch_a_to_b_goal.json', 'patch_a_to_b_goal.json')">Inspect Patch JSON</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="takes-bar">
+      <div class="takes-controls">
+        <button type="button" class="pill active" id="btnRev2" onclick="setTakeRev('rev2')">Accepted pair (Rev 2)</button>
+        <button type="button" class="pill" id="btnRev1" onclick="setTakeRev('rev1')">Critic-rejected pair (Rev 1)</button>
+      </div>
+      <div class="takes-controls">
+        <button type="button" class="pill" onclick="syncPlay(true)">Play both</button>
+        <button type="button" class="pill" onclick="syncPlay(false)">Pause</button>
+        <button type="button" class="pill" onclick="syncRestart()">Frame 0</button>
+        <a class="pill" href="./vtx01_build/viewer/index.html">Interactive diff &amp; remix →</a>
+      </div>
+    </div>
+
+    <div class="takes-grid">
+      <figure class="take-figure">
+        <video id="vidA" controls playsinline preload="metadata" poster="./vtx01_build/revisions/rev2_accepted/inspection_sheet_case_a_rev2_accepted.png">
+          <source id="srcA" src="./vtx01_build/revisions/rev2_accepted/case_a_rev2_accepted.mp4" type="video/mp4" />
+        </video>
+        <figcaption class="take-cap">
+          <span id="capA">Take A · Steady reach, accidental brush, door propped from inside</span>
+          <span class="mono" id="metaA">384f · 0.00 vol drift</span>
+        </figcaption>
+      </figure>
+
+      <figure class="take-figure">
+        <video id="vidB" controls playsinline preload="metadata" poster="./vtx01_build/revisions/rev2_accepted/inspection_sheet_case_b_rev2_accepted.png">
+          <source id="srcB" src="./vtx01_build/revisions/rev2_accepted/case_b_rev2_accepted.mp4" type="video/mp4" />
+        </video>
+        <figcaption class="take-cap">
+          <span id="capB">Take B · Single-line patch: deliberate strike, door wedged from hall</span>
+          <span class="mono" id="metaB">46 paths · 0.00px carry err</span>
+        </figcaption>
+      </figure>
     </div>
   </section>
 
@@ -1713,64 +1794,21 @@ def build_html(manifest_rows: list[dict]) -> str:
     </div>
   </section>
 
-  <!-- SECTION 4: SYNCHRONIZED COUNTERFACTUAL TAKES -->
-  <section class="wrap" id="compare">
-    <div class="sec-kicker">VTX-0.1 &amp; PAE-04 · Counterfactual Screenings</div>
-    <div class="sec-head">
-      <h2>Compare takes</h2>
-      <p class="sec-note">Two 16-second flour-sack takes from one world state. Identical through frame 77; a single root goal patch changes approach, lamp contact, and the persistent door trace.</p>
-    </div>
-
-    <div class="takes-bar">
-      <div class="takes-controls">
-        <button type="button" class="pill active" id="btnRev2" onclick="setTakeRev('rev2')">Accepted pair (Rev 2)</button>
-        <button type="button" class="pill" id="btnRev1" onclick="setTakeRev('rev1')">Critic-rejected pair (Rev 1)</button>
-      </div>
-      <div class="takes-controls">
-        <button type="button" class="pill" onclick="syncPlay(true)">Play both</button>
-        <button type="button" class="pill" onclick="syncPlay(false)">Pause</button>
-        <button type="button" class="pill" onclick="syncRestart()">Frame 0</button>
-        <a class="pill" href="./vtx01_build/viewer/index.html">Interactive diff &amp; blinded gate →</a>
-      </div>
-    </div>
-
-    <div class="takes-grid">
-      <figure class="take-figure">
-        <video id="vidA" controls playsinline preload="metadata" poster="./vtx01_build/revisions/rev2_accepted/inspection_sheet_case_a_rev2_accepted.png">
-          <source id="srcA" src="./vtx01_build/revisions/rev2_accepted/case_a_rev2_accepted.mp4" type="video/mp4" />
-        </video>
-        <figcaption class="take-cap">
-          <span id="capA">Take A · Steady reach, accidental brush, door propped from inside</span>
-          <span class="mono" id="metaA">384f · 0.00 vol drift</span>
-        </figcaption>
-      </figure>
-
-      <figure class="take-figure">
-        <video id="vidB" controls playsinline preload="metadata" poster="./vtx01_build/revisions/rev2_accepted/inspection_sheet_case_b_rev2_accepted.png">
-          <source id="srcB" src="./vtx01_build/revisions/rev2_accepted/case_b_rev2_accepted.mp4" type="video/mp4" />
-        </video>
-        <figcaption class="take-cap">
-          <span id="capB">Take B · Single-line patch: deliberate strike, door wedged from hall</span>
-          <span class="mono" id="metaB">46 paths · 0.00px carry err</span>
-        </figcaption>
-      </figure>
-    </div>
-  </section>
-
   <!-- SECTION 5: STYLED WEB MARKDOWN LIBRARY -->
   <section class="wrap" id="reading">
-    <div class="sec-kicker">Editorial Reading Room · 33 Web-Typeset Markdown Editions</div>
+    <div class="sec-kicker">Editorial Reading Room · 34 Web-Typeset Markdown Editions</div>
     <div class="sec-head">
-      <h2>Read the papers, Zettelkasten &amp; specs on the web</h2>
-      <p class="sec-note">Every <code>.md</code> document in this repository now compiles into a book-grade HTML reading edition with four reading plates (<em>Paper, Notebook, Ochre, Night</em>), sticky table of contents, live Zettel card search, cross-linked <code>[[wiki-links]]</code>, formatted tables, and math.</p>
+      <h2>Read the canonical paper, Zettelkasten &amp; sources</h2>
+      <p class="sec-note"><code>Abominable_House_Submission_Draft.md</code> is the canonical text (with a plain edition at <a href="./read.html"><code>read.html</code></a> and a one-click <strong>Plain</strong> toggle on every page in <code>docs/</code>). All 34 Markdown files compile with four plates (<em>Paper, Notebook, Ochre, Night</em>), sticky contents, cross-linked <code>[[wiki-links]]</code>, and raw <code>.md</code> links.</p>
     </div>
 
     <div style="margin-bottom:18px;display:flex;flex-wrap:wrap;gap:10px;">
-      <a class="cta-btn" style="font-size:16px;padding:9px 20px;" href="./docs/index.html">Open Full Reading Room (All 34 Editions) →</a>
-      <a class="pill" href="./find.html">Find (Search Claims, Cards &amp; Citations) →</a>
+      <a class="cta-btn" style="font-size:16px;padding:9px 20px;" href="./read.html">Read Canonical Paper (Plain Edition) →</a>
+      <a class="pill" href="./docs/abominable-house-submission-draft.html">Canonical Paper (Annotated Web Edition) →</a>
+      <a class="pill" href="./docs/index.html">Full Reading Room (34 Editions) →</a>
+      <a class="pill" href="./find.html">Find (Search Claims, Cards &amp; Backlinks) →</a>
       <a class="pill" href="./docs/claims.html">Claims Checked (14 Claims) →</a>
-      <a class="pill" href="./docs/zettle-past.html">Abominable House Zettels (zettle-past) →</a>
-      <a class="pill" href="./docs/zettle.html">Master Zettelkasten (28 Cards) →</a>
+      <a class="pill" href="./docs/zettle.html">Master Zettelkasten (26 Cards) →</a>
     </div>
 
     <div class="doc-shelf-grid">

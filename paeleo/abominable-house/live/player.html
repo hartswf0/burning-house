@@ -33,28 +33,45 @@ h2{font:800 15px 'Big Shoulders Display';letter-spacing:.06em;margin:16px 0 6px}
 #card div.sel{background:var(--acc)}#card div:hover{outline:1px solid var(--fg)}
 .lin{font-size:11px;color:var(--mute)}
 @media (max-width:820px){#app{grid-template-columns:100%;grid-template-rows:50dvh 50dvh}#panel{border-left:0;border-top:1px solid var(--line)}}
-.case-links{display:flex;flex-wrap:wrap;gap:4px 13px;margin:3px 0 7px;font-size:11px}
+.case-links{display:flex;flex-wrap:wrap;gap:4px 11px;margin:3px 0 6px;font-size:11px}
 .case-links a{color:var(--acc);text-underline-offset:.22em}
+.case-links a.guide-pill{background:var(--acc);color:#fff;text-decoration:none;padding:1px 6px;font-weight:600}
 .case-links a:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
+.meta-box{background:var(--card);border:1px solid var(--line);padding:8px 10px;font-size:11px;line-height:1.45;margin-top:6px}
+.meta-box b{color:var(--fg)}
+.cast-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:4px}
+.cast-item{background:var(--card);border:1px solid var(--line);padding:6px 8px;font-size:11px;line-height:1.35}
 </style></head><body>
 <div id=app>
  <div id=stage><canvas id=c width=1920 height=1080></canvas></div>
  <div id=panel>
   <div id=top>
    <h1>THE ABOMINABLE HOUSE · DEED BANK</h1>
-   <nav class="case-links" aria-label="Case file navigation"><a href="../../../index.html">burning-house</a><a href="../index.html">PAE-04 case file</a><a href="../whole-house.html">Whole house</a><a href="policies.html">Policies</a><a id="same-film" href="film.html">Film bank · same assignment</a></nav>
-   <div class=sub>12 deeds × 4 sacks × 2 roles = 96 base performances · 12<sup>12</sup> films</div>
+   <nav class="case-links" aria-label="Case file navigation"><a href="../../../index.html">burning-house</a><a href="../index.html">PAE-04</a><a href="../whole-house.html">Whole house</a><a id="guide-link" class="guide-pill" href="guide.html?n=1541585241617#deedbank">Field guide &amp; slides ↗</a><a id="array-link" href="array.html?n=1541585241617">The Array</a><a href="policies.html">Policies</a><a id="same-film" href="film.html">Film bank · same assignment</a></nav>
+   <div class=sub>12 deeds × 12 ordered pairs = 144 playable cells · 96 single-sack role rigs · 12<sup>12</sup> films</div>
    <div class=row><input id=num type=text inputmode=numeric aria-label="Film number"><button id=go>PLAY FILM</button><button id=roll>ROLL</button><button id=pp>PAUSE</button></div>
    <input id=scrub type=range min=0 max=1000 value=0 aria-label="Scrub">
    <div id=now></div>
   </div>
   <div id=scroll>
-   <h2>THIS FILM</h2>
-   <table id=tab></table>
-   <h2>THE PUNCH CARD · tap a cell to play it alone</h2>
+   <h2>ACTIVE DEED · HOW THIS 6s UNIT IS BUILT</h2>
+   <div id=deed-meta class=meta-box></div>
+   <h2>THE PUNCH CARD · 144 CELLS (12 DEEDS × 12 PAIRS)</h2>
    <div id=card></div>
-   <div class=lin style="margin-top:6px">columns: the twelve deeds in index order · rows: the twelve ordered pairs, doer then victim</div>
-   <h2>THE OPERATIONS</h2>
+   <div class=lin style="margin-top:6px">12 columns = alphabetical deeds (I–XII) · 12 rows = ordered pairs (doer → victim) · tap any cell to isolate its 6s rig, or click <b>PLAY FILM</b> to run all 12 + Arson (78s)</div>
+   <h2>THIS FILM · BASE-12 ASSIGNMENT</h2>
+   <table id=tab></table>
+   <h2>CAST &amp; FLOUR-SACK RIGS (KIT.JS)</h2>
+   <div class=cast-grid>
+    <div class=cast-item><span class=chip style="background:#6e3a33"></span><b>Roessler (R)</b> · 168×122<br><span class=lin>Warm flour <code>#d6bf96</code> · burgundy shawl <code>#6e3a33</code> · 600 Hz creak</span></div>
+    <div class=cast-item><span class=chip style="background:#2a2622"></span><b>Belindo (B)</b> · 244×214<br><span class=lin>Pale canvas <code>#e8d5ae</code> · wrestler belt <code>#2a2622</code> · 45 Hz thump</span></div>
+    <div class=cast-item><span class=chip style="background:#c9b089"></span><b>Inigo (I)</b> · 128×98<br><span class=lin>Slumped sack <code>#e2cea5</code> · limp ears <code>#c9b089</code> · 2400 Hz breath</span></div>
+    <div class=cast-item><span class=chip style="background:#7a3b8f"></span><b>Ogiva (O)</b> · 80×184<br><span class=lin>Slender flour <code>#f0e4c8</code> · purple wig <code>#7a3b8f</code> · 5200 Hz triad</span></div>
+   </div>
+   <div class=meta-box>
+    <b>Deed Bank vs. Film Bank:</b> Here each deed runs raw (<code>D.draw(g, t, A, V, K)</code>, 6.0s) with zero carry-over marks. Open <a id="same-film-2" href="film.html">Film bank · same assignment</a> to wrap every deed in <code>[Chapter Card → Character Memory → Continuity Transition → Lever-Composited Deed → Forensic Consequence]</code>, or read <a id="guide-link-2" href="guide.html#deedbank">Slide 09–10 of the Field Guide</a>.
+   </div>
+   <h2>THE 12 SCION OPERATIONS</h2>
    <table id=ops></table>
   </div>
  </div>
@@ -71,11 +88,29 @@ const c=document.getElementById('c'),g=c.getContext('2d');
 let film=Array(12).fill(0),mode='film',cell=[0,0],t=0,playing=true,last=performance.now();
 function enc(d){let n=0;for(const x of d)n=n*12+x;return n}
 function dec(n){const d=[];for(let k=0;k<12;k++){d.unshift(n%12);n=Math.floor(n/12)}return d}
+const DEED_NOTES=[
+ {room:'parlour · by a lamp (light 2)',trace:'photograph (+ coins)',law:'Secret extortion; breaks Roessler\'s possession lie when she is victim.'},
+ {room:'kitchen · by one candle (light 1)',trace:'cup (+ drowsy)',law:'Leaves victim "drowsy" (easier to overpower/knife); breaks Belindo\'s strength lie.'},
+ {room:'attic · by one candle (light 1)',trace:'lamp',law:'Lethal ONLY if victim\'s accumulated fear + 0.6·grudge + 0.4·debt > 1.5.'},
+ {room:'kitchen · by one candle (light 1)',trace:'flour (+ emptied, torn)',law:'Lethal ONLY if victim ≠ Belindo and already carries rope/emptied/torn/drowsy.'},
+ {room:'parlour · by a lamp (light 2)',trace:'coins',law:'Adds coins to doer; breaks Roessler\'s possession lie when she is victim.'},
+ {room:'stairwell · in the dark (light 0)',trace:'gun',law:'Unseen in dark stairwell; prerequisite to tie Belindo; breaks Belindo\'s lie.'},
+ {room:'cellar · in the dark (light 0)',trace:'rope (+ gag)',law:'Binds victim for next 2 deeds (tiedUntil = k + 3); unseen unless trace found.'},
+ {room:'bedroom · by one candle (light 1)',trace:'curtain (+ torn)',law:'Staged behind drawn curtain (withheld harm); bars victim from seducing doer.'},
+ {room:'bedroom · by a lamp (smoke +1 → light 2)',trace:'flower (fades after 2)',law:'Fire clock starts at IX (+1 light at IX–X, +2 at XI–XII), revealing prior room traces!'},
+ {room:'parlour · by firelight (light 3)',trace:'ink (+ blot, tag)',law:'Public accusation: every tenant in the house learns of this deed.'},
+ {room:'stairwell · by a lamp (fire +2 → light 2)',trace:'keyhole (fades after 2)',law:'Epistemic theft: doer learns every deed the target knows up to this beat.'},
+ {room:'attic · by firelight (light 3)',trace:'cord (+ cinched)',law:'Kills non-Belindo victims; attempting to strangle Belindo is refused (y = 0).'}
+];
 function setFilm(d){
  film=d;mode='film';t=0;
  const n=enc(d);
  document.getElementById('num').value=n.toLocaleString('en-US');
  document.getElementById('same-film').href='film.html?n='+n;
+ const sf2=document.getElementById('same-film-2');if(sf2)sf2.href='film.html?n='+n;
+ const gl=document.getElementById('guide-link');if(gl)gl.href='guide.html?n='+n+'#deedbank';
+ const gl2=document.getElementById('guide-link-2');if(gl2)gl2.href='guide.html?n='+n+'#deedbank';
+ const al=document.getElementById('array-link');if(al)al.href='array.html?n='+n;
  buildTab();paintCard();
 }
 function roll(){const d=[];for(let k=0;k<12;k++)d.push(Math.floor(Math.random()*12));setFilm(d)}
@@ -91,9 +126,14 @@ function frame(){const now=performance.now();if(playing){t+=(now-last)/1000;if(t
  if(mode==='film'){if(t<12*SHOT){const k=Math.floor(t/SHOT),lt=t-k*SHOT;const[A,V]=PAIRS[film[k]];drawShot(k,A,V,lt);status(k,A,V)}else{ending(t-12*SHOT);status(12)}}
  else{const[k,p]=cell;const[A,V]=PAIRS[p];drawShot(k,A,V,t);status(k,A,V)}
  document.getElementById('scrub').value=Math.round(t/total()*1000);requestAnimationFrame(frame)}
-let lastK=-1;function status(k,A,V){if(k===lastK)return;lastK=k;const el=document.getElementById('now');
- if(k===12){el.innerHTML='<b>13 · Arson</b> · the house burns; the index does not say who';return}
- const D=DEEDS[ORDER[k]];el.innerHTML=`<b>${k+1} · ${NAMES[k]}</b> · ${WHO[A]} to ${WHO[V]}<br><span class=lin>${D?D.lineage+' · '+D.op:'(not yet built)'}</span>`;
+let lastK=-1;function status(k,A,V){const key=mode==='film'?k:`c:${k}:${A}:${V}`;if(key===lastK)return;lastK=key;const el=document.getElementById('now'),dm=document.getElementById('deed-meta');
+ if(k===12){el.innerHTML='<b>13 · Arson</b> · the house burns; the index does not say who';if(dm)dm.innerHTML='<b>13 · Arson (Terminal Conflagration)</b><br><span class=lin>Haze (0–1.2s) → radial firelight (1.1–1.7s) → rising ash embers over the final frame of Deed XII. In Policies, fire pays Inigo\'s policy unless he set it himself.</span>';return}
+ const D=DEEDS[ORDER[k]],nt=DEED_NOTES[k];
+ el.innerHTML=`<b>${k+1} · ${NAMES[k]}</b> · ${WHO[A]} to ${WHO[V]} ${mode==='cell'?'<span class=lin>(isolated punch-card cell)</span>':''}<br><span class=lin>${D?D.lineage+' · '+D.op:'(not yet built)'}</span>`;
+ if(dm)dm.innerHTML=`<b>Deed ${k+1} · ${NAMES[k]}</b> (${chip(A)}${WHO[A]} → ${chip(V)}${WHO[V]}, contact @ ${D&&D.contact?D.contact.toFixed(1)+'s':'3.0s'})<br>`+
+  `<b>Rig &amp; Lineage:</b> ${D?D.lineage+' — '+D.op:''}<br>`+
+  `<b>House of Dust Frame:</b> ${nt.room} · Trace: <code>${nt.trace}</code><br>`+
+  `<b>Causal / Anticombinatorial Rule:</b> ${nt.law}`;
  document.querySelectorAll('#tab tr').forEach((r,i)=>r.classList.toggle('cur',mode==='film'&&i===k))}
 function chip(id){return `<span class=chip style="background:${COL[id]}"></span>`}
 function buildTab(){const tb=document.getElementById('tab');tb.innerHTML='';film.forEach((p,k)=>{const tr=document.createElement('tr');

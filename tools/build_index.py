@@ -35,8 +35,8 @@ def plain(s):
     """Markdown emphasis and code marks removed; text kept."""
     s = re.sub(r'\[\[([^\]]+)\]\]', r'\1', s)
     s = re.sub(r'\[([^\]]+)\]\([^)]+\)', r'\1', s)
-    s = re.sub(r'\*\*\*([^*]+)\*\*\*', r'\1', s)
-    s = re.sub(r'\*\*([^*]+)\*\*', r'\1', s)
+    s = re.sub(r'\*\*\*((?:(?!\*\*\*).)+)\*\*\*', r'\1', s)
+    s = re.sub(r'\*\*((?:(?!\*\*).)+)\*\*', r'\1', s)
     s = s.replace('`', '')
     return s
 
@@ -188,7 +188,7 @@ def sections():
 # ---------------------------------------------------------------- files
 def files():
     try:
-        names = subprocess.check_output(['git', 'ls-files'], text=True).split('\n')
+        names = subprocess.check_output(['git', 'ls-files', '--cached', '--others', '--exclude-standard'], text=True).split('\n')
     except Exception:
         names = []
     out = []
@@ -205,9 +205,28 @@ def files():
 def reading_edition():
     src = read(CANON).split('\n')
     out, para, lst, used, toc, tbl = [], [], [], collections.Counter(), [], []
+    in_fence = False
+    def clean_math(s):
+        def repl(m):
+            expr = m.group(1)
+            expr = expr.replace(r'\times', '×').replace(r'\cdot', '·').replace(r'\ge', '≥').replace(r'\le', '≤').replace(r'\to', '→')
+            expr = re.sub(r'\^\{([^}]+)\}', r'<sup>\1</sup>', expr)
+            expr = re.sub(r'\^(\w)', r'<sup>\1</sup>', expr)
+            expr = re.sub(r'_\{([^}]+)\}', r'<sub>\1</sub>', expr)
+            expr = re.sub(r'_(\w)', r'<sub>\1</sub>', expr)
+            return expr
+        return re.sub(r'\$([^$\n]+)\$', repl, s)
     def inline(s):
-        s = html.escape(plain(s))
+        placeholders = []
+        def hold(m):
+            placeholders.append(m.group(0))
+            return f'\x00M{len(placeholders)-1}\x00'
+        s = clean_math(plain(s))
+        s = re.sub(r'</?(?:sup|sub)>', hold, s)
+        s = html.escape(s)
         s = re.sub(r'(?<![\w*])\*([^*\n]+)\*(?![\w*])', r'<i>\1</i>', s)
+        for idx_p, tag in enumerate(placeholders):
+            s = s.replace(f'\x00M{idx_p}\x00', tag)
         return s
     def flush():
         nonlocal para, lst, tbl
@@ -222,6 +241,12 @@ def reading_edition():
             out.append('</ol>' if lst[0][0] else '</ul>'); lst = []
     title = ''
     for ln in src:
+        if ln.strip().startswith('```'):
+            flush()
+            in_fence = not in_fence
+            continue
+        if in_fence:
+            continue
         h = re.match(r'^(#{1,3})\s+(.*)$', ln)
         if h:
             flush(); lvl = len(h.group(1)); text = h.group(2)
@@ -258,7 +283,7 @@ def reading_edition():
         else:
             para.append(ln.strip())
     flush()
-    nav = ''.join(f'<a href="#{a}">{html.escape(t)}</a>' for a, t in toc)
+    nav = ''.join(f'<a href="#{a}">{inline(t)}</a>' for a, t in toc)
     page = f'''<!doctype html><html lang="en"><head><meta charset="utf-8">
 <title>Reading Edition</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">

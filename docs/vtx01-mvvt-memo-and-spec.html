@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>VTX-0.1 Working Memo &amp; Formal Specification — burning-house</title>
-  <meta name="description" content="Formal specification of Chance, Memory, and Consequence in the Minimum Viable Video-Text format and the Take A vs. Take B lamp-room experiment." />
+  <title>Component Spec (Source) — VTX-0.1 Working Memo &amp; Formal Specification — burning-house</title>
+  <meta name="description" content="Source specification for the two-sack VTX-0.1 benchmark (Chance, Memory, Consequence, and Take A vs. Take B)." />
   <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
   <link rel="icon" type="image/png" sizes="64x64" href="../assets/favicon-64.png" />
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
@@ -51,9 +51,10 @@
         <button type="button" class="ctrl-btn active" data-set-size="md">A</button>
         <button type="button" class="ctrl-btn" data-set-size="lg">A+</button>
       </div>
-      <div class="ctrl-group" role="group" aria-label="Column width">
+      <div class="ctrl-group" role="group" aria-label="Column width and plain prose">
         <button type="button" class="ctrl-btn active" data-set-width="book">Book</button>
         <button type="button" class="ctrl-btn" data-set-width="wide">Wide</button>
+        <button type="button" class="ctrl-btn" data-toggle-plain="1" title="Strip inline bold and code styling for continuous plain reading">Plain</button>
       </div>
     </div>
   </header>
@@ -63,7 +64,7 @@
       <div class="rail-meta-box">
         <div class="rail-kicker">Papers &amp; Specifications</div>
         <div class="rail-stats">
-          <span>5,092 words</span>
+          <span>5,159 words</span>
           <span>· ~22 min read</span>
           <span>· 18 sections</span>
         </div>
@@ -95,10 +96,10 @@
     <main class="reader-main">
       <header class="doc-header">
         <div class="doc-kicker">Papers &amp; Specifications · VTX01_MVVT_Research_Memo_and_Spec.md</div>
-        <h1 class="doc-title">VTX-0.1 Working Memo &amp; Formal Specification</h1>
-        <p class="doc-subtitle">Formal specification of Chance, Memory, and Consequence in the Minimum Viable Video-Text format and the Take A vs. Take B lamp-room experiment.</p>
+        <h1 class="doc-title">Component Spec (Source) — VTX-0.1 Working Memo &amp; Formal Specification</h1>
+        <p class="doc-subtitle">Source specification for the two-sack VTX-0.1 benchmark (Chance, Memory, Consequence, and Take A vs. Take B).</p>
         <div class="doc-byline">
-          <span>5,092 words · ~22 min read · 18 sections</span>
+          <span>5,159 words · ~22 min read · 18 sections</span>
           <div class="doc-actions">
             <button type="button" class="doc-act-btn" data-copy-url="">Copy URL</button>
             <button type="button" class="doc-act-btn" onclick="window.print()">Print / PDF</button>
@@ -111,7 +112,8 @@
 
       <div class="md-prose">
         <h1 id="minimum-viable-video-text-vtx-01-chance-memory-and-consequence-in-the-fl">Minimum Viable Video-Text (<code>VTX-0.1</code>): Chance, Memory, and Consequence in the Flour-Sack <em>Abominable House</em></h1>
-<p><strong>Mode:</strong> <code>NOTES</code> (Working Research Memo + Falsifiable Experiment Specification; <code>BUILD</code> and empirical viewer/swarm evaluations <code>NOT_RUN</code>)<br />
+<aside class="md-alert alert-important"><span class="md-alert-title">IMPORTANT</span><p><strong>Document Role — Component Specification &amp; Working Source Memo:</strong> This document specifies the two-sack <code>VTX-0.1</code> counterfactual benchmark (<code>vtx01_build/</code>) and serves as a technical source for the <strong>canonical paper</strong>, <a href="./abominable-house-submission-draft.html"><code>Abominable_House_Submission_Draft.md</code></a> (plain reading edition: <a href="../read.html"><code>read.html</code></a>; audited claims: <a href="./claims.html"><code>CLAIMS.md</code></a>). Note: since this memo&rsquo;s initial <code>NOTES</code> milestone, the local deterministic <code>VTX-0.1</code> engine, validator, rejected/accepted critic revisions, and blind viewer have been built in <a href="./vtx01-build-readme.html"><code>vtx01_build/</code></a>; unbriefed human blind-ballot collection (<code>C13</code>) remains open.</p></aside>
+<p><strong>Mode:</strong> <code>NOTES</code> → <code>BUILD_IMPLEMENTED</code> (<code>vtx01_build/</code>; empirical human blind ballots <code>C13</code> still <code>OPEN</code>)<br />
 <strong>Decision Owner:</strong> Watson Hartsoe<br />
 <strong>Status:</strong> <code>MILESTONE</code> (Source-audited memo and <code>VTX-0.1</code> baseline specification ready for review or live <code>BUILD</code> authorization)</p>
 <hr />

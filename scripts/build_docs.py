@@ -22,20 +22,20 @@ DOC_META = {
     "Abominable_House_Submission_Draft.md": (
         "abominable-house-submission-draft",
         "Papers & Specifications",
-        "Minimum Viable Video-Text: Conference & Journal Submission Draft",
-        "Full scholarly paper connecting Calvino's 1973 IBM/Playboy story, Disney's flour-sack test, SCION agent swarms, and Skiller's actuarial confound.",
+        "Canonical Paper — Minimum Viable Video-Text: Flour Sacks, Swarms & Actuarial Anticombinatorics",
+        "The canonical scholarly text for burning-house (plain edition at read.html; claims ledger at CLAIMS.md).",
     ),
     "VTX01_MVVT_Research_Memo_and_Spec.md": (
         "vtx01-mvvt-memo-and-spec",
         "Papers & Specifications",
-        "VTX-0.1 Working Memo & Formal Specification",
-        "Formal specification of Chance, Memory, and Consequence in the Minimum Viable Video-Text format and the Take A vs. Take B lamp-room experiment.",
+        "Component Spec (Source) — VTX-0.1 Working Memo & Formal Specification",
+        "Source specification for the two-sack VTX-0.1 benchmark (Chance, Memory, Consequence, and Take A vs. Take B).",
     ),
     "Abominable_House_Framing_Notes.md": (
         "abominable-house-framing-notes",
         "Papers & Specifications",
-        "Research & Framing Notes: PAE-04 (The Abominable House)",
-        "Core thesis, flour-sack refusal bypass, Anthropic's Scion analogy, Double Indemnity actuarial tables, and Lem's semascope.",
+        "Working Source Notes — PAE-04 (The Burning of the Abominable House)",
+        "Working framing source feeding the canonical submission draft (flour-sack abstraction, Scion analogy, policies, and Lem's semascope).",
     ),
     "abominable_house_mvvt_research_notes.md": (
         "words-to-world-research-notes",
@@ -70,8 +70,8 @@ DOC_META = {
     "zettle.md": (
         "zettle",
         "Zettelkasten Slip-Boxes",
-        "Master Zettelkasten: Calvino, Six Memos, Blow & Video-Text (28 Cards)",
-        "Deduplicated 28-card research slip-box (26 unique IDs) spanning Calvino's Six Memos, Jonathan Blow's Braid & The Witness, agent architectures, and formal mechanisms.",
+        "Master Zettelkasten: Calvino, Six Memos, Blow & Video-Text (26 Cards)",
+        "Deduplicated 26-card research slip-box (26 unique IDs, 1:1) spanning Calvino's Six Memos, Jonathan Blow's Braid & The Witness, agent architectures, and formal mechanisms.",
     ),
     "xzet.md": (
         "xzet",
@@ -798,9 +798,10 @@ def page_shell(
         <button type="button" class="ctrl-btn active" data-set-size="md">A</button>
         <button type="button" class="ctrl-btn" data-set-size="lg">A+</button>
       </div>
-      <div class="ctrl-group" role="group" aria-label="Column width">
+      <div class="ctrl-group" role="group" aria-label="Column width and plain prose">
         <button type="button" class="ctrl-btn active" data-set-width="book">Book</button>
         <button type="button" class="ctrl-btn" data-set-width="wide">Wide</button>
+        <button type="button" class="ctrl-btn" data-toggle-plain="1" title="Strip inline bold and code styling for continuous plain reading">Plain</button>
       </div>
     </div>
   </header>

@@ -1,6 +1,9 @@
 # Minimum Viable Video-Text (`VTX-0.1`): Chance, Memory, and Consequence in the Flour-Sack *Abominable House*
 
-**Mode:** `NOTES` (Working Research Memo + Falsifiable Experiment Specification; `BUILD` and empirical viewer/swarm evaluations `NOT_RUN`)  
+> [!IMPORTANT]
+> **Document Role — Component Specification & Working Source Memo:** This document specifies the two-sack `VTX-0.1` counterfactual benchmark (`vtx01_build/`) and serves as a technical source for the **canonical paper**, [`Abominable_House_Submission_Draft.md`](./Abominable_House_Submission_Draft.md) (plain reading edition: [`read.html`](./read.html); audited claims: [`CLAIMS.md`](./CLAIMS.md)). Note: since this memo's initial `NOTES` milestone, the local deterministic `VTX-0.1` engine, validator, rejected/accepted critic revisions, and blind viewer have been built in [`vtx01_build/`](./vtx01_build/README.md); unbriefed human blind-ballot collection (`C13`) remains open.
+
+**Mode:** `NOTES` → `BUILD_IMPLEMENTED` (`vtx01_build/`; empirical human blind ballots `C13` still `OPEN`)  
 **Decision Owner:** Watson Hartsoe  
 **Status:** `MILESTONE` (Source-audited memo and `VTX-0.1` baseline specification ready for review or live `BUILD` authorization)
 

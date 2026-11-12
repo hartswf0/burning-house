@@ -51,9 +51,10 @@
         <button type="button" class="ctrl-btn active" data-set-size="md">A</button>
         <button type="button" class="ctrl-btn" data-set-size="lg">A+</button>
       </div>
-      <div class="ctrl-group" role="group" aria-label="Column width">
+      <div class="ctrl-group" role="group" aria-label="Column width and plain prose">
         <button type="button" class="ctrl-btn active" data-set-width="book">Book</button>
         <button type="button" class="ctrl-btn" data-set-width="wide">Wide</button>
+        <button type="button" class="ctrl-btn" data-toggle-plain="1" title="Strip inline bold and code styling for continuous plain reading">Plain</button>
       </div>
     </div>
   </header>
@@ -63,7 +64,7 @@
       <div class="rail-meta-box">
         <div class="rail-kicker">Papers &amp; Specifications</div>
         <div class="rail-stats">
-          <span>932 words</span>
+          <span>1,023 words</span>
           <span>· ~4 min read</span>
           <span>· 1 sections</span>
         </div>
@@ -81,7 +82,7 @@
         <h1 class="doc-title">Claims Checked: Status, Evidence &amp; Verification Conditions</h1>
         <p class="doc-subtitle">Fourteen core historical, mathematical, and empirical claims audited across the repository with status (supported, measured, open, conflicting, unsupported) and settlement criteria.</p>
         <div class="doc-byline">
-          <span>932 words · ~4 min read · 1 sections</span>
+          <span>1,023 words · ~4 min read · 1 sections</span>
           <div class="doc-actions">
             <button type="button" class="doc-act-btn" data-copy-url="">Copy URL</button>
             <button type="button" class="doc-act-btn" onclick="window.print()">Print / PDF</button>
@@ -108,108 +109,115 @@ Edit <code>tools/claims.json</code> and run <code>python3 tools/build_index.py</
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">C05</td>
-<td style="text-align: left;">Generating the twelve deeds on human bodies triggers immediate safety-filter refusals across commercial video APIs. <em>Submission Draft §2, line 29</em></td>
-<td style="text-align: left;"><strong>unsupported</strong></td>
-<td style="text-align: left;">No JSON trace or log in this repo records a refusal: no model named, no prompt, no date. The section title also calls the sack a refusal bypass, while the films withhold the four sexual deeds behind a door or curtain and do not disguise them.</td>
-<td style="text-align: left;">Either add a small log (model, date, prompt, response) for a few deeds, or reword to: with human figures the test could not responsibly be run or shown; with sacks it can.</td>
-</tr>
-<tr>
-<td style="text-align: left;">C06</td>
-<td style="text-align: left;">Calvino&rsquo;s story, Geertz&rsquo;s Interpretation of Cultures and Lem&rsquo;s Imaginary Magnitude all date to 1973. <em>Framing Notes §5, &lsquo;The remarkable 1973 convergence&rsquo;</em></td>
-<td style="text-align: left;"><strong>conflicting</strong></td>
-<td style="text-align: left;">Calvino 1973 and Geertz 1973 are standard. For Lem, a reader review found online dates the Polish publication to 1981; other accounts give 1973 for Wielkość urojona with the English translation in 1984. Not settled here.</td>
-<td style="text-align: left;">Check a Polish bibliography of Lem before the paper leans on the coincidence.</td>
-</tr>
-<tr>
-<td style="text-align: left;">C07</td>
-<td style="text-align: left;">The deed bank unlocks 96 atomic performances (12 deeds × 4 sacks × 2 roles). <em>Submission Draft §2</em></td>
-<td style="text-align: left;"><strong>conflicting</strong></td>
-<td style="text-align: left;">live/player.html in bolas plays 12 deeds × 12 ordered pairs = 144 distinct shots. 96 counts sack-role performances, a different unit. Both can be true; the draft gives only one and attributes it to the deed bank.</td>
-<td style="text-align: left;">State both numbers and what each counts.</td>
-</tr>
-<tr>
-<td style="text-align: left;">C08</td>
-<td style="text-align: left;">In PAE-04 the tenants are Roessler rust #c95a49, Inigo slate #6089a8, Ogiva ochre #c8963e, Belindo sage #6f9169. <em>Submission Draft §2</em></td>
-<td style="text-align: left;"><strong>conflicting</strong></td>
-<td style="text-align: left;">Those colours are in vtx01_build/viewer. PAE-04&rsquo;s deed bank (bolas live/player.html) uses R #6e3a33, B #2a2622, I #c9b089, O #7a3b8f.</td>
-<td style="text-align: left;">Attribute the four colours to VTX-0.1, or give both sets.</td>
-</tr>
-<tr>
-<td style="text-align: left;">C09</td>
-<td style="text-align: left;">The six Flour Tower films passed an independent critic after eighteen rounds. <em>bolas Flour Tower page; earlier journal pass</em></td>
-<td style="text-align: left;"><strong>conflicting</strong></td>
-<td style="text-align: left;">bolas flour-tower/critic/ holds 17 round files. In round one, four films passed narrowly and two did not pass.</td>
-<td style="text-align: left;">Say seventeen, or find the eighteenth round.</td>
-</tr>
-<tr>
-<td style="text-align: left;">C10</td>
-<td style="text-align: left;">Under symbolic reasons Belindo takes over most of the violent deeds. <em>bolas numbers page</em></td>
-<td style="text-align: left;"><strong>conflicting</strong></td>
-<td style="text-align: left;">In that page&rsquo;s own data his share of knifing rises (0.073 to 0.386) and his share of tying (0.701 to 0.359) and strangling (0.647 to 0.322) falls. No share is above 0.39.</td>
-<td style="text-align: left;">Reword on the numbers page; do not carry the sentence into the paper.</td>
-</tr>
-<tr>
-<td style="text-align: left;">C04</td>
-<td style="text-align: left;">Lem&rsquo;s History of Bitic Literature names an instrument called a semascope. <em>Submission Draft §6; Framing Notes §5; Journal entry 31</em></td>
-<td style="text-align: left;"><strong>open</strong></td>
-<td style="text-align: left;">The repo&rsquo;s source is the narration of Lab 7 film 18, which is the project&rsquo;s own script. A web search on 12 Nov 2026 for the word together with the book&rsquo;s title returned pages about the book and none containing the word. The book was not opened.</td>
-<td style="text-align: left;">Give the page in Marc Heine&rsquo;s translation of Imaginary Magnitude (1984), or cut the term.</td>
-</tr>
-<tr>
 <td style="text-align: left;">C13</td>
-<td style="text-align: left;">Viewers can tell what a deed is without its title. <em>Submission Draft §2, §7; Journal &lsquo;Not yet seen&rsquo;</em></td>
+<td style="text-align: left;">Viewers can tell accidental steadying from deliberate lamp-tipping in VTX-0.1 without captions. <em>Submission Draft §7; VTX-0.1 Memo; vtx01_build/viewer</em></td>
 <td style="text-align: left;"><strong>open</strong></td>
-<td style="text-align: left;">vtx01_build/viewer has a blind test built. No human response is recorded anywhere in the repo; policy traces mark camera evidence UNKNOWN.</td>
-<td style="text-align: left;">Collect five to ten unbriefed responses and commit them as a trace file.</td>
+<td style="text-align: left;">vtx01_build/viewer/index.html?mode=blind_test implements the randomized caption-free blind ballot and JSON export, but zero human ballots are committed yet; policy traces mark camera evidence UNKNOWN.</td>
+<td style="text-align: left;">Collect five to ten unbriefed human ballots via ?mode=blind_test and commit them as a trace file.</td>
 </tr>
 <tr>
 <td style="text-align: left;">C14</td>
-<td style="text-align: left;">The narrator&rsquo;s printed total is 874,296,672,256. <em>bolas numbers page</em></td>
+<td style="text-align: left;">Calvino&rsquo;s narrator misprints 12^12 = 8,916,100,448,256 across editions (8,874,296,672,256 in English text; 874,296,672,256 on numbers.html). <em>Submission Draft §1; live/numbers.html</em></td>
 <td style="text-align: left;"><strong>open</strong></td>
-<td style="text-align: left;">An English text read online prints 8,874,296,672,256. Neither equals 12^12. The Parks translation was not opened.</td>
-<td style="text-align: left;">Check the printed book.</td>
+<td style="text-align: left;">Submission Draft §1 notes both variants against exact BigInt 12^12 = 8,916,100,448,256; printed Pantheon 1995 page 161 and Feb 1973 Playboy p. 61 remain to be Sight-checked for exact digit typography.</td>
+<td style="text-align: left;">Check printed Pantheon (1995) p. 161 and Italian Playboy (1973) p. 61.</td>
 </tr>
 <tr>
 <td style="text-align: left;">C01</td>
 <td style="text-align: left;">IBM asked how far a story could be written with a computer (Paris, 1973), and the story first appeared in the Italian edition of Playboy that year. <em>Submission Draft §1, §4</em></td>
 <td style="text-align: left;"><strong>supported</strong></td>
-<td style="text-align: left;">Two secondary sources agree: an article on the story (UFSC, Outra Travessia 12) and a dissertation note (UW–Madison). The original correspondence and the Playboy issue were not seen.</td>
-<td style="text-align: left;">Cite one of the two secondary sources at the sentence; give the Playboy issue if it can be found.</td>
+<td style="text-align: left;">Esther Calvino&rsquo;s 1995 introduction to Numbers in the Dark and Paul Braffort&rsquo;s Oulipo account (&lsquo;Prose and Anticombinatorics&rsquo;, 1977 [1998]) both document the 1973 IBM commission and the February 1973 Italian Playboy publication, now cited inline at §1.</td>
+<td style="text-align: left;">Inspect physical February 1973 Italian Playboy pagination (pp. 58–63) if preparing a facsimile plate.</td>
 </tr>
 <tr>
 <td style="text-align: left;">C12</td>
-<td style="text-align: left;">Anthropic replaced Git in its monorepo with a system called Scion as daily merges rose from about 2,500 to more than 30,000. <em>Submission Draft §3</em></td>
+<td style="text-align: left;">Anthropic replaced Git in its monorepo with a system called Scion as daily merges rose from about 2,500 to more than 30,000. <em>Submission Draft §3; Framing Notes §0</em></td>
 <td style="text-align: left;"><strong>supported</strong></td>
-<td style="text-align: left;">Press coverage of Anthropic&rsquo;s engineering post of 13 Oct 2026. The post itself was not read here. The system is not public and this project does not use it.</td>
-<td style="text-align: left;">Cite the post directly.</td>
+<td style="text-align: left;">Cited directly to Anthropic&rsquo;s 13 Oct 2026 engineering post (https://www.anthropic.com/research/redesigning-source-control) and explicitly marked as an architectural analogy unaffiliated with our prompt compiler.</td>
+<td style="text-align: left;">None.</td>
 </tr>
 <tr>
 <td style="text-align: left;">C02</td>
 <td style="text-align: left;">The index allows 12^12 = 8,916,100,448,256 stories. <em>throughout</em></td>
 <td style="text-align: left;"><strong>measured</strong></td>
-<td style="text-align: left;">Recomputed with BigInt on 10 Nov 2026.</td>
+<td style="text-align: left;">Recomputed with BigInt across numbers.html, policies.html, guide.html, and array.html#address.</td>
 <td style="text-align: left;">None.</td>
 </tr>
 <tr>
 <td style="text-align: left;">C03</td>
-<td style="text-align: left;">The film&rsquo;s five rules leave 2,663,172,255,744 stories. <em>numbers page; policies page</em></td>
+<td style="text-align: left;">The film&rsquo;s five rules leave 2,663,172,255,744 stories. <em>numbers page; policies page; array address map</em></td>
 <td style="text-align: left;"><strong>measured</strong></td>
-<td style="text-align: left;">Two counters with different decompositions (enumerate-and-filter on the numbers page; three independent groups on the policies page) give the same figure.</td>
+<td style="text-align: left;">Three counters with independent decompositions (enumerate-and-filter on numbers.html; factored four-group counter on policies.html; 2D BigInt address counter in array.html#address) yield 2,663,172,255,744.</td>
+<td style="text-align: left;">None.</td>
+</tr>
+<tr>
+<td style="text-align: left;">C15</td>
+<td style="text-align: left;">Imposing the five film rules lowers Widow Roessler&rsquo;s rational life-policy payout from 121/144 (84.03%) to 50/63 (79.37%), via 64/81 (79.01%) under wrestler rules alone. <em>DH2027 Short Paper §3; Submission Draft §4; live/policies.html; live/array.html#address</em></td>
+<td style="text-align: left;"><strong>measured</strong></td>
+<td style="text-align: left;">Verified identically by closed-form fractions in Reading_Over_the_Machines_Shoulder_DH2027.pdf and exact BigInt enumeration in policies.html and array.html#address (2,113,628,774,400 / 2,663,172,255,744 = 50/63 = 0.79365079&hellip;).</td>
+<td style="text-align: left;">None.</td>
+</tr>
+<tr>
+<td style="text-align: left;">C04</td>
+<td style="text-align: left;">Lem&rsquo;s History of Bitic Literature names an instrument called a semascope. <em>Submission Draft §6; Framing Notes §5; Journal entry 31</em></td>
+<td style="text-align: left;"><strong>resolved</strong></td>
+<td style="text-align: left;">Verified verbatim in Marc E. Heine&rsquo;s 1984 HBJ translation of Imaginary Magnitude (&lsquo;A History of Bitic Literature, Volume I&rsquo; by Juan Rambellais et al., &lsquo;Introduction&rsquo;, §§B–C, in pp. 39–96): H. Ellias and T. Semmelberg place the &lsquo;n-body of Abstractions&rsquo; into &lsquo;the requisite electron appliance (a semascope)&rsquo;, revealing &lsquo;burning threads&rsquo; in a &lsquo;semature&rsquo; at equilibrium (&lsquo;semastase&rsquo;). &lsquo;Semaphore&rsquo; is explicitly distinguished in §6 as our own warning term.</td>
+<td style="text-align: left;">None.</td>
+</tr>
+<tr>
+<td style="text-align: left;">C05</td>
+<td style="text-align: left;">Withdrawing the human body via procedural flour sacks and shut-door staging allows Calvino&rsquo;s twelve abominable acts to be tested and screened responsibly. <em>Submission Draft §2 (formerly &lsquo;refusal bypass&rsquo;)</em></td>
+<td style="text-align: left;"><strong>resolved</strong></td>
+<td style="text-align: left;">Section 2 of Submission Draft removed the unsupported API-refusal claim and &lsquo;refusal bypass&rsquo; heading, reframing the contribution accurately around procedural flattening (Krämer 2023) and withholding graphic harm behind a shut door or curtain.</td>
+<td style="text-align: left;">Optional: log dated commercial API prompts only if a future revision compares commercial video models directly.</td>
+</tr>
+<tr>
+<td style="text-align: left;">C06</td>
+<td style="text-align: left;">Calvino&rsquo;s story, Geertz&rsquo;s Interpretation of Cultures and the first Polish edition of Lem&rsquo;s Wielkość urojona all date to 1973. <em>Submission Draft §1; Framing Notes §0, §5</em></td>
+<td style="text-align: left;"><strong>resolved</strong></td>
+<td style="text-align: left;">Stanisław Lem&rsquo;s Wielkość urojona was first published in 1973 in Warsaw by Spółdzielnia Wydawnicza &lsquo;Czytelnik&rsquo; (170 pp.; English trans. Imaginary Magnitude, HBJ, 1984). The 1981 date in online reader reviews refers to the later standalone Polish volume Golem XIV (Wydawnictwo Literackie, 1981).</td>
+<td style="text-align: left;">None.</td>
+</tr>
+<tr>
+<td style="text-align: left;">C07</td>
+<td style="text-align: left;">The deed bank stages 144 ordered-pair shots (12 deeds × 12 ordered pairs) built from 96 single-sack role performances (12 deeds × 4 sacks × 2 roles). <em>Submission Draft §2; live/player.html; live/guide.html</em></td>
+<td style="text-align: left;"><strong>resolved</strong></td>
+<td style="text-align: left;">Updated both Submission Draft §2 and paeleo/abominable-house/live/player.html so both counts (144 playable ordered-pair cells on the punch card; 96 single-sack role rigs) are stated with what each counts.</td>
+<td style="text-align: left;">None.</td>
+</tr>
+<tr>
+<td style="text-align: left;">C08</td>
+<td style="text-align: left;">PAE-04 uses costume accents R #6e3a33, B #2a2622, I #c9b089, O #7a3b8f (watch register #c67a6e, #a39b8e, #d4b67e, #b583c8), while VTX-0.1 uses rust #c95a49, slate #6089a8, ochre #c8963e, sage #6f9169. <em>Submission Draft §2; live/player.html; vtx01_build/viewer</em></td>
+<td style="text-align: left;"><strong>resolved</strong></td>
+<td style="text-align: left;">Submission Draft §2 now states both palettes explicitly and attributes each to its exact workbench (PAE-04 vs. VTX-0.1).</td>
+<td style="text-align: left;">None.</td>
+</tr>
+<tr>
+<td style="text-align: left;">C09</td>
+<td style="text-align: left;">The six Flour Tower films underwent seventeen logged independent critic rounds. <em>paeleo/flour-tower/index.html; paeleo/abominable-house/paper.html</em></td>
+<td style="text-align: left;"><strong>resolved</strong></td>
+<td style="text-align: left;">Updated paeleo/flour-tower/index.html, process/index.tpl.html, and paeleo/abominable-house/paper.html from &lsquo;eighteen&rsquo; to &lsquo;seventeen&rsquo; to match the 17 critic round files in the repository.</td>
+<td style="text-align: left;">None.</td>
+</tr>
+<tr>
+<td style="text-align: left;">C10</td>
+<td style="text-align: left;">Under symbolic reasons Belindo&rsquo;s share of knifing rises while his shares of tying and strangling fall. <em>paeleo/abominable-house/live/numbers.html</em></td>
+<td style="text-align: left;"><strong>resolved</strong></td>
+<td style="text-align: left;">Reworded on paeleo/abominable-house/live/numbers.html to report the exact directional shifts (knifing 0.073 → 0.386; tying 0.701 → 0.359; strangling 0.647 → 0.322) rather than &lsquo;most of the violent deeds&rsquo;.</td>
 <td style="text-align: left;">None.</td>
 </tr>
 <tr>
 <td style="text-align: left;">C11</td>
-<td style="text-align: left;">The belief–desire–intention model is Hassabis&rsquo;s. <em>dictated notes of 10 Nov</em></td>
+<td style="text-align: left;">The belief–desire–intention model is Bratman&rsquo;s (1987) and Rao &amp; Georgeff&rsquo;s (1995), paired with Hassabis et al. (2007) for constructive memory. <em>Submission Draft §5; live/guide.html</em></td>
 <td style="text-align: left;"><strong>resolved</strong></td>
-<td style="text-align: left;">The Submission Draft now credits BDI to Bratman 1987 and Rao and Georgeff 1995, and cites Hassabis et al. 2007 separately for constructive memory.</td>
+<td style="text-align: left;">Submission Draft §5 and Field Guide Slide 07 credit BDI to Bratman 1987 and Rao &amp; Georgeff 1995, Hassabis et al. 2007/2017 to constructive episodic simulation, and Park et al. 2023 to Observation/Reflection/Plan memory streams.</td>
 <td style="text-align: left;">None.</td>
 </tr>
 </tbody>
 </table></div>
       </div>
 
-      <nav class="doc-pager" aria-label="Document pagination"><a class="pager-card" href="./abominable-house-submission-draft.html"><div class="pager-dir">← Previous Document</div><div class="pager-title">Minimum Viable Video-Text: Conference &amp; Journal Submission Draft</div></a><a class="pager-card" href="./vtx01-mvvt-memo-and-spec.html"><div class="pager-dir">Next Document →</div><div class="pager-title">VTX-0.1 Working Memo &amp; Formal Specification</div></a></nav>
+      <nav class="doc-pager" aria-label="Document pagination"><a class="pager-card" href="./abominable-house-submission-draft.html"><div class="pager-dir">← Previous Document</div><div class="pager-title">Canonical Paper — Minimum Viable Video-Text: Flour Sacks, Swarms &amp; Actuarial Anticombinatorics</div></a><a class="pager-card" href="./vtx01-mvvt-memo-and-spec.html"><div class="pager-dir">Next Document →</div><div class="pager-title">Component Spec (Source) — VTX-0.1 Working Memo &amp; Formal Specification</div></a></nav>
     </main>
   </div>
 

@@ -48,26 +48,65 @@ h2{font:800 14px 'Big Shoulders Display';letter-spacing:.06em;margin:12px 0 4px}
 :is(#tab,#etab) .cut{opacity:.35}
 .spark{display:grid;grid-template-columns:70px 1fr 40px;gap:6px;align-items:center;font-size:10px}.spark svg{width:100%;height:20px;display:block}
 #ac{display:none;position:absolute;inset:0;width:100%;height:100%;cursor:crosshair;touch-action:manipulation}
-body.atlas #ac{display:block}body.atlas #top .fr,body.atlas #believ,body.atlas #scrub,body.atlas #seg,body.atlas #top>.mute{display:none}body.atlas #c,body.atlas #tap,body.atlas #vid{display:none!important}
+body.atlas #ac{display:block}body.atlas #top .fr,body.atlas .ctl-tabs,body.atlas #pane_watch,body.atlas #pane_guide,body.atlas #believ,body.atlas #scrub,body.atlas #seg,body.atlas #top>.mute{display:none!important}body.atlas #pane_author{display:block!important}body.atlas #pane_author .fr{display:none!important}body.atlas #c,body.atlas #tap,body.atlas #vid{display:none!important}
 #atlasP{display:none;overflow:auto;flex:1;padding:4px 14px 16px}body.atlas #atlasP{display:block}body.atlas #scroll{display:none}
 select{font:600 11px 'JetBrains Mono';background:var(--card);color:var(--fg);border:1px solid var(--line);padding:4px;max-width:150px}
 @media (max-width:820px){#app{grid-template-columns:100%;grid-template-rows:50dvh 50dvh}#panel{overflow:auto}#scroll{overflow:visible;flex:none}#panel{border-left:0;border-top:1px solid var(--line)}}
-.case-links{display:flex;flex-wrap:wrap;gap:4px 13px;margin:3px 0 7px;font-size:11px}
+.case-links{display:flex;flex-wrap:wrap;gap:4px 11px;margin:3px 0 6px;font-size:11px}
 .case-links a{color:var(--acc);text-underline-offset:.22em}
+.case-links a.guide-pill{background:var(--acc);color:#fff;text-decoration:none;padding:1px 6px;font-weight:600}
 .case-links a:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
+.ctl-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin-top:7px}
+.ctl-tabs button{padding:5px 4px;font-size:10.5px;text-align:center}
+.ctl-pane{display:none;margin-top:6px;padding:6px 8px;background:color-mix(in srgb,var(--card) 75%,transparent);border:1px solid var(--line)}
+.ctl-pane.on{display:block}
+.ctl-note{font-size:10.5px;color:var(--mute);line-height:1.35;margin:2px 0 4px}
+.sec-h{display:flex;align-items:baseline;justify-content:space-between;gap:6px;margin:13px 0 2px;border-top:1px solid color-mix(in srgb,var(--line) 65%,transparent);padding-top:7px}
+.sec-h h2{margin:0}
+.sec-links{display:flex;gap:5px;font-size:10px;white-space:nowrap}
+.sec-links a,.sec-links button.mini{font:600 9.5px 'JetBrains Mono';padding:1px 5px;border:1px solid var(--line);background:var(--card);color:var(--mute);text-decoration:none;cursor:pointer}
+.sec-links a:hover,.sec-links button.mini:hover{color:var(--acc);border-color:var(--acc)}
+.sec-sub{font-size:10.5px;color:var(--mute);margin:0 0 5px;line-height:1.35}
+.gdeck-top{display:flex;align-items:center;justify-content:space-between;gap:4px;margin-bottom:5px}
+.gdeck-card{font-size:11px;line-height:1.45;max-height:215px;overflow:auto;padding-right:2px}
+.gdeck-card b{color:var(--fg)}
+.gdeck-card code{background:var(--bg);padding:0 3px;font-size:10.5px}
+.gdeck-formula{background:var(--bg);border-left:2px solid var(--acc);padding:4px 6px;margin:5px 0;font-size:10px;line-height:1.4}
 </style></head><body>
 <div id=app>
  <div id=stage><canvas id=c width=1920 height=1080></canvas><canvas id=ac aria-label="Atlas of films"></canvas><div id=tap><span>TAP TO PLAY WITH SOUND</span></div><video id=vid src="film720.mp4" poster="poster.jpg" controls playsinline style="display:none;position:absolute;inset:0;width:100%;height:100%;background:#000"></video></div>
  <div id=panel>
   <div id=top>
    <h1>THE ABOMINABLE HOUSE</h1>
-   <nav class="case-links" aria-label="Case file navigation"><a href="../../../index.html">burning-house</a><a href="../index.html">PAE-04 case file</a><a href="../whole-house.html">Whole house</a><a href="policies.html">Policies</a><a id="same-film" href="player.html">Deed bank · same assignment</a></nav>
-   <div class=mute>one film of 8,916,100,448,256 · deeds, consequences, memories, levers</div>
-   <div class=row><input id=num type=text inputmode=numeric aria-label="Film number"><button id=go>PLAY FILM</button><button id=roll>ROLL</button><button id=pp>PAUSE</button><button id=lv class=on>LEVERS</button><button id=wv>WATCH RENDER</button><button id=atl>ATLAS</button><button id=tz>T ZERO</button></div>
-   <div class="row fr"><span class=mute>PACE</span><button id=p_fast>FAST</button><button id=p_watch>WATCH</button><button id=p_cut class=on>CUT</button><span class=mute style="margin-left:8px">STORY</span><button id=mc>MOST LIKELY</button><button id=lg>LEGOS</button></div>
-   <div class=row><span class=mute>PIE</span><label class=mute>symbolic<input id=pP type=range min=0 max=100 value=50 aria-label="Practical vs symbolic">practical</label></div><div class=row><label class=mute>collective<input id=pI type=range min=0 max=100 value=50 aria-label="Individual vs collective">individual</label><label class=mute>order<input id=pE type=range min=0 max=100 value=40 aria-label="Entropy">chance</label><button id=gen>LET THEM DECIDE</button><button id=best>SIX MEMOS</button></div>
-   <div class="row fr"><span class=mute>AUTHOR</span><button id=a_irony>IRONY</button><button id=a_suspense>SUSPENSE</button><button id=a_twist>TWIST</button><span class=mute style="margin-left:8px">CALVINO</span><button id=op>OPENINGS</button></div>
-   <div id=believ class=mute style="margin-top:4px"></div>
+   <nav class="case-links" aria-label="Case file navigation"><a href="../../../index.html">burning-house</a><a href="../index.html">PAE-04</a><a href="../whole-house.html">Whole house</a><a id="guide-link" class="guide-pill" href="guide.html?n=1541585241617">Field guide &amp; slides ↗</a><a id="array-link" href="array.html?n=1541585241617">The Array</a><a href="policies.html">Policies</a><a id="same-film" href="player.html">Deed bank</a></nav>
+   <div class=mute>one film of 8,916,100,448,256 · 12 base-12 digits → deeds, consequences, memories, levers</div>
+   <div class=row><input id=num type=text inputmode=numeric aria-label="Film number" style="width:158px"><button id=go>PLAY FILM</button><button id=pp>PAUSE</button><button id=roll title="Pick a random film out of 12^12">ROLL</button><button id=atl title="Explore the 6,030-film behavioral space & Six Memos">ATLAS</button></div>
+   <div class="ctl-tabs" role="tablist" aria-label="Control groups">
+    <button type=button id=tab_watch class=on onclick="setCtlTab('watch')">1 · SCREENING</button>
+    <button type=button id=tab_author onclick="setCtlTab('author')">2 · AUTHOR &amp; PIE</button>
+    <button type=button id=tab_guide onclick="setCtlTab('guide')">3 · GUIDE DECK (9)</button>
+   </div>
+   <div id=pane_watch class="ctl-pane on">
+    <div class=ctl-note>How this film is staged: <b>CUT</b> trims minor consequences; <b>LEVERS</b> scales/lights archetypes; <b>T ZERO</b> fans out all 12 next-deed branches.</div>
+    <div class="row fr" style="margin-top:4px"><span class=mute>PACE</span><button id=p_fast title="Raw 6s deeds only (72s)">FAST</button><button id=p_watch title="Full cards + memories + transitions + all consequences">WATCH</button><button id=p_cut class=on title="Director's cut: cards, transitions & top-7 consequences">CUT</button><button id=lv class=on title="Barthesian archetype scaling, spotlighting & shadows">LEVERS</button><button id=tz title="Calvino t-zero: pause & see all 12 ways this deed could go">T ZERO</button><button id=wv title="Play pre-rendered 720p reference video">WATCH RENDER</button></div>
+   </div>
+   <div id=pane_author class="ctl-pane">
+    <div class=ctl-note><b>PIE</b> (<a href="guide.html#pie" target="_blank">Hartsoe 2024, <i>Growing Entanglements</i></a>): mix Sahlins symbolic myth vs. Obeyesekere practical leverage, rumor vs. witness, and order vs. chance.</div>
+    <div class=row style="margin-top:3px"><span class=mute>P</span><label class=mute>symbolic <input id=pP type=range min=0 max=100 value=50 aria-label="Practical vs symbolic" style="width:76px"> practical</label><span class=mute style="margin-left:4px">I</span><label class=mute>rumor <input id=pI type=range min=0 max=100 value=50 aria-label="Individual vs collective" style="width:68px"> witness</label></div>
+    <div class=row style="margin-top:3px"><span class=mute>E</span><label class=mute>order <input id=pE type=range min=0 max=100 value=40 aria-label="Entropy" style="width:72px"> chance</label><button id=gen title="Tenants choose all 12 deeds from BDI + Park memories + PIE">LET THEM DECIDE</button><button id=best title="Browse Calvino's Six Memos MAP-Elites archive">SIX MEMOS</button></div>
+    <div class="row fr" style="margin-top:5px"><span class=mute>SEARCH</span><button id=mc title="Monte Carlo Tree Search (400 rollouts) for believable stories">MOST LIKELY</button><button id=op title="1,728 3-deed beginnings stopped at a 50/50 toss-up">OPENINGS</button><button id=lg title="Inspect structured LEGOS narrative YAML">LEGOS</button></div>
+    <div class="row fr" style="margin-top:4px"><span class=mute>AUTHOR (I²P)</span><button id=a_irony title="Beam search maximizing dramatic irony">IRONY</button><button id=a_suspense title="Beam search maximizing survival suspense">SUSPENSE</button><button id=a_twist title="Beam search maximizing KL belief revision">TWIST</button></div>
+   </div>
+   <div id=pane_guide class="ctl-pane">
+    <div class=gdeck-top>
+     <button type=button onclick="stepGuide(-1)">← PREV</button>
+     <select id=gdeck_sel onchange="showGuide(+this.value)" aria-label="Guide slide"></select>
+     <button type=button onclick="stepGuide(1)">NEXT →</button>
+     <a id=gdeck_full href="guide.html?n=1541585241617" target="_blank" style="color:var(--acc);font-size:10px;font-weight:600">FULL PAPER ↗</a>
+    </div>
+    <div id=gdeck_body class=gdeck-card></div>
+   </div>
+   <div id=believ class=mute style="margin-top:5px"></div>
    <input id=scrub type=range min=0 max=1000 value=0 aria-label="Scrub">
    <div id=seg></div>
   </div>
@@ -403,13 +442,24 @@ signature_construction_ecology:
   </div>
   <div id=scroll>
    <div id=top5></div><pre id=legos style="display:none;white-space:pre-wrap;font-size:10px;max-height:40vh;overflow:auto;background:var(--card);border:1px solid var(--line);padding:6px"></pre>
-   <h2>THE TABLEAU · each row is one sack's strand, each column one deed</h2><div id=tab></div><h2>THE AUDIENCE · inverse planning: what a watcher infers before this deed</h2><div id=curves></div><div id=aud></div>
+   <div class=sec-h><h2>THE TABLEAU · crossed strands</h2><span class=sec-links><button type=button class=mini onclick="openGuideAt(3)">slide</button><a class=gref data-h="#audience" href="guide.html#audience" target="_blank">paper ↗</a></span></div>
+   <div class=sec-sub>Calvino's <i>Castle of Crossed Destinies</i>: filled cell = doer, outlined = victim, dot = room witness. Tap any column to jump.</div>
+   <div id=tab></div>
+   <div class=sec-h><h2>THE AUDIENCE · inverse planning</h2><span class=sec-links><button type=button class=mini onclick="openGuideAt(3)">slide</button><a class=gref data-h="#audience" href="guide.html#audience" target="_blank">paper ↗</a></span></div>
+   <div class=sec-sub>Bayesian Theory of Mind (Tenenbaum; Chandra et al. 2024): what an outside watcher infers about hidden plans before this deed.</div>
+   <div id=curves></div><div id=aud></div>
    <div id=reading></div>
-   <h2>THE MINDS · beliefs, desires, intentions, memory stream</h2><div id=minds></div>
-   <h2>THE FOUR · archetype and levers before this deed</h2>
+   <div class=sec-h><h2>THE MINDS · BDI + Park memory stream</h2><span class=sec-links><button type=button class=mini onclick="openGuideAt(6)">slide</button><a class=gref data-h="#minds" href="guide.html#minds" target="_blank">paper ↗</a></span></div>
+   <div class=sec-sub><b>B</b>eliefs (private PLoT strength/harm), <b>D</b>esires (affect), <b>I</b>ntentions (2.2× committed plan), and Park <b>O</b>bservation/<b>R</b>eflection/<b>P</b>lan records (ember = recalled now).</div>
+   <div id=minds></div>
+   <div class=sec-h><h2>THE FOUR · archetype &amp; stage levers</h2><span class=sec-links><button type=button class=mini onclick="openGuideAt(5)">slide</button><a class=gref data-h="#barthes" href="guide.html#barthes" target="_blank">paper ↗</a></span></div>
+   <div class=sec-sub>Barthesian character masks mapped onto 7 active canvas compositing levers (scale, weight, tempo, spotlight halo, shadow, shrink, corpse grey) + persistent body marks.</div>
    <div class=sacks id=sacks></div>
-   <h2>THE LIES · Kurosawa</h2><div id=lies></div>
-   <h2>THE INDEX</h2>
+   <div class=sec-h><h2>THE LIES · Kurosawa</h2><span class=sec-links><button type=button class=mini onclick="openGuideAt(7)">slide</button><a class=gref data-h="#lies" href="guide.html#lies" target="_blank">paper ↗</a></span></div>
+   <div class=sec-sub>After <i>Rashomon</i> &amp; Kurosawa's memoir: each tenant's protective egoistic fiction and the first deed that shatters it.</div>
+   <div id=lies></div>
+   <div class=sec-h><h2>THE INDEX · 12 deeds &amp; modal tiers</h2><span class=sec-links><button type=button class=mini onclick="openGuideAt(1)">slide</button><a class=gref data-h="#tiers" href="guide.html#tiers" target="_blank">paper ↗</a></span></div>
+   <div class=sec-sub>Alphabetical copybook order (I–XII) rated from PREPOSTEROUS (0..0.05) to CERTAIN (0.95..1.00).</div>
    <div id=index></div>
   </div>
  </div>
@@ -529,16 +579,21 @@ c.addEventListener('click',e=>{if(!fanOn||playing)return;const r=c.getBoundingCl
  const hit=FANCELLS.find(q=>x>=q.x&&x<=q.x+q.w&&y>=q.y&&y<=q.y+q.h);if(!hit)return;const f=film.slice();f[hit.k]=hit.i;setFilm(f,CUT<12?CUT:12,FORK);seekDeed(hit.k)});
 // ---------- panel: the reading (PLoT + Barthes) and the four ----------
 const pct=x=>(x*100).toFixed(0);
-function panel(s){const seg=document.getElementById('seg');const k=Math.min(s.k,11),e=L.ev[k];
+function panel(s){const seg=document.getElementById('seg');const k=Math.min(s.k,11),e=L.ev[k];syncGuideLinks(k);
  const lab={break:'the film stops here',card:'chapter · '+NAMES[k],deed:NAMES[k],conseq:'consequence of '+NAMES[k],memory:(WHO[s.who]||'')+' remembers',trans:'transition',fire:'Arson'}[s.type];
  seg.textContent=`${s.type==='fire'?13:k+1} · ${lab}${s.type!=='fire'&&s.type!=='break'?' · '+WHO[e.A]+' to '+WHO[e.V]:''}`;
  renderAud(k,s);if(s.type==='break'){document.getElementById('reading').innerHTML=`<div class=head>THE FILM STOPS</div><div class=mute>Before deed ${CUT+1} (${NAMES[CUT]}) the agents are split: ${(FORK||[]).map(([i,p])=>WHO[LEDGER.PAIRS[i][0]]+' to '+WHO[LEDGER.PAIRS[i][1]]+' '+p.toFixed(2)).join(' or ')}.</div>`;return}
  const r=LEDGER.reading(L,k);const rd=document.getElementById('reading');
  if(s.type==='fire'){rd.innerHTML=`<div class=head>THE HOUSE BURNS</div><div class=mute>${L.states[12].impossible.length} contradictions in this film: a dead sack acted ${L.states[12].impossible.length} time(s).</div>`}
- else rd.innerHTML=`<div class=head>${r.headline}</div><div style="margin:2px 0 4px">${quatrain(k).join(' / ')}</div>
+ else rd.innerHTML=`<div class=sec-h><h2 style="color:var(--acc)">ACTIVE SCENE · House of Dust &amp; Believability</h2><span class=sec-links><button type=button class=mini onclick="openGuideAt(1)">slide</button><a class=gref data-h="#tiers" href="guide.html?n=${enc(film)}&k=${k}#tiers" target="_blank">paper ↗</a></span></div>
+ <div class=head>${r.headline}</div><div style="margin:2px 0 4px">${quatrain(k).join(' / ')}</div>
  <div class=mute>${(()=>{const ev=SC.ev[k];return `believability ${ev.raw.toFixed(2)} <span class='tier T${TIERN.indexOf(ev.tier)}'>${ev.tier}</span> · p ${ev.p.toFixed(3)} of 12 pairs<br>${ev.why.join(' · ')}`})()}</div>
- <h2>PLOT · tug-of-war update (house belief)</h2>${r.plot.map(p=>`<div class=pl><span><span class=chip style="background:${COL[p.who]}"></span>${WHO[p.who]} ${p.what}</span><div class=bar><i style="left:0;width:${pct(Math.min(1,p.p1))}%"></i><b style="left:${pct(Math.min(1,p.p0))}%"></b></div><span>${p.p0.toFixed(2)} → ${p.p1.toFixed(2)} (${p.p1>=p.p0?'+':''}${(p.p1-p.p0).toFixed(2)})</span></div>`).join('')}
- <h2>BARTHES · the match</h2><div><b>${r.mythBefore[0]}</b> vs <b>${r.mythBefore[1]}</b> → <b>${r.match[0]}</b> vs <b>${r.match[1]}</b></div>`;
+ <div class=sec-h><h2>PLOT · tug-of-war update (house belief)</h2><span class=sec-links><button type=button class=mini onclick="openGuideAt(4)">slide</button><a class=gref data-h="#plot" href="guide.html?n=${enc(film)}&k=${k}#plot" target="_blank">paper ↗</a></span></div>
+ <div class=sec-sub>Probabilistic Language of Thought (Tenenbaum): latent strength &amp; danger updated only by tenants who witnessed or found traces of this deed.</div>
+ ${r.plot.map(p=>`<div class=pl><span><span class=chip style="background:${COL[p.who]}"></span>${WHO[p.who]} ${p.what}</span><div class=bar><i style="left:0;width:${pct(Math.min(1,p.p1))}%"></i><b style="left:${pct(Math.min(1,p.p0))}%"></b></div><span>${p.p0.toFixed(2)} → ${p.p1.toFixed(2)} (${p.p1>=p.p0?'+':''}${(p.p1-p.p0).toFixed(2)})</span></div>`).join('')}
+ <div class=sec-h><h2>BARTHES · the match</h2><span class=sec-links><button type=button class=mini onclick="openGuideAt(5)">slide</button><a class=gref data-h="#barthes" href="guide.html?n=${enc(film)}&k=${k}#barthes" target="_blank">paper ↗</a></span></div>
+ <div class=sec-sub><i>Mythologies</i> ("The World of Wrestling"): dominant moral mask of Doer vs Victim before → after this deed.</div>
+ <div><b>${r.mythBefore[0]}</b> vs <b>${r.mythBefore[1]}</b> → <b>${r.match[0]}</b> vs <b>${r.match[1]}</b></div>`;
  const st=L.states[k];document.getElementById('sacks').innerHTML=IDS.map(id=>{const m=st.myth[id],top=LEDGER.ARCH.map(a=>[a,m[a]||0]).sort((a,b)=>b[1]-a[1]).slice(0,3),lv=st.levers[id];
   return `<div class="sack ${st.alive[id]?'':'dead'}"><div class=nm><span class=chip style="background:${COL[id]}"></span>${WHO[id]}${st.alive[id]?'':' · dead'}</div><div class=mute>${top.map(([a,w])=>a.toLowerCase()+' '+w.toFixed(2)).join(' · ')}</div>
   ${['loom','weight','tempo','halo','shadow','shrink','grey'].map(n=>`<div class=lev><span>${n}</span><div class=bar><i style="left:${n==='loom'||n==='tempo'||n==='weight'?50:0}%;width:${Math.abs(lv[n])*(n==='loom'||n==='tempo'||n==='weight'?50:100)}%;${lv[n]<0?'transform:translateX(-100%)':''}"></i></div></div>`).join('')}
@@ -575,11 +630,51 @@ function buildIndex(){MINDS=AGENTS.minds(film);AUD=CROSSED.audience(film);CAST=C
  document.getElementById('believ').innerHTML=`this film: believability ${SC.believ.toFixed(3)} <span class='tier T${TIERN.indexOf(SC.tier)}'>${SC.tier}</span> · log P ${SC.logp.toFixed(1)} · ${(TOT/60|0)}:${String(Math.round(TOT%60)).padStart(2,'0')}`;
  document.getElementById('lies').innerHTML=STORY.lies(film).map(x=>`<div><span class=chip style="background:${COL[x.id]}"></span><b>${WHO[x.id]}</b> · "${x.lie}" · ${x.broken!=null?'broken at '+(x.broken+1)+' · '+NAMES[x.broken]:'holds'}${x.dead!=null?' · dies at '+(x.dead+1):''}</div>`).join('');
  if(document.getElementById('legos').style.display!=='none')document.getElementById('legos').textContent=STORY.legos(film)}
+const GUIDE_DECK=[
+ {t:'1/9 · Reading Over the Shoulder',h:'#overview',b:`Every film is a 12-digit base-12 integer out of <b>12<sup>12</sup> = 8,916,100,448,256</b>. Five deterministic JS engines read that integer live:<div class=gdeck-formula>1. ledger.js (physics, House of Dust rooms/light, PLoT, Barthes)<br>2. story.js (modal believability tiers, MCTS, Kurosawa lies)<br>3. agents.js (BDI minds, Park memory stream, PIE utility)<br>4. crossed.js (Tenenbaum inverse watcher, I²P author, strands)<br>5. 41 SCION canvas modules + granular cloth/flour sound</div><b>Tab 1 (Screening)</b> changes how you watch; <b>Tab 2 (Author &amp; PIE)</b> asks an agent to write a new film.`},
+ {t:'2/9 · Believability & 5 Modal Tiers',h:'#tiers',b:`Each deed shows <b>absolute fit</b> <code>raw ∈ [0,1]</code> and <b>pair share</b> <code>p = raw_i / Σ raw</code> across the 12 pairs.<div class=gdeck-formula>PREPOSTEROUS 0–.05 (dead/tied acts) · POSSIBLE .05–.30<br>PLAUSIBLE .30–.70 · PROBABLE .70–.95 · CERTAIN .95–1.00</div>Whole-film believability is the <b>geometric mean</b> <code>(Π raw_k)^(1/12)</code> so one broken causal link cannot hide behind eleven plausible scenes.`},
+ {t:'3/9 · PIE · Growing Entanglements',h:'#pie',b:`From Watson Hartsoe's <i>Growing Entanglements</i> (Fall 2024) on Captain Cook at Kealakekua Bay: instead of choosing between <b>Marshall Sahlins</b> (cosmological/symbolic myth) and <b>Gananath Obeyesekere</b> (practical calculation), <code>PIE</code> mixes them:<div class=gdeck-formula>U = Practical^P × Symbolic^(1−P) × PlanBoost<br>I: 0 = house rumor mean ↔ 1 = personal witness only<br>E: softmax temperature τ = 0.08 + 1.6·E (order ↔ chance)</div>Click <b>LET THEM DECIDE</b> to watch the sacks choose all 12 deeds.`},
+ {t:'4/9 · THE AUDIENCE · Inverse Planning',h:'#audience',b:`Built on Tenenbaum's Bayesian Theory of Mind &amp; Chandra et al. (2024) <i>Storytelling as Inverse Inverse Planning</i>. An observer maintains 10 plan hypotheses per sack (<code>no plan 0.20</code> + 9 plans at <code>0.80/9 ≈ 0.09</code> prior):<div class=gdeck-formula>• surprise = −log₂ P_watch(deed) / log₂ 12<br>• twist = Σ KL(P_after || P_before) across all 4 sacks<br>• suspense = binary entropy H(P(next lethal deed kills))<br>• irony = P_watch(A plans harm to V) × (1 − V's harm belief)</div>Early on, <code>P(III kills) = 0.00</code> because Incitement requires accumulated dread &gt; 1.5! <b>Strands holding</b> checks Calvino's 4 personal rows.`},
+ {t:'5/9 · PLOT · Tug-of-War & House of Dust',h:'#plot',b:`From Goodman, Tenenbaum &amp; Gerstenberg's <b>Probabilistic Language of Thought (PLoT)</b> tug-of-war model: strength is latent (<code>Belindo 0.82, Roessler 0.50, Ogiva 0.40, Inigo 0.31</code>).<div class=gdeck-formula>Win expected: p = σ(μ_A − μ_V);  μ_A += 0.9·v·(y − p)<br>Kalman danger: harm_A += (v/(v+0.3))·(HARM[deed] − harm_A)</div><b>Epistemic gate</b> (Knowles &amp; Tenney <i>House of Dust</i>): a sack updates its beliefs <i>only</i> if it was in a lit room, snooped, or found the room's material trace.`},
+ {t:'6/9 · BARTHES & THE FOUR Stage Levers',h:'#barthes',b:`Roland Barthes's <i>"The World of Wrestling"</i> (<i>Mythologies</i>, 1957): wrestling externalizes moral masks (<code>MISER, IDOL, GENTLE GIANT, BRUTE, PREDATOR, VICTIM, SCAPEGOAT, CORPSE…</code>).<div class=gdeck-formula>7 levers actively composite the 1920×1080 canvas:<br>loom (+14% scale) · shrink (−22%) · halo (amber spotlight)<br>shadow (diagonal cast) · grey (corpse desat) · weight · tempo</div>Toggle <b>LEVERS</b> in Tab 1 to see raw vs. Barthesian staging!`},
+ {t:'7/9 · THE MINDS · BDI + Park Stream',h:'#minds',b:`Each faceless flour sack runs a 3-layer cognitive loop (<code>agents.js</code>):<div class=gdeck-formula>B (Beliefs): private PLoT str &amp; harm for the other 3 sacks<br>D (Desires): LEGOS life goal + temperament-weighted affect<br>I (Intention): Bratman BDI committed plan (2.2× utility boost)<br>Stream (Joon Sung Park et al. 2023): [Deed# O/R/P imp]</div>When accumulated importance ≥ 14, the sack writes a <b>Reflection (R)</b>. Recalled memories highlight in <span style="color:var(--acc);font-weight:600">ember</span> and flash on canvas.`},
+ {t:'8/9 · THE LIES · Kurosawa (Rashomon)',h:'#lies',b:`In <i>Something Like an Autobiography</i> (1982), Akira Kurosawa wrote that <i>Rashomon</i> portrays humans who <i>"cannot survive without lies to make them feel better."</i> Each tenant clings to a protective equation:<div class=gdeck-formula>• Roessler: "Possession equals safety." (broken by extortion/attack)<br>• Belindo: "Strength makes me safe." (broken by drug/rope/gun)<br>• Inigo: "Nothing I do counts." (broken if he kills)<br>• Ogiva: "Being looked at is being safe." (broken by slander/spy/attack)</div>`},
+ {t:'9/9 · 41 Modules, Chance & Deed Bank',h:'#modules',b:`How discrete deeds become continuous film:<div class=gdeck-formula>Chapter Card → Memory Beat → Continuity Transition<br>→ 6s Deed (+ .1s/.4s memory flashes) → Consequence Beat</div><b>Deed Bank</b> plays all <b>144 ordered-pair cells</b> (built from <b>96 single-sack role rigs</b>). Transitions match exact boundary frames (<code>t=5.99s → 0.00s</code>), while <code>kit.js</code> synthesizes every sound from cloth &amp; flour grains.`}
+];
+let curGuideIdx=0,lastPanelK=0;
+function setCtlTab(which){
+ for(const k of['watch','author','guide']){
+  document.getElementById('tab_'+k).classList.toggle('on',k===which);
+  document.getElementById('pane_'+k).classList.toggle('on',k===which);
+ }
+}
+function showGuide(i){
+ curGuideIdx=(i+GUIDE_DECK.length)%GUIDE_DECK.length;
+ const sel=document.getElementById('gdeck_sel');
+ if(sel&&!sel.options.length)GUIDE_DECK.forEach((c,j)=>{const o=document.createElement('option');o.value=j;o.textContent=c.t;sel.appendChild(o)});
+ if(sel)sel.value=curGuideIdx;
+ const card=GUIDE_DECK[curGuideIdx];
+ document.getElementById('gdeck_body').innerHTML=card.b;
+ syncGuideLinks(lastPanelK);
+}
+function stepGuide(d){showGuide(curGuideIdx+d)}
+function openGuideAt(i){setCtlTab('guide');showGuide(i)}
+function syncGuideLinks(k){
+ lastPanelK=k||0;
+ const n=film.length===12?enc(film):1541585241617;
+ const card=GUIDE_DECK[curGuideIdx]||GUIDE_DECK[0];
+ const gl=document.getElementById('guide-link');if(gl)gl.href=`guide.html?n=${n}&k=${lastPanelK}`;
+ const al=document.getElementById('array-link');if(al)al.href=`array.html?n=${n}`;
+ const gf=document.getElementById('gdeck_full');if(gf)gf.href=`guide.html?n=${n}&k=${lastPanelK}${card.h}`;
+ document.querySelectorAll('a.gref').forEach(a=>{a.href=`guide.html?n=${n}&k=${lastPanelK}${a.dataset.h||''}`});
+}
+showGuide(0);
 function setFilm(d,cut,fork){
  film=d;CUT=cut||12;FORK=fork||null;
  const n=enc(d);
  document.getElementById('num').value=n.toLocaleString('en-US');
  document.getElementById('same-film').href='player.html?n='+n;
+ syncGuideLinks(0);
  build();t=0;curSeg=null;
 }
 function boot(){

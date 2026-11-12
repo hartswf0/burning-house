@@ -979,9 +979,11 @@
           <span class="mode-dot" aria-hidden="true">·</span>
           <button type="button" class="mode-opt" data-mode-btn="ochre" onclick="setPlate('ochre')">Ochre</button>
         </span>
+        <a class="nav-link" href="#compare">VTX-0.1</a>
         <a class="nav-link" href="#system">System</a>
         <a class="nav-link" href="#insights">Insights</a>
         <a class="nav-link" href="#pages">Workbench</a>
+        <a class="nav-link" href="./paeleo/abominable-house/live/array.html#address">Address Map</a>
         <a class="nav-link" href="./find.html">Find</a>
         <a class="nav-link" href="./read.html">Read</a>
         <a class="nav-link" href="./docs/index.html">Reading Room</a>
@@ -992,9 +994,72 @@
     <div class="paper-stage">
       <img class="paper-art" src="./assets/hero-paper-sacks.jpg" alt="Two half-filled flour sacks and a fallen brass lamp in graphite and wash" />
       <div class="hero-cta-row">
-        <a class="cta-btn" href="./paeleo/abominable-house/index.html">Enter Abominable House (12¹²)</a>
-        <a class="cta-btn ghost" href="#system">Explore unified system ↓</a>
+        <a class="cta-btn" href="#compare">Compare takes · VTX-0.1</a>
+        <a class="cta-btn ghost" href="./paeleo/abominable-house/index.html">Abominable House (12¹²) →</a>
+        <a class="cta-btn ghost" href="./paeleo/abominable-house/live/array.html#address">The Array · 12¹² Map →</a>
       </div>
+    </div>
+  </section>
+
+  <!-- SECTION 1 (FRONT DOOR): VTX-0.1 COUNTERFACTUAL WORKBENCH -->
+  <section class="wrap" id="compare">
+    <div class="sec-kicker">Start Here · VTX-0.1 Minimum Viable Video-Text</div>
+    <div class="sec-head">
+      <h2>Open this case, change one line, see what differs</h2>
+      <p class="sec-note">Two 16-second flour-sack takes from one world state (<code>case_a_assist.vtx.json</code> + 1-line <code>patch_a_to_b_goal.json</code>). Identical through frame 77; changing only <code>goal</code> flips approach, lamp contact, the persistent door wedge, and the policy verdict—with the critic-rejected first revision preserved beside the accepted second.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1.1fr 0.9fr;gap:14px;margin-bottom:18px;font-family:var(--mono);font-size:12px;">
+      <div style="background:var(--surface);border:1px solid var(--rule-strong);padding:12px 14px;">
+        <div style="color:var(--accent);font-weight:600;margin-bottom:6px;">SINGLE-ROOT PATCH · vtx01_build/cases/patch_a_to_b_goal.json</div>
+        <div style="background:var(--bg);border:1px solid var(--rule);padding:8px 10px;line-height:1.55;">
+          <span style="opacity:0.65;">"target_event_id": "E2_root_action",</span><br/>
+          <span style="color:#8f2511;">− "goal": "assist_steadying"</span> &nbsp;→&nbsp; <span style="color:#235732;font-weight:600;">+ "goal": "tip_lamp_deliberately"</span>
+        </div>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--rule-strong);padding:12px 14px;display:flex;flex-direction:column;justify-content:space-between;gap:8px;">
+        <div style="color:var(--ink-body);line-height:1.45;">Run the live 3-mode inspector, edit the JSON event contract in-browser, or take the caption-free blind ballot (Claim <code>C13</code>):</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+          <a class="mini-cta" href="./vtx01_build/viewer/index.html">Open VTX-0.1 Workbench ↗</a>
+          <a class="mini-cta" href="./vtx01_build/viewer/index.html?mode=blind_test">Take Blind Test (No Labels) ↗</a>
+          <button type="button" class="mini-cta" onclick="openDrawer('./vtx01_build/cases/patch_a_to_b_goal.json', 'patch_a_to_b_goal.json')">Inspect Patch JSON</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="takes-bar">
+      <div class="takes-controls">
+        <button type="button" class="pill active" id="btnRev2" onclick="setTakeRev('rev2')">Accepted pair (Rev 2)</button>
+        <button type="button" class="pill" id="btnRev1" onclick="setTakeRev('rev1')">Critic-rejected pair (Rev 1)</button>
+      </div>
+      <div class="takes-controls">
+        <button type="button" class="pill" onclick="syncPlay(true)">Play both</button>
+        <button type="button" class="pill" onclick="syncPlay(false)">Pause</button>
+        <button type="button" class="pill" onclick="syncRestart()">Frame 0</button>
+        <a class="pill" href="./vtx01_build/viewer/index.html">Interactive diff &amp; remix →</a>
+      </div>
+    </div>
+
+    <div class="takes-grid">
+      <figure class="take-figure">
+        <video id="vidA" controls playsinline preload="metadata" poster="./vtx01_build/revisions/rev2_accepted/inspection_sheet_case_a_rev2_accepted.png">
+          <source id="srcA" src="./vtx01_build/revisions/rev2_accepted/case_a_rev2_accepted.mp4" type="video/mp4" />
+        </video>
+        <figcaption class="take-cap">
+          <span id="capA">Take A · Steady reach, accidental brush, door propped from inside</span>
+          <span class="mono" id="metaA">384f · 0.00 vol drift</span>
+        </figcaption>
+      </figure>
+
+      <figure class="take-figure">
+        <video id="vidB" controls playsinline preload="metadata" poster="./vtx01_build/revisions/rev2_accepted/inspection_sheet_case_b_rev2_accepted.png">
+          <source id="srcB" src="./vtx01_build/revisions/rev2_accepted/case_b_rev2_accepted.mp4" type="video/mp4" />
+        </video>
+        <figcaption class="take-cap">
+          <span id="capB">Take B · Single-line patch: deliberate strike, door wedged from hall</span>
+          <span class="mono" id="metaB">46 paths · 0.00px carry err</span>
+        </figcaption>
+      </figure>
     </div>
   </section>
 
@@ -1377,17 +1442,32 @@
           </div>
         </div>
         
-        <div class="wb-card" data-wb-card="pae04-array">
-          <div class="wb-thumb" onclick="loadStage('pae04-array')">
-            <img src="./assets/thumbs/sys-array.jpg" alt="The Array" loading="lazy" />
-            <span class="wb-rung">Multi-Channel</span>
+        <div class="wb-card" data-wb-card="pae04-guide">
+          <div class="wb-thumb" onclick="loadStage('pae04-guide')">
+            <img src="./paeleo/abominable-house/sheets/sheetC.jpg" alt="Field Guide &amp; Slide Deck" loading="lazy" />
+            <span class="wb-rung">Explainer + Deck</span>
           </div>
           <div class="wb-body">
-            <h3 class="wb-title">The Array</h3>
-            <p class="wb-sub">Simultaneous grid of parallel house permutations running in lockstep.</p>
+            <h3 class="wb-title">Field Guide &amp; Slide Deck</h3>
+            <p class="wb-sub">Interactive paper &amp; 10-slide presenter for PIE, Inverse Planning, PLoT, Barthes levers, BDI/Park, and Kurosawa lies.</p>
+            <div class="wb-actions">
+              <button type="button" class="read-btn" onclick="loadStage('pae04-guide')">Preview on stage</button>
+              <a class="mini-cta" href="./paeleo/abominable-house/live/guide.html">Open page ↗</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="wb-card" data-wb-card="pae04-array">
+          <div class="wb-thumb" onclick="loadStage('pae04-array')">
+            <img src="./assets/thumbs/sys-array.jpg" alt="The Array &amp; Address Map" loading="lazy" />
+            <span class="wb-rung">Multi-Channel + Lens 1</span>
+          </div>
+          <div class="wb-body">
+            <h3 class="wb-title">The Array &amp; Address Map</h3>
+            <p class="wb-sub">Simultaneous 12-pair wall + View 5 (ADDRESS): recursive 4×3 map of all 8.92T films with re-rooting &amp; 132 neighbours.</p>
             <div class="wb-actions">
               <button type="button" class="read-btn" onclick="loadStage('pae04-array')">Preview on stage</button>
-              <a class="mini-cta" href="./paeleo/abominable-house/live/array.html">Open page ↗</a>
+              <a class="mini-cta" href="./paeleo/abominable-house/live/array.html#address">Open page ↗</a>
             </div>
           </div>
         </div>
@@ -1485,64 +1565,21 @@
     </div>
   </section>
 
-  <!-- SECTION 4: SYNCHRONIZED COUNTERFACTUAL TAKES -->
-  <section class="wrap" id="compare">
-    <div class="sec-kicker">VTX-0.1 &amp; PAE-04 · Counterfactual Screenings</div>
-    <div class="sec-head">
-      <h2>Compare takes</h2>
-      <p class="sec-note">Two 16-second flour-sack takes from one world state. Identical through frame 77; a single root goal patch changes approach, lamp contact, and the persistent door trace.</p>
-    </div>
-
-    <div class="takes-bar">
-      <div class="takes-controls">
-        <button type="button" class="pill active" id="btnRev2" onclick="setTakeRev('rev2')">Accepted pair (Rev 2)</button>
-        <button type="button" class="pill" id="btnRev1" onclick="setTakeRev('rev1')">Critic-rejected pair (Rev 1)</button>
-      </div>
-      <div class="takes-controls">
-        <button type="button" class="pill" onclick="syncPlay(true)">Play both</button>
-        <button type="button" class="pill" onclick="syncPlay(false)">Pause</button>
-        <button type="button" class="pill" onclick="syncRestart()">Frame 0</button>
-        <a class="pill" href="./vtx01_build/viewer/index.html">Interactive diff &amp; blinded gate →</a>
-      </div>
-    </div>
-
-    <div class="takes-grid">
-      <figure class="take-figure">
-        <video id="vidA" controls playsinline preload="metadata" poster="./vtx01_build/revisions/rev2_accepted/inspection_sheet_case_a_rev2_accepted.png">
-          <source id="srcA" src="./vtx01_build/revisions/rev2_accepted/case_a_rev2_accepted.mp4" type="video/mp4" />
-        </video>
-        <figcaption class="take-cap">
-          <span id="capA">Take A · Steady reach, accidental brush, door propped from inside</span>
-          <span class="mono" id="metaA">384f · 0.00 vol drift</span>
-        </figcaption>
-      </figure>
-
-      <figure class="take-figure">
-        <video id="vidB" controls playsinline preload="metadata" poster="./vtx01_build/revisions/rev2_accepted/inspection_sheet_case_b_rev2_accepted.png">
-          <source id="srcB" src="./vtx01_build/revisions/rev2_accepted/case_b_rev2_accepted.mp4" type="video/mp4" />
-        </video>
-        <figcaption class="take-cap">
-          <span id="capB">Take B · Single-line patch: deliberate strike, door wedged from hall</span>
-          <span class="mono" id="metaB">46 paths · 0.00px carry err</span>
-        </figcaption>
-      </figure>
-    </div>
-  </section>
-
   <!-- SECTION 5: STYLED WEB MARKDOWN LIBRARY -->
   <section class="wrap" id="reading">
-    <div class="sec-kicker">Editorial Reading Room · 33 Web-Typeset Markdown Editions</div>
+    <div class="sec-kicker">Editorial Reading Room · 34 Web-Typeset Markdown Editions</div>
     <div class="sec-head">
-      <h2>Read the papers, Zettelkasten &amp; specs on the web</h2>
-      <p class="sec-note">Every <code>.md</code> document in this repository now compiles into a book-grade HTML reading edition with four reading plates (<em>Paper, Notebook, Ochre, Night</em>), sticky table of contents, live Zettel card search, cross-linked <code>[[wiki-links]]</code>, formatted tables, and math.</p>
+      <h2>Read the canonical paper, Zettelkasten &amp; sources</h2>
+      <p class="sec-note"><code>Abominable_House_Submission_Draft.md</code> is the canonical text (with a plain edition at <a href="./read.html"><code>read.html</code></a> and a one-click <strong>Plain</strong> toggle on every page in <code>docs/</code>). All 34 Markdown files compile with four plates (<em>Paper, Notebook, Ochre, Night</em>), sticky contents, cross-linked <code>[[wiki-links]]</code>, and raw <code>.md</code> links.</p>
     </div>
 
     <div style="margin-bottom:18px;display:flex;flex-wrap:wrap;gap:10px;">
-      <a class="cta-btn" style="font-size:16px;padding:9px 20px;" href="./docs/index.html">Open Full Reading Room (All 34 Editions) →</a>
-      <a class="pill" href="./find.html">Find (Search Claims, Cards &amp; Citations) →</a>
+      <a class="cta-btn" style="font-size:16px;padding:9px 20px;" href="./read.html">Read Canonical Paper (Plain Edition) →</a>
+      <a class="pill" href="./docs/abominable-house-submission-draft.html">Canonical Paper (Annotated Web Edition) →</a>
+      <a class="pill" href="./docs/index.html">Full Reading Room (34 Editions) →</a>
+      <a class="pill" href="./find.html">Find (Search Claims, Cards &amp; Backlinks) →</a>
       <a class="pill" href="./docs/claims.html">Claims Checked (14 Claims) →</a>
-      <a class="pill" href="./docs/zettle-past.html">Abominable House Zettels (zettle-past) →</a>
-      <a class="pill" href="./docs/zettle.html">Master Zettelkasten (28 Cards) →</a>
+      <a class="pill" href="./docs/zettle.html">Master Zettelkasten (26 Cards) →</a>
     </div>
 
     <div class="doc-shelf-grid">
@@ -1557,7 +1594,7 @@
             <p class="doc-shelf-desc">Fourteen core historical, mathematical, and empirical claims audited across the repository with status (supported, measured, open, conflicting, unsupported) and settlement criteria.</p>
           </div>
           <div class="doc-shelf-foot">
-            <span>932 words · ~4 min · 1 sections</span>
+            <span>1,023 words · ~4 min · 1 sections</span>
             <span class="doc-shelf-links">
               <a class="mini-cta" href="./docs/claims.html">Read web edition →</a>
               <a class="mini-raw" href="./CLAIMS.md">.md</a>
@@ -1589,11 +1626,11 @@
               <span class="doc-shelf-cat">Papers &amp; Specifications</span>
               <span class="doc-shelf-badge">Canonical Paper</span>
             </div>
-            <h3 class="doc-shelf-title"><a href="./docs/abominable-house-submission-draft.html">Minimum Viable Video-Text: Conference &amp; Journal Submission Draft</a></h3>
-            <p class="doc-shelf-desc">Full scholarly paper connecting Calvino&#x27;s 1973 IBM/Playboy story, Disney&#x27;s flour-sack test, SCION agent swarms, and Skiller&#x27;s actuarial confound.</p>
+            <h3 class="doc-shelf-title"><a href="./docs/abominable-house-submission-draft.html">Canonical Paper — Minimum Viable Video-Text: Flour Sacks, Swarms &amp; Actuarial Anticombinatorics</a></h3>
+            <p class="doc-shelf-desc">The canonical scholarly text for burning-house (plain edition at read.html; claims ledger at CLAIMS.md).</p>
           </div>
           <div class="doc-shelf-foot">
-            <span>4,486 words · ~20 min · 8 sections</span>
+            <span>5,137 words · ~22 min · 8 sections</span>
             <span class="doc-shelf-links">
               <a class="mini-cta" href="./docs/abominable-house-submission-draft.html">Read web edition →</a>
               <a class="mini-raw" href="./Abominable_House_Submission_Draft.md">.md</a>
@@ -1607,11 +1644,11 @@
               <span class="doc-shelf-cat">Papers &amp; Specifications</span>
               <span class="doc-shelf-badge">VTX-0.1 Spec</span>
             </div>
-            <h3 class="doc-shelf-title"><a href="./docs/vtx01-mvvt-memo-and-spec.html">VTX-0.1 Working Memo &amp; Formal Specification</a></h3>
-            <p class="doc-shelf-desc">Formal specification of Chance, Memory, and Consequence in the Minimum Viable Video-Text format and the Take A vs. Take B lamp-room experiment.</p>
+            <h3 class="doc-shelf-title"><a href="./docs/vtx01-mvvt-memo-and-spec.html">Component Spec (Source) — VTX-0.1 Working Memo &amp; Formal Specification</a></h3>
+            <p class="doc-shelf-desc">Source specification for the two-sack VTX-0.1 benchmark (Chance, Memory, Consequence, and Take A vs. Take B).</p>
           </div>
           <div class="doc-shelf-foot">
-            <span>5,092 words · ~22 min · 18 sections</span>
+            <span>5,159 words · ~22 min · 18 sections</span>
             <span class="doc-shelf-links">
               <a class="mini-cta" href="./docs/vtx01-mvvt-memo-and-spec.html">Read web edition →</a>
               <a class="mini-raw" href="./VTX01_MVVT_Research_Memo_and_Spec.md">.md</a>
@@ -1625,11 +1662,11 @@
               <span class="doc-shelf-cat">Papers &amp; Specifications</span>
               <span class="doc-shelf-badge">Framing Notes</span>
             </div>
-            <h3 class="doc-shelf-title"><a href="./docs/abominable-house-framing-notes.html">Research &amp; Framing Notes: PAE-04 (The Abominable House)</a></h3>
-            <p class="doc-shelf-desc">Core thesis, flour-sack refusal bypass, Anthropic&#x27;s Scion analogy, Double Indemnity actuarial tables, and Lem&#x27;s semascope.</p>
+            <h3 class="doc-shelf-title"><a href="./docs/abominable-house-framing-notes.html">Working Source Notes — PAE-04 (The Burning of the Abominable House)</a></h3>
+            <p class="doc-shelf-desc">Working framing source feeding the canonical submission draft (flour-sack abstraction, Scion analogy, policies, and Lem&#x27;s semascope).</p>
           </div>
           <div class="doc-shelf-foot">
-            <span>3,744 words · ~16 min · 19 sections</span>
+            <span>3,890 words · ~17 min · 19 sections</span>
             <span class="doc-shelf-links">
               <a class="mini-cta" href="./docs/abominable-house-framing-notes.html">Read web edition →</a>
               <a class="mini-raw" href="./Abominable_House_Framing_Notes.md">.md</a>
@@ -1679,11 +1716,11 @@
               <span class="doc-shelf-cat">Zettelkasten Slip-Boxes</span>
               <span class="doc-shelf-badge">28 Zettels</span>
             </div>
-            <h3 class="doc-shelf-title"><a href="./docs/zettle.html">Master Zettelkasten: Calvino, Six Memos, Blow &amp; Video-Text (28 Cards)</a></h3>
-            <p class="doc-shelf-desc">Deduplicated 28-card research slip-box (26 unique IDs) spanning Calvino&#x27;s Six Memos, Jonathan Blow&#x27;s Braid &amp; The Witness, agent architectures, and formal mechanisms.</p>
+            <h3 class="doc-shelf-title"><a href="./docs/zettle.html">Master Zettelkasten: Calvino, Six Memos, Blow &amp; Video-Text (26 Cards)</a></h3>
+            <p class="doc-shelf-desc">Deduplicated 26-card research slip-box (26 unique IDs, 1:1) spanning Calvino&#x27;s Six Memos, Jonathan Blow&#x27;s Braid &amp; The Witness, agent architectures, and formal mechanisms.</p>
           </div>
           <div class="doc-shelf-foot">
-            <span>31,317 words · ~136 min · 27 Zettel cards</span>
+            <span>30,131 words · ~131 min · 26 Zettel cards</span>
             <span class="doc-shelf-links">
               <a class="mini-cta" href="./docs/zettle.html">Read web edition →</a>
               <a class="mini-raw" href="./zettle.md">.md</a>
@@ -1862,11 +1899,18 @@
     "href": "./paeleo/abominable-house/live/abom.html"
   },
   {
-    "group": "PAE-04 \u00b7 Multi-Screen Wall",
-    "title": "The Array \u00b7 Simultaneous Permutations",
-    "meta": "paeleo/abominable-house/live/array.html",
+    "group": "PAE-04 \u00b7 Field Guide & Slides",
+    "title": "Inside the Film & Deed Banks (10 Interactive Slides)",
+    "meta": "PIE \u00b7 Tenenbaum \u00b7 PLoT \u00b7 Barthes \u00b7 BDI/Park \u00b7 Kurosawa",
+    "img": "./paeleo/abominable-house/sheets/sheetA.jpg",
+    "href": "./paeleo/abominable-house/live/guide.html"
+  },
+  {
+    "group": "PAE-04 \u00b7 Multi-Screen & Address Map",
+    "title": "The Array + Zero-Sampling 12\u00b9\u00b2 Address Map",
+    "meta": "paeleo/abominable-house/live/array.html#address",
     "img": "./assets/thumbs/sys-array.jpg",
-    "href": "./paeleo/abominable-house/live/array.html"
+    "href": "./paeleo/abominable-house/live/array.html#address"
   },
   {
     "group": "DH2027 \u00b7 Short Paper PDF",
@@ -2004,11 +2048,19 @@
     "img": "./assets/thumbs/sys-deed-bank.jpg"
   },
   {
+    "id": "pae04-guide",
+    "rung": "Explainer + Deck",
+    "title": "Field Guide & Slide Deck",
+    "sub": "Interactive paper & 10-slide presenter for PIE, Inverse Planning, PLoT, Barthes levers, BDI/Park, and Kurosawa lies.",
+    "url": "./paeleo/abominable-house/live/guide.html",
+    "img": "./paeleo/abominable-house/sheets/sheetC.jpg"
+  },
+  {
     "id": "pae04-array",
-    "rung": "Multi-Channel",
-    "title": "The Array",
-    "sub": "Simultaneous grid of parallel house permutations running in lockstep.",
-    "url": "./paeleo/abominable-house/live/array.html",
+    "rung": "Multi-Channel + Lens 1",
+    "title": "The Array & Address Map",
+    "sub": "Simultaneous 12-pair wall + View 5 (ADDRESS): recursive 4\u00d73 map of all 8.92T films with re-rooting & 132 neighbours.",
+    "url": "./paeleo/abominable-house/live/array.html#address",
     "img": "./assets/thumbs/sys-array.jpg"
   },
   {
@@ -2109,11 +2161,11 @@
     "path": "Abominable_House_Framing_Notes.md",
     "url": "./Abominable_House_Framing_Notes.md",
     "styledUrl": "./docs/abominable-house-framing-notes.html",
-    "size": "28.0 KB",
-    "bytes": 28691,
+    "size": "29.2 KB",
+    "bytes": 29927,
     "ext": "MD",
     "cat": "Papers & Notes",
-    "desc": "Core thesis, flour-sack refusal bypass, Anthropic's Scion analogy, Double Indemnity actuarial tables, and Lem's semascope.",
+    "desc": "Working framing source feeding the canonical submission draft (flour-sack abstraction, Scion analogy, policies, and Lem's semascope).",
     "inlineCode": false
   },
   {
@@ -2131,11 +2183,11 @@
     "path": "Abominable_House_Submission_Draft.md",
     "url": "./Abominable_House_Submission_Draft.md",
     "styledUrl": "./docs/abominable-house-submission-draft.html",
-    "size": "33.2 KB",
-    "bytes": 34036,
+    "size": "38.3 KB",
+    "bytes": 39230,
     "ext": "MD",
     "cat": "Papers & Notes",
-    "desc": "Full scholarly paper connecting Calvino's 1973 IBM/Playboy story, Disney's flour-sack test, SCION agent swarms, and Skiller's actuarial confound.",
+    "desc": "The canonical scholarly text for burning-house (plain edition at read.html; claims ledger at CLAIMS.md).",
     "inlineCode": false
   },
   {
@@ -2153,8 +2205,8 @@
     "path": "CLAIMS.md",
     "url": "./CLAIMS.md",
     "styledUrl": "./docs/claims.html",
-    "size": "5.3 KB",
-    "bytes": 5452,
+    "size": "7.0 KB",
+    "bytes": 7165,
     "ext": "MD",
     "cat": "Papers & Notes",
     "desc": "Fourteen core historical, mathematical, and empirical claims audited across the repository with status (supported, measured, open, conflicting, unsupported) and settlement criteria.",
@@ -2208,8 +2260,8 @@
     "path": "README.md",
     "url": "./README.md",
     "styledUrl": "./docs/readme.html",
-    "size": "9.3 KB",
-    "bytes": 9494,
+    "size": "10.6 KB",
+    "bytes": 10902,
     "ext": "MD",
     "cat": "Papers & Notes",
     "desc": "Top-level guide to burning-house, uniting PAE-03, PAE-04, Lab 7, VTX-0.1, Zettelkasten decks, and the complete archive.",
@@ -2230,11 +2282,11 @@
     "path": "VTX01_MVVT_Research_Memo_and_Spec.md",
     "url": "./VTX01_MVVT_Research_Memo_and_Spec.md",
     "styledUrl": "./docs/vtx01-mvvt-memo-and-spec.html",
-    "size": "39.0 KB",
-    "bytes": 39962,
+    "size": "39.7 KB",
+    "bytes": 40629,
     "ext": "MD",
     "cat": "Papers & Notes",
-    "desc": "Formal specification of Chance, Memory, and Consequence in the Minimum Viable Video-Text format and the Take A vs. Take B lamp-room experiment.",
+    "desc": "Source specification for the two-sack VTX-0.1 benchmark (Chance, Memory, Consequence, and Take A vs. Take B).",
     "inlineCode": false
   },
   {
@@ -2296,8 +2348,8 @@
     "path": "index.html",
     "url": "./index.html",
     "styledUrl": "",
-    "size": "243.8 KB",
-    "bytes": 249698,
+    "size": "248.2 KB",
+    "bytes": 254192,
     "ext": "HTML",
     "cat": "Interactive",
     "desc": "Primary burning-house system hub & universal Markdown web reader.",
@@ -2329,8 +2381,8 @@
     "path": "read.html",
     "url": "./read.html",
     "styledUrl": "",
-    "size": "39.5 KB",
-    "bytes": 40432,
+    "size": "43.9 KB",
+    "bytes": 44919,
     "ext": "HTML",
     "cat": "Cases, Traces & Code",
     "desc": "Repository file (read.html).",
@@ -2340,8 +2392,8 @@
     "path": "reader.html",
     "url": "./reader.html",
     "styledUrl": "",
-    "size": "3.9 KB",
-    "bytes": 3979,
+    "size": "4.0 KB",
+    "bytes": 4145,
     "ext": "HTML",
     "cat": "Interactive",
     "desc": "Primary burning-house system hub & universal Markdown web reader.",
@@ -2384,11 +2436,11 @@
     "path": "zettle.md",
     "url": "./zettle.md",
     "styledUrl": "./docs/zettle.html",
-    "size": "243.2 KB",
-    "bytes": 249043,
+    "size": "233.4 KB",
+    "bytes": 239006,
     "ext": "MD",
     "cat": "Zettels & Sources",
-    "desc": "Deduplicated 28-card research slip-box (26 unique IDs) spanning Calvino's Six Memos, Jonathan Blow's Braid & The Witness, agent architectures, and formal mechanisms.",
+    "desc": "Deduplicated 26-card research slip-box (26 unique IDs, 1:1) spanning Calvino's Six Memos, Jonathan Blow's Braid & The Witness, agent architectures, and formal mechanisms.",
     "inlineCode": false
   },
   {
@@ -2670,8 +2722,8 @@
     "path": "data/index.js",
     "url": "./data/index.js",
     "styledUrl": "",
-    "size": "700.2 KB",
-    "bytes": 717045,
+    "size": "698.3 KB",
+    "bytes": 715082,
     "ext": "JS",
     "cat": "Cases, Traces & Code",
     "desc": "Repository file (data/index.js).",
@@ -2681,41 +2733,41 @@
     "path": "docs/abominable-house-framing-notes.html",
     "url": "./docs/abominable-house-framing-notes.html",
     "styledUrl": "",
-    "size": "47.2 KB",
-    "bytes": 48327,
+    "size": "49.1 KB",
+    "bytes": 50299,
     "ext": "HTML",
     "cat": "Interactive",
-    "desc": "Styled web reading edition of Abominable_House_Framing_Notes.md (3,744 words).",
+    "desc": "Styled web reading edition of Abominable_House_Framing_Notes.md (3,890 words).",
     "inlineCode": false
   },
   {
     "path": "docs/abominable-house-submission-draft.html",
     "url": "./docs/abominable-house-submission-draft.html",
     "styledUrl": "",
-    "size": "50.2 KB",
-    "bytes": 51390,
+    "size": "57.0 KB",
+    "bytes": 58349,
     "ext": "HTML",
     "cat": "Interactive",
-    "desc": "Styled web reading edition of Abominable_House_Submission_Draft.md (4,486 words).",
+    "desc": "Styled web reading edition of Abominable_House_Submission_Draft.md (5,137 words).",
     "inlineCode": false
   },
   {
     "path": "docs/claims.html",
     "url": "./docs/claims.html",
     "styledUrl": "",
-    "size": "14.1 KB",
-    "bytes": 14406,
+    "size": "16.3 KB",
+    "bytes": 16730,
     "ext": "HTML",
     "cat": "Interactive",
-    "desc": "Styled web reading edition of CLAIMS.md (932 words).",
+    "desc": "Styled web reading edition of CLAIMS.md (1,023 words).",
     "inlineCode": false
   },
   {
     "path": "docs/dh2025-concrete-papers.html",
     "url": "./docs/dh2025-concrete-papers.html",
     "styledUrl": "",
-    "size": "315.6 KB",
-    "bytes": 323139,
+    "size": "315.7 KB",
+    "bytes": 323311,
     "ext": "HTML",
     "cat": "Interactive",
     "desc": "Styled web reading edition of DH2025_Concrete_Papers_and_Works_Cited.md (39,739 words).",
@@ -2726,7 +2778,7 @@
     "url": "./docs/index.html",
     "styledUrl": "",
     "size": "25.9 KB",
-    "bytes": 26567,
+    "bytes": 26560,
     "ext": "HTML",
     "cat": "Interactive",
     "desc": "The Reading Room \u2014 web-typeset index of all 33 Markdown documents, Zettels, XML prompts, and critic logs.",
@@ -2736,8 +2788,8 @@
     "path": "docs/logline-journal-entries.html",
     "url": "./docs/logline-journal-entries.html",
     "styledUrl": "",
-    "size": "71.9 KB",
-    "bytes": 73672,
+    "size": "72.1 KB",
+    "bytes": 73844,
     "ext": "HTML",
     "cat": "Interactive",
     "desc": "Styled web reading edition of Logline_Journal_Entries_and_Existing_Assets.md (5,781 words).",
@@ -2747,8 +2799,8 @@
     "path": "docs/manifest.json",
     "url": "./docs/manifest.json",
     "styledUrl": "",
-    "size": "14.1 KB",
-    "bytes": 14485,
+    "size": "14.2 KB",
+    "bytes": 14510,
     "ext": "JSON",
     "cat": "Cases, Traces & Code",
     "desc": "Web reader asset (docs/manifest.json).",
@@ -2758,8 +2810,8 @@
     "path": "docs/p1-scion-xml-prompt.html",
     "url": "./docs/p1-scion-xml-prompt.html",
     "styledUrl": "",
-    "size": "58.0 KB",
-    "bytes": 59411,
+    "size": "58.2 KB",
+    "bytes": 59583,
     "ext": "HTML",
     "cat": "Interactive",
     "desc": "Styled web reading edition of p1.md (2,926 words).",
@@ -2769,8 +2821,8 @@
     "path": "docs/pae03-brief.html",
     "url": "./docs/pae03-brief.html",
     "styledUrl": "",
-    "size": "19.0 KB",
-    "bytes": 19425,
+    "size": "19.1 KB",
+    "bytes": 19597,
     "ext": "HTML",
     "cat": "Interactive",
     "desc": "Styled web reading edition of paeleo/flour-tower/BRIEF.md (1,824 words).",
@@ -2780,8 +2832,8 @@
     "path": "docs/pae03-critic-02-r1.html",
     "url": "./docs/pae03-critic-02-r1.html",
     "styledUrl": "",
-    "size": "14.0 KB",
-    "bytes": 14336,
+    "size": "14.2 KB",
+    "bytes": 14508,
     "ext": "HTML",
     "cat": "Interactive",
     "desc": "Styled web reading edition of paeleo/flour-tower/critic/02/round1.md (1,421 words).",
@@ -2791,8 +2843,8 @@
     "path": "docs/pae03-critic-02-r2.html",
     "url": "./docs/pae03-critic-02-r2.html",
     "styledUrl": "",
-    "size": "15.6 KB",
-    "bytes": 15977,
+    "size": "15.8 KB",
+    "bytes": 16149,
     "ext": "HTML",
     "cat": "Interactive",
     "desc": "Styled web reading edition of paeleo/flour-tower/critic/02/round2.md (1,746 words).",
@@ -2802,8 +2854,8 @@
     "path": "docs/pae03-critic-02-r3.html",
     "url": "./docs/pae03-critic-02-r3.html",
     "styledUrl": "",
-    "size": "14.9 KB",
-    "bytes": 15240,
+    "size": "15.1 KB",
+    "bytes": 15412,
     "ext": "HTML",
     "cat": "Interactive",
     "desc": "Styled web reading edition of paeleo/flour-tower/critic/02/round3.md (1,602 words).",
@@ -2813,8 +2865,8 @@
     "path": "docs/pae03-critic-06-r1.html",
     "url": "./docs/pae03-critic-06-r1.html",
     "styledUrl": "",
-    "size": "14.1 KB",
-    "bytes": 14398,
+    "size": "14.2 KB",
+    "bytes": 14570,
     "ext": "HTML",
     "cat": "Interactive",
     "desc": "Styled web reading edition of paeleo/flour-tower/critic/06/round1.md (1,396 words).",
@@ -2824,8 +2876,8 @@
     "path": "docs/pae03-critic-06-r2.html",
     "url": "./docs/pae03-critic-06-r2.html",
     "styledUrl": "",
-    "size": "14.9 KB",
-    "bytes": 15302,
+    "size": "15.1 KB",
+    "bytes": 15474,
     "ext": "HTML",
     "cat": "Interactive",
     "desc": "Styled web reading edition of paeleo/flour-tower/critic/06/round2.md (1,583 words).",
@@ -2835,8 +2887,8 @@
     "path": "docs/pae03-critic-06-r3.html",
     "url": "./docs/pae03-critic-06-r3.html",
     "styledUrl": "",
-    "size": "15.5 KB",
-    "bytes": 15883,
+    "size": "15.7 KB",
+    "bytes": 16055,
     "ext": "HTML",
     "cat": "Interactive",
     "desc": "Styled web reading edition of paeleo/flour-tower/critic/06/round3.md (1,709 words).",
@@ -2846,8 +2898,8 @@
     "path": "docs/pae03-critic-07-r1.html",
     "url": "./docs/pae03-critic-07-r1.html",
     "styledUrl": "",
-    "size": "15.0 KB",
-    "bytes": 15321,
+    "size": "15.1 KB",
+    "bytes": 15493,
     "ext": "HTML",
     "cat": "Interactive",
     "desc": "Styled web reading edition of paeleo/flour-tower/critic/07/round1.md (1,549 words).",
@@ -2857,8 +2909,8 @@
     "path": "docs/pae03-critic-07-r2.html",
     "url": "./docs/pae03-critic-07-r2.html",
     "styledUrl": "",
-    "size": "15.7 KB",
-    "bytes": 16026,
+    "size": "15.8 KB",
+    "bytes": 16198,
     "ext": "HTML",
     "cat": "Interactive",
     "desc": "Styled web reading edition of paeleo/flour-tower/critic/07/round2.md (1,686 words).",
@@ -2868,8 +2920,8 @@
     "path": "docs/pae03-critic-08-r1.html",
     "url": "./docs/pae03-critic-08-r1.html",
     "styledUrl": "",
-    "size": "15.1 KB",
-    "bytes": 15479,
+    "size": "15.3 KB",
+    "bytes": 15651,
     "ext": "HTML",
     "cat": "Interactive",
     "desc": "Styled web reading edition of paeleo/flour-tower/critic/08/round1.md (1,586 words).",
@@ -2879,8 +2931,8 @@
     "path": "docs/pae03-critic-08-r2.html",
     "url": "./docs/pae03-critic-08-r2.html",
     "styledUrl": "",
-    "size": "15.2 KB",
-    "bytes": 15542,
+    "size": "15.3 KB",
+    "bytes": 15714,
     "ext": "HTML",
     "cat": "Interactive",
     "desc": "Styled web reading edition of paeleo/flour-tower/critic/08/round2.md (1,592 words).",
@@ -2890,8 +2942,8 @@
     "path": "docs/pae03-critic-08-r3.html",
     "url": "./docs/pae03-critic-08-r3.html",
     "styledUrl": "",
-    "size": "15.1 KB",
-    "bytes": 15446,
+    "size": "15.3 KB",
+    "bytes": 15618,
     "ext": "HTML",
     "cat": "Interactive",
     "desc": "Styled web reading edition of paeleo/flour-tower/critic/08/round3.md (1,594 words).",
@@ -2901,8 +2953,8 @@
     "path": "docs/pae03-critic-14-r1.html",
     "url": "./docs/pae03-critic-14-r1.html",
     "styledUrl": "",
-    "size": "15.1 KB",
-    "bytes": 15453,
+    "size": "15.3 KB",
+    "bytes": 15625,
     "ext": "HTML",
     "cat": "Interactive",
     "desc": "Styled web reading edition of paeleo/flour-tower/critic/14/round1.md (1,556 words).",
@@ -2912,8 +2964,8 @@
     "path": "docs/pae03-critic-14-r2.html",
     "url": "./docs/pae03-critic-14-r2.html",
     "styledUrl": "",
-    "size": "15.6 KB",
-    "bytes": 15937,
+    "size": "15.7 KB",
+    "bytes": 16109,
     "ext": "HTML",
     "cat": "Interactive",
     "desc": "Styled web reading edition of paeleo/flour-tower/critic/14/round2.md (1,675 words).",
@@ -2923,8 +2975,8 @@
     "path": "docs/pae03-critic-14-r3.html",
     "url": "./docs/pae03-critic-14-r3.html",
     "styledUrl": "",
-    "size": "15.0 KB",
-    "bytes": 15330,
+    "size": "15.1 KB",
+    "bytes": 15502,
     "ext": "HTML",
     "cat": "Interactive",
     "desc": "Styled web reading edition of paeleo/flour-tower/critic/14/round3.md (1,562 words).",
@@ -2934,8 +2986,8 @@
     "path": "docs/pae03-critic-41-r1.html",
     "url": "./docs/pae03-critic-41-r1.html",
     "styledUrl": "",
-    "size": "14.2 KB",
-    "bytes": 14510,
+    "size": "14.3 KB",
+    "bytes": 14682,
     "ext": "HTML",
     "cat": "Interactive",
     "desc": "Styled web reading edition of paeleo/flour-tower/critic/41/round1.md (1,411 words).",
@@ -2945,8 +2997,8 @@
     "path": "docs/pae03-critic-41-r2.html",
     "url": "./docs/pae03-critic-41-r2.html",
     "styledUrl": "",
-    "size": "14.0 KB",
-    "bytes": 14293,
+    "size": "14.1 KB",
+    "bytes": 14465,
     "ext": "HTML",
     "cat": "Interactive",
     "desc": "Styled web reading edition of paeleo/flour-tower/critic/41/round2.md (1,395 words).",
@@ -2956,8 +3008,8 @@
     "path": "docs/pae03-critic-41-r3.html",
     "url": "./docs/pae03-critic-41-r3.html",
     "styledUrl": "",
-    "size": "13.9 KB",
-    "bytes": 14254,
+    "size": "14.1 KB",
+    "bytes": 14426,
     "ext": "HTML",
     "cat": "Interactive",
     "desc": "Styled web reading edition of paeleo/flour-tower/critic/41/round3.md (1,368 words).",
@@ -2967,8 +3019,8 @@
     "path": "docs/pae03-critic-all.html",
     "url": "./docs/pae03-critic-all.html",
     "styledUrl": "",
-    "size": "162.8 KB",
-    "bytes": 166758,
+    "size": "163.0 KB",
+    "bytes": 166940,
     "ext": "HTML",
     "cat": "Papers & Notes",
     "desc": "Complete anthology of all 17 PAE-03 independent critic rounds across Swarms 02\u201341.",
@@ -2978,8 +3030,8 @@
     "path": "docs/pae03-process.html",
     "url": "./docs/pae03-process.html",
     "styledUrl": "",
-    "size": "9.1 KB",
-    "bytes": 9349,
+    "size": "9.3 KB",
+    "bytes": 9521,
     "ext": "HTML",
     "cat": "Interactive",
     "desc": "Styled web reading edition of paeleo/flour-tower/process/README.md (458 words).",
@@ -2989,8 +3041,8 @@
     "path": "docs/pae04-scion-run.html",
     "url": "./docs/pae04-scion-run.html",
     "styledUrl": "",
-    "size": "68.0 KB",
-    "bytes": 69667,
+    "size": "68.2 KB",
+    "bytes": 69839,
     "ext": "HTML",
     "cat": "Interactive",
     "desc": "Styled web reading edition of pae04_abominable_house_scion_run.md (4,840 words).",
@@ -3000,8 +3052,8 @@
     "path": "docs/reader.css",
     "url": "./docs/reader.css",
     "styledUrl": "",
-    "size": "28.1 KB",
-    "bytes": 28778,
+    "size": "28.7 KB",
+    "bytes": 29417,
     "ext": "CSS",
     "cat": "Cases, Traces & Code",
     "desc": "Web reader asset (docs/reader.css).",
@@ -3011,8 +3063,8 @@
     "path": "docs/reader.js",
     "url": "./docs/reader.js",
     "styledUrl": "",
-    "size": "7.8 KB",
-    "bytes": 7973,
+    "size": "8.5 KB",
+    "bytes": 8739,
     "ext": "JS",
     "cat": "Cases, Traces & Code",
     "desc": "Web reader asset (docs/reader.js).",
@@ -3022,19 +3074,19 @@
     "path": "docs/readme.html",
     "url": "./docs/readme.html",
     "styledUrl": "",
-    "size": "21.0 KB",
-    "bytes": 21528,
+    "size": "22.9 KB",
+    "bytes": 23485,
     "ext": "HTML",
     "cat": "Interactive",
-    "desc": "Styled web reading edition of README.md (787 words).",
+    "desc": "Styled web reading edition of README.md (885 words).",
     "inlineCode": false
   },
   {
     "path": "docs/scion-mvvt-instruction.html",
     "url": "./docs/scion-mvvt-instruction.html",
     "styledUrl": "",
-    "size": "38.2 KB",
-    "bytes": 39085,
+    "size": "38.3 KB",
+    "bytes": 39257,
     "ext": "HTML",
     "cat": "Interactive",
     "desc": "Styled web reading edition of scion_mvvt_abominable_house_instruction.md (3,250 words).",
@@ -3044,8 +3096,8 @@
     "path": "docs/vtx01-build-readme.html",
     "url": "./docs/vtx01-build-readme.html",
     "styledUrl": "",
-    "size": "14.4 KB",
-    "bytes": 14792,
+    "size": "14.6 KB",
+    "bytes": 14964,
     "ext": "HTML",
     "cat": "Interactive",
     "desc": "Styled web reading edition of vtx01_build/README.md (638 words).",
@@ -3055,19 +3107,19 @@
     "path": "docs/vtx01-mvvt-memo-and-spec.html",
     "url": "./docs/vtx01-mvvt-memo-and-spec.html",
     "styledUrl": "",
-    "size": "65.3 KB",
-    "bytes": 66853,
+    "size": "66.4 KB",
+    "bytes": 67970,
     "ext": "HTML",
     "cat": "Interactive",
-    "desc": "Styled web reading edition of VTX01_MVVT_Research_Memo_and_Spec.md (5,092 words).",
+    "desc": "Styled web reading edition of VTX01_MVVT_Research_Memo_and_Spec.md (5,159 words).",
     "inlineCode": false
   },
   {
     "path": "docs/words-to-world-research-notes.html",
     "url": "./docs/words-to-world-research-notes.html",
     "styledUrl": "",
-    "size": "42.2 KB",
-    "bytes": 43170,
+    "size": "42.4 KB",
+    "bytes": 43370,
     "ext": "HTML",
     "cat": "Interactive",
     "desc": "Styled web reading edition of abominable_house_mvvt_research_notes.md (2,712 words).",
@@ -3077,8 +3129,8 @@
     "path": "docs/xzet.html",
     "url": "./docs/xzet.html",
     "styledUrl": "",
-    "size": "83.7 KB",
-    "bytes": 85662,
+    "size": "83.8 KB",
+    "bytes": 85834,
     "ext": "HTML",
     "cat": "Interactive",
     "desc": "Styled web reading edition of xzet.md (6,079 words).",
@@ -3088,8 +3140,8 @@
     "path": "docs/zettle-past.html",
     "url": "./docs/zettle-past.html",
     "styledUrl": "",
-    "size": "63.8 KB",
-    "bytes": 65313,
+    "size": "64.0 KB",
+    "bytes": 65485,
     "ext": "HTML",
     "cat": "Interactive",
     "desc": "Styled web reading edition of zettle-past.md (4,549 words).",
@@ -3099,11 +3151,11 @@
     "path": "docs/zettle.html",
     "url": "./docs/zettle.html",
     "styledUrl": "",
-    "size": "383.4 KB",
-    "bytes": 392583,
+    "size": "379.9 KB",
+    "bytes": 389047,
     "ext": "HTML",
     "cat": "Interactive",
-    "desc": "Styled web reading edition of zettle.md (31,317 words).",
+    "desc": "Styled web reading edition of zettle.md (30,131 words).",
     "inlineCode": false
   },
   {
@@ -3682,8 +3734,8 @@
     "path": "paeleo/abominable-house/index.html",
     "url": "./paeleo/abominable-house/index.html",
     "styledUrl": "",
-    "size": "18.7 KB",
-    "bytes": 19140,
+    "size": "19.3 KB",
+    "bytes": 19793,
     "ext": "HTML",
     "cat": "Interactive",
     "desc": "PAE-04 Main Case File \u2014 The Burning of the Abominable House (4 flour-sack tenants, 12 deeds, 12^12 stories, 6,030-film Six Memos Atlas).",
@@ -3705,7 +3757,7 @@
     "url": "./paeleo/abominable-house/paper.html",
     "styledUrl": "",
     "size": "39.2 KB",
-    "bytes": 40111,
+    "bytes": 40146,
     "ext": "HTML",
     "cat": "Interactive",
     "desc": "The Flour Sack and the Sieve \u2014 scholarly draft paper in PAE-04's IM Fell + Inter notebook register.",
@@ -3726,8 +3778,8 @@
     "path": "paeleo/abominable-house/whole-house.html",
     "url": "./paeleo/abominable-house/whole-house.html",
     "styledUrl": "",
-    "size": "22.4 KB",
-    "bytes": 22901,
+    "size": "22.6 KB",
+    "bytes": 23123,
     "ext": "HTML",
     "cat": "Interactive",
     "desc": "Whole-House Architecture Map \u2014 complete inventory of all pages, live engines, Lab 7 links, and open threads.",
@@ -3847,11 +3899,11 @@
     "path": "paeleo/abominable-house/live/array.html",
     "url": "./paeleo/abominable-house/live/array.html",
     "styledUrl": "",
-    "size": "20.7 KB",
-    "bytes": 21189,
+    "size": "52.1 KB",
+    "bytes": 53370,
     "ext": "HTML",
     "cat": "Interactive",
-    "desc": "The Array \u2014 multi-screen simultaneous combinatorial wall across the Abominable House.",
+    "desc": "The Array \u2014 multi-screen combinatorial wall + exact 12^12 recursive ADDRESS map, BEHAVIOUR outcome map, 132 Hamming-1 neighbours & shared QUERY.",
     "inlineCode": false
   },
   {
@@ -3891,11 +3943,11 @@
     "path": "paeleo/abominable-house/live/film.html",
     "url": "./paeleo/abominable-house/live/film.html",
     "styledUrl": "",
-    "size": "63.8 KB",
-    "bytes": 65309,
+    "size": "77.9 KB",
+    "bytes": 79772,
     "ext": "HTML",
     "cat": "Interactive",
-    "desc": "The Film Bank \u2014 address, scrub, and screen any of 12^12 = 8,916,100,448,256 combinatorial films.",
+    "desc": "The Film Bank \u2014 address, scrub, and screen any of 12^12 = 8,916,100,448,256 combinatorial films with integrated 3-tab top rail & 9-card guide deck.",
     "inlineCode": false
   },
   {
@@ -3913,11 +3965,11 @@
     "path": "paeleo/abominable-house/live/guide.html",
     "url": "./paeleo/abominable-house/live/guide.html",
     "styledUrl": "",
-    "size": "79.2 KB",
-    "bytes": 81059,
+    "size": "79.6 KB",
+    "bytes": 81499,
     "ext": "HTML",
     "cat": "Interactive",
-    "desc": "PAE-04 interactive page (paeleo/abominable-house/live/guide.html).",
+    "desc": "Field Guide & 10-Slide Interactive Deck \u2014 live mathematical & theoretical companion explaining PIE, modal probabilities, Tenenbaum inverse planning, PLoT tug-of-war, Barthes wrestling levers, BDI + Park memory stream, Kurosawa lies, and the 41 SCION modules.",
     "inlineCode": false
   },
   {
@@ -3957,8 +4009,8 @@
     "path": "paeleo/abominable-house/live/numbers.html",
     "url": "./paeleo/abominable-house/live/numbers.html",
     "styledUrl": "",
-    "size": "44.7 KB",
-    "bytes": 45751,
+    "size": "44.9 KB",
+    "bytes": 45942,
     "ext": "HTML",
     "cat": "Interactive",
     "desc": "The Numbers \u2014 interactive derivations of 12^12, Calvino's 14,000 carry slip, 5 rules, and CP-SAT 11/16 proof.",
@@ -3968,11 +4020,11 @@
     "path": "paeleo/abominable-house/live/player.html",
     "url": "./paeleo/abominable-house/live/player.html",
     "styledUrl": "",
-    "size": "10.7 KB",
-    "bytes": 10979,
+    "size": "16.0 KB",
+    "bytes": 16337,
     "ext": "HTML",
     "cat": "Interactive",
-    "desc": "T ZERO (12\u00d712) \u2014 spatial room player staging the four tenants, lamps, traces, and live ledger.",
+    "desc": "The Deed Bank (12\u00d712 = 144 playable ordered-pair cells \u00b7 96 single-sack role rigs) \u2014 atomic 6s deed inspector with live memory, chance, consequence & transition breakdown.",
     "inlineCode": false
   },
   {
@@ -5102,7 +5154,7 @@
     "url": "./paeleo/flour-tower/index.html",
     "styledUrl": "",
     "size": "154.1 KB",
-    "bytes": 157809,
+    "bytes": 157810,
     "ext": "HTML",
     "cat": "Interactive",
     "desc": "PAE-03 Flour Tower live swarm film or workbench (index.html).",
@@ -5751,7 +5803,7 @@
     "url": "./paeleo/flour-tower/process/index.tpl.html",
     "styledUrl": "",
     "size": "11.6 KB",
-    "bytes": 11884,
+    "bytes": 11885,
     "ext": "HTML",
     "cat": "Interactive",
     "desc": "PAE-03 Flour Tower live swarm film or workbench (index.tpl.html).",
@@ -6223,8 +6275,8 @@
     "path": "scripts/build_docs.py",
     "url": "./scripts/build_docs.py",
     "styledUrl": "",
-    "size": "51.2 KB",
-    "bytes": 52463,
+    "size": "51.4 KB",
+    "bytes": 52650,
     "ext": "PY",
     "cat": "Cases, Traces & Code",
     "desc": "Repository file (scripts/build_docs.py).",
@@ -6234,8 +6286,8 @@
     "path": "scripts/build_index.py",
     "url": "./scripts/build_index.py",
     "styledUrl": "",
-    "size": "87.8 KB",
-    "bytes": 89949,
+    "size": "91.5 KB",
+    "bytes": 93656,
     "ext": "PY",
     "cat": "Cases, Traces & Code",
     "desc": "Repository file (scripts/build_index.py).",
@@ -6278,8 +6330,8 @@
     "path": "tools/build_index.py",
     "url": "./tools/build_index.py",
     "styledUrl": "",
-    "size": "17.5 KB",
-    "bytes": 17886,
+    "size": "18.5 KB",
+    "bytes": 18994,
     "ext": "PY",
     "cat": "Cases, Traces & Code",
     "desc": "Repository file (tools/build_index.py).",
@@ -6289,8 +6341,8 @@
     "path": "tools/claims.json",
     "url": "./tools/claims.json",
     "styledUrl": "",
-    "size": "5.6 KB",
-    "bytes": 5747,
+    "size": "7.3 KB",
+    "bytes": 7506,
     "ext": "JSON",
     "cat": "Cases, Traces & Code",
     "desc": "Repository file (tools/claims.json).",
@@ -6652,8 +6704,8 @@
     "path": "vtx01_build/viewer/index.html",
     "url": "./vtx01_build/viewer/index.html",
     "styledUrl": "",
-    "size": "19.9 KB",
-    "bytes": 20362,
+    "size": "21.1 KB",
+    "bytes": 21567,
     "ext": "HTML",
     "cat": "Interactive",
     "desc": "VTX-0.1 Lamp-Room interactive viewer or blinded perceptual gate (vtx01_build/viewer/index.html).",

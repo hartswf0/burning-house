@@ -2,21 +2,21 @@
   "Abominable_House_Framing_Notes.md": {
     "slug": "abominable-house-framing-notes",
     "html": "docs/abominable-house-framing-notes.html",
-    "title": "Research & Framing Notes: PAE-04 (The Abominable House)",
+    "title": "Working Source Notes \u2014 PAE-04 (The Burning of the Abominable House)",
     "category": "Papers & Specifications",
-    "desc": "Core thesis, flour-sack refusal bypass, Anthropic's Scion analogy, Double Indemnity actuarial tables, and Lem's semascope.",
-    "words": 3744,
-    "read_mins": 16,
+    "desc": "Working framing source feeding the canonical submission draft (flour-sack abstraction, Scion analogy, policies, and Lem's semascope).",
+    "words": 3890,
+    "read_mins": 17,
     "units": "19 sections"
   },
   "Abominable_House_Submission_Draft.md": {
     "slug": "abominable-house-submission-draft",
     "html": "docs/abominable-house-submission-draft.html",
-    "title": "Minimum Viable Video-Text: Conference & Journal Submission Draft",
+    "title": "Canonical Paper \u2014 Minimum Viable Video-Text: Flour Sacks, Swarms & Actuarial Anticombinatorics",
     "category": "Papers & Specifications",
-    "desc": "Full scholarly paper connecting Calvino's 1973 IBM/Playboy story, Disney's flour-sack test, SCION agent swarms, and Skiller's actuarial confound.",
-    "words": 4486,
-    "read_mins": 20,
+    "desc": "The canonical scholarly text for burning-house (plain edition at read.html; claims ledger at CLAIMS.md).",
+    "words": 5137,
+    "read_mins": 22,
     "units": "8 sections"
   },
   "CLAIMS.md": {
@@ -25,17 +25,17 @@
     "title": "Claims Checked: Status, Evidence & Verification Conditions",
     "category": "Papers & Specifications",
     "desc": "Fourteen core historical, mathematical, and empirical claims audited across the repository with status (supported, measured, open, conflicting, unsupported) and settlement criteria.",
-    "words": 932,
+    "words": 1023,
     "read_mins": 4,
     "units": "1 sections"
   },
   "VTX01_MVVT_Research_Memo_and_Spec.md": {
     "slug": "vtx01-mvvt-memo-and-spec",
     "html": "docs/vtx01-mvvt-memo-and-spec.html",
-    "title": "VTX-0.1 Working Memo & Formal Specification",
+    "title": "Component Spec (Source) \u2014 VTX-0.1 Working Memo & Formal Specification",
     "category": "Papers & Specifications",
-    "desc": "Formal specification of Chance, Memory, and Consequence in the Minimum Viable Video-Text format and the Take A vs. Take B lamp-room experiment.",
-    "words": 5092,
+    "desc": "Source specification for the two-sack VTX-0.1 benchmark (Chance, Memory, Consequence, and Take A vs. Take B).",
+    "words": 5159,
     "read_mins": 22,
     "units": "18 sections"
   },
@@ -75,8 +75,8 @@
     "title": "Repository Overview & Architecture (README)",
     "category": "Journals & Inventories",
     "desc": "Top-level guide to burning-house, uniting PAE-03, PAE-04, Lab 7, VTX-0.1, Zettelkasten decks, and the complete archive.",
-    "words": 787,
-    "read_mins": 3,
+    "words": 885,
+    "read_mins": 4,
     "units": "7 sections"
   },
   "vtx01_build/README.md": {
@@ -112,12 +112,12 @@
   "zettle.md": {
     "slug": "zettle",
     "html": "docs/zettle.html",
-    "title": "Master Zettelkasten: Calvino, Six Memos, Blow & Video-Text (28 Cards)",
+    "title": "Master Zettelkasten: Calvino, Six Memos, Blow & Video-Text (26 Cards)",
     "category": "Zettelkasten Slip-Boxes",
-    "desc": "Deduplicated 28-card research slip-box (26 unique IDs) spanning Calvino's Six Memos, Jonathan Blow's Braid & The Witness, agent architectures, and formal mechanisms.",
-    "words": 31317,
-    "read_mins": 136,
-    "units": "27 Zettel cards"
+    "desc": "Deduplicated 26-card research slip-box (26 unique IDs, 1:1) spanning Calvino's Six Memos, Jonathan Blow's Braid & The Witness, agent architectures, and formal mechanisms.",
+    "words": 30131,
+    "read_mins": 131,
+    "units": "26 Zettel cards"
   },
   "DH2025_Concrete_Papers_and_Works_Cited.md": {
     "slug": "dh2025-concrete-papers",
