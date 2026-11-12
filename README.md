@@ -6,6 +6,21 @@ Minimum Viable Video-Text (`VTX-0.1`), faceless canvas flour sacks, research jou
 | :---: | :---: |
 | [![Paper cover plate](./assets/plate-paper-reference.jpg)](https://hartswf0.github.io/burning-house/?plate=paper) | [![Ochre cover plate](./assets/plate-ochre-reference.jpg)](https://hartswf0.github.io/burning-house/?plate=ochre) |
 
+## Start Here
+
+| To do this | Open |
+| :--- | :--- |
+| **Find** any card, journal entry, section, claim or file, and see what cites what | [`find.html`](https://hartswf0.github.io/burning-house/find.html) |
+| **Read** the paper in one plain column | [`read.html`](https://hartswf0.github.io/burning-house/read.html) (generated from [`Abominable_House_Submission_Draft.md`](./Abominable_House_Submission_Draft.md), which is the canonical text) |
+| **Use** the work: open a case, change one line, compare the takes | [`vtx01_build/viewer/index.html`](https://hartswf0.github.io/burning-house/vtx01_build/viewer/index.html) and [`vtx01_build/README.md`](./vtx01_build/README.md) |
+| **Check** what is and is not established | [`CLAIMS.md`](./CLAIMS.md): 14 claims with status, evidence and what would settle each |
+
+The Framing Notes and the VTX-0.1 memo are sources for the Submission Draft, not parallel versions of it. `zettle.md` holds 28 cards under 26 IDs (two cards have two variants); 40 repeated identical copies were removed on 12 Nov 2026.
+
+To rebuild the finding aids after editing any text: `python3 tools/build_index.py` (standard library only). Claims are edited in `tools/claims.json`.
+
+---
+
 ## Live Entry Points
 
 - **Landing Page — Paper Edition:** [`index.html`](https://hartswf0.github.io/burning-house/)
